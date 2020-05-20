@@ -1,17 +1,18 @@
 {
-  "name": "mymessengerbot",
+  "name": "mybot",
   "version": "1.0.0",
-  "description": "facebookmessengerbot",
+  "description": "",
   "main": "app.js",
-  "dependencies": {
-    "express": "^4.17.1",
-    "request": "^2.88.2"
-  },
-  "devDependencies": {},
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
-  "author": "Alexander Tkachev",
-  "license": "ISC"
+  "author": "wolfman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "node-wit": "^5.0.0"
+  }
 }
