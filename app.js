@@ -4,7 +4,7 @@ var express = require('express')
 // var bodyParser = require('body-parser')
 // var request = require('request')
 
-// var Config = require('./config')
+var Config = require('./config')
 // var FB = require('./connectors/facebook')
 // var Bot = require('./bot')
 
