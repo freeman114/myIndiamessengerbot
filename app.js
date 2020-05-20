@@ -1,8 +1,8 @@
 'use strict'
 
 var express = require('express')
-// var bodyParser = require('body-parser')
-// var request = require('request')
+var bodyParser = require('body-parser')
+var request = require('request')
 
 var Config = require('./config')
 // var FB = require('./connectors/facebook')
@@ -17,7 +17,7 @@ app.listen(app.get('port'), function () {
     console.log('Running on port', app.get('port'))
 })
 // PARSE THE BODY
-// app.use(bodyParser.json())
+app.use(bodyParser.json())
 
 
 // index page
@@ -28,8 +28,10 @@ app.get('/', function (req, res) {
 // for facebook to verify
 app.get('/webhooks', function (req, res) {
     if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
+        console.log(req.query);
         res.send(req.query['hub.challenge'])
     } else {
+        console.log(req.query);
         console.error("Failed validation. Make sure the validation tokens match.");
         res.sendStatus(403);
     }
