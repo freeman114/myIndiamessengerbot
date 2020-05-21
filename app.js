@@ -12,7 +12,7 @@
 //
 // 1. npm install body-parser express node-fetch
 // 2. Download and install ngrok from https://ngrok.com/download
-// 3. ./ngrok http 8445
+// 3. ./ngrok http 5000
 // 4. WIT_TOKEN=your_access_token FB_APP_SECRET=your_app_secret FB_PAGE_TOKEN=your_page_token node examples/messenger.js
 // 5. Subscribe your page to the Webhooks using verify_token and `https://<your_ngrok_io>/webhook` as callback URL.
 // 6. Talk to your bot on Messenger!
@@ -21,6 +21,17 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const express = require('express');
 const fetch = require('node-fetch');
+
+const mongoose = require('mongoose');
+const mongodb_url =
+    "mongodb+srv://admin:admin@myfreecluster0-46yi9.mongodb.net/test";
+mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("completed data successfully.");
+    }
+});
 
 let Wit = null;
 let log = null;
@@ -37,7 +48,7 @@ try {
 const PORT = process.env.PORT || 5000;
 
 // Wit.ai parameters
-const WIT_TOKEN = 'R5GS3OKZAL3FYZZCLRZFOKS3HHF5H7HL';
+const WIT_TOKEN = 'PQDZSQIUDITQSG4PEPWSTQSAOCL5HMIA';
 
 // Messenger API parameters
 const FB_PAGE_TOKEN = 'EAADhs54CZBV4BAN0507vBnmAVaNpdCuh3DCQkNINSi9MSCfnKkef1P3a1XLMkTFJLZAgvR3tBCExBQNXYC8lZA7GdYmnr2BbqLhq75g5IIEsHRxW5wpqQxI8GT5IZA1BJooqjYGWVWvyjcwk030c6CZAnk5xlrl5CMZCRZCAasCkeJZAGqKtyZC6dZAe5pVVXOuOgZD';
@@ -138,7 +149,10 @@ app.post('/webhook', (req, res) => {
     // Parse the Messenger payload
     // See the Webhook reference
     // https://developers.facebook.com/docs/messenger-platform/webhook-reference
+
     const data = req.body;
+    console.log("JSON.stringify(data)");
+    console.log(JSON.stringify(data));
 
     if (data.object === 'page') {
         data.entry.forEach(entry => {
@@ -169,7 +183,7 @@ app.post('/webhook', (req, res) => {
                             console.log(entities);
                             console.log(traits);
                             // For now, let's reply with another automatic message
-                            fbMessage(sender, `We've received your message: ${text}.`);
+                            fbMessage(sender, `We have received your message: ${text}.`);
                         })
                             .catch((err) => {
                                 console.error('Oops! Got an error from Wit: ', err.stack || err);
@@ -183,6 +197,7 @@ app.post('/webhook', (req, res) => {
     }
     res.sendStatus(200);
 });
+
 
 /*
  * Verify that the callback came from Facebook. Using the App Secret from
