@@ -21,17 +21,12 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const express = require('express');
 const fetch = require('node-fetch');
+const request = require('request');
+const uuid = require('uuid');
 
-const mongoose = require('mongoose');
-const mongodb_url =
-    "mongodb+srv://admin:admin@myfreecluster0-46yi9.mongodb.net/test";
-mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("completed data successfully.");
-    }
-});
+
+const fbService = require('./facebook_service')
+const userService = require('./user');
 
 let Wit = null;
 let log = null;
@@ -51,7 +46,7 @@ const PORT = process.env.PORT || 5000;
 const WIT_TOKEN = 'PQDZSQIUDITQSG4PEPWSTQSAOCL5HMIA';
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = 'EAADhs54CZBV4BAN0507vBnmAVaNpdCuh3DCQkNINSi9MSCfnKkef1P3a1XLMkTFJLZAgvR3tBCExBQNXYC8lZA7GdYmnr2BbqLhq75g5IIEsHRxW5wpqQxI8GT5IZA1BJooqjYGWVWvyjcwk030c6CZAnk5xlrl5CMZCRZCAasCkeJZAGqKtyZC6dZAe5pVVXOuOgZD';
+const FB_PAGE_TOKEN = 'EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M';
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
 const FB_APP_SECRET = 'eefa395df9bfb2939b74b19f6168231b';
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
@@ -68,6 +63,10 @@ crypto.randomBytes(8, (err, buff) => {
 
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
+
+
+const sessionIds = new Map();
+const usersMap = new Map();
 
 const fbMessage = (id, text) => {
     const body = JSON.stringify({
@@ -189,7 +188,14 @@ app.post('/webhook', (req, res) => {
                                 console.error('Oops! Got an error from Wit: ', err.stack || err);
                             })
                     }
-                } else {
+                } else if (event.postback.payload) {
+                    receivedPostback(event);
+                    // const sender = event.sender.id;
+                    // fbMessage(sender, `We have received your message:`);
+
+
+                }
+                else {
                     console.log('received event', JSON.stringify(event));
                 }
             });
@@ -197,6 +203,69 @@ app.post('/webhook', (req, res) => {
     }
     res.sendStatus(200);
 });
+
+
+function receivedPostback(event) {
+    var senderID = event.sender.id;
+    setSessionAndUser(senderID);
+    var recipientID = event.recipient.id;
+    var timeOfPostback = event.timestamp;
+    var payload = event.postback.payload;
+    switch (payload) {
+
+        case 'FACEBOOK_WELCOME':
+            //ask user to send a .csv
+            sendWelcomeMessage(senderID);
+            break;
+        case 'FACEBOOK_WELCOME1':
+            //get information from user before they subscribe
+            sendBizNewsSubscribe(senderID);
+            break;
+        case 'FACEBOOK_WELCOME2':
+            sendTextMessage(senderID, "Great! What would you like advice on?");
+            break;
+        case 'FACEBOOK_WELCOME3':
+            greetUserText(senderID);
+            break;
+
+        default:
+            //unindentified payload
+            // sendTextMessage(senderID, "I'm sorry, I didn't understand your last message. I'm new and just a bot so it will take some time to train me. Can you repeat that again?");
+            break;
+
+    }
+
+}
+
+function sendWelcomeMessage(userId) {
+    console.log("wecomemessage");
+    let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
+
+    let replies = [
+        {
+            "content_type": "text",
+            "title": "Self-service",
+            "payload": "self_service"
+        },
+        {
+            "content_type": "text",
+            "title": "Need for volunteers ",
+            "payload": "need_volunteers"
+        },
+        {
+            "content_type": "text",
+            "title": "Be a volunteer ",
+            "payload": "be_volunteer"
+        },
+        {
+            "content_type": "text",
+            "title": " Cancel",
+            "payload": "cancel"
+        }
+    ];
+
+    fbService.sendQuickReply(userId, responseText, replies);
+}
 
 
 /*
@@ -232,3 +301,15 @@ function verifyRequestSignature(req, res, buf) {
 
 app.listen(PORT);
 console.log('Listening on :' + PORT + '...');
+
+function setSessionAndUser(senderID) {
+    if (!sessionIds.has(senderID)) {
+        sessionIds.set(senderID, uuid.v1());
+    }
+
+    if (!usersMap.has(senderID)) {
+        userService.addUser(function (user) {
+            usersMap.set(senderID, user);
+        }, senderID);
+    }
+}
