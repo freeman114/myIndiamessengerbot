@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\facebookMessenger_bot-master"
+		},
+		{
+			"path": "..\\node-wit-master"
+		}
+	],
+	"settings": {}
+}

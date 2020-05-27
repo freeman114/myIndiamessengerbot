@@ -26,6 +26,7 @@ const uuid = require('uuid');
 
 
 const fbService = require('./facebook_service')
+const external_api = require('./external_api')
 const userService = require('./user');
 
 let Wit = null;
@@ -38,7 +39,6 @@ try {
     Wit = require('node-wit').Wit;
     log = require('node-wit').log;
 }
-
 // Webserver parameter
 const PORT = process.env.PORT || 5000;
 
@@ -47,9 +47,13 @@ const WIT_TOKEN = 'PQDZSQIUDITQSG4PEPWSTQSAOCL5HMIA';
 
 // Messenger API parameters
 const FB_PAGE_TOKEN = 'EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M';
-if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
+if (!FB_PAGE_TOKEN) {
+    throw new Error('missing FB_PAGE_TOKEN')
+}
 const FB_APP_SECRET = 'eefa395df9bfb2939b74b19f6168231b';
-if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
+if (!FB_APP_SECRET) {
+    throw new Error('missing FB_APP_SECRET')
+}
 
 let FB_VERIFY_TOKEN = null;
 crypto.randomBytes(8, (err, buff) => {
@@ -60,7 +64,6 @@ crypto.randomBytes(8, (err, buff) => {
 
 // ----------------------------------------------------------------------------
 // Messenger API specific code
-
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
@@ -70,13 +73,19 @@ const usersMap = new Map();
 
 const fbMessage = (id, text) => {
     const body = JSON.stringify({
-        recipient: { id },
-        message: { text },
+        recipient: {
+            id
+        },
+        message: {
+            text
+        },
     });
     const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
-    return fetch('https://graph.facebook.com/me/messages?' + qs, {
+    return fetch('https: //graph.facebook.com/me/messages?' + qs, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body,
     })
         .then(rsp => rsp.json())
@@ -90,7 +99,6 @@ const fbMessage = (id, text) => {
 
 // ----------------------------------------------------------------------------
 // Wit.ai bot specific code
-
 // This will contain all user sessions.
 // Each session has an entry:
 // sessionId -> {fbid: facebookUserId, context: sessionState}
@@ -100,7 +108,8 @@ const findOrCreateSession = (fbid) => {
     let sessionId;
     // Let's see if we already have a session for the user fbid
     Object.keys(sessions).forEach(k => {
-        if (sessions[k].fbid === fbid) {
+        if (sessions[k
+        ].fbid === fbid) {
             // Yep, got it!
             sessionId = k;
         }
@@ -108,7 +117,10 @@ const findOrCreateSession = (fbid) => {
     if (!sessionId) {
         // No session found for user fbid, let's create a new one
         sessionId = new Date().toISOString();
-        sessions[sessionId] = { fbid: fbid, context: {} };
+        sessions[sessionId
+        ] = {
+            fbid: fbid, context: {}
+        };
     }
     return sessionId;
 };
@@ -121,19 +133,28 @@ const wit = new Wit({
 
 // Starting our webserver and putting it all together
 const app = express();
-app.use(({ method, url }, rsp, next) => {
+app.use(({ method, url
+}, rsp, next) => {
     rsp.on('finish', () => {
-        console.log(`${rsp.statusCode} ${method} ${url}`);
+        console.log(`${rsp.statusCode
+            } ${method
+            } ${url
+            }`);
     });
     next();
 });
-app.use(bodyParser.json({ verify: verifyRequestSignature }));
+app.use(bodyParser.json({
+    verify: verifyRequestSignature
+}));
 
 // Webhook setup
 app.get('/webhook', (req, res) => {
-    if (req.query['hub.mode'] === 'subscribe' &&
-        req.query['hub.verify_token'] === FB_VERIFY_TOKEN) {
-        res.send(req.query['hub.challenge']);
+    if (req.query['hub.mode'
+    ] === 'subscribe' &&
+        req.query['hub.verify_token'
+        ] === FB_VERIFY_TOKEN) {
+        res.send(req.query['hub.challenge'
+        ]);
     } else {
         res.sendStatus(400);
     }
@@ -150,7 +171,7 @@ app.post('/webhook', (req, res) => {
     // https://developers.facebook.com/docs/messenger-platform/webhook-reference
 
     const data = req.body;
-    console.log("JSON.stringify(data)");
+    console.log("****************We received webhook event.***************");
     console.log(JSON.stringify(data));
 
     if (data.object === 'page') {
@@ -164,9 +185,9 @@ app.post('/webhook', (req, res) => {
                     // We could retrieve the user's current session, or create one if it doesn't exist
                     // This is useful if we want our bot to figure out the conversation history
                     // const sessionId = findOrCreateSession(sender);
-
                     // We retrieve the message content
-                    const { text, attachments } = event.message;
+                    const { text, attachments
+                    } = event.message;
 
                     if (attachments) {
                         // We received an attachment
@@ -174,26 +195,27 @@ app.post('/webhook', (req, res) => {
                         fbMessage(sender, 'Sorry I can only process text messages for now.')
                             .catch(console.error);
                     } else if (text) {
+                        receivedMessage(event);
                         // We received a text message
                         // Let's run /message on the text to extract some entities, intents and traits
-                        wit.message(text).then(({ entities, intents, traits }) => {
-                            // You can customize your response using these
-                            console.log(intents);
-                            console.log(entities);
-                            console.log(traits);
-                            // For now, let's reply with another automatic message
-                            fbMessage(sender, `We have received your message: ${text}.`);
-                        })
-                            .catch((err) => {
-                                console.error('Oops! Got an error from Wit: ', err.stack || err);
-                            })
+                        // wit.message(text).then(({ entities, intents, traits
+                        // }) => {
+                        //     // You can customize your response using these
+                        //     console.log(intents);
+                        //     console.log(entities);
+                        //     console.log(traits);
+                        //     console.log(evnet);
+                        //     // For now, let's reply with another automatic message
+                        //     // fbMessage(sender, `We have received your message: ${text}.`);
+                        //     // receivedMessage(event);
+                        // })
+                        //     .catch((err) => {
+                        //         console.error('Oops! Got an error from Wit: ', err.stack || err);
+                        //     })
                     }
                 } else if (event.postback.payload) {
                     receivedPostback(event);
                     // const sender = event.sender.id;
-                    // fbMessage(sender, `We have received your message:`);
-
-
                 }
                 else {
                     console.log('received event', JSON.stringify(event));
@@ -214,31 +236,52 @@ function receivedPostback(event) {
     switch (payload) {
 
         case 'FACEBOOK_WELCOME':
-            //ask user to send a .csv
             sendWelcomeMessage(senderID);
             break;
         case 'FACEBOOK_WELCOME1':
-            //get information from user before they subscribe
-            sendBizNewsSubscribe(senderID);
+
             break;
         case 'FACEBOOK_WELCOME2':
-            sendTextMessage(senderID, "Great! What would you like advice on?");
             break;
         case 'FACEBOOK_WELCOME3':
-            greetUserText(senderID);
             break;
 
         default:
             //unindentified payload
             // sendTextMessage(senderID, "I'm sorry, I didn't understand your last message. I'm new and just a bot so it will take some time to train me. Can you repeat that again?");
             break;
-
     }
+}
+
+function receivedMessage(event) {
+    console.log('_____________We received message___________');
+    console.log(JSON.stringify(event));
+    var senderID = event.sender.id;
+    var recipientID = event.recipient.id;
+    var timeOfMessage = event.timestamp;
+    var message = event.message;
+    var isEcho = message.is_echo;
+    var messageId = message.mid;
+    var appId = message.app_id;
+    var metadata = message.metadata;
+
+    // You may get a text or attachment but not both
+    var messageText = message.text;
+    var messageAttachments = message.attachments;
+    var quickReply = message.quick_reply;
+    if (quickReply) {
+        handleQuickreply(senderID, quickReply, messageId);
+        return;
+    } else if (messageText) {
+        sendToWit(event);
+        return;
+    }
+
 
 }
 
 function sendWelcomeMessage(userId) {
-    console.log("wecomemessage");
+    console.log("______________We received welcomemessage._________________");
     let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
 
     let replies = [
@@ -266,8 +309,6 @@ function sendWelcomeMessage(userId) {
 
     fbService.sendQuickReply(userId, responseText, replies);
 }
-
-
 /*
  * Verify that the callback came from Facebook. Using the App Secret from
  * the App Dashboard, we can verify the signature that is sent with each
@@ -277,7 +318,9 @@ function sendWelcomeMessage(userId) {
  *
  */
 function verifyRequestSignature(req, res, buf) {
-    var signature = req.headers["x-hub-signature"];
+    var signature = req.headers[
+        "x-hub-signature"
+    ];
     console.log(signature);
 
     if (!signature) {
@@ -286,8 +329,12 @@ function verifyRequestSignature(req, res, buf) {
         console.error("Couldn't validate the signature.");
     } else {
         var elements = signature.split('=');
-        var method = elements[0];
-        var signatureHash = elements[1];
+        var method = elements[
+            0
+        ];
+        var signatureHash = elements[
+            1
+        ];
 
         var expectedHash = crypto.createHmac('sha1', FB_APP_SECRET)
             .update(buf)
@@ -313,3 +360,137 @@ function setSessionAndUser(senderID) {
         }, senderID);
     }
 }
+
+function handleQuickreply(userId, quickReply, messageId) {
+    console.log('_________Received quickreply response________');
+    var quickReplyPayload = quickReply.payload;
+    var cash;
+    switch (quickReplyPayload) {
+        case 'self_service':
+            console.log(quickReplyPayload);
+            inputName(userId, cash);
+            break;
+        case 'need_volunteers':
+
+            break;
+
+        case 'be_volunteer':
+
+            break;
+        case 'start_over':
+            sendWelcomeMessage(userId);
+            break;
+        case 'previous':
+
+            break;
+
+
+        case 'cancel':
+
+
+            break;
+
+        default:
+            break;
+    }
+    console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload);
+    //send payload to api.ai
+    //sendToDialogFlow(senderID, quickReplyPayload);
+
+}
+
+function inputName(userId, cash) {
+    console.log('____________sent that input name___________');
+    let responseText = "Please enter your name. ";
+
+    let replies = [
+        {
+            "content_type": "text",
+            "title": "Start Over",
+            "payload": "start_over"
+        },
+        {
+            "content_type": "text",
+            "title": "Previous ",
+            "payload": "previous"
+        },
+        {
+            "content_type": "text",
+            "title": "Cancel ",
+            "payload": "cancel"
+        }
+    ];
+
+    fbService.sendQuickReply(userId, responseText, replies);
+}
+
+function sendToWit(event) {
+    console.log('__________received text message___________');
+    var userId = event.sender.id;
+    console.log(JSON.stringify(event));
+
+    if (event.message.nlp.entities.intent) {
+        var wit_confience = event.message.nlp.entities.intent.confidence;
+        var intent = event.message.nlp.entities.intent[0].value;
+
+        console.log(intent);
+        switch (intent) {
+            case 'name':
+                var value = event.message.nlp.entities.name[0].value;
+                console.log(value);
+
+                inputAddress(userId);
+                break;
+            case 'greeting':
+                sendWelcomeMessage(userId);
+                break;
+
+            case 'address_position':
+                var value = event.message.nlp.entities.location[0].value;
+                console.log(value);
+                external_api.displayShop(userId, value, function (array) {
+                    if (array){
+                        var count = 0;
+                        console.log(array[count]);
+                        fbService.showStore(userId, array[count], function (){
+
+                        })
+
+                        
+                    }
+                    
+                });
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+
+function inputAddress(userId) {
+    console.log('____________we sent message that input address.____________');
+
+    let responseText = "Please enter your address. ";
+
+    let replies = [
+        {
+            "content_type": "text",
+            "title": "Start Over",
+            "payload": "start_over"
+        },
+        {
+            "content_type": "text",
+            "title": "Previous ",
+            "payload": "previous"
+        },
+        {
+            "content_type": "text",
+            "title": "Cancel ",
+            "payload": "cancel"
+        }
+    ];
+
+    fbService.sendQuickReply(userId, responseText, replies);
+}
+
