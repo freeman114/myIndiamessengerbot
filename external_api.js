@@ -32,9 +32,9 @@ module.exports = {
                     imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
 
-                var payload = i + '_' + result[i].name;
+                var name = i + '_' + result[i].name;
                 buttons = [];
-                var Array = {addres: value};
+                var Array = {addres: value, name: name};
                 var Arrays = JSON.stringify(Array);
                 var button = { "type": "postback", "title": "Booking schedule time", "payload":  Arrays };
                 buttons.push(button);
