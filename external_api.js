@@ -32,6 +32,7 @@ module.exports = {
                 }
 
                 var payload = i + '_' + result[i].name;
+                buttons = '[{ "type": "postback", "title": "Booking schedule time", "payload":' +  payload + ' }]';
                 var option = 
                 {
                     "title": result[i].name, "image_url": imageUrl,
@@ -40,7 +41,7 @@ module.exports = {
                         "type": "web_url",
                         "url": "https://petersfancybrownhats.com/view?item=103", "webview_height_ratio": "tall"
                     },
-                    "buttons": '[{ "type": "postback", "title": "Booking schedule time", "payload":' + payload + ' }]'
+                    "buttons": buttons
                 };
                 shopArray.push(option);
                 // console.log(JSON.stringify(shopArray));
