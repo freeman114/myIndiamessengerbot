@@ -23,16 +23,16 @@ module.exports = {
             var shopArray = [];
             for (i = 0; i<10; i++){
                 // console.log(JSON.stringify(item));
-                if (item[i].photos){
+                if (result[i].photos){
                     // console.log(item.photos[0].photo_reference);
-                    imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + item[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
+                    imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
                 } else {
                     // console.log(request.url);
                     imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
                 var option = 
                 {
-                    "title": item[i].name, "image_url": imageUrl,
+                    "title": result[i].name, "image_url": imageUrl,
                     "default_action":
                     {
                         "type": "web_url",
