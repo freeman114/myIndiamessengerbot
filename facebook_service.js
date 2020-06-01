@@ -46,19 +46,7 @@ module.exports = {
 
     showStore: function (userID, array, callback) {
         array.shift();
-        // switch (count) {
-        //     case 0:
-        //         var listButton = '[{ "type": "postback", "title": "Booking schedule time", "payload": "schedule_time" }, { "type": "postback", "title": "next shop", "payload": "next_shop" }]';
-        //         break;
-        //     case 10:
-        //         var listButton = '[{ "type": "postback", "title": "Booking schedule time", "payload": "schedule_time" }, { "type": "postback", "title": "previous shop", "payload": "previous_shop" }]';
-        //         break;
-
-        //     default:
-        //         var listButton = '[{ "type": "postback", "title": "Booking schedule time", "payload": "schedule_time" }, { "type": "postback", "title": "next shop", "payload": "next_shop" }, { "type": "postback", "title": "previous shop", "payload": "previous_shop" }]';
-        //         break;
-        // }
-
+       
         var options = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M',

@@ -30,6 +30,8 @@ module.exports = {
                     // console.log(request.url);
                     imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
+
+                var payload = count + '_' + result[i].name + '_' + value;
                 var option = 
                 {
                     "title": result[i].name, "image_url": imageUrl,
@@ -38,7 +40,7 @@ module.exports = {
                         "type": "web_url",
                         "url": "https://petersfancybrownhats.com/view?item=103", "webview_height_ratio": "tall"
                     },
-                    "buttons": '[{ "type": "postback", "title": "Booking schedule time", "payload": "schedule_time" }, { "type": "postback", "title": "next shop", "payload": "next_shop" }, { "type": "postback", "title": "previous shop", "payload": "previous_shop" }]'
+                    "buttons": '[{ "type": "postback", "title": "Booking schedule time", "payload":' + payload + ' }]'
                 };
                 shopArray.push(option);
                 // console.log(JSON.stringify(shopArray));
