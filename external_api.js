@@ -31,7 +31,7 @@ module.exports = {
                     imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
 
-                var payload = i + '_' + result[i].name + '_' + value;
+                var payload = i + '_' + result[i].name;
                 var option = 
                 {
                     "title": result[i].name, "image_url": imageUrl,
