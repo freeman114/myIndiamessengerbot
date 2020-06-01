@@ -33,6 +33,7 @@ module.exports = {
 
                 var payload = i + '_' + result[i].name;
                 buttons = '[{ "type": "postback", "title": "Booking schedule time", "payload":' +  payload + ' }]';
+                console.log(buttons);
                 var option = 
                 {
                     "title": result[i].name, "image_url": imageUrl,
