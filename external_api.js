@@ -35,7 +35,7 @@ module.exports = {
                 var shopArray = [{addres: value}];
                 shopArrays = JSON.stringify(shopArray);
                 var payload = i + '_' + result[i].name;
-                var button = { "type": "postback", "title": "Booking schedule time", "payload":  shopArrays };
+                var button = { "type": "postback", "title": "Booking schedule time", "payload":  payload };
                 buttons.push(button);
                 console.log(buttons);
                 var option = 
