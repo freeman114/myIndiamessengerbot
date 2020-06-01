@@ -31,11 +31,11 @@ module.exports = {
                     imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
 
-                buttons = [];
-                var shopArray = [{addres: value}];
-                shopArrays = JSON.stringify(shopArray);
                 var payload = i + '_' + result[i].name;
-                var button = { "type": "postback", "title": "Booking schedule time", "payload":  payload };
+                buttons = [];
+                var shopArray = {addres: value};
+                shopArrays = JSON.stringify(shopArray);
+                var button = { "type": "postback", "title": "Booking schedule time", "payload":  shopArray };
                 buttons.push(button);
                 console.log(buttons);
                 var option = 
