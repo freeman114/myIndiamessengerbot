@@ -31,6 +31,26 @@ const userService = require('./user');
 
 let Wit = null;
 let log = null;
+
+var count = 0;
+var shop_Array = [];
+var default_Replies = [
+    {
+        "content_type": "text",
+        "title": "Start Over",
+        "payload": "start_over"
+    },
+    {
+        "content_type": "text",
+        "title": "Previous ",
+        "payload": "previous"
+    },
+    {
+        "content_type": "text",
+        "title": "Cancel ",
+        "payload": "cancel"
+    }
+];
 try {
     // if running from repo
     Wit = require('../').Wit;
@@ -61,6 +81,7 @@ crypto.randomBytes(8, (err, buff) => {
     FB_VERIFY_TOKEN = buff.toString('hex');
     console.log(`/webhook will accept the Verify Token "${FB_VERIFY_TOKEN}"`);
 });
+
 
 // ----------------------------------------------------------------------------
 // Messenger API specific code
@@ -147,6 +168,8 @@ app.use(bodyParser.json({
     verify: verifyRequestSignature
 }));
 
+app.use(express.static('./public'));
+
 // Webhook setup
 app.get('/webhook', (req, res) => {
     if (req.query['hub.mode'
@@ -174,7 +197,7 @@ app.post('/webhook', (req, res) => {
     console.log("****************We received webhook event.***************");
     console.log(JSON.stringify(data));
 
-    if (data.object === 'page') {
+    if (data.object === 'page' && data.entry[0].messaging) {
         data.entry.forEach(entry => {
             entry.messaging.forEach(event => {
                 if (event.message && !event.message.is_echo) {
@@ -196,22 +219,8 @@ app.post('/webhook', (req, res) => {
                             .catch(console.error);
                     } else if (text) {
                         receivedMessage(event);
-                        // We received a text message
-                        // Let's run /message on the text to extract some entities, intents and traits
-                        // wit.message(text).then(({ entities, intents, traits
-                        // }) => {
-                        //     // You can customize your response using these
-                        //     console.log(intents);
-                        //     console.log(entities);
-                        //     console.log(traits);
-                        //     console.log(evnet);
-                        //     // For now, let's reply with another automatic message
-                        //     // fbMessage(sender, `We have received your message: ${text}.`);
-                        //     // receivedMessage(event);
-                        // })
-                        //     .catch((err) => {
-                        //         console.error('Oops! Got an error from Wit: ', err.stack || err);
-                        //     })
+
+
                     }
                 } else if (event.postback.payload) {
                     receivedPostback(event);
@@ -229,7 +238,7 @@ app.post('/webhook', (req, res) => {
 
 function receivedPostback(event) {
     var senderID = event.sender.id;
-    setSessionAndUser(senderID);
+    // setSessionAndUser(senderID);
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
@@ -238,12 +247,35 @@ function receivedPostback(event) {
         case 'FACEBOOK_WELCOME':
             sendWelcomeMessage(senderID);
             break;
-        case 'FACEBOOK_WELCOME1':
+        case 'next_shop':
+            if (count < 10) {
+                count++;
+                console.log(shop_Array[count]);
+                var addPreviousbutton = ' { "type": "postback", "title": "previous shop", "payload": "previous_shop" }'
+                fbService.showStore(senderID, shop_Array[count],count, function (updated) {
+                    if (updated) {
+                        let responseText = "Click Booking schedule time button to book shop. ";
+                        fbService.sendQuickReply(senderID, responseText, default_Replies);
+                    }
 
+                });
+            }
             break;
-        case 'FACEBOOK_WELCOME2':
+        case 'previous_shop':
+            if (count > 0) {
+                count--;
+                console.log(shop_Array[count]);
+                fbService.showStore(senderID, shop_Array[count], count, function (updated) {
+                    if (updated) {
+                        let responseText = "Click Booking schedule time button to book shop. ";
+                        fbService.sendQuickReply(senderID, responseText, default_Replies);
+                    }
+
+                });
+            }
             break;
-        case 'FACEBOOK_WELCOME3':
+        case 'schedule_time':
+            console.log('schedule_time');
             break;
 
         default:
@@ -421,51 +453,80 @@ function inputName(userId, cash) {
         }
     ];
 
-    fbService.sendQuickReply(userId, responseText, replies);
+    fbService.sendQuickReply(userId, responseText, default_Replies);
 }
 
 function sendToWit(event) {
-    console.log('__________received text message___________');
-    var userId = event.sender.id;
-    console.log(JSON.stringify(event));
+    try {
+        console.log('__________received text message___________');
+        var userId = event.sender.id;
+        console.log(JSON.stringify(event));
 
-    if (event.message.nlp.entities.intent) {
-        var wit_confience = event.message.nlp.entities.intent.confidence;
-        var intent = event.message.nlp.entities.intent[0].value;
+        if (event.message.nlp.entities.intent) {
+            var wit_confience = event.message.nlp.entities.intent.confidence;
+            var intent = event.message.nlp.entities.intent[0].value;
 
-        console.log(intent);
-        switch (intent) {
-            case 'name':
-                var value = event.message.nlp.entities.name[0].value;
-                console.log(value);
+            console.log(intent);
+            switch (intent) {
+                case 'name':
+                    var value = event.message.nlp.entities.name[0].value;
+                    console.log(value);
 
-                inputAddress(userId);
-                break;
-            case 'greeting':
-                sendWelcomeMessage(userId);
-                break;
+                    inputAddress(userId);
+                    break;
+                case 'greeting':
+                    sendWelcomeMessage(userId);
+                    break;
 
-            case 'address_position':
-                var value = event.message.nlp.entities.location[0].value;
-                console.log(value);
-                external_api.displayShop(userId, value, function (array) {
-                    if (array){
-                        var count = 0;
-                        console.log(array[count]);
-                        fbService.showStore(userId, array[count], function (){
+                case 'address_position':
+                    var value = event.message.nlp.entities.location[0].value;
+                    console.log(value);
+                    external_api.displayShop(userId, value, function (array) {
+                        if (array) {
+                            shop_Array = array;
+                            userService.addList(userId, array, function (updated){
+                                if (updated){
+                                    fbService.showStore(updated, array, (err, res) => {
+                                        console.log("success");
+                                    });
+                                }else {
+                                    console.log('error');
+                                }
+                                
+                            });
+                            // console.log(shop_Array[count]);
+                            // fbService.showStore(userId, shop_Array[count], count, function () {
+                            //     let responseText = "Click Booking schedule time button to book shop. ";
+                            //     fbService.sendQuickReply(userId, responseText, default_Replies);
 
-                        })
+                            // });
 
-                        
-                    }
-                    
-                });
-                break;
 
-            default:
-                break;
+                        }
+
+                    });
+                    break;
+
+                default:
+                    let responseText = 'Please enter correct data.';
+
+                    fbService.sendQuickReply(userId, responseText, default_Replies);
+                    break;
+            }
+        } else {
+            let responseText = 'sorry, more again.';
+
+            fbService.sendQuickReply(userId, responseText, default_Replies);
+            return;
         }
     }
+    catch (error) {
+        console.log(error);
+
+
+    }
+
+
 }
 
 function inputAddress(userId) {
@@ -473,24 +534,8 @@ function inputAddress(userId) {
 
     let responseText = "Please enter your address. ";
 
-    let replies = [
-        {
-            "content_type": "text",
-            "title": "Start Over",
-            "payload": "start_over"
-        },
-        {
-            "content_type": "text",
-            "title": "Previous ",
-            "payload": "previous"
-        },
-        {
-            "content_type": "text",
-            "title": "Cancel ",
-            "payload": "cancel"
-        }
-    ];
 
-    fbService.sendQuickReply(userId, responseText, replies);
+
+    fbService.sendQuickReply(userId, responseText, default_Replies);
 }
 

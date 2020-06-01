@@ -27,10 +27,19 @@ module.exports = {
                     // console.log(item.photos[0].photo_reference);
                     imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + item.photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
                 } else {
-                    console.log(request.url);
-                    imageUrl = 'https://b9302b74.ngrok.io/webhook/public/images/unsupportedimage.png';
+                    // console.log(request.url);
+                    imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
-                var option = {'name' : item.name, 'imageUrl' : imageUrl };
+                var option = 
+                {
+                    "title": item.name, "image_url": imageUrl,
+                    "default_action":
+                    {
+                        "type": "web_url",
+                        "url": "https://petersfancybrownhats.com/view?item=103", "webview_height_ratio": "tall"
+                    },
+                    "buttons": '[{ "type": "postback", "title": "Booking schedule time", "payload": "schedule_time" }, { "type": "postback", "title": "next shop", "payload": "next_shop" }, { "type": "postback", "title": "previous shop", "payload": "previous_shop" }]'
+                };
                 shopArray.push(option);
                 // console.log(JSON.stringify(shopArray));
                 if ( shopArray.length == result.length){
