@@ -20,9 +20,10 @@ module.exports = {
             var result = JSON.parse(response.body).results;
             // console.log(result);
             console.log(result.length);
-            var shopArray = [{addres: value}];
-            shopArrays = JSON.parse(shopArray);
+            
             for (i = 0; i<10; i++){
+                var shopArray = [{addres: value}, {name: result[i].name}];
+                shopArrays = JSON.stringify(shopArray);
                 // console.log(JSON.stringify(item));
                 if (result[i].photos){
                     // console.log(item.photos[0].photo_reference);
