@@ -21,6 +21,7 @@ module.exports = {
             // console.log(result);
             console.log(result.length);
             var shopArray = [{addres: value}];
+            shopArrays = JSON.stringify(shopArray);
             for (i = 0; i<10; i++){
                 // console.log(JSON.stringify(item));
                 if (result[i].photos){
@@ -33,7 +34,7 @@ module.exports = {
 
                 buttons = [];
                 var payload = i + '_' + result[i].name;
-                var button = { "type": "postback", "title": "Booking schedule time", "payload":  shopArray };
+                var button = { "type": "postback", "title": "Booking schedule time", "payload":  shopArrays };
                 buttons.push(button);
                 console.log(buttons);
                 var option = 
