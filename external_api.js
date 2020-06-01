@@ -21,7 +21,7 @@ module.exports = {
             // console.log(result);
             console.log(result.length);
             var shopArray = [{addres: value}];
-            shopArrays = JSON.stringify(shopArray);
+            shopArrays = JSON.parse(shopArray);
             for (i = 0; i<10; i++){
                 // console.log(JSON.stringify(item));
                 if (result[i].photos){
