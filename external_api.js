@@ -20,6 +20,7 @@ module.exports = {
             var result = JSON.parse(response.body).results;
             // console.log(result);
             console.log(result.length);
+            var shopArray = [];
            
             for (i = 0; i<10; i++){
                 // console.log(JSON.stringify(item));
@@ -33,9 +34,9 @@ module.exports = {
 
                 var payload = i + '_' + result[i].name;
                 buttons = [];
-                var shopArray = {addres: value};
-                shopArrays = JSON.stringify(shopArray);
-                var button = { "type": "postback", "title": "Booking schedule time", "payload":  shopArray };
+                var Array = {addres: value};
+                var Arrays = JSON.stringify(Array);
+                var button = { "type": "postback", "title": "Booking schedule time", "payload":  Arrays };
                 buttons.push(button);
                 console.log(buttons);
                 var option = 
