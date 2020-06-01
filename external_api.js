@@ -32,7 +32,7 @@ module.exports = {
                 }
                 buttons = [];
                 var payload = i + '_' + result[i].name;
-                var button = '{ "type": "postback", "title": "Booking schedule time", "payload":' +  payload + ' }';
+                var button = { "type": "postback", "title": "Booking schedule time", "payload":  payload };
                 console.log(buttons);
                 buttons.push(button);
                 var option = 
