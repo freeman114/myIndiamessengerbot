@@ -1,30 +1,30 @@
 
 const request = require('request');
 module.exports = {
-    displayShop: function (userId, value, callback){
+    displayShop: function (userId, value, callback) {
         console.log(value[0]);
         console.log('___________We received message that display shop list.___________%s,____%d', userId, value);
         apikey = 'AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U';
-        console.log(typeof(value));
+        console.log(typeof (value));
         var options = {
             'method': 'GET',
-            'url': 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key='+apikey+'&location=' + value,
+            'url': 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + value,
             'headers': {
             }
-          };
+        };
         //   console.log(options);
 
-          request(options, function (error, response) { 
+        request(options, function (error, response) {
             if (error) throw new Error(error);
             // console.log(response.body);
             var result = JSON.parse(response.body).results;
             // console.log(result);
             console.log(result.length);
             var shopArray = [];
-           
-            for (i = 0; i<10; i++){
+
+            for (i = 0; i < 10; i++) {
                 // console.log(JSON.stringify(item));
-                if (result[i].photos){
+                if (result[i].photos) {
                     // console.log(item.photos[0].photo_reference);
                     imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
                 } else {
@@ -34,12 +34,12 @@ module.exports = {
 
                 var name = i + '_' + result[i].name;
                 buttons = [];
-                var Array = {addres: value, name: name};
+                var Array = { addres: value, name: name };
                 var Arrays = JSON.stringify(Array);
-                var button = { "type": "postback", "title": "Booking schedule time", "payload":  Arrays };
+                var button = { "type": "postback", "title": "Booking schedule time", "payload": Array };
                 buttons.push(button);
                 console.log(buttons);
-                var option = 
+                var option =
                 {
                     "title": result[i].name, "image_url": imageUrl,
                     "default_action":
@@ -51,11 +51,11 @@ module.exports = {
                 };
                 shopArray.push(option);
                 // console.log(JSON.stringify(shopArray));
-                if ( shopArray.length == 10){
+                if (shopArray.length == 10) {
                     callback(shopArray);
                 }
             }
-          });
+        });
     },
 
     sendQuickReply: function (recipientId, text, replies, metadata) {
