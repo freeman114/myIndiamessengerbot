@@ -45,6 +45,7 @@ module.exports = {
     },
 
     showStore: function (userID, array, callback) {
+        array.shift();
         // switch (count) {
         //     case 0:
         //         var listButton = '[{ "type": "postback", "title": "Booking schedule time", "payload": "schedule_time" }, { "type": "postback", "title": "next shop", "payload": "next_shop" }]';

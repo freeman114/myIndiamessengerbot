@@ -20,7 +20,7 @@ module.exports = {
             var result = JSON.parse(response.body).results;
             // console.log(result);
             console.log(result.length);
-            var shopArray = [];
+            var shopArray = [{addres: value}];
             for (i = 0; i<10; i++){
                 // console.log(JSON.stringify(item));
                 if (result[i].photos){
@@ -46,35 +46,7 @@ module.exports = {
                     callback(shopArray);
                 }
             }
-            // result.forEach(item => {
-            //     // console.log(JSON.stringify(item));
-            //     if (item.photos){
-            //         // console.log(item.photos[0].photo_reference);
-            //         imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + item.photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
-            //     } else {
-            //         // console.log(request.url);
-            //         imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
-            //     }
-            //     var option = 
-            //     {
-            //         "title": item.name, "image_url": imageUrl,
-            //         "default_action":
-            //         {
-            //             "type": "web_url",
-            //             "url": "https://petersfancybrownhats.com/view?item=103", "webview_height_ratio": "tall"
-            //         },
-            //         "buttons": '[{ "type": "postback", "title": "Booking schedule time", "payload": "schedule_time" }, { "type": "postback", "title": "next shop", "payload": "next_shop" }, { "type": "postback", "title": "previous shop", "payload": "previous_shop" }]'
-            //     };
-            //     shopArray.push(option);
-            //     // console.log(JSON.stringify(shopArray));
-            //     if ( shopArray.length == 10){
-            //         callback(shopArray);
-            //     }
-
-
-            // });
           });
-
     },
 
     sendQuickReply: function (recipientId, text, replies, metadata) {
