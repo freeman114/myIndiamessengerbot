@@ -42,7 +42,7 @@ module.exports = {
                 };
                 shopArray.push(option);
                 // console.log(JSON.stringify(shopArray));
-                if ( shopArray.length == result.length){
+                if ( shopArray.length == 10){
                     callback(shopArray);
                 }
 
