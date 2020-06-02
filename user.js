@@ -100,7 +100,7 @@ module.exports = {
                     if (err) throw err;
                     console.log(result.length);
                     if (!result.length) {
-                        var obj = require('timeslot.json');
+                        var obj = require('./public/timeslot.json');
 
                         console.log(obj.timeslot);
                         for (i = 0, i < 36; i++;) {
