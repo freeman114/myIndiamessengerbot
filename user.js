@@ -69,7 +69,7 @@ module.exports = {
 
     },
 
-    addList: function (userId, array, callback) {
+    add_Shoplist: function (userId, array, callback) {
         console.log(array, userId);
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
             if (err) {
@@ -90,7 +90,7 @@ module.exports = {
 
     },
 
-    showTimeslot: function (senderID, shopName, place_id, callback) {
+    add_Timeslot: function ( shopName, place_id, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
             if (err) {
                 console.log(err);
@@ -104,13 +104,12 @@ module.exports = {
                         
 
                         console.log(timeArray.timeslot);
-                        for (var i = 1; i < 16; i++) {
-
-                        }
+                        
                         var insertShop = { place_id: place_id, shopName: shopName ,timeSlot: timeArray.timeslot};
                         dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
                             if (err) throw err;
                             console.log("1 shop document inserted");
+                            callback(timeArray.timeslot)
                             db.close();
                         });
                     } else {

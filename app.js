@@ -243,15 +243,7 @@ function receivedPostback(event) {
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
     console.log(payload);
-    var payload = JSON.parse(payload);
-    if (payload.address){
-        console.log(shopName);
-        var shopName = payload.name;
-        var place_id = payload.place_id;
-        userService.showTimeslot(senderID, shopName, place_id, function (){
 
-        });
-    }
     switch (payload) {
 
         case 'FACEBOOK_WELCOME':
@@ -289,8 +281,18 @@ function receivedPostback(event) {
             break;
 
         default:
-            //unindentified payload
-            // sendTextMessage(senderID, "I'm sorry, I didn't understand your last message. I'm new and just a bot so it will take some time to train me. Can you repeat that again?");
+            if (JSON.parse(payload).address) {
+                var payload = JSON.parse(payload);
+                console.log(shopName);
+                var shopName = payload.name;
+                var place_id = payload.place_id;
+                userService.add_Timeslot(shopName, place_id, function (timearray) {
+                    fbService.addTimeslot(userID, timearray, function (updated) {
+
+                    });
+
+                });
+            }
             break;
     }
 }
@@ -493,12 +495,12 @@ function sendToWit(event) {
                     console.log(value);
                     external_api.displayShop(userId, value, function (array) {
                         if (array) {
-                            userService.addList(userId, array, function (updated) {
+                            userService.add_Shoplist(userId, array, function (updated) {
                                 if (updated) {
                                     fbService.showStore(updated, array, (err, res) => {
                                         console.log("success");
-                                            let responseText = "Click Booking schedule time button to book shop. ";
-                                            fbService.sendQuickReply(userId, responseText, default_Replies);
+                                        let responseText = "Click Booking schedule time button to book shop. ";
+                                        fbService.sendQuickReply(userId, responseText, default_Replies);
 
                                     });
                                 } else {

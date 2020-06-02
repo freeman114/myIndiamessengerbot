@@ -76,6 +76,12 @@ module.exports = {
         });
     },
 
+    addTimeslot: function(userID, array, callback){
+        
+
+    },
+
+
     isDefined: function (obj) {
         if (typeof obj == 'undefined') {
             return false;
