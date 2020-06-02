@@ -283,8 +283,9 @@ function receivedPostback(event) {
         default:
             if (JSON.parse(payload).address) {
                 var payload = JSON.parse(payload);
-                console.log(shopName);
                 var shopName = payload.name;
+                console.log("____received timeslot_____");
+                console.log(shopName);
                 var place_id = payload.place_id;
                 userService.add_Timeslot(shopName, place_id, function (timearray) {
                     fbService.addTimeslot(senderID, timearray, function (updated) {
