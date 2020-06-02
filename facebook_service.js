@@ -115,7 +115,7 @@ module.exports = {
 
         };
         array.forEach(item => {
-            console.log(item);
+            console.log(JSON.stringify(item));
         });
         request(options, function (error, response) {
             if (error) throw new Error(error);
