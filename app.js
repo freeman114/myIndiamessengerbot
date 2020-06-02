@@ -242,6 +242,7 @@ function receivedPostback(event) {
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
+    console.log(payload);
     switch (payload) {
 
         case 'FACEBOOK_WELCOME':
