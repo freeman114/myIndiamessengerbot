@@ -65,10 +65,7 @@ module.exports = {
 
             });
     },
-    readAllUsers: function (callback, newstype) {
-
-    },
-
+   
     add_Shoplist: function (userId, array, callback) {
         console.log(array, userId);
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
