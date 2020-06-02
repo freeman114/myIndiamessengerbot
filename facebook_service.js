@@ -114,13 +114,13 @@ module.exports = {
             })
 
         };
-        array.forEach(item => {
-            console.log(JSON.stringify(item));
-        });
+        
         request(options, function (error, response) {
             if (error) throw new Error(error);
             console.log(response.body);
-            callback(true);
+            array.forEach(item => {
+                console.log(JSON.stringify(item));
+            });
         });
 
     },
