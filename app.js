@@ -252,7 +252,7 @@ function receivedPostback(event) {
                 count++;
                 console.log(shop_Array[count]);
                 var addPreviousbutton = ' { "type": "postback", "title": "previous shop", "payload": "previous_shop" }'
-                fbService.showStore(senderID, shop_Array[count],count, function (updated) {
+                fbService.showStore(senderID, shop_Array[count], count, function (updated) {
                     if (updated) {
                         let responseText = "Click Booking schedule time button to book shop. ";
                         fbService.sendQuickReply(senderID, responseText, default_Replies);
@@ -483,23 +483,20 @@ function sendToWit(event) {
                     console.log(value);
                     external_api.displayShop(userId, value, function (array) {
                         if (array) {
-                            shop_Array = array;
-                            userService.addList(userId, array, function (updated){
-                                if (updated){
+                            userService.addList(userId, array, function (updated) {
+                                if (updated) {
                                     fbService.showStore(updated, array, (err, res) => {
                                         console.log("success");
+                                            let responseText = "Click Booking schedule time button to book shop. ";
+                                            fbService.sendQuickReply(userId, responseText, default_Replies);
+
                                     });
-                                }else {
+                                } else {
                                     console.log('error');
                                 }
-                                
-                            });
-                            // console.log(shop_Array[count]);
-                            // fbService.showStore(userId, shop_Array[count], count, function () {
-                            //     let responseText = "Click Booking schedule time button to book shop. ";
-                            //     fbService.sendQuickReply(userId, responseText, default_Replies);
 
-                            // });
+                            });
+
 
 
                         }

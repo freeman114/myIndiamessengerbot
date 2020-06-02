@@ -35,7 +35,7 @@ module.exports = {
                 var name = i + '_' + result[i].name;
                 var place_id = result[i].place_id;
                 buttons = [];
-                var Array = { addres: value, name: name, place_id: place_id };
+                var Array = { address: value, name: name, place_id: place_id };
                 var Arrays = JSON.stringify(Array);
                 var button = { "type": "postback", "title": "Booking schedule time", "payload": Arrays };
                 buttons.push(button);
