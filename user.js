@@ -75,7 +75,7 @@ module.exports = {
                 console.log(err);
             } else {
                 var myquery = { fb_id: userId };
-                var addshoplistquery ={$set:{fb_id: userId, shoplist: array }};
+                var addshoplistquery = { $set: { fb_id: userId, shoplist: array } };
                 var dbo = db.db;
                 dbo.collection("users").updateOne(myquery, addshoplistquery, function (err, res) {
                     if (err) throw err;
@@ -87,6 +87,29 @@ module.exports = {
             }
         });
 
+    },
+
+    showTimeslot: function (senderID, shopName, place_id, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            if (err) {
+                console.log(err);
+            } else {
+                var dbo = db.db;
+                var findShop = { place_id: place_id };
+                dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
+                    if (err) throw err;
+                    console.log(result.length);
+                    if (!result.length) {
+                        var insertShop = { place_id: place_id, shopName: shopName };
+                        dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
+                            if (err) throw err;
+                            console.log("1 shop document inserted");
+                            db.close();
+                        });
+                    }
+                });
+            }
+        });
     }
 
 }

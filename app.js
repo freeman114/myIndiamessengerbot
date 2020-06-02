@@ -243,6 +243,13 @@ function receivedPostback(event) {
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
     console.log(payload);
+    if (payload.address){
+        var shopName = payload.name;
+        var place_id = payload.place_id;
+        userService.showTimeslot(senderID, shopName, place_id, function (){
+
+        });
+    }
     switch (payload) {
 
         case 'FACEBOOK_WELCOME':
@@ -536,4 +543,5 @@ function inputAddress(userId) {
 
     fbService.sendQuickReply(userId, responseText, default_Replies);
 }
+
 
