@@ -104,10 +104,10 @@ module.exports = {
                         
 
                         console.log(timeArray.timeslot);
-                        for (var i = 0; i < 36; i++) {
+                        for (var i = 0; i < 15; i++) {
 
                         }
-                        var insertShop = { place_id: place_id, shopName: shopName };
+                        var insertShop = { place_id: place_id, shopName: shopName ,timeSlot: timeArray.timeslot};
                         dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
                             if (err) throw err;
                             console.log("1 shop document inserted");
