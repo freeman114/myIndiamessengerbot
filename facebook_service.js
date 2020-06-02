@@ -83,7 +83,7 @@ module.exports = {
             console.log(item);
             button = {
                 "type": "postback",
-                "title": item,
+                "title": JSON.stringify(item),
                 "payload": "DEVELOPER_DEFINED_PAYLOAD"
             };
         });
