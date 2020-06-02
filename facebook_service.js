@@ -46,7 +46,7 @@ module.exports = {
 
     showStore: function (userID, array, callback) {
         array.shift();
-       
+
         var options = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M',
@@ -62,7 +62,7 @@ module.exports = {
                         {
                             "template_type": "generic",
                             "elements": array
-                               
+
                         }
                     }
                 }
@@ -76,8 +76,50 @@ module.exports = {
         });
     },
 
-    addTimeslot: function(userID, array, callback){
-        
+    addTimeslot: function (userID, array, callback) {
+        var options = {
+            'method': 'POST',
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M',
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "recipient": {
+                    "id": userID
+                },
+                "message": {
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": [
+                                {
+                                    "buttons": [
+                                        {
+                                            "type": "postback",
+                                            "payload": "https://petersfancybrownhats.com",
+                                            "title": "View Website"
+                                        }, {
+                                            "type": "postback",
+                                            "title": "next shop",
+                                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                                        }
+                                    ],
+                                    "title": "Welcome!"
+
+                                }
+                            ]
+                        }
+                    }
+                }
+            })
+
+        };
+        request(options, function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.body);
+            callback(true);
+        });
 
     },
 

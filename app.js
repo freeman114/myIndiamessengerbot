@@ -287,8 +287,10 @@ function receivedPostback(event) {
                 var shopName = payload.name;
                 var place_id = payload.place_id;
                 userService.add_Timeslot(shopName, place_id, function (timearray) {
-                    fbService.addTimeslot(userID, timearray, function (updated) {
-
+                    fbService.addTimeslot(senderID, timearray, function (updated) {
+                        if (updated){
+                            console.log("display");
+                        }
                     });
 
                 });

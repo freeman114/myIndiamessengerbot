@@ -101,10 +101,7 @@ module.exports = {
                     if (err) throw err;
                     console.log(result.length);
                     if (!result.length) {
-                        
-
                         console.log(timeArray.timeslot);
-                        
                         var insertShop = { place_id: place_id, shopName: shopName ,timeSlot: timeArray.timeslot};
                         dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
                             if (err) throw err;
