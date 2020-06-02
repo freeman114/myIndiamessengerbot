@@ -1,6 +1,6 @@
 
 const request = require('request');
-var undefinedimg = require('./public/images/');
+// var undefinedimg = require('./public/images/');
 module.exports = {
     displayShop: function (userId, value, callback) {
         console.log(value[0]);
