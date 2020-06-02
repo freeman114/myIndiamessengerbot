@@ -243,7 +243,9 @@ function receivedPostback(event) {
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
     console.log(payload);
+    var payload = JSON.parse(payload);
     if (payload.address){
+        console.log(shopName);
         var shopName = payload.name;
         var place_id = payload.place_id;
         userService.showTimeslot(senderID, shopName, place_id, function (){
