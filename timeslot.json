@@ -1,0 +1,19 @@
+{
+    "timeslot": {
+        "timeslot1": "9:00 ~ 9:15 AM",
+        "timeslot2": "9:15 ~ 9:30 AM",
+        "timeslot3": "9:30 ~ 9:45 AM",
+        "timeslot4": "9:45 ~ 10:00 AM",
+        "timeslot5": "10:00 ~ 10:15 AM",
+        "timeslot6": "10:15 ~ 10:30 AM",
+        "timeslot7": "10:30 ~ 10:45 AM",
+        "timeslot8": "10:45 ~ 11:00 AM",
+        "timeslot9": "11:00 ~ 11:15 AM",
+        "timeslot10": "11:15 ~ 11:30 AM",
+        "timeslot11": "11:30 ~ 11:45 AM",
+        "timeslot12": "11:45 ~ 12:00 PM",
+        "timeslot13": "12:00 ~ 12:15 PM",
+        "timeslot14": "12:15 ~ 12:30 PM",
+        "timeslot15": "12:30 ~ 12:45 PM"
+    }
+}

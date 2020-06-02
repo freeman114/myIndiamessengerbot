@@ -100,12 +100,20 @@ module.exports = {
                     if (err) throw err;
                     console.log(result.length);
                     if (!result.length) {
+                        var obj = require('timeslot.json');
+
+                        console.log(obj.timeslot);
+                        for (i = 0, i < 36; i++;) {
+
+                        }
                         var insertShop = { place_id: place_id, shopName: shopName };
                         dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
                             if (err) throw err;
                             console.log("1 shop document inserted");
                             db.close();
                         });
+                    } else {
+
                     }
                 });
             }
