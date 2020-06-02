@@ -1,5 +1,6 @@
 'use strict';
 const request = require('request');
+var timeArray = require('./public/timeslot.json');
 // const config = require('./config');
 
 const mongoose = require('mongoose');
@@ -100,10 +101,10 @@ module.exports = {
                     if (err) throw err;
                     console.log(result.length);
                     if (!result.length) {
-                        var obj = require('./public/timeslot.json');
+                        
 
-                        console.log(obj.timeslot);
-                        for (i = 0, i < 36; i++;) {
+                        console.log(timeArray.timeslot);
+                        for (var i = 0; i < 36; i++) {
 
                         }
                         var insertShop = { place_id: place_id, shopName: shopName };

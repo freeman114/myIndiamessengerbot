@@ -1,5 +1,6 @@
 
 const request = require('request');
+var undefinedimg = require('./public/unsupportedimage.png');
 module.exports = {
     displayShop: function (userId, value, callback) {
         console.log(value[0]);
@@ -29,7 +30,7 @@ module.exports = {
                     imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
                 } else {
                     // console.log(request.url);
-                    imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
+                    imageUrl =  undefinedimg;
                 }
 
                 var name = i + '_' + result[i].name;
