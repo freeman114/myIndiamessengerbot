@@ -104,7 +104,7 @@ module.exports = {
                         
 
                         console.log(timeArray.timeslot);
-                        for (var i = 0; i < 15; i++) {
+                        for (var i = 1; i < 16; i++) {
 
                         }
                         var insertShop = { place_id: place_id, shopName: shopName ,timeSlot: timeArray.timeslot};
