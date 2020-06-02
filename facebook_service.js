@@ -119,7 +119,7 @@ module.exports = {
             if (error) throw new Error(error);
             console.log(response.body);
             array.forEach(item => {
-                console.log(JSON.stringify(item));
+                console.log(item);
             });
         });
 
