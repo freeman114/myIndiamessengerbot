@@ -391,7 +391,7 @@ function handleQuickreply(userId, quickReply, messageId) {
     switch (quickReplyPayload) {
         case 'self_service':
             console.log(quickReplyPayload);
-            inputName(userId, cash);
+            inputName(userId);
             break;
         case 'need_volunteers':
 
@@ -403,8 +403,8 @@ function handleQuickreply(userId, quickReply, messageId) {
         case 'start_over':
             sendWelcomeMessage(userId);
             break;
-        case 'previous':
-
+        case 'inputname':
+            inputName(userId)
             break;
 
 
@@ -422,7 +422,7 @@ function handleQuickreply(userId, quickReply, messageId) {
 
 }
 
-function inputName(userId, cash) {
+function inputName(userId) {
     console.log('____________sent that input name___________');
     let responseText = "Please enter your name. ";
 
@@ -435,7 +435,7 @@ function inputName(userId, cash) {
         {
             "content_type": "text",
             "title": "Previous ",
-            "payload": "previous"
+            "payload": "start_over"
         },
         {
             "content_type": "text",
@@ -444,7 +444,7 @@ function inputName(userId, cash) {
         }
     ];
 
-    fbService.sendQuickReply(userId, responseText, default_Replies);
+    fbService.sendQuickReply(userId, responseText, replies);
 }
 
 function sendToWit(event) {
@@ -479,7 +479,24 @@ function sendToWit(event) {
                                     fbService.showStore(updated, array, (err, res) => {
                                         console.log("success");
                                         let responseText = "Click Booking schedule time button to book shop. ";
-                                        fbService.sendQuickReply(userId, responseText, default_Replies);
+                                        let replies = [
+                                            {
+                                                "content_type": "text",
+                                                "title": "Start Over",
+                                                "payload": "start_over"
+                                            },
+                                            {
+                                                "content_type": "text",
+                                                "title": "Previous ",
+                                                "payload": "inputname"
+                                            },
+                                            {
+                                                "content_type": "text",
+                                                "title": "Cancel ",
+                                                "payload": "cancel"
+                                            }
+                                        ];
+                                        fbService.sendQuickReply(userId, responseText, replies);
 
                                     });
                                 } else {
