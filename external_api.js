@@ -1,5 +1,7 @@
 
 const request = require('request');
+const config = require('./config');
+
 module.exports = {
     displayShop: function (userId, value, callback) {
         console.log(value[0]);

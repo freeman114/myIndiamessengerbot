@@ -28,6 +28,8 @@ const uuid = require('uuid');
 const fbService = require('./facebook_service')
 const external_api = require('./external_api')
 const userService = require('./user');
+const config = require('./config');
+
 
 let Wit = null;
 let log = null;
@@ -66,7 +68,7 @@ const PORT = process.env.PORT || 5000;
 const WIT_TOKEN = 'PQDZSQIUDITQSG4PEPWSTQSAOCL5HMIA';
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = 'EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M';
+const FB_PAGE_TOKEN = config.FB_PAGE_TOKEN;
 if (!FB_PAGE_TOKEN) {
     throw new Error('missing FB_PAGE_TOKEN')
 }
@@ -249,33 +251,7 @@ function receivedPostback(event) {
         case 'FACEBOOK_WELCOME':
             sendWelcomeMessage(senderID);
             break;
-        case 'next_shop':
-            if (count < 10) {
-                count++;
-                console.log(shop_Array[count]);
-                var addPreviousbutton = ' { "type": "postback", "title": "previous shop", "payload": "previous_shop" }'
-                fbService.showStore(senderID, shop_Array[count], count, function (updated) {
-                    if (updated) {
-                        let responseText = "Click Booking schedule time button to book shop. ";
-                        fbService.sendQuickReply(senderID, responseText, default_Replies);
-                    }
-
-                });
-            }
-            break;
-        case 'previous_shop':
-            if (count > 0) {
-                count--;
-                console.log(shop_Array[count]);
-                fbService.showStore(senderID, shop_Array[count], count, function (updated) {
-                    if (updated) {
-                        let responseText = "Click Booking schedule time button to book shop. ";
-                        fbService.sendQuickReply(senderID, responseText, default_Replies);
-                    }
-
-                });
-            }
-            break;
+        
         case 'schedule_time':
             console.log('schedule_time');
             break;
