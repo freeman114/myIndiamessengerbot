@@ -13,17 +13,17 @@ module.exports = {
             'headers': {
             }
         };
-        const getData = async url => {
+        // const getData = async url => {
             try {
                 const response = await fetch(url);
-                console.log(JSON.parse(response));
                 const json = await response.json();
+                console.log(JSON.parse(response));
                 console.log(JSON.stringify(json));
             } catch (error) {
                 console.log(error);
             }
-        };
-        getData(url);
+        // };
+        // getData(url);
 
 
 
