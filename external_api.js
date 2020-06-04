@@ -16,6 +16,7 @@ module.exports = {
         const getData = async url => {
             try {
                 const response = await fetch(url);
+                console.log(JSON.stringify(response));
                 const json = await response.json();
                 console.log(json);
             } catch (error) {
