@@ -251,7 +251,7 @@ function receivedPostback(event) {
         case 'FACEBOOK_WELCOME':
             sendWelcomeMessage(senderID);
             break;
-        
+
         case 'schedule_time':
             console.log('schedule_time');
             break;
@@ -265,7 +265,7 @@ function receivedPostback(event) {
                 var place_id = payload.place_id;
                 userService.add_Timeslot(shopName, place_id, function (timearray) {
                     fbService.addTimeslot(senderID, timearray, function (updated) {
-                        if (updated){
+                        if (updated) {
                             console.log("display");
                         }
                     });
@@ -404,10 +404,11 @@ function handleQuickreply(userId, quickReply, messageId) {
             sendWelcomeMessage(userId);
             break;
         case 'inputname':
-            inputName(userId)
+            inputName(userId);
             break;
-
-
+        case 'inputaddress':
+            inputAddress(userId);
+            break;
         case 'cancel':
 
 
@@ -488,7 +489,7 @@ function sendToWit(event) {
                                             {
                                                 "content_type": "text",
                                                 "title": "Previous ",
-                                                "payload": "inputname"
+                                                "payload": "inputaddress"
                                             },
                                             {
                                                 "content_type": "text",
@@ -538,10 +539,27 @@ function inputAddress(userId) {
     console.log('____________we sent message that input address.____________');
 
     let responseText = "Please enter your address. ";
+    let replies = [
+        {
+            "content_type": "text",
+            "title": "Start Over",
+            "payload": "start_over"
+        },
+        {
+            "content_type": "text",
+            "title": "Previous ",
+            "payload": "inputname"
+        },
+        {
+            "content_type": "text",
+            "title": "Cancel ",
+            "payload": "cancel"
+        }
+    ];
 
 
 
-    fbService.sendQuickReply(userId, responseText, default_Replies);
+    fbService.sendQuickReply(userId, responseText, replies);
 }
 
 
