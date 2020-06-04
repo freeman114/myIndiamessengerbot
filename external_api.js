@@ -17,7 +17,7 @@ module.exports = {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
-                console.log(JSON.parse(json));
+                // console.log(JSON.parse(json));
                 console.log(JSON.stringify(json));
             } catch (error) {
                 console.log(error);
