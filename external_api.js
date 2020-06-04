@@ -3,10 +3,22 @@ const request = require('request');
 const config = require('./config');
 
 module.exports = {
-    displayShop: function (userId, value, callback) {
+    displayShop: async function (userId, value, callback) {
+        apikey = 'AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U';
+
+        var options1 = {
+            'method': 'GET',
+            'url': 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value+ '&key=' +apikey,
+            'headers': {
+            }
+        };
+        request.get(options1, function (error, response) {
+            console.log("success get request");
+            
+        });
+
         console.log(value[0]);
         console.log('___________We received message that display shop list.___________%s,____%d', userId, value);
-        apikey = 'AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U';
         console.log(typeof (value));
         var options = {
             'method': 'GET',

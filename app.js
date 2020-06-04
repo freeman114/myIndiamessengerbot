@@ -470,7 +470,7 @@ function sendToWit(event) {
                     sendWelcomeMessage(userId);
                     break;
 
-                case 'address_position':
+                case 'address':
                     var value = event.message.nlp.entities.location[0].value;
                     console.log(value);
                     external_api.displayShop(userId, value, function (array) {
