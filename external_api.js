@@ -17,15 +17,15 @@ module.exports = {
             
         });
 
-        console.log(value[0]);
-        console.log('___________We received message that display shop list.___________%s,____%d', userId, value);
-        console.log(typeof (value));
-        var options = {
-            'method': 'GET',
-            'url': 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + value,
-            'headers': {
-            }
-        };
+        // console.log(value[0]);
+        // console.log('___________We received message that display shop list.___________%s,____%d', userId, value);
+        // console.log(typeof (value));
+        // var options = {
+        //     'method': 'GET',
+        //     'url': 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + value,
+        //     'headers': {
+        //     }
+        // };
         //   console.log(options);
 
         request(options, function (error, response) {
