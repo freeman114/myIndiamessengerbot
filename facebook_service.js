@@ -3,6 +3,20 @@ const request = require('request');
 const config = require('./config');
 
 module.exports = {
+
+    sendTextMessage: function(recipientId, text) {
+        let self = module.exports;
+        var messageData = {
+            recipient: {
+                id: recipientId
+            },
+            message: {
+                text: text
+            }
+        }
+        self.callSendAPI(messageData);
+    },
+
     sendQuickReply: function (recipientId, text, replies, metadata) {
         let self = module.exports;
         var messageData = {

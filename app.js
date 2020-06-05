@@ -464,6 +464,10 @@ function sendToWit(event) {
                         var value = event.message.nlp.entities.name[0].value;
                         console.log(value);
                         inputAddress(userId);
+                    } else {
+                        let responseText = 'Please enter correct data.';
+
+                        fbService.sendTextMessage(userId, responseText);
                     }
 
                     break;
@@ -517,13 +521,13 @@ function sendToWit(event) {
                 default:
                     let responseText = 'Please enter correct data.';
 
-                    fbService.sendQuickReply(userId, responseText, default_Replies);
+                    fbService.sendTextMessage(userId, responseText);
                     break;
             }
         } else {
             let responseText = 'sorry, more again.';
 
-            fbService.sendQuickReply(userId, responseText, default_Replies);
+            fbService.sendTextMessage(userId, responseText);
             return;
         }
     }
