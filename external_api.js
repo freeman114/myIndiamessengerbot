@@ -13,83 +13,84 @@ module.exports = {
             'headers': {
             }
         };
-            try {
-                const response = await fetch(url);
-                const json = await response.json();
-                // console.log(JSON.parse(json));
-                console.log(JSON.stringify(json));
-                // console.log(json.results.formatted_address);
+        try {
+            const response = await fetch(url);
+            const json = await response.json();
+            // console.log(JSON.parse(json));
+            console.log(JSON.stringify(json));
+            // console.log(json.results.formatted_address);
 
-                console.log(json.results[0].geometry.location);
-                const lat = json.results[0].geometry.location.lat.toString();
-                const lng = json.results[0].geometry.location.lng.toString();
-                const address = lat + ', ' + lng;
-                const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + address;
+            console.log(json.results[0].geometry.location);
+            const lat = json.results[0].geometry.location.lat.toString();
+            const lng = json.results[0].geometry.location.lng.toString();
+            const address = lat + ', ' + lng;
+            const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + address;
 
-                console.log(address);
-                const response_list = await fetch(url_address);
-                const json_shoplist = await response_list.json();
-                console.log(JSON.stringify(json_shoplist));
-            } catch (error) {
-                console.log(error);
+            console.log(address);
+            const response_list = await fetch(url_address);
+            const result = await response_list.json().results;
+            console.log(JSON.stringify(result));
+
+
+
+
+            // console.log(value[0]);
+            // console.log('___________We received message that display shop list.___________%s,____%d', userId, value);
+            // console.log(typeof (value));
+            // var options = {
+            //     'method': 'GET',
+            //     'url': 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + value,
+            //     'headers': {
+            //     }
+            // };
+            //   console.log(options);
+
+            // request(options, function (error, response) {
+            //     if (error) throw new Error(error);
+            //     // console.log(response.body);
+            // var result = JSON.parse(response.body).results;
+            //     // console.log(result);
+            console.log(result.length);
+            var shopArray = [];
+
+            for (i = 0; i < 10; i++) {
+                // console.log(JSON.stringify(item));
+                if (result[i].photos) {
+                    // console.log(item.photos[0].photo_reference);
+                    imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
+                } else {
+                    // console.log(request.url);
+                    imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
+                }
+
+                var name = i + '_' + result[i].name;
+                var place_id = result[i].place_id;
+                buttons = [];
+                var Array = { address: value, name: name, place_id: place_id };
+                var Arrays = JSON.stringify(Array);
+                var button = { "type": "postback", "title": "Booking schedule time", "payload": Arrays };
+                buttons.push(button);
+                console.log(buttons);
+                var option =
+                {
+                    "title": result[i].name, "image_url": imageUrl,
+                    "default_action":
+                    {
+                        "type": "web_url",
+                        "url": "https://petersfancybrownhats.com/view?item=103", "webview_height_ratio": "tall"
+                    },
+                    "buttons": buttons
+                };
+                shopArray.push(option);
+                // console.log(JSON.stringify(shopArray));
+                if (shopArray.length == 10) {
+                    callback(shopArray);
+                }
             }
+        } catch (error) {
+            console.log(error);
+        }
 
-
-
-        // console.log(value[0]);
-        // console.log('___________We received message that display shop list.___________%s,____%d', userId, value);
-        // console.log(typeof (value));
-        // var options = {
-        //     'method': 'GET',
-        //     'url': 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + value,
-        //     'headers': {
-        //     }
-        // };
-        //   console.log(options);
-
-        // request(options, function (error, response) {
-        //     if (error) throw new Error(error);
-        //     // console.log(response.body);
-        //     var result = JSON.parse(response.body).results;
-        //     // console.log(result);
-        //     console.log(result.length);
-        //     var shopArray = [];
-
-        //     for (i = 0; i < 10; i++) {
-        //         // console.log(JSON.stringify(item));
-        //         if (result[i].photos) {
-        //             // console.log(item.photos[0].photo_reference);
-        //             imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
-        //         } else {
-        //             // console.log(request.url);
-        //             imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
-        //         }
-
-        //         var name = i + '_' + result[i].name;
-        //         var place_id = result[i].place_id;
-        //         buttons = [];
-        //         var Array = { address: value, name: name, place_id: place_id };
-        //         var Arrays = JSON.stringify(Array);
-        //         var button = { "type": "postback", "title": "Booking schedule time", "payload": Arrays };
-        //         buttons.push(button);
-        //         console.log(buttons);
-        //         var option =
-        //         {
-        //             "title": result[i].name, "image_url": imageUrl,
-        //             "default_action":
-        //             {
-        //                 "type": "web_url",
-        //                 "url": "https://petersfancybrownhats.com/view?item=103", "webview_height_ratio": "tall"
-        //             },
-        //             "buttons": buttons
-        //         };
-        //         shopArray.push(option);
-        //         // console.log(JSON.stringify(shopArray));
-        //         if (shopArray.length == 10) {
-        //             callback(shopArray);
-        //         }
-        //     }
-        // });
     },
 
     sendQuickReply: function (recipientId, text, replies, metadata) {
