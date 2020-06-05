@@ -23,8 +23,13 @@ module.exports = {
                 console.log(json.results[0].geometry.location);
                 const lat = json.results[0].geometry.location.lat.toString();
                 const lng = json.results[0].geometry.location.lng.toString();
-                const address = lat + lng;
+                const address = lat + ', ' + lng;
+                const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + address;
+
                 console.log(address);
+                const response_list = await fetch(url_address);
+                const json_shoplist = await response_list.json();
+                console.log(JSON.stringify(json_shoplist));
             } catch (error) {
                 console.log(error);
             }
