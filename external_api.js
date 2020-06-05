@@ -24,12 +24,13 @@ module.exports = {
             const lat = json.results[0].geometry.location.lat.toString();
             const lng = json.results[0].geometry.location.lng.toString();
             const address = lat + ', ' + lng;
-            const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&location=28.6331123, 77.2194682';
+            const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + address;
 
             console.log(address);
             const response_list = await fetch(url_address);
-            const result = await response_list.json().results;
-            console.log(JSON.stringify(result));
+            const res = await response_list.json();
+            console.log(JSON.stringify(res.results));
+            
 
 
 
@@ -48,7 +49,7 @@ module.exports = {
             // request(options, function (error, response) {
             //     if (error) throw new Error(error);
             //     // console.log(response.body);
-            // var result = JSON.parse(response.body).results;
+            var result = res.results;
             //     // console.log(result);
             console.log(result.length);
             var shopArray = [];
