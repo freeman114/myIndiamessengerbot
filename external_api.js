@@ -18,9 +18,9 @@ module.exports = {
                 const json = await response.json();
                 // console.log(JSON.parse(json));
                 console.log(JSON.stringify(json));
-                console.log(json.results.formatted_address);
+                // console.log(json.results.formatted_address);
 
-                console.log(json.results.geometry);
+                console.log(json.results[0].geometry.location);
             } catch (error) {
                 console.log(error);
             }
