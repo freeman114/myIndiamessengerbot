@@ -65,14 +65,13 @@ try {
 const PORT = process.env.PORT || 5000;
 
 // Wit.ai parameters
-const WIT_TOKEN = 'PQDZSQIUDITQSG4PEPWSTQSAOCL5HMIA';
-
+const WIT_TOKEN = config.WIT_TOKEN;
 // Messenger API parameters
 const FB_PAGE_TOKEN = config.FB_PAGE_TOKEN;
 if (!FB_PAGE_TOKEN) {
     throw new Error('missing FB_PAGE_TOKEN')
 }
-const FB_APP_SECRET = 'eefa395df9bfb2939b74b19f6168231b';
+const FB_APP_SECRET = config.FB_APP_SECRET;
 if (!FB_APP_SECRET) {
     throw new Error('missing FB_APP_SECRET')
 }

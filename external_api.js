@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
     displayShop: async function (userId, value, callback) {
-        apikey = config.process.env.GOOGLE_API_KEY;
+        apikey = config.GOOGLE_API_KEY;
         const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value + '&key=' + apikey;
         
         try {
