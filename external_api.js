@@ -23,7 +23,7 @@ module.exports = {
                 console.log(json.results[0].geometry.location);
                 const lat = json.results[0].geometry.location.lat;
                 const lng = json.results[0].geometry.location.lng;
-                const address = lat + innerHeight;
+                const address = lat + lng;
                 console.log(address);
             } catch (error) {
                 console.log(error);
