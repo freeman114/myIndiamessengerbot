@@ -239,7 +239,7 @@ app.post('/webhook', (req, res) => {
 
 function receivedPostback(event) {
     var senderID = event.sender.id;
-    // setSessionAndUser(senderID);
+    setSessionAndUser(senderID);
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
@@ -460,7 +460,7 @@ function sendToWit(event) {
             console.log(intent);
             switch (intent) {
                 case 'name':
-                    if (event.message.nlp.entities.name[0].value) {
+                    if (event.message.nlp.entities.intent[0].confidence > 0.95) {
                         var value = event.message.nlp.entities.name[0].value;
                         console.log(value);
                         inputAddress(userId);
