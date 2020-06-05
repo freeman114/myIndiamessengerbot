@@ -460,10 +460,12 @@ function sendToWit(event) {
             console.log(intent);
             switch (intent) {
                 case 'name':
-                    var value = event.message.nlp.entities.name[0].value;
-                    console.log(value);
+                    if (event.message.nlp.entities.name[0].value) {
+                        var value = event.message.nlp.entities.name[0].value;
+                        console.log(value);
+                        inputAddress(userId);
+                    }
 
-                    inputAddress(userId);
                     break;
                 case 'greeting':
                     sendWelcomeMessage(userId);
@@ -527,11 +529,7 @@ function sendToWit(event) {
     }
     catch (error) {
         console.log(error);
-
-
     }
-
-
 }
 
 function inputAddress(userId) {
