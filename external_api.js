@@ -18,8 +18,7 @@ module.exports = {
                 const json = await response.json();
                 // console.log(JSON.parse(json));
                 console.log(JSON.stringify(json));
-                var address = JSON.parse(json);
-                console.log(address.results.geometry);
+                console.log(json.results.geometry);
             } catch (error) {
                 console.log(error);
             }
