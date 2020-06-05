@@ -21,8 +21,8 @@ module.exports = {
                 // console.log(json.results.formatted_address);
 
                 console.log(json.results[0].geometry.location);
-                const lat = json.results[0].geometry.location.lat;
-                const lng = json.results[0].geometry.location.lng;
+                const lat = json.results[0].geometry.location.lat.toString();
+                const lng = json.results[0].geometry.location.lng.toString();
                 const address = lat + lng;
                 console.log(address);
             } catch (error) {
