@@ -24,7 +24,7 @@ module.exports = {
             const lat = json.results[0].geometry.location.lat.toString();
             const lng = json.results[0].geometry.location.lng.toString();
             const address = lat + ', ' + lng;
-            const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + address;
+            const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&location=28.6331123, 77.2194682';
 
             console.log(address);
             const response_list = await fetch(url_address);
