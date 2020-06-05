@@ -5,62 +5,28 @@ const fetch = require("node-fetch");
 
 module.exports = {
     displayShop: async function (userId, value, callback) {
-        apikey = 'AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U';
+        apikey = config.process.env.GOOGLE_API_KEY;
         const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value + '&key=' + apikey;
-        var options1 = {
-            'method': 'GET',
-            'url': 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value + '&key=' + apikey,
-            'headers': {
-            }
-        };
+        
         try {
             const response = await fetch(url);
             const json = await response.json();
-            // console.log(JSON.parse(json));
             console.log(JSON.stringify(json));
-            // console.log(json.results.formatted_address);
-
-            console.log(json.results[0].geometry.location);
             const lat = json.results[0].geometry.location.lat.toString();
             const lng = json.results[0].geometry.location.lng.toString();
             const address = lat + ', ' + lng;
             const url_address = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + address;
-
-            console.log(address);
             const response_list = await fetch(url_address);
             const res = await response_list.json();
             console.log(JSON.stringify(res.results));
-            
-
-
-
-
-            // console.log(value[0]);
-            // console.log('___________We received message that display shop list.___________%s,____%d', userId, value);
-            // console.log(typeof (value));
-            // var options = {
-            //     'method': 'GET',
-            //     'url': 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=store&rankby=distance&=&key=' + apikey + '&location=' + value,
-            //     'headers': {
-            //     }
-            // };
-            //   console.log(options);
-
-            // request(options, function (error, response) {
-            //     if (error) throw new Error(error);
-            //     // console.log(response.body);
             var result = res.results;
-            //     // console.log(result);
             console.log(result.length);
             var shopArray = [];
 
             for (i = 0; i < 10; i++) {
-                // console.log(JSON.stringify(item));
                 if (result[i].photos) {
-                    // console.log(item.photos[0].photo_reference);
                     imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
                 } else {
-                    // console.log(request.url);
                     imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
 
@@ -85,6 +51,7 @@ module.exports = {
                 shopArray.push(option);
                 // console.log(JSON.stringify(shopArray));
                 if (shopArray.length == 10) {
+                    console.log(JSON.stringify(shopArray));
                     callback(shopArray);
                 }
             }
