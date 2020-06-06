@@ -191,7 +191,7 @@ app.get('/', (req, res) => {
 app.get('/webview', (req, res) => {
     // console.log(req);
     res.send("This is my webview.");
-    console.log(JSON.stringify(req));
+    console.log(req.query.address);
 });
 
 // Message handler
