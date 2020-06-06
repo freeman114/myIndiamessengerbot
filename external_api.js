@@ -4,10 +4,10 @@ const config = require('./config');
 const fetch = require("node-fetch");
 
 module.exports = {
-    displayShop: async function ( value, callback ) {
+    displayShop: async function (value, callback) {
         apikey = config.GOOGLE_API_KEY;
         const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value + '&key=' + apikey;
-        
+
         try {
             const response = await fetch(url);
             const json = await response.json();
@@ -36,7 +36,15 @@ module.exports = {
                 var Array = { address: value, name: name, place_id: place_id };
                 var Arrays = JSON.stringify(Array);
                 var button = { "type": "postback", "title": "Booking schedule time", "payload": Arrays };
+                var webview = {
+                    "type": "web_url",
+                    "url": "https://www.facebook.com/Messenger_ServiceChatbot-109310774125124/?view_public_for=109310774125124",
+                    "title": "schedule time",
+                    "webview_height_ratio": "compact",
+                    "messenger_extensions": "true"
+                };
                 buttons.push(button);
+                buttons.push(webview);
                 console.log(buttons);
                 var option =
                 {
