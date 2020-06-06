@@ -50,7 +50,7 @@ module.exports = {
                 };
                 var shopId = {"place_id": place_id};
                 shopArray.push(option);
-                shopArray.push(shopId);
+                // shopArray.push(shopId);
                 // console.log(JSON.stringify(shopArray));
                 if (shopArray.length == 10) {
                     console.log("_________shopArray_________");

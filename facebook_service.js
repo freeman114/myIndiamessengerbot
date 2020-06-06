@@ -61,7 +61,7 @@ module.exports = {
     },
 
     showStore: function (userID, array, callback) {
-        array.shift();
+        // array.shift();
 
         var options = {
             'method': 'POST',
