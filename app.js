@@ -192,7 +192,7 @@ app.get('/', (req, res) => {
 app.get('/webview', (req, res) => {
     // console.log(req);
     console.log(req.query.address);
-    res.render('homepage.ejs', {
+    res.render('timeslot.ejs', {
         address: req.query.address
     });
 });
