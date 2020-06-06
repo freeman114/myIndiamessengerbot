@@ -42,16 +42,18 @@ module.exports = {
                 };
                 // buttons.push(button);
                 buttons.push(webview);
-                console.log(buttons);
                 var option =
                 {
                     "title": result[i].name,
                     "image_url": imageUrl,
                     "buttons": buttons
                 };
+                var shopId = {"place_id": place_id};
                 shopArray.push(option);
+                shopArray.push(shopId);
                 // console.log(JSON.stringify(shopArray));
                 if (shopArray.length == 10) {
+                    console.log("_________shopArray_________");
                     console.log(JSON.stringify(shopArray));
                     callback(shopArray);
                 }

@@ -1,508 +1,132 @@
-{
-    "html_attributions": [],
-    "next_page_token": "CqQCHAEAAC0YscAdgAGXK-9PxxiA13IsqId21YPitPJHKQAuoK3ZY1GRhvQPY9zvkZ8DI3RgyzWRnCmIMbrJInW2MGG3SUdzOfTjZSMySKd1_casT-XPp5zlXTT4dRMfIY22kpy-bWBWUCbCBfxEmEM3rNGvzbdGdYf0PEAMHeXorDO2jSlZz-y3BYwBlLJ-CAYo4FcanXKWeBHAjsh3m9fdY8mIMRwnzbMfV_fnByNyzQkrDWCUoq8Fk6AE5ym4XcRTEU25KxeVjMGFOdxyJxsQcsBuge_aie_l52U_5rfey2Gf1HFub5Emc-61PVrEnFvREO_cZDdbxmk6DTzEqilSQHfCqBjf8CRga4NaVPmDE7KG_MLXOIC17FhcD80BXExLooceghIQCG51R_8Wm9TfBJKOqnrqxRoUS3323ccRjtLM4tjsXJACLUs3IRM",
-    "results": [
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.6330653,
-                    "lng": 77.21949839999999
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.6344142802915,
-                        "lng": 77.2208473802915
-                    },
-                    "southwest": {
-                        "lat": 28.6317163197085,
-                        "lng": 77.2181494197085
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-            "id": "fd3a6ee33a1b57393edc66fac5cec07f90a41480",
-            "name": "Rameshwar Das Om Prakash",
-            "opening_hours": {
-                "open_now": true
-            },
-            "place_id": "ChIJhXVU_jf9DDkRrNxbZHWwoJA",
-            "plus_code": {
-                "compound_code": "J6M9+6Q New Delhi, Delhi, India",
-                "global_code": "7JWVJ6M9+6Q"
-            },
-            "reference": "ChIJhXVU_jf9DDkRrNxbZHWwoJA",
-            "scope": "GOOGLE",
-            "types": [
-                "department_store",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "vicinity": "N-26, Connaught Circus, Connaught Place, Connaught Place, New Delhi"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.6330653,
-                    "lng": 77.21949839999999
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.6344142802915,
-                        "lng": 77.2208473802915
-                    },
-                    "southwest": {
-                        "lat": 28.6317163197085,
-                        "lng": 77.2181494197085
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-            "id": "51258d9af53759b0959056a1bf25341a09ebdb57",
-            "name": "Walayati Ram Vijay Kumar",
-            "opening_hours": {
-                "open_now": true
-            },
-            "place_id": "ChIJV7Tarzf9DDkR1MZAnwA-MQg",
-            "plus_code": {
-                "compound_code": "J6M9+6Q New Delhi, Delhi, India",
-                "global_code": "7JWVJ6M9+6Q"
-            },
-            "reference": "ChIJV7Tarzf9DDkR1MZAnwA-MQg",
-            "scope": "GOOGLE",
-            "types": [
-                "food",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "vicinity": "48-g, Connaught Circle, New Delhi"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.6329831,
-                    "lng": 77.2193891
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.6343320802915,
-                        "lng": 77.22073808029151
-                    },
-                    "southwest": {
-                        "lat": 28.63163411970849,
-                        "lng": 77.2180401197085
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
-            "id": "a33886fc083912a989309e284c00777a91c7d460",
-            "name": "Lenskart.com at Rajiv Chowk",
-            "opening_hours": {
-                "open_now": true
-            },
-            "photos": [
-                {
-                    "height": 1280,
-                    "html_attributions": [
-                        "<a href=\"https://maps.google.com/maps/contrib/111534661458506029610\">Lenskart.com at Rajiv Chowk</a>"
-                    ],
-                    "photo_reference": "CmRaAAAARiPgeT4Qr3TA1iqPlAu1bNu-LDNRKWFqfbR27c9flq-LCf1KSyIAJ2dM6E5-aD8fXgxrKUfa0AGaIWItz5FRX--FlYPSalb3GoFbYNWyGuv5Yh6C3LpNIO6OZ9uetyYAEhBUcgi5R57p0b12QWMxZQHvGhSJNENjCjY7pdJVur_sDlVclSwNYg",
-                    "width": 960
-                }
-            ],
-            "place_id": "ChIJqfazXs7jDDkRACzUtNAsjKA",
-            "plus_code": {
-                "compound_code": "J6M9+5Q Dwarka, New Delhi, Delhi, India",
-                "global_code": "7JWVJ6M9+5Q"
-            },
-            "rating": 4.1,
-            "reference": "ChIJqfazXs7jDDkRACzUtNAsjKA",
-            "scope": "GOOGLE",
-            "types": [
-                "health",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "user_ratings_total": 26,
-            "vicinity": "Gate No 2, 5, 6 and 10,Block B Rajiv Chowk Metro Station, Delhi Metro Blue Line, Platform 4, Sector 21, Dwarka, New Delhi"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.632986,
-                    "lng": 77.219374
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.6345947802915,
-                        "lng": 77.22040033029151
-                    },
-                    "southwest": {
-                        "lat": 28.6318968197085,
-                        "lng": 77.21770236970849
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-            "id": "0129f276aae0da22fd634cea1038bcea49deafa4",
-            "name": "Skechers - Connaught Place B Block, New Delhi",
-            "opening_hours": {
-                "open_now": true
-            },
-            "photos": [
-                {
-                    "height": 4160,
-                    "html_attributions": [
-                        "<a href=\"https://maps.google.com/maps/contrib/109746670650247172128\">Kapil Arora</a>"
-                    ],
-                    "photo_reference": "CmRaAAAAw6EnC80vYi4TFAeguLazSM2M42DsdtfI1DanaGy7RxUaaM-pfijz82gcohZHqcfEheWuP9EVrjHmgd_ckTOWyh5V4zR7okD1H0dndxIwhPMjZ9HKOmSTsiCHFJu5EMD-EhB94lPTftoRpYGZwIgTGYKmGhQbK97y6_LbIleKLNYTLEMFUNbhzw",
-                    "width": 3120
-                }
-            ],
-            "place_id": "ChIJzTmz7Tf9DDkR3p8RXCzpaY8",
-            "plus_code": {
-                "compound_code": "J6M9+5P Connaught Place, New Delhi, Delhi, India",
-                "global_code": "7JWVJ6M9+5P"
-            },
-            "price_level": 2,
-            "rating": 4.1,
-            "reference": "ChIJzTmz7Tf9DDkR3p8RXCzpaY8",
-            "scope": "GOOGLE",
-            "types": [
-                "shoe_store",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "user_ratings_total": 259,
-            "vicinity": "Shop 13, Rajiv Chowk, Block B, Connaught Place, New Delhi"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.63274299999999,
-                    "lng": 77.219597
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.63409198029149,
-                        "lng": 77.22094598029149
-                    },
-                    "southwest": {
-                        "lat": 28.63139401970849,
-                        "lng": 77.21824801970848
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-            "id": "97568dbec7e95f73f1e9fcb9136996b0978219dd",
-            "name": "D.S Chemist & Opticals",
-            "opening_hours": {
-                "open_now": true
-            },
-            "photos": [
-                {
-                    "height": 1000,
-                    "html_attributions": [
-                        "<a href=\"https://maps.google.com/maps/contrib/106634708390107651809\">D.S Chemist &amp; Opticals</a>"
-                    ],
-                    "photo_reference": "CmRaAAAAHGORkjhUS1KV8fOSVLqVraEHgZeSiw3HID2HRt4-d1kItC5GrWVIig4a3cdGlIABAgkvzwLgyEIBhHbX_Wh4_xbW8SeUdd4lrTES18VEZ9V892GY8JsULZlSdsUlksDrEhC2Rv6bE_mIsSW_qryYDh2WGhTCmoOw1Q6aTNxltOKA01AyR_JFCw",
-                    "width": 1000
-                }
-            ],
-            "place_id": "ChIJdWY2sDf9DDkRaYr02C1WX1Q",
-            "reference": "ChIJdWY2sDf9DDkRaYr02C1WX1Q",
-            "scope": "GOOGLE",
-            "types": [
-                "pharmacy",
-                "health",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "vicinity": "105, Surya Kiran Building, 19, Kasturba Gandhi Marg"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.63274299999999,
-                    "lng": 77.219597
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.63409198029149,
-                        "lng": 77.22094598029149
-                    },
-                    "southwest": {
-                        "lat": 28.63139401970849,
-                        "lng": 77.21824801970848
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-            "id": "6077a6aa9a1198f2a6c82b47164df33dc6cddb9b",
-            "name": "Krishna Store",
-            "opening_hours": {
-                "open_now": true
-            },
-            "photos": [
-                {
-                    "height": 3120,
-                    "html_attributions": [
-                        "<a href=\"https://maps.google.com/maps/contrib/111974122650585984038\">SUMIT KUMAR TEAM</a>"
-                    ],
-                    "photo_reference": "CmRaAAAAO4DyxQDA7wE8Q6muqUCWOnYivl-3-xlVxkgB6N-EYJCk6aqSt2u8q_7m0zSeNaVB1e8lgfbI7LDEXEJe7YtaCz-EkrZZGMif9fN6e0gnJ2ZhxQ82M-Z4Qu6RGpTf6O-DEhBlLLH8cooxjmOmhqwIvi6rGhTG9wWz08CgPHVYZPybimqZOonTRg",
-                    "width": 4160
-                }
-            ],
-            "place_id": "ChIJNSjuNiz9DDkRRX6qaM1n8V4",
-            "rating": 2.8,
-            "reference": "ChIJNSjuNiz9DDkRRX6qaM1n8V4",
-            "scope": "GOOGLE",
-            "types": [
-                "food",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "user_ratings_total": 4,
-            "vicinity": "R-3, 4, 5, Bengali Market, New Delhi"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.6327426,
-                    "lng": 77.2195969
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.6340915802915,
-                        "lng": 77.22094588029151
-                    },
-                    "southwest": {
-                        "lat": 28.6313936197085,
-                        "lng": 77.2182479197085
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/pharmacy_cross-71.png",
-            "id": "520a1f1a08dd33455cdf10ad2c111232b8494467",
-            "name": "Ak Pharma",
-            "opening_hours": {
-                "open_now": true
-            },
-            "place_id": "ChIJF2rfx9v9DDkR48wk08_EY4s",
-            "plus_code": {
-                "compound_code": "J6M9+3R New Delhi, Delhi, India",
-                "global_code": "7JWVJ6M9+3R"
-            },
-            "reference": "ChIJF2rfx9v9DDkR48wk08_EY4s",
-            "scope": "GOOGLE",
-            "types": [
-                "pharmacy",
-                "health",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "vicinity": "New Delhi"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.6327426,
-                    "lng": 77.2195969
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.6340915802915,
-                        "lng": 77.22094588029151
-                    },
-                    "southwest": {
-                        "lat": 28.6313936197085,
-                        "lng": 77.2182479197085
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-            "id": "41c1df4168012d6240963134c39de013ab12b97d",
-            "name": "Arora Provision Store",
-            "opening_hours": {
-                "open_now": true
-            },
-            "place_id": "ChIJq6rqyTD9DDkRBA27qypQfrU",
-            "reference": "ChIJq6rqyTD9DDkRBA27qypQfrU",
-            "scope": "GOOGLE",
-            "types": [
-                "food",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "vicinity": "98, Shankar Market, Connaught Place, Connaught Place, New Delhi"
-        },
-        {
-            "business_status": "OPERATIONAL",
-            "geometry": {
-                "location": {
-                    "lat": 28.6327426,
-                    "lng": 77.2195969
-                },
-                "viewport": {
-                    "northeast": {
-                        "lat": 28.6340915802915,
-                        "lng": 77.22094588029151
-                    },
-                    "southwest": {
-                        "lat": 28.6313936197085,
-                        "lng": 77.2182479197085
-                    }
-                }
-            },
-            "icon": "https://maps.gstatic.com/mapfils /place_api/icons/shopping-71.png",
-            "id": "f48cf3a43933f1c2a0e31d43fd9adffef60d7c39",
-            "name": "Venky's India Limited",
-            "opening_hours": {
-                "open_now": true
-            },
-            "place_id": "ChIJ3_XyNzL9DDkRwwzMQV8DaRE",
-            "rating": 4.3,
-            "reference": "ChIJ3_XyNzL9DDkRwwzMQV8DaRE",
-            "scope": "GOOGLE",
-            "types": [
-                "food",
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "user_ratings_total": 8,
-            "vicinity":"426-428,
-            4th Floor, World Trade Centre, Baber Lane, Cannaught Place, New Delhi"},
+[
+    {
+        "title": "Pavitra organics chanda nagar",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAAw0o4m5l_9NNJb4ojkwlgU3vK-LR6_RpXqgpHJaJwNNfgQ4d8JpQQKedRDpxdIJ18QpmT4GRfCDUm1wQuDOn36WXybmLGm5N42hx4GHQHDgLmYfC3hoiqJ2lqPGkinvIJEhCHUKRLMGiXLhJmqOUVY9yZGhQwT8FWNu_l7vK1lZStxU4JKvipnA&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
             {
-                "business_status": "OPERATIONAL",
-                "geometry": {
-                    "location": {
-                        "lat": 28.6327862,
-                        "lng": 77.21971710000001
-                    },
-                    "viewport": {
-                        "northeast": {
-                            "lat": 28.6341351802915,
-                            "lng": 77.22106608029151
-                        },
-                        "southwest": {
-                            "lat": 28.63143721970849,
-                            "lng": 77.2183681197085
-                        }
-                    }
-                },
-                "icon": "https: //maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-                "id": "bcb2658b0e43c623e78825a297e0d9b329448bd0",
-                "name": "Jagdish Store",
-                "opening_hours": {
-                    "open_now": true
-                },
-                "place_id": "ChIJV7Tarzf9DDkRyheCcWpzN3k",
-                "plus_code": {
-                    "compound_code": "J6M9+4V New Delhi, Delhi, India",
-                    "global_code": "7JWVJ6M9+4V"
-                },
-                "rating": 1,
-                "reference": "ChIJV7Tarzf9DDkRyheCcWpzN3k",
-                "scope": "GOOGLE",
-                "types": [
-                    "food",
-                    "point_of_interest",
-                    "store",
-                    "establishment"
-                ],
-                "user_ratings_total": 1,
-                "vicinity": "P-13, Madras Hotel Building, Connaught Circus, New Delhi"
-            },
-            {
-                "business_status": "OPERATIONAL",
-                "geometry": {
-                    "location": {
-                        "lat": 28.632778,
-                        "lng": 77.21972199999999
-                    },
-                    "viewport": {
-                        "northeast": {
-                            "lat": 28.6341269802915,
-                            "lng": 77.22107098029149
-                        },
-                        "southwest": {
-                            "lat": 28.6314290197085,
-                            "lng": 77.21837301970848
-                        }
-                    }
-                },
-                "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
-                "id": "0554a1092ba3de3712f5db76fa8fd5ba275c3322",
-                "name": "Friends Rubber Stamps",
-                "opening_hours": {
-                    "open_now": true
-                },
-                "photos": [
-                    {
-                        "height": 1152,
-                        "html_attributions": [
-                            "<a href=\"https://maps.google.com/maps/contrib/109906179749005490950\">Friends Rubber Stamps</a>"
-                        ],
-                        "photo_reference":"CmRaAAAAZ-Q_Rk41wnGhGzb3hGjTx6AZJlPpuMDh0jBL17gdiyoiB2zGGD5rjYPl9 2020-06-05T06: 57: 35.096893+00: 00 app[web.1
-                    ]: Ok-VnD6mSSpwSloaMwL5NpZOB1AOIIJnpzdoi-ggGAJrtMzvgp1bkkp2Gs2icMVrSggKh8CEhDB_kQTbTfRrKTmhcEjQvDRGhSvN5U-UDoKy22jR3HcJ5gsacktNg","width":2048
-                }
-            ],
-            "place_id": "ChIJ3_XyNzL9DDkRlxoYpx3BDDw",
-            "reference": "ChIJ3_XyNzL9DDkRlxoYpx3BDDw",
-            "scope": "GOOGLE",
-            "types": [
-                "point_of_interest",
-                "store",
-                "establishment"
-            ],
-            "vicinity":"near Letter Box,
-                         Shop No.5, Sub Way, Kashmiri Market, Opposite Super Bazar, Connaught Place, near Letter Box, New Delhi"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.632778,"lng":77.21972199999999},"viewport":{"northeast":{"lat":28.6341269802915,"lng":77.22107098029149},"southwest":{"lat":28.6314290197085,"lng":77.21837301970848}}},"icon":"https: //maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png","id":"ba865985b351225274ebb9aa7354a12b4bfc5b31","name":"Sign Advertising Services Glow ACP 3d LED Acrylic Brass Sign Board Manufacturers in Delhi Noida NCR","opening_hours":{"open_now":true},"photos":[{"height":414,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/111644659023369320849\">Sign Advertising Services Glow ACP 3d LED Acrylic Brass Sign Board Manufacturers in Delhi Noida NCR</a>"],"photo_reference":"CmRaAAAAtJ6jFpIBQjghMEmp5gcHvTf6wKRXWHvpe-idBr66KZRDZLoK1KOKDAKr3Z7_5O0AmRm9IIWORpL7gjCRaHFJC6TfHQoczWAO5ozGJR5UIw3VhJXdmwDsObMROGtUHB3CEhAgVTOVB8QosYRxwOBj4PVpGhRqzmMAz48KGLDbhrM0CyzkgSgumQ","width":500}],"place_id":"ChIJs7Xarzf9DDkRVHjpIA5WWkM","rating":4.2,"reference":"ChIJs7Xarzf9DDkRVHjpIA5WWkM","scope":"GOOGLE","types":["point_of_interest","store","establishment"],"user_ratings_total":5,"vicinity":"Municipal Market, 11-12, Connaught Circle, Connaught Place, Circus"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.6327778,"lng":77.21972219999999},"viewport":{"northeast":{"lat":28.63412678029151,"lng":77.2210711802915},"southwest":{"lat":28.6314288197085,"lng":77.2183732197085}}},"icon":"https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png","id":"093d711919859ce4c6cc3964d29223c2ba4b2f55","name":"Cadbury India Limited (Ho)","opening_hours":{"open_now":true},"photos":[{"height":4128,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/113844650170458605348\">Divya Dutt Pandey</a>"],"photo_reference":"CmRaAAAAFq1Y_THvo13Q-WWncK_ClGj94r5HqYvfuE-_91o-FEJEcElk04O-mOCxHVFwRJMNztT1LAj6ZysHY0hvzYyml4XYN3uuo3Rl3NpwXd4nxRzzBh3bslY-B0jgCWS11P2hEhBLnG83WOusTCd5j70B-XBkGhTNtBuRVmG9UDgChiZIQTQthKWGPQ","width":3096}],"place_id":"ChIJV7Tarzf9DDkRG1P5bzBu1lw","rating":2.1,"reference":"ChIJV7Tarzf9DDkRG1P5bzBu1lw","scope":"GOOGLE","types":["bakery","food","point_of_interest","store","establishment"],"user_ratings_total":7,"vicinity":"Connaught Place, New Delhi"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.6335144,"lng":77.22010170000001},"viewport":{"northeast":{"lat":28.6348633802915,"lng":77.22145068029151},"southwest":{"lat":28.6321654197085,"lng":77.2187527197085}}},"icon":"https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png","id":"c95e7d19f78e2311857ebf1a35005ebb81c9a3d3","name":"Kashmir Gifts Emporium","opening_hours":{"open_now":true},"photos":[{"height":1536,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/104861068020377442054\">Kashmir Gifts Emporium</a>"],"photo_reference":"CmRaAAAAMh8Zftku5hHT-2srw-sLML_6gtELvubAp6o0MxzevKPHBp3TWi3uYzdJNgdAsPZw9JUCmxWn9ehNHkOagX_PbJfWhl_Kz3xFjc4-FqualCN-4jteRNBY93iFgygCy9LlEhC2KR5ckwKKMaPOZVyD_zrjGhRZQ2iru2vZzxqchLN8OMNBqYIDBw","width":2048}],"place_id":"ChIJq6qquj_9DDkRXZmXz3cnv3M","plus_code":{"compound_code":"J6MC+C2 Connaught Place, New Delhi, Delhi, India","global_code":"7JWVJ6MC+C2"},"reference":"ChIJq6qquj_9DDkRXZmXz3cnv3M","scope":"GOOGLE","types":["point_of_interest","store","establishment"],"vicinity":"Shop No.K, 5, Minto Road, Connaught Place, New Delhi"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.6339243,"lng":77.21949},"viewport":{"northeast":{"lat":28.6353035802915,"lng":77.2208291802915},"southwest":{"lat":28.6326056197085,"lng":77.21813121970848}}},"icon":"https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png","id":"67257a7b8702474c95866da13cfd6ce6d1b2f45f","name":"Pantaloons","photos":[{"height":4160,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/110590852690264843101\">mohd. faheem</a>"],"photo_reference":"CmRaAAAAdOrkltKvWJmrXh08dTHu0T7ybcslgxdezd5KtfckyzfS3O2BkgAgiLV5DTNrsHMi_42EGw5s_d-8TpSYmuqxaaFTnaY9bzb2IdQ4WkDyMarpja0BuqCmlf9lqzDCsvVwEhDUwT7Pr-OSJO9KLrSR2psOGhT-UBbr3CcfVH38LRQehx4Lt0hs9w","width":3120}],"place_id":"ChIJx5bXljf9DDkRYh6V-OiB0DM","plus_code":{"compound_code":"J6M9+HQ Connaught Place, New Delhi, Delhi, India","global_code":"7JWVJ6M9+HQ"},"rating":4,"reference":"ChIJx5bXljf9DDkRYh6V-OiB0DM","scope":"GOOGLE","types":["clothing_store","point_of_interest","store","establishment"],"user_ratings_total":5,"vicinity":"13, Rajiv Chowk, Block C, Connaught Place, New Delhi"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.633722,"lng":77.21878199999999},"viewport":{"northeast":{"lat":28.6351278802915,"lng":77.22015473029148},"southwest":{"lat":28.6324299197085,"lng":77.21745676970848}}},"icon":"https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png","id":"5642fb040631ce2772214040ad2c479ca6a2df94","name":"WHSmith Store","opening_hours":{"open_now":true},"photos":[{"height":250,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/103108201014821827342\">WHSmith Store</a>"],"photo_reference":"CmRaAAAARxC0tbEwGhMlkKkx_GcgbJR3okg71uRjpTU0udBD-2z5ZX715vnZ70FX8-8HJx-HzihhjBZXkmFe-QykPMG_IkZN0DOMDtoup9QpA1Z4Gg8G9OIWl0a12Acc0FMCqKqgEhDI5mScAE13SxnkC4d8vnKnGhTIGTHAgZKmTfqLOgtI_PEc96LjUw","width":250}],"place_id":"ChIJe3AA6zf9DDkRRN7pNxhgdCQ","plus_code":{"compound_code":"J6M9+FG New Delhi, Delhi, India","global_code":"7JWVJ6M9+FG"},"rating":3.5,"reference":"ChIJe3AA6zf9DDkRRN7pNxhgdCQ","scope":"GOOGLE","types":["department_store","point_of_interest","store","establishment"],"user_ratings_total":12,"vicinity":"Rajiv Chowk Metro Station, RCK/K-30 Gate 1, 2, Unpaid Area, New Delhi"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.63242999999999,"lng":77.21879},"viewport":{"northeast":{"lat":28.6337885802915,"lng":77.2198632802915},"southwest":{"lat":28.6310906197085,"lng":77.2171653197085}}},"icon":"https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png","id":"6b67e627c68aa28959afd5601fc47c24c52b239d","name":"Skechers - Connaught Place - E Block, New Delhi","opening_hours":{"open_now":true},"photos":[{"height":4000,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/106746688609083420571\">Sudhir Thakur</a>"],"photo_reference":"CmRaAAAAza_iEl5Jj71w6fVuG1QueZHw9CHQbFRIakWSJ5WmHnFHhhN49I8_JfXTGn-g-_kXuccy7bgt0gwomE4WUdmAtzMd7sSfZMfF-Kb4zAMqml8adX-IWuBWqVuZubBLWg0hEhB9rGU20c6xtxiExNAXjJXyGhSQOF2PIqv6OCVcPFhW2GcZwnjC6w","width":3000}],"place_id":"ChIJgSP0rfP9DDkR4FNsaL19MN0","plus_code":{"compound_code":"J6J9+XG Connaught Place, New Delhi, Delhi, India","global_code":"7JWVJ6J9+XG"},"rating":5,"reference":"ChIJgSP0rfP9DDkR4FNsaL19MN0","scope":"GOOGLE","types":["shoe_store","point_of_interest","store","establishment"],"user_ratings_total":3,"vicinity":"E-13, Ground Floor, Rajiv Chowk, Connaught Place"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.6327999,"lng":77.2184362},"viewport":{"northeast":{"lat":28.6341489802915,"lng":77.2197492802915},"southwest":{"lat":28.6314510197085,"lng":77.21705131970849}}},"icon":"https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png","id":"2f1af5a0e882423d1bad95484a48eaf71fdc5e6a","name":"Nirula's","opening_hours":{"open_now":true},"photos":[{"height":286,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/108784765446175845234\">Nirula&#39;s</a>"],"photo_reference":"CmRaAAAA2zdByt2wMl7zuEuyISygB_47l90Hz_CvHWo0WhDgq55rMlkbSBClwPU1eZD34yQxON6Bc8pCSqHYyCaMvhGo5jdPHONED5ocGJxSgfV9SZzPLhMQ9wo4_V0m-HDIjzbfEhAUJG_Excs4yZOCUWxnMdXXGhQB6VeViAAGJg2eJFlh3HKLJJK7Hg","width":486}],"place_id":"ChIJLZTdqVr9DDkRzFbjoU9MjcM","plus_code":{"compound_code":"J6M9+49 Connaught Pace, New Delhi, Delhi, India","global_code":"7JWVJ6M9+49"},"price_level":2,"rating":4,"reference":"ChIJLZTdqVr9DDkRzFbjoU9MjcM","scope":"GOOGLE","types":["restaurant","food","point_of_interest","store","establishment"],"user_ratings_total":590,"vicinity":"No. 57, Opp Haldiram, M Block, Rajiv Chowk, Connaught Place, New Delhi"},{"business_status":"CLOSED_PERMANENTLY","geometry":{"location":{"lat":28.6339899,"lng":77.2188194},"viewport":{"northeast":{"lat":28.6352908802915,"lng":77.2201975302915},"southwest":{"lat":28.6325929197085,"lng":77.2174995697085}}},"icon":"https: //maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png","id":"8f7e33dbf5cde1149ab564466b153e2829d42f57","name":"NIKE","permanently_closed":true,"photos":[{"height":4160,"html_attributions":["<a href=\"https://maps.google.com/maps/contrib/112006523930596157189\">Vigneshwaran Krishnan</a>"],"photo_reference":"CmRaAAAAozcSFoeRFu1PPEPIM3WWuYexIWC9sQQ3wKwVm8Pjxr9GoMn4-zm7MU3FH5X8rhbkJBMjo1grTe2zuevLg3d_6e8q2WJyg5puFvWZZa5qPza-yfRPZ_-LP8jdlCFZBO88EhC0ipDUNN90ffgSL9sw06T7GhRt89t1KfZw__NIuzWbr1CgDGBxkg","width":3120}],"place_id":"ChIJ8f6vcjf9DDkRJh8mOHtK88s","plus_code":{"compound_code":"J6M9+HG New Delhi, Delhi, India","global_code":"7JWVJ6M9+HG"},"rating":3.8,"reference":"ChIJ8f6vcjf9DDkRJh8mOHtK88s","scope":"GOOGLE","types":["shoe_store","point_of_interest","clothing_store","store","establishment"],"user_ratings_total":270,"vicinity":"B/20, Inner Circle Rajiv Chowk, Connaught place Metro Gate No 2, New Delhi"},{"business_status":"OPERATIONAL","geometry":{"location":{"lat":28.6341705,"lng":77.2190323},"viewport":{"northeast":{"lat":28.6354332302915,"lng":77.22042468029152},"southwest":{"lat":28.63273526970849,"lng":77.21772671970851}}},"icon":"https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png","id":"20964441495171f62e995c4d5af2d63aa21b7a24","name":"Bha 2020-06-05T06: 57: 35.096893+00: 00 app[web.1
-        ]: gwan Dass Bros.",
-                "opening_hours": {
-            "open_now": true
-        },
-        "photos": [
-            {
-                "height": 1824,
-                "html_attributions": [
-                    "<a href=\"https://maps.google.com/maps/contrib/103774821149202469309\">Animesh Basak</a>"
-                ],
-                "photo_reference": "CmRaAAAA3XYuvaFWFUoV_pxQXZ1GZ0zBPVksqQIJVJL1HPqadNQIHCWvhopqjM18guJW73Lz5tTgxAZf-mSWjJZSP0mAbJO7d9W4xyO_CakJ0RyZ7uB3wj4nccJgF18TvU_R-O5OEhDeG-IaXgcv7x89k9nXEigDGhTPBFF1LXs1Htg5uEzIiGx1X7yrAA",
-                "width": 4000
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Pavitra organics chanda nagar&place_id=ChIJ5c8osIeSyzsRqFP7NFM5woM",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
             }
-        ],
-        "place_id": "ChIJ8dy77jf9DDkR03GFdV1eTtY",
-        "plus_code": {
-            "compound_code": "J6M9+MJ Connaught Place, New Delhi, Delhi, India",
-            "global_code": "7JWVJ6M9+MJ"
-        },
-        "rating": 3.9,
-        "reference": "ChIJ8dy77jf9DDkR03GFdV1eTtY",
-        "scope": "GOOGLE",
-        "types": [
-            "point_of_interest",
-            "store",
-            "establishment"
-        ],
-        "user_ratings_total": 475,
-        "vicinity": "22-B, Inner Circle, Radial Road Number 3, Block B, Connaught Place, New Delhi"
+        ]
+    },
+    {
+        "title": "Harley's Fine Baking, GSM Mall",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAA6qqhr6wLpDFGWuEza2hkvWTQcazCchtC-82sG4k_uzrjLVq_T_QWoZytbwsqJqY1GmdaWWRbeLfS_nGvh414UzcUq1_n9as-eAYoWa423Dog885Qi8AV7RzAFnGEmelJEhCoL2imIg0SVUzpO5D6HprYGhT5WTIO4aatyxjzADg-joalmgHcHg&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Harley's Fine Baking, GSM Mall&place_id=ChIJVTNkemOTyzsRAi1jf8j14zM",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "Harley's Desserts & Coffee - GSM Food Court",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAAltGmOgnY9Az-mFemHwwQrp-D4Fz0RJOQesQuLchuizAAcUzkBQzfFHRpLqDrzvZqWAHA9VEFte12RAjEDvC1PVffpHYoqGZc6ALaB9IOBK5iByiins6rKo84BNSwdgMaEhBsQud13QDacAZu0_keVQfuGhS2RUZrMr5nvEMbRSuTMvpfUsd9uw&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Harley's Desserts & Coffee - GSM Food Court&place_id=ChIJw11MacuTyzsR6iQK_OLmozw",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "ibaco - GSM Food Court",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAAFz3ck3A_IIqoexVCg_pTPUvR4IRupzQYlkkChTEAUQfXetjgjOE41ZNwS0rO50zeib___2dx8rvO1KlMPX4GmSyNQW_y4zKH9z83a6ZLeoGk9d3rJ3mDVBFr1XkgTPmiEhC3vZHKfTXZ7-fbTMci5GdIGhRLn44JTOLscJNWcHDQ6GQHRUum8g&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=ibaco - GSM Food Court&place_id=ChIJOR0jjFiTyzsRb9IHvjlIde0",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "Desserts & Co - GSM Mall",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAA_pPRqFmLTFuev764EIKfv0Qf5OjpAV65dFyIWA7G14lxuemdeEvMAi5qSJa5Kn_b-c7yS7EmjJHUpCH-_MfjAwsws-HaK7qlpo2eXeOoClNGimEDe0Gb5bl0_Oz0TvWhEhBfc5_Hmbg6XjzG4VP1iWFuGhR5no66_TyVHia36XwaAwV422opew&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Desserts & Co - GSM Mall&place_id=ChIJg4qFcK6TyzsROVeNOOYSnbc",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "Femmora Leggings - GSM Mall",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAAb_xSHx6Bw5Q01_5wV7q91_91lRNYVDwWhJCFncp04iiB90v8MpDZRry9LbpGealZg3uWJgFKQWBsrvJnexMrEZLXbh50gusIp2UxIF64_bVYM1kwQtzpEerGHunpYK3iEhBARNFZk5WgWZ8Vnw1JM5GnGhT8GNONoZPBs_3UyuHsvgjCYepGpg&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Femmora Leggings - GSM Mall&place_id=ChIJ20U1xdKTyzsRQD7InnmsyxY",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "Balaji Rajkumar Kirana",
+        "image_url": " https://static3.depositphotos.com/1000556/110/i/950/depositphotos_1102733-stock-photo-shopping-cart.jpg",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Balaji Rajkumar Kirana&place_id=ChIJ2RFs-4iSyzsRlRm10-R2MNY",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "Sri Varshini Kirana and General Store",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAAY4a7qsVmW1qOWFFEqXFqxoUXAWpRHZWxFh9Dac3VNHjQhcjtGAthB3XAZr2A4ebjpk3Z3lT_jXPxkggmG5yu15i-72zxwRAO0wnnV4XlW80TnbYVlH1F3FPYq5C18MKAEhBjBgdUina1SkLiz7f_J9bZGhQMP4QMg1oFqFyo4z6fvZ4jvZPQng&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Sri Varshini Kirana and General Store&place_id=ChIJl6fz8IiSyzsRTKELrSFNaC0",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "Apollo Pharmacy PJR Colony",
+        "image_url": " https://static3.depositphotos.com/1000556/110/i/950/depositphotos_1102733-stock-photo-shopping-cart.jpg",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Apollo Pharmacy PJR Colony&place_id=ChIJVWsydDuTyzsRkF1U2e1ryiY",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
+    },
+    {
+        "title": "Max",
+        "image_url": "https://maps.googleapis.com/maps/api/place/photo?photoreference=CmRaAAAApvWr1iyYOYxSsRrMP0Rxd9SnU35NPqJNxEduYAfFy-ScImnnmYDrgpAZuaX1MC7XrouK_cMupi6A7BOsqr3x56tJ6Xrua7PswneT8QYpxKRKoIB7SucPbeV5BZNF7Xa3EhCLaoiVh_DCHa64wl4xA6-FGhThCBXR3xj7smgk5g0KCeAsPjuJkw&key=AIzaSyBk4KaAJZDJbCjPklCQRjsa-V3rkztv80U&maxwidth=200",
+        "buttons": [
+            {
+                "type": "web_url",
+                "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Dolfine Durga County, Madinaguda, Hyderabad, Telangana, India&name=Max&place_id=ChIJs65smomSyzsRi2Hl3Tctadk",
+                "title": "Booking schedule time",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": "true"
+            }
+        ]
     }
-],
-"status": "OK"
-}
+]
