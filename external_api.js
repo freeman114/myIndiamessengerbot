@@ -39,7 +39,7 @@ module.exports = {
                 var webview = {
                     "type": "web_url",
                     "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address="+ value+ "&name=" +name+ "&place_id="+ place_id,
-                    "title": "schedule time",
+                    "title": "Booking schedule time",
                     "webview_height_ratio": "compact",
                     "messenger_extensions": "true"
                 };
