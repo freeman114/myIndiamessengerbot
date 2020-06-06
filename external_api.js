@@ -38,7 +38,7 @@ module.exports = {
                 var button = { "type": "postback", "title": "Booking schedule time", "payload": Arrays };
                 var webview = {
                     "type": "web_url",
-                    "url": "https://www.facebook.com/Messenger_ServiceChatbot-109310774125124/?view_public_for=109310774125124",
+                    "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address="+ value+ "&name=" +name+ "&place_id="+ place_id,
                     "title": "schedule time",
                     "webview_height_ratio": "compact",
                     "messenger_extensions": "true"
@@ -52,7 +52,8 @@ module.exports = {
                     "default_action":
                     {
                         "type": "web_url",
-                        "url": "https://petersfancybrownhats.com/view?item=103", "webview_height_ratio": "tall"
+                        "url": "https://petersfancybrownhats.com/view?item=103", 
+                        "webview_height_ratio": "tall"
                     },
                     "buttons": buttons
                 };

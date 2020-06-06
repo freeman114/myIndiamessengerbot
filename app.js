@@ -188,6 +188,10 @@ app.get('/', (req, res) => {
     res.send("This is my facebookMessengerBot.");
 });
 
+app.get('/webview', (req, res) => {
+    res.send("This is my webview.");
+});
+
 // Message handler
 app.post('/webhook', (req, res) => {
     // Parse the Messenger payload
