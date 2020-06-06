@@ -170,7 +170,8 @@ app.use(bodyParser.json({
 }));
 
 app.use(express.static('./public'));
-
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 // Webhook setup
 app.get('/webhook', (req, res) => {
     if (req.query['hub.mode'
@@ -190,8 +191,10 @@ app.get('/', (req, res) => {
 
 app.get('/webview', (req, res) => {
     // console.log(req);
-    res.send("This is my webview.");
     console.log(req.query.address);
+    res.render('homepage.ejs', {
+        address: req.query.address
+    });
 });
 
 // Message handler
@@ -484,7 +487,7 @@ function sendToWit(event) {
                 case 'address':
                     var value = event.message.nlp.entities.location[0].value;
                     console.log(value);
-                    external_api.displayShop( value, function (array) {
+                    external_api.displayShop(value, function (array) {
                         if (array) {
                             userService.add_Shoplist(userId, array, function (updated) {
                                 if (updated) {
