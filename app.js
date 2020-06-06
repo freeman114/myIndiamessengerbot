@@ -189,10 +189,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/webview', (req, res) => {
-    console.log(req);
+    // console.log(req);
     res.send("This is my webview.");
-    res.send(req);
-    
+    console.log(JSON.stringify(req));
 });
 
 // Message handler
