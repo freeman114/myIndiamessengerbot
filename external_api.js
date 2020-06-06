@@ -38,23 +38,18 @@ module.exports = {
                 var button = { "type": "postback", "title": "Booking schedule time", "payload": Arrays };
                 var webview = {
                     "type": "web_url",
-                    "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address="+ value+ "&name=" +name+ "&place_id="+ place_id,
+                    "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=" + value + "&name=" + name + "&place_id=" + place_id,
                     "title": "Booking schedule time",
                     "webview_height_ratio": "compact",
                     "messenger_extensions": "true"
                 };
-                buttons.push(button);
+                // buttons.push(button);
                 buttons.push(webview);
                 console.log(buttons);
                 var option =
                 {
-                    "title": result[i].name, "image_url": imageUrl,
-                    "default_action":
-                    {
-                        "type": "web_url",
-                        "url": "https://petersfancybrownhats.com/view?item=103", 
-                        "webview_height_ratio": "tall"
-                    },
+                    "title": result[i].name,
+                    "image_url": imageUrl,
                     "buttons": buttons
                 };
                 shopArray.push(option);
