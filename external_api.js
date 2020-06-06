@@ -4,7 +4,7 @@ const config = require('./config');
 const fetch = require("node-fetch");
 
 module.exports = {
-    displayShop: async function (userId, value, callback) {
+    displayShop: async function ( value, callback ) {
         apikey = config.GOOGLE_API_KEY;
         const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value + '&key=' + apikey;
         
@@ -30,7 +30,7 @@ module.exports = {
                     imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
                 }
 
-                var name = i + '_' + result[i].name;
+                var name = result[i].name;
                 var place_id = result[i].place_id;
                 buttons = [];
                 var Array = { address: value, name: name, place_id: place_id };

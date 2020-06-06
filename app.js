@@ -478,7 +478,7 @@ function sendToWit(event) {
                 case 'address':
                     var value = event.message.nlp.entities.location[0].value;
                     console.log(value);
-                    external_api.displayShop(userId, value, function (array) {
+                    external_api.displayShop( value, function (array) {
                         if (array) {
                             userService.add_Shoplist(userId, array, function (updated) {
                                 if (updated) {
