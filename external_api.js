@@ -27,7 +27,7 @@ module.exports = {
                 if (result[i].photos) {
                     imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
                 } else {
-                    imageUrl = ' https://static3.depositphotos.com/1000556/110/i/950/depositphotos_1102733-stock-photo-shopping-cart.jpg';
+                    imageUrl = ' https://i0.wp.com/newportnet.com.au/wp-content/uploads/2014/12/Spending-Spree.jpg?ssl=1';
                 }
 
                 var name = result[i].name;
