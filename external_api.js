@@ -27,15 +27,12 @@ module.exports = {
                 if (result[i].photos) {
                     imageUrl = 'https://maps.googleapis.com/maps/api/place/photo?photoreference=' + result[i].photos[0].photo_reference + '&key=' + apikey + '&maxwidth=200'
                 } else {
-                    imageUrl = ' https://98faba2c.ngrok.io/webhook/public/images/unsupportedimage.png';
+                    imageUrl = ' https://static3.depositphotos.com/1000556/110/i/950/depositphotos_1102733-stock-photo-shopping-cart.jpg';
                 }
 
                 var name = result[i].name;
                 var place_id = result[i].place_id;
                 buttons = [];
-                var Array = { address: value, name: name, place_id: place_id };
-                var Arrays = JSON.stringify(Array);
-                var button = { "type": "postback", "title": "Booking schedule time", "payload": Arrays };
                 var webview = {
                     "type": "web_url",
                     "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=" + value + "&name=" + name + "&place_id=" + place_id,
