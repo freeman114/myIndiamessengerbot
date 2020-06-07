@@ -254,11 +254,11 @@ function receivedPostback(event) {
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
-    console.log(payload);
+    console.log(payload.message);
 
     switch (payload.message) {
 
-        case 'Get Started':
+        case 'FACEBOOK_WELCOME':
             sendWelcomeMessage(senderID);
             break;
 
