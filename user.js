@@ -10,7 +10,7 @@ const mongodb_url =
     "mongodb+srv://admin:admin@facebookbotcluster0-cqfb6.mongodb.net/Messenger_Bot";
 // 
 
-
+const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 module.exports = {
 
     addUser: function (callback, userId) {
@@ -74,66 +74,34 @@ module.exports = {
             } else {
                 console.log("addshoplist");
                 var dbo = db.db;
-                await array.forEach(shopitem => {
-                    var findShop = { place_id: shopitem.place_id };
-                    dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
-                        // console.log(result);
-                        try {
-                            if (result) {
-                                console.log("already exist that shop");
-                            } else {
-                                var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
-                                dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
-                                    if (err) throw err;
-                                    console.log("1 shop document inserted");
-
-
-                                });
-                            }
-                        } catch (err) {
-                            console.log(err);
-                        }
-
-
-                    });
-
-
-                });
-              
+                asyncForEach(array, async (shopitem) => {
+                    await waitFor(3350);
+                    console.log(shopitem);
+                })
+                // array.forEach(shopitem => {
+                //     var findShop = { place_id: shopitem.place_id };
+                //     dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
+                //         // console.log(result);
+                //         try {
+                //             if (result) {
+                //                 console.log("already exist that shop");
+                //             } else {
+                //                 var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
+                //                 dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
+                //                     if (err) throw err;
+                //                     console.log("1 shop document inserted");
+                //                 });
+                //             }
+                //         } catch (err) {
+                //             console.log(err);
+                //         }
+                //     });
+                // });
+                console.log(num);
 
                 db.close();
                 callback(true);
-
-
             }
-
-            // add_Timeslot: function (shopName, place_id, callback) {
-            //     mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
-            //         if (err) {
-            //             console.log(err);
-            //         } else {
-            //             var dbo = db.db;
-            //             var findShop = { place_id: place_id };
-            //             dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
-            //                 if (err) throw err;
-            //                 console.log(result.length);
-            //                 if (!result.length) {
-            //                     console.log(timeArray.timeslot);
-            //                     var insertShop = { place_id: place_id, shopName: shopName, timeSlot: timeArray.timeslot };
-            //                     dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
-            //                         if (err) throw err;
-            //                         console.log("1 shop document inserted");
-            //                         callback(timeArray.timeslot)
-            //                         db.close();
-            //                     });
-            //                 } else {
-
-            //                 }
-            //             });
-            //         }
-            //     });
-            // }
-
         });
     }
 }
