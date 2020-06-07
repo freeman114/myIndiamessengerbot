@@ -48,7 +48,6 @@ module.exports = {
                     "image_url": imageUrl,
                     "buttons": buttons
                 };
-                var shopId = {"place_id": place_id};
                 shopArray.push(option);
                 // shopArray.push(shopId);
                 // console.log(JSON.stringify(shopArray));

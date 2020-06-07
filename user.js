@@ -13,9 +13,9 @@ const mongodb_url =
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
-      await callback(array[index], index, array);
+        await callback(array[index], index, array);
     }
-  }
+}
 module.exports = {
 
     addUser: function (callback, userId) {
@@ -80,29 +80,26 @@ module.exports = {
                 console.log("addshoplist");
                 var dbo = db.db;
                 asyncForEach(array, async (shopitem) => {
-                    await waitFor(3350);
-                    console.log(shopitem);
+                    // await waitFor(1000);
+                    var findShop = { place_id: shopitem.place_id };
+                    dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
+                        // console.log(result);
+                        try {
+                            if (result) {
+                                console.log("already exist that shop");
+                            } else {
+                                var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
+                                dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
+                                    if (err) throw err;
+                                    console.log("1 shop document inserted");
+                                });
+                            }
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    });
                 })
-                // array.forEach(shopitem => {
-                //     var findShop = { place_id: shopitem.place_id };
-                //     dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
-                //         // console.log(result);
-                //         try {
-                //             if (result) {
-                //                 console.log("already exist that shop");
-                //             } else {
-                //                 var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
-                //                 dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
-                //                     if (err) throw err;
-                //                     console.log("1 shop document inserted");
-                //                 });
-                //             }
-                //         } catch (err) {
-                //             console.log(err);
-                //         }
-                //     });
-                // });
-
+                console.log("finished");
                 db.close();
                 callback(true);
             }
