@@ -257,6 +257,9 @@ function receivedPostback(event) {
     console.log(payload);
     var messages = JSON.stringify(payload);
     console.log(messages);
+    console.log(payload.message);
+    console.log(messages.message);
+
 
     switch (payload.message) {
 
