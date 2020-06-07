@@ -104,7 +104,7 @@ module.exports = {
                     });
                 })
                 console.log("finished");
-                db.close();
+                // db.close();
                 callback(true);
             }
         });
