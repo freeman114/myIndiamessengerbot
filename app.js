@@ -255,13 +255,13 @@ function receivedPostback(event) {
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
     console.log(payload);
-    var messages = JSON.stringify(payload);
+    var messages = JSON.parse(payload);
     console.log(messages);
     console.log(payload.message);
     console.log(messages.message);
 
 
-    switch (payload.message) {
+    switch (messages.message) {
 
         case 'Get Started':
             sendWelcomeMessage(senderID);
