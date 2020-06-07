@@ -89,9 +89,7 @@ module.exports = {
                     dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
                         console.log(result);
                         try {
-                            if (result) {
-                                console.log(`already exist that shop ${result}`);
-                            } else {
+                            if (!result.length) {
                                 var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
                                 dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
                                     if (err) throw err;
