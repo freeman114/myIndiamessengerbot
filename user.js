@@ -42,7 +42,7 @@ module.exports = {
                                         dbo.collection("users").insertOne(insertUser, function (err, res) {
                                             if (err) throw err;
                                             console.log("1 document inserted");
-                                            callback(true);
+                                            callback();
                                             db.close();
                                         });
                                     }
