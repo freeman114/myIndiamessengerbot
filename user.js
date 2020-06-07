@@ -102,7 +102,6 @@ module.exports = {
                 //         }
                 //     });
                 // });
-                console.log(num);
 
                 db.close();
                 callback(true);
