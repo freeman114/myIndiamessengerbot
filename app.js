@@ -254,10 +254,11 @@ function receivedPostback(event) {
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
+    console.log(payload);
     var messages = JSON.stringify(payload);
     console.log(messages);
 
-    switch (messages.message) {
+    switch (payload.message) {
 
         case 'Get Started':
             sendWelcomeMessage(senderID);
