@@ -90,7 +90,7 @@ module.exports = {
                         // console.log(result);
                         try {
                             if (result) {
-                                console.log("already exist that shop");
+                                console.log(`already exist that shop ${result}`);
                             } else {
                                 var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
                                 dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
