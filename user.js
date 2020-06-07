@@ -74,15 +74,16 @@ module.exports = {
             if (err) {
                 console.log(err);
             } else {
-                var myquery = { fb_id: userId };
-                var addshoplistquery = { $set: { fb_id: userId, shoplist: array } };
-                var dbo = db.db;
-                dbo.collection("users").updateOne(myquery, addshoplistquery, function (err, res) {
-                    if (err) throw err;
-                    console.log("1 document updated");
-                    db.close();
-                    callback(userId);
-                });
+                console.log("addshoplist");
+                // var myquery = { fb_id: userId };
+                // var addshoplistquery = { $set: { fb_id: userId, shoplist: array } };
+                // var dbo = db.db;
+                // dbo.collection("users").updateOne(myquery, addshoplistquery, function (err, res) {
+                //     if (err) throw err;
+                //     console.log("1 document updated");
+                //     db.close();
+                //     callback(userId);
+                // });
 
             }
         });
