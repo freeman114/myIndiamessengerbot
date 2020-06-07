@@ -69,6 +69,7 @@ module.exports = {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
             if (err) {
                 console.log(err);
+                callback(false);
             } else {
                 console.log("addshoplist");
                 var dbo = db.db;
@@ -76,14 +77,14 @@ module.exports = {
                     var findShop = { place_id: shopitem.place_id };
                     dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
                         if (result.length) {
-                            console.log(result);
+                            console.log("already exist that shop");
                         } else {
                             var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
                             dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
                                 if (err) throw err;
                                 console.log("1 shop document inserted");
 
-                                // callback(timeArray.timeslot)
+                                callback(true);
                                 // db.close();
 
                             });
