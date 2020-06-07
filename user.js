@@ -79,7 +79,7 @@ module.exports = {
             } else {
                 console.log("addshoplist");
                 var dbo = db.db;
-                asyncForEach(array, async (shopitem) => {
+                await asyncForEach(array, async (shopitem) => {
                     // await waitFor(1000);
                     var findShop = { place_id: shopitem.place_id };
                     dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
