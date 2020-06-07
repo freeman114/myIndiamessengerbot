@@ -90,7 +90,7 @@ module.exports = {
                         console.log(result);
                         try {
                             if (!result.length) {
-                                var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
+                                var insertShop = { place_id: arr[1], shopName: shopitem.title, timeSlot: timeArray.timeslot };
                                 dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
                                     if (err) throw err;
                                     console.log("1 shop document inserted");
