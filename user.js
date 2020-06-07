@@ -77,6 +77,7 @@ module.exports = {
                 array.forEach(shopitem => {
                     var findShop = { place_id: shopitem.place_id };
                     dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
+                        console.log(result);
                         try {
                             if (result.length) {
                                 console.log("already exist that shop");
