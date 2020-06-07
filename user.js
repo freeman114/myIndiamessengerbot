@@ -48,7 +48,7 @@ module.exports = {
                                     }
                                 });
 
-                             
+
                             }
                         });
 
@@ -63,7 +63,7 @@ module.exports = {
 
             });
     },
-   
+
     add_Shoplist: function (userId, array, callback) {
         console.log(array, userId);
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
@@ -71,46 +71,68 @@ module.exports = {
                 console.log(err);
             } else {
                 console.log("addshoplist");
-                // var myquery = { fb_id: userId };
-                // var addshoplistquery = { $set: { fb_id: userId, shoplist: array } };
-                // var dbo = db.db;
-                // dbo.collection("users").updateOne(myquery, addshoplistquery, function (err, res) {
-                //     if (err) throw err;
-                //     console.log("1 document updated");
-                //     db.close();
-                //     callback(userId);
-                // });
-
-            }
-        });
-
-    },
-
-    add_Timeslot: function ( shopName, place_id, callback) {
-        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
-            if (err) {
-                console.log(err);
-            } else {
                 var dbo = db.db;
-                var findShop = { place_id: place_id };
+                var findShop = { place_id: shopitem.place_id };
                 dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
-                    if (err) throw err;
-                    console.log(result.length);
-                    if (!result.length) {
-                        console.log(timeArray.timeslot);
-                        var insertShop = { place_id: place_id, shopName: shopName ,timeSlot: timeArray.timeslot};
-                        dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
-                            if (err) throw err;
-                            console.log("1 shop document inserted");
-                            callback(timeArray.timeslot)
-                            db.close();
-                        });
+                    if (result.length) {
+                        console.log(result);
                     } else {
+                        array.forEach(shopitem => {
+                            var insertShop = { place_id: shopitem.place_id, shopName: shopitem.title, timeSlot: timeArray.timeslot };
+                            dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
+                                if (err) throw err;
+                                console.log("1 shop document inserted");
 
+                                // callback(timeArray.timeslot)
+                                // db.close();
+
+                            });
+                            // var myquery = { fb_id: userId };
+                            // var addshoplistquery = { $set: { fb_id: userId, shoplist: array } };
+                            // var dbo = db.db;
+                            // dbo.collection("users").updateOne(myquery, addshoplistquery, function (err, res) {
+                            //     if (err) throw err;
+                            //     console.log("1 document updated");
+                            //     db.close();
+                            //     callback(userId);
+                            // });
+
+                            // }
+                        });
                     }
+
                 });
+
+
             }
+
+            // add_Timeslot: function (shopName, place_id, callback) {
+            //     mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            //         if (err) {
+            //             console.log(err);
+            //         } else {
+            //             var dbo = db.db;
+            //             var findShop = { place_id: place_id };
+            //             dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
+            //                 if (err) throw err;
+            //                 console.log(result.length);
+            //                 if (!result.length) {
+            //                     console.log(timeArray.timeslot);
+            //                     var insertShop = { place_id: place_id, shopName: shopName, timeSlot: timeArray.timeslot };
+            //                     dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
+            //                         if (err) throw err;
+            //                         console.log("1 shop document inserted");
+            //                         callback(timeArray.timeslot)
+            //                         db.close();
+            //                     });
+            //                 } else {
+
+            //                 }
+            //             });
+            //         }
+            //     });
+            // }
+
         });
     }
-
 }
