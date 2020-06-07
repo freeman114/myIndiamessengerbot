@@ -255,7 +255,7 @@ function receivedPostback(event) {
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
     var messages = JSON.stringify(payload);
-    console.log(messages.message);
+    console.log(messages);
 
     switch (messages.message) {
 
