@@ -258,7 +258,7 @@ function receivedPostback(event) {
 
     switch (payload.message) {
 
-        case 'FACEBOOK_WELCOME':
+        case 'Get Started':
             sendWelcomeMessage(senderID);
             break;
 
