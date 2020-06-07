@@ -67,14 +67,14 @@ module.exports = {
     add_Shoplist: function (userId, array, callback) {
         console.log(array, userId);
 
-        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
                 console.log(err);
                 callback(false);
             } else {
                 console.log("addshoplist");
                 var dbo = db.db;
-                array.forEach(shopitem => {
+                await array.forEach(shopitem => {
                     var findShop = { place_id: shopitem.place_id };
                     dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
                         // console.log(result);
@@ -99,10 +99,10 @@ module.exports = {
 
 
                 });
+              
+
                 db.close();
                 callback(true);
-
-
 
 
             }
