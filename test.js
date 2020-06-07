@@ -9,19 +9,20 @@ const mongodb_url =
     "mongodb+srv://admin:admin@facebookbotcluster0-cqfb6.mongodb.net/Messenger_Bot";
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 const a = 1;
-function start(callback) {
+async function start(callback) {
 
-    mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
-        if (a == 0) {
+    if (a == 0) {
 
-        } else {
-            await asyncForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], (num) => {
-                console.log(num);
-            });
-            console.log('Done');
-            callback();
-        }
-    });
+    } else {
+        await asyncForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], (num) => {
+            const url = "https://facebookmessengerapp-1.herokuapp.com/webview?address=Back St, Block B, Shastri Nagar, Delhi, 110052, India&name=My Tokri&place_id=ChIJU2E9qGUCDTkRcRArWIm5kws";
+            console.log(num);
+
+        });
+        console.log('Done');
+        callback();
+    }
+
 
 
 }
