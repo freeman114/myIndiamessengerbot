@@ -109,22 +109,26 @@ module.exports = {
     },
 
     read_timeslot: function (place_id, callback) {
-        
+
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
                 console.log(err);
-            
+
             }
             else {
                 var dbo = db.db;
                 /*Return only the documents with the address "Park Lane 38":*/
                 var query = { place_id: place_id };
                 dbo.collection("shopList_collection").find(query).toArray(function (err, result) {
-                    if (err) throw err;
-                    console.log(result);
+                    try {
+                        console.log(result);
 
-                    callback(result[0].timeSlot);
-                    db.close();
+                        callback(result[0].timeSlot);
+                        db.close();
+                    } catch (error) {
+                        console.log(error);
+                    }
+
                 });
             }
         });

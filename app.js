@@ -192,16 +192,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/webview', (req, res) => {
-    // console.log(req);
-    console.log(req.query.place_id);
-    var place_id = req.query.place_id;
-    userService.read_timeslot(place_id, (timeSlot) => {
-        console.log(timeSlot);
-        res.render('timeslot', {array: timeSlot});
-    });
+    try {
+        console.log(req.query.place_id);
+        var place_id = req.query.place_id;
+        userService.read_timeslot(place_id, (timeSlot) => {
+            console.log(timeSlot);
+            res.render('timeslot', { array: timeSlot });
+        });
+    } catch (e) {
+        console.log(e);
 
-
-
+    }
 });
 
 // Message handler
