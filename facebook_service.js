@@ -65,7 +65,7 @@ module.exports = {
 
         var options = {
             'method': 'POST',
-            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BAI2pmRhiQIGYdojZCZBWEwI1d6mTTK3UqMWn5kt5CwhvpRoSRzzbOE8HtwAdT2T10pWOzwAUrAddYtSZBw74DytjQIpmL9uOzIiedAvZCsIsaA5YKVGhKa521tZBKtTW7NfgSihiVA7vVoYjlrn0COMKhfdublAZDZD',
             'headers': {
                 'Content-Type': 'application/json'
             },
