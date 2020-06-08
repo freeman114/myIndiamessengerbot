@@ -67,15 +67,24 @@ module.exports = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABKwmkprEkUcbg3ResZChZBZAWiwoKFZBP4hc5O7oDfgJ7W0XprZByCOcY1jCqHgSUmuZAXMtOk58c6DJPBktGfdilgx7cnH6oRhVENW2ygZBsaa9uM6jT36orlY84Njt0aTX7gzHQ8YNBMqxQaBmA38k2sPcZCC1QZDZD',
             'headers': {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({"recipient":{"id":2924993747618824},"message":{"attachment":{"type":"template","payload":{"template_type":"generic","elements":[{"title":"Sushil Aggrawal Grocery Store","image_url":" https://static3.depositphotos.com/1000556/110/i/950/depositphotos_1102733-stock-photo-shopping-cart.jpg","buttons":[{"type":"web_url","url":"https://facebookmessengerapp-1.herokuapp.com/webview?address=Back St, Block B, Shastri Nagar, Delhi, 110052, India&name=Sushil Aggrawal Grocery Store&place_id=ChIJozsimGUCDTkRiGWolw4L6D8","title":"Booking schedule time","webview_height_ratio":"compact","messenger_extensions":"true"}]}]}}}})
-          
-          };
-          request(options, function (error, response) { 
+            body: JSON.stringify({
+                "recipient": { "id": userID }, "message": {
+                    "attachment": {
+                        "type": "template", "payload": {
+                            "template_type": "generic",
+                            "elements": array
+                        }
+                    }
+                }
+            })
+
+        };
+        request(options, function (error, response) {
             if (error) throw new Error(error);
             console.log(response.body);
-          });
+        });
     },
 
     addTimeslot: function (userID, array, callback) {
