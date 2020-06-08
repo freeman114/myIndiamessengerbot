@@ -11,5 +11,5 @@ function alert() {
     } else { 
         doc = "Cancel was pressed."; 
     } 
-    document.getElementById("g").innerHTML = doc; 
+    document.getElementById("9:00 ~ 9:15 AM").innerHTML = doc; 
 } 
