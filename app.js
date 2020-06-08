@@ -255,7 +255,7 @@ function receivedPostback(event) {
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
     var messages = JSON.parse(payload);
-    
+
     switch (messages.message) {
         case 'Get Started':
             sendWelcomeMessage(senderID);
@@ -492,27 +492,29 @@ function sendToWit(event) {
                         if (array) {
                             userService.add_Shoplist(userId, array, function (updated) {
                                 if (updated) {
-                                    fbService.showStore(updated, array, (err, res) => {
-                                        console.log("success");
-                                        let responseText = "Click Booking schedule time button to book shop. ";
-                                        let replies = [
-                                            {
-                                                "content_type": "text",
-                                                "title": "Start Over",
-                                                "payload": "start_over"
-                                            },
-                                            {
-                                                "content_type": "text",
-                                                "title": "Previous ",
-                                                "payload": "inputaddress"
-                                            },
-                                            {
-                                                "content_type": "text",
-                                                "title": "Cancel ",
-                                                "payload": "cancel"
-                                            }
-                                        ];
-                                        fbService.sendQuickReply(userId, responseText, replies);
+                                    fbService.showStore(updated, array, function (s_h) {
+                                        if (s_h) {
+                                            console.log("success");
+                                            let responseText = "Click Booking schedule time button to book shop. ";
+                                            let replies = [
+                                                {
+                                                    "content_type": "text",
+                                                    "title": "Start Over",
+                                                    "payload": "start_over"
+                                                },
+                                                {
+                                                    "content_type": "text",
+                                                    "title": "Previous ",
+                                                    "payload": "inputaddress"
+                                                },
+                                                {
+                                                    "content_type": "text",
+                                                    "title": "Cancel ",
+                                                    "payload": "cancel"
+                                                }
+                                            ];
+                                            fbService.sendQuickReply(userId, responseText, replies);
+                                        }
 
                                     });
                                 } else {

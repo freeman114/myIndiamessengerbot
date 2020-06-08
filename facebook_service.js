@@ -89,6 +89,7 @@ module.exports = {
         request(options, function (error, response) {
             if (error){
                 console.log(`err ${error}`);
+                callback(false);
             } else {
                 console.log(`response.body: ${response.body}`);
                 callback(true);
