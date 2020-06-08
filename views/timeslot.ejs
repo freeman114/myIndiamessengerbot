@@ -14,19 +14,27 @@
 </head>
 
 <body>
-    
-    <div class="container">
-        <h4>Please choose suitable timeslot in follow timelist.</h4>
-        <div class="list-group">
-            <% array.forEach(time =>{ %>
-            <a href="#" class="list-group-item"><%= time %></a>
-            <% }); %>
 
+    <div class="container container-fluid">
+        <h4>Please choose suitable timeslot in follow timelist.</h4>
+
+        <div class="row">
+
+            <div class="col-sm-3 col-md-3 col-lg-3"></div>
+            <div class="col-sm-6 col-md-6 .col-lg-6" style="background-color:lavender;">
+                <div class="list-group">
+                    <% array.forEach(time =>{ %>
+                    <a href="#" class="list-group-item"><%= time %></a>
+                    <% }); %>
+
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3"></div>
         </div>
         <button type="button" class="btn btn-success">OK</button>
         <button type="button" class="btn btn-secondary">CANCEL</button>
 
-       
+
     </div>
 
 </body>
