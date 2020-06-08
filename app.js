@@ -196,7 +196,7 @@ app.get('/webview', (req, res) => {
     console.log(req.query.place_id);
     var place_id = req.query.place_id;
     userService.read_timeslot(place_id, (update) => {
-        console.log(updated);
+        console.log(updat);
 
     });
     
