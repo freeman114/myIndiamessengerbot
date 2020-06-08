@@ -106,5 +106,26 @@ module.exports = {
                 callback(true);
             }
         });
+    },
+
+    read_timeslot: function (place_id, callback) {
+        callback(true);
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
+            if (err) {
+                console.log(err);
+                callback(false);
+            }
+            else {
+                var dbo = db.db;
+                /*Return only the documents with the address "Park Lane 38":*/
+                var query = { place_id: place_id };
+                dbo.collection("shopList_collection").find(query).toArray(function (err, result) {
+                    if (err) throw err;
+                    console.log(result);
+                    callback(true);
+                    db.close();
+                });
+            }
+        });
     }
 }
