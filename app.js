@@ -198,7 +198,7 @@ app.get('/webview', (req, res) => {
     userService.read_timeslot(place_id, (timeSlot) => {
         console.log(timeSlot);
         res.render('timeslot.ejs', {
-            array: timeSlot
+            array: timeSlot,
         });
     });
 
