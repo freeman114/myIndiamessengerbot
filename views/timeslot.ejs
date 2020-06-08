@@ -21,17 +21,18 @@
 <body style="background-color:lavender;">
 
     <div class="container">
-
-
+        <div class="panel-header">Panel Footer</div>
+        <br>
+        <h5>Please choose suitable timeslot in follow timelist.</h5>
+        <br>
         <div class="row">
 
             <div class="col-sm-2 col-md-3 col-2"></div>
-            <div class="col-sm-8 col-md-6 col-8"><br>
-                <h5>Please choose suitable timeslot in follow timelist.</h5>
-                <br>
+            <div class="col-sm-8 col-md-6 col-8">
                 <div class="list-group">
                     <% array.forEach(time =>{ %>
-                    <button type="button" class="btn btn-light" id="<%= time %> " onclick="set_timeslot()">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-light" id="<%= time %> " onclick="set_timeslot("
+                        <%= time %>")">&nbsp;&nbsp;&nbsp;&nbsp;
                         <%= time %>&nbsp;&nbsp;&nbsp;&nbsp; </button><br>
                     <% }); %>
 
@@ -39,6 +40,12 @@
 
             </div>
             <div class="col-sm-2 col-md-3 col-2"></div>
+        </div>
+
+        <div class="panel-footer">
+            <button>aaa</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button>aaa</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button>aaa</button>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
 
 
