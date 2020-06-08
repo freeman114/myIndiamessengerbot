@@ -498,7 +498,7 @@ function sendToWit(event) {
                         if (array) {
                             userService.add_Shoplist(userId, array, function (updated) {
                                 if (updated) {
-                                    fbService.showStore(updated, array, function (s_h) {
+                                    fbService.showStore(userId, array, function (s_h) {
                                         if (s_h) {
                                             console.log("success");
                                             let responseText = "Click Booking schedule time button to book shop. ";
