@@ -4,7 +4,7 @@ const config = require('./config');
 
 module.exports = {
 
-    sendTextMessage: function(recipientId, text) {
+    sendTextMessage: function (recipientId, text) {
         let self = module.exports;
         var messageData = {
             recipient: {
@@ -61,7 +61,7 @@ module.exports = {
     },
 
     showStore: function (userID, array, callback) {
-        // array.shift();
+        array.shift();
 
         var options = {
             'method': 'POST',
@@ -74,7 +74,8 @@ module.exports = {
                     { "id": userID },
                 "message": {
                     "attachment": {
-                        "type": "template", "payload":
+                        "type": "template",
+                        "payload":
                         {
                             "template_type": "generic",
                             "elements": array
