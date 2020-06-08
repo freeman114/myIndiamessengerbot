@@ -64,6 +64,7 @@ module.exports = {
         // array.shift();
         console.log(userID);
         console.log(array);
+        var recipient = {"id": userID};
         var options = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABKwmkprEkUcbg3ResZChZBZAWiwoKFZBP4hc5O7oDfgJ7W0XprZByCOcY1jCqHgSUmuZAXMtOk58c6DJPBktGfdilgx7cnH6oRhVENW2ygZBsaa9uM6jT36orlY84Njt0aTX7gzHQ8YNBMqxQaBmA38k2sPcZCC1QZDZD',
@@ -71,9 +72,7 @@ module.exports = {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "recipient": {
-                    "id": userID
-                },
+                "recipient": recipient,
                 "message":
                 {
                     "attachment":
