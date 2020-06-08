@@ -70,7 +70,23 @@ module.exports = {
             'headers': {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ "recipient": { "id": 2924993747618824 }, "message": { "attachment": { "type": "template", "payload": { "template_type": "generic", "elements": [{ "title": "Sushil Aggrawal Grocery Store", "image_url": " https://static3.depositphotos.com/1000556/110/i/950/depositphotos_1102733-stock-photo-shopping-cart.jpg", "buttons": [{ "type": "web_url", "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=Back St, Block B, Shastri Nagar, Delhi, 110052, India&name=Sushil Aggrawal Grocery Store&place_id=ChIJozsimGUCDTkRiGWolw4L6D8", "title": "Booking schedule time", "webview_height_ratio": "compact", "messenger_extensions": "true" }] }] } } } })
+            body: JSON.stringify({
+                "recipient": {
+                    "id": 2924993747618824
+                },
+                "message":
+                {
+                    "attachment":
+                    {
+                        "type": "template",
+                        "payload":
+                        {
+                            "template_type": "generic",
+                            "elements": array
+                        }
+                    }
+                }
+            })
 
         };
         request(options, function (error, response) {
