@@ -16,23 +16,17 @@
 <body>
     
     <div class="container">
-        <h2>Please choose suitable timeslot in follow timelist.</h2>
+        <h4>Please choose suitable timeslot in follow timelist.</h4>
         <div class="list-group">
             <% array.forEach(time =>{ %>
             <a href="#" class="list-group-item"><%= time %></a>
             <% }); %>
-        </div>
 
-
-        <div class="list-group">
-            <a href="#" class="list-group-item disabled">Disabled item</a>
-            <a href="#" class="list-group-item disabled">Disabled item</a>
-            <a href="#" class="list-group-item">9:00 ~ 9:15 AM</a>
-            <a href="#" class="list-group-item">9:15 ~ 9:30 AM</a>
-            <a href="#" class="list-group-item">9:30 ~ 9:45 AM</a>
-            <a href="#" class="list-group-item">9:15 ~ 9:30 AM</a>
-            <a href="#" class="list-group-item">9:30 ~ 9:45 AM</a>
         </div>
+        <button type="button" class="btn btn-success">OK</button>
+        <button type="button" class="btn btn-secondary">CANCEL</button>
+
+       
     </div>
 
 </body>
