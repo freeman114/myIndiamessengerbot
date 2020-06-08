@@ -122,9 +122,8 @@ module.exports = {
                 dbo.collection("shopList_collection").find(query).toArray(function (err, result) {
                     if (err) throw err;
                     console.log(result);
-                    let timearray = JSON.parse(result.timeSlot)
-                    console.log(JSON.stringify(timearray));
-                    callback(timearray);
+
+                    callback(result[0].timeSlot);
                     db.close();
                 });
             }
