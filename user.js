@@ -81,7 +81,7 @@ module.exports = {
                 var dbo = db.db;
                 await asyncForEach(array, async (shopitem) => {
                     // await waitFor(1000);
-                    console.log(shopitem.buttons[0].url);
+                    // console.log(shopitem.buttons[0].url);
                     var str = shopitem.buttons[0].url
                     var arr = str.split("place_id=");
                     var findShop = { place_id: arr[1] };
