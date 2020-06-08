@@ -210,39 +210,45 @@ app.post('/webhook', (req, res) => {
     console.log(JSON.stringify(data));
 
     if (data.object === 'page' && data.entry[0].messaging) {
-        data.entry.forEach(entry => {
-            entry.messaging.forEach(event => {
-                if (event.message && !event.message.is_echo) {
-                    // Yay! We got a new message!
-                    // We retrieve the Facebook user ID of the sender
-                    const sender = event.sender.id;
+        try {
+            data.entry.forEach(entry => {
+                entry.messaging.forEach(event => {
+                    if (event.message && !event.message.is_echo) {
+                        // Yay! We got a new message!
+                        // We retrieve the Facebook user ID of the sender
+                        const sender = event.sender.id;
 
-                    // We could retrieve the user's current session, or create one if it doesn't exist
-                    // This is useful if we want our bot to figure out the conversation history
-                    // const sessionId = findOrCreateSession(sender);
-                    // We retrieve the message content
-                    const { text, attachments
-                    } = event.message;
+                        // We could retrieve the user's current session, or create one if it doesn't exist
+                        // This is useful if we want our bot to figure out the conversation history
+                        // const sessionId = findOrCreateSession(sender);
+                        // We retrieve the message content
+                        const { text, attachments
+                        } = event.message;
 
-                    if (attachments) {
-                        // We received an attachment
-                        // Let's reply with an automatic message
-                        fbMessage(sender, 'Sorry I can only process text messages for now.')
-                            .catch(console.error);
-                    } else if (text) {
-                        receivedMessage(event);
+                        if (attachments) {
+                            // We received an attachment
+                            // Let's reply with an automatic message
+                            fbMessage(sender, 'Sorry I can only process text messages for now.')
+                                .catch(console.error);
+                        } else if (text) {
+                            receivedMessage(event);
 
 
+                        }
+                    } else if (event.postback.payload) {
+                        receivedPostback(event);
+                        // const sender = event.sender.id;
                     }
-                } else if (event.postback.payload) {
-                    receivedPostback(event);
-                    // const sender = event.sender.id;
-                }
-                else {
-                    console.log('received event', JSON.stringify(event));
-                }
+                    else {
+                        console.log('received event', JSON.stringify(event));
+                    }
+                });
             });
-        });
+        }
+        catch (e) {
+            console.log(e);
+        }
+        
     }
     res.sendStatus(200);
 });
