@@ -67,8 +67,7 @@ module.exports = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BAI2pmRhiQIGYdojZCZBWEwI1d6mTTK3UqMWn5kt5CwhvpRoSRzzbOE8HtwAdT2T10pWOzwAUrAddYtSZBw74DytjQIpmL9uOzIiedAvZCsIsaA5YKVGhKa521tZBKtTW7NfgSihiVA7vVoYjlrn0COMKhfdublAZDZD',
             'headers': {
-                'Content-Type': 'application/json',
-                'Cookie': 'sb=KJ2zXijwxnYMw5SLn_MqzLIO; fr=1ajCYGwlznfHnuZBz..Bes50q.Tl.AAA.0.0.Be22qO.AWV7hUbe'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 "recipient":
