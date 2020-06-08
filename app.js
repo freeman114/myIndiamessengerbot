@@ -235,7 +235,7 @@ app.post('/webhook', (req, res) => {
 
 
                         }
-                    } else if (event.postback.payload) {
+                    } else if (event.postback) {
                         receivedPostback(event);
                         // const sender = event.sender.id;
                     }
