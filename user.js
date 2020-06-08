@@ -70,7 +70,7 @@ module.exports = {
     },
 
     add_Shoplist: function (userId, array, callback) {
-        console.log(array, userId);
+        console.log(JSON.stringify(array), userId);
 
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
