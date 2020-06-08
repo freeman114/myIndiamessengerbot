@@ -65,7 +65,7 @@ module.exports = {
 
         var options = {
             'method': 'POST',
-            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BAI2pmRhiQIGYdojZCZBWEwI1d6mTTK3UqMWn5kt5CwhvpRoSRzzbOE8HtwAdT2T10pWOzwAUrAddYtSZBw74DytjQIpmL9uOzIiedAvZCsIsaA5YKVGhKa521tZBKtTW7NfgSihiVA7vVoYjlrn0COMKhfdublAZDZD',
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABKwmkprEkUcbg3ResZChZBZAWiwoKFZBP4hc5O7oDfgJ7W0XprZByCOcY1jCqHgSUmuZAXMtOk58c6DJPBktGfdilgx7cnH6oRhVENW2ygZBsaa9uM6jT36orlY84Njt0aTX7gzHQ8YNBMqxQaBmA38k2sPcZCC1QZDZD',
             'headers': {
                 'Content-Type': 'application/json'
             },
