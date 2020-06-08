@@ -195,15 +195,15 @@ app.get('/webview', (req, res) => {
     // console.log(req);
     console.log(req.query.place_id);
     var place_id = req.query.place_id;
-    userService.read_timeslot(place_id, (update) => {
-        console.log(update);
-
+    userService.read_timeslot(place_id, (timeSlot) => {
+        console.log(timeSlot);
+        res.render('timeslot.ejs', {
+            array: timeSlot
+        });
     });
-    
 
-    res.render('timeslot.ejs', {
-        address: req.query.address
-    });
+
+
 });
 
 // Message handler
@@ -255,7 +255,7 @@ app.post('/webhook', (req, res) => {
         catch (e) {
             console.log(e);
         }
-        
+
     }
     res.sendStatus(200);
 });

@@ -14,16 +14,16 @@
 </head>
 
 <body>
-    <%= address %>
-    <ul>
-        <li>9:00</li>
-        <li>10:00</li>
-        <li>11:00</li>
-    </ul>
+    
     <div class="container">
-        <h2>List Group With a Disabled Item</h2>
-        <p>The disabled class adds a lighter text color to the disabled item. And if used on links, it will remove the
-            default hover effect.</p>
+        <h2>Please choose suitable timeslot in follow timelist.</h2>
+        <div class="list-group">
+            <% array.forEach(function(time) { %>
+            <a href="#" class="list-group-item"><%= time %></a>
+            <% }); %>
+        </div>
+
+
         <div class="list-group">
             <a href="#" class="list-group-item disabled">Disabled item</a>
             <a href="#" class="list-group-item disabled">Disabled item</a>
