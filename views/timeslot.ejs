@@ -10,28 +10,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+    <!-- <style>
+        body {
+            background-color:lavender;
+        }
+    </style> -->
 </head>
 
-<body>
+<body style="background-color:lavender;">
 
     <div class="container">
-        
+
 
         <div class="row">
 
-            <div class="col-sm-2 col-md-3 col-2" style="background-color:lavender;"></div>
-            <div class="col-sm-8 col-md-6 col-8" style="background-color:lavender;">
+            <div class="col-sm-2 col-md-3 col-2"></div>
+            <div class="col-sm-8 col-md-6 col-8">
                 <h5>Please choose suitable timeslot in follow timelist.</h5>
                 <div class="list-group">
                     <% array.forEach(time =>{ %>
-                    <button type="button" class="btn btn-light">&nbsp;&nbsp;&nbsp;&nbsp;    <%= time %>&nbsp;&nbsp;&nbsp;&nbsp;   </button>
+                    <button type="button" class="btn btn-light" onclick="reset_conversation()">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <%= time %>&nbsp;&nbsp;&nbsp;&nbsp; </button>
                     <% }); %>
 
                 </div>
-              
+
             </div>
-            <div class="col-sm-2 col-md-3 col-2" style="background-color:lavender;"></div>
+            <div class="col-sm-2 col-md-3 col-2"></div>
         </div>
 
 
