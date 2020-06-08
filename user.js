@@ -109,11 +109,11 @@ module.exports = {
     },
 
     read_timeslot: function (place_id, callback) {
-        callback(true);
+        
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
                 console.log(err);
-                callback(false);
+            
             }
             else {
                 var dbo = db.db;
