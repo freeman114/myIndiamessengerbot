@@ -156,7 +156,7 @@ module.exports = {
 
                     // });
                     timearray.forEach(item =>{
-                        if (item.tostring() != slot.toString()){
+                        if (item.toString() != slot.toString()){
                             array.push(item);
                             console.log("item");
                             console.log(item);
