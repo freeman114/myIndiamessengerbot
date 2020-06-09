@@ -139,7 +139,7 @@ module.exports = {
             }
             else {
                 console.log(ids);
-                var idss = ids.split("_");
+                var idss = ids.split("??");
                 var dbo = db.db;
                 console.log(slot);
                 var userId = idss[0];
