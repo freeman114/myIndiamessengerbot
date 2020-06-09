@@ -207,7 +207,7 @@ app.get('/webview', (req, res) => {
 });
 app.post('/webview', function (req, res){
     
-    console.log(req[0]);
+    console.log(typeof(req));
     console.log(req.body.text);
     httpsMsgs.sendJSON(req, res, {
         from: "res.result.output.text[0]"
