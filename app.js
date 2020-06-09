@@ -206,6 +206,18 @@ app.get('/webview', (req, res) => {
 
     }
 });
+
+app.get('/timeslot', (req, res) => {
+    try {
+        console.log(req.query.text);
+        httpsMsgs.sendJSON(req, res, {
+            from: "res.result.output.text[0]"
+        });
+    } catch (e) {
+        console.log(e);
+
+    }
+});
 app.post('/webview', function (req, res){
     
     console.log(typeof(req));
