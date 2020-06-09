@@ -159,8 +159,8 @@ module.exports = {
                         if (item.toString() != slot.toString()){
                             array.push(item);
                             console.log("item");
-                            console.log(item);
-                            console.log(slot);
+                            console.log("item"+item+"item");
+                            console.log("item"+slot+"item");
                         }
                     
                     });
