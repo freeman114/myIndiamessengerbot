@@ -171,6 +171,7 @@ app.use(({ method, url
 app.use(bodyParser.json({
     verify: verifyRequestSignature
 }));
+app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 app.set('views', path.join(__dirname, 'views'));

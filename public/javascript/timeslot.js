@@ -15,7 +15,7 @@ async function save_timeslot() {
             url: '/webview',
             method: 'POST',
             data: {
-                text: m_timeslot,
+                text: m_timeslot
             },
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             success: function (res) {
