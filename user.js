@@ -138,7 +138,6 @@ module.exports = {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
                 console.log(err);
-
             }
             else {
                 var dbo = db.db;
@@ -148,13 +147,6 @@ module.exports = {
                 dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
                     var timearray = result[0].timeSlot;
                     var array = [];
-                    // await asyncForEach(timearray, async (timeitem) => {
-                    //     if (timeitem !== time){
-                    //         console.log(typeof(timeitem));
-                    //         array.push(timeitem);
-                    //     }
-
-                    // });
                     timearray.forEach(item => {
                         if (item.toString() != slot.toString()) {
                             array.push(item);
@@ -164,16 +156,11 @@ module.exports = {
                     var newvalues = { $set: { timeSlot: array } };
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
                     .then(function (res) { 
-                        console.log(res);
                         console.log("success");
                     }).catch(function (err) {
                         console.log(err);
                     });
                 });
-
-
-                /*Return only the documents with the address "Park Lane 38":*/
-
             }
         });
     }

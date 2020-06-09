@@ -62,9 +62,27 @@ module.exports = {
 
     showStore: function (userID, array, callback) {
 
+        var _array = [];
+        array.forEach(item => {
+            const obj = {
+                "title": item.title,
+                "image_url": item.image_url,
+                "buttons": [
+                    {
+                        "type": "web_url",
+                        "url": item.buttons[0].url + '&userID=' + userID,
+                        "title": "Booking schedule time",
+                        "webview_height_ratio": "compact",
+                        "messenger_extensions": "true"
+                    }
+                ]
+            };
+            _array.push(obj);
+        });
+
         var options = {
             'method': 'POST',
-            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABKwmkprEkUcbg3ResZChZBZAWiwoKFZBP4hc5O7oDfgJ7W0XprZByCOcY1jCqHgSUmuZAXMtOk58c6DJPBktGfdilgx7cnH6oRhVENW2ygZBsaa9uM6jT36orlY84Njt0aTX7gzHQ8YNBMqxQaBmA38k2sPcZCC1QZDZD',
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
             'headers': {
                 'Content-Type': 'application/json'
             },
@@ -80,7 +98,7 @@ module.exports = {
                         "payload":
                         {
                             "template_type": "generic",
-                            "elements": array
+                            "elements": _array
                         }
                     }
                 }
@@ -93,59 +111,6 @@ module.exports = {
             callback(true);
         });
     },
-
-    addTimeslot: function (userID, array, callback) {
-        var buttons = [];
-
-        array.forEach(item => {
-            console.log(item);
-            button = {
-                "type": "postback",
-                "title": item,
-                "payload": "DEVELOPER_DEFINED_PAYLOAD"
-            };
-            buttons.push(button);
-        });
-        if (array.length == buttons.length) {
-            console.log(JSON.stringify(buttons));
-            var options = {
-                'method': 'POST',
-                'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M',
-                'headers': {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "recipient": {
-                        "id": userID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": [
-                                    {
-                                        "buttons": buttons,
-                                        "title": "Welcome!"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                })
-
-            };
-
-            request(options, function (error, response) {
-                if (error) throw new Error(error);
-                console.log(response.body);
-
-            });
-        }
-
-
-    },
-
 
     isDefined: function (obj) {
         if (typeof obj == 'undefined') {

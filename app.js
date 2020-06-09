@@ -21,7 +21,6 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const express = require('express');
 const fetch = require('node-fetch');
-const request = require('request');
 const uuid = require('uuid');
 var path = require('path');
 var httpsMsgs = require('http-msgs');
@@ -37,25 +36,7 @@ const config = require('./config');
 let Wit = null;
 let log = null;
 
-var count = 0;
-var shop_Array = [];
-var default_Replies = [
-    {
-        "content_type": "text",
-        "title": "Start Over",
-        "payload": "start_over"
-    },
-    {
-        "content_type": "text",
-        "title": "Previous ",
-        "payload": "previous"
-    },
-    {
-        "content_type": "text",
-        "title": "Cancel ",
-        "payload": "cancel"
-    }
-];
+
 try {
     // if running from repo
     Wit = require('../').Wit;
@@ -304,21 +285,21 @@ function receivedPostback(event) {
             break;
 
         default:
-            if (JSON.parse(payload).address) {
-                var payload = JSON.parse(payload);
-                var shopName = payload.name;
-                console.log("____received timeslot_____");
-                console.log(shopName);
-                var place_id = payload.place_id;
-                userService.add_Timeslot(shopName, place_id, function (timearray) {
-                    fbService.addTimeslot(senderID, timearray, function (updated) {
-                        if (updated) {
-                            console.log("display");
-                        }
-                    });
+            // if (JSON.parse(payload).address) {
+            //     var payload = JSON.parse(payload);
+            //     var shopName = payload.name;
+            //     console.log("____received timeslot_____");
+            //     console.log(shopName);
+            //     var place_id = payload.place_id;
+            //     userService.add_Timeslot(shopName, place_id, function (timearray) {
+            //         fbService.addTimeslot(senderID, timearray, function (updated) {
+            //             if (updated) {
+            //                 console.log("display");
+            //             }
+            //         });
 
-                });
-            }
+            //     });
+            // }
             break;
     }
 }
