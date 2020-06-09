@@ -6,17 +6,16 @@ function set_timeslot(id) {
     m_timeslot = id;
 }
 
-function save_timeslot() {
+async function save_timeslot() {
     if (!m_timeslot) {
         alert('choose time in list.');
     }
     else {
-        console.log(m_timeslot);
         $.ajax({
             url: '/webview',
             method: 'POST',
             data: {
-                text: m_timeslot
+                text: m_timeslot,
             },
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             success: function (res) {
