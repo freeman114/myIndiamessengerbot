@@ -144,7 +144,9 @@ module.exports = {
                 var idss = ids.split("_");
                 var dbo = db.db;
                 console.log(slot);
-                var query = { place_id: idss[1] };
+                var userId = idss[0];
+                var place_id = idss[1];
+                var query = { place_id: place_id };
                 dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
                     var timearray = result[0].timeSlot;
                     var array = [];
@@ -158,6 +160,14 @@ module.exports = {
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
                     .then(function (res) { 
                         console.log("success");
+                        var myquery = {fb_id: userId};
+                        var newvalues = { $set: { fb_id: userId, order: { place_id: place_id, time: slot} } };
+                        dbo.collection("users").updateOne(myquery, newvalues)
+                        .then (function(res) {
+                            console.log("updated users collection.");
+                        }).catch ( function(err) {
+                            console.log(err);
+                        });
                     }).catch(function (err) {
                         console.log(err);
                     });
