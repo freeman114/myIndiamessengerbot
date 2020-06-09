@@ -134,7 +134,7 @@ module.exports = {
         });
     },
 
-    update_timeslot: function (place_id, time, callback) {
+    update_timeslot: function (place_id, slot, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
                 console.log(err);
@@ -143,7 +143,7 @@ module.exports = {
             else {
                 var dbo = db.db;
                 console.log(place_id);
-                console.log(time);
+                console.log(slot);
                 var query = { place_id: place_id };
                 dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
                     var timearray = result[0].timeSlot;
@@ -156,7 +156,7 @@ module.exports = {
 
                     // });
                     timearray.forEach(item =>{
-                        if (item !== time){
+                        if (item !== slot){
                             array.push(item);
                             console.log(array);
                         }
