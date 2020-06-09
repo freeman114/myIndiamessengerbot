@@ -3,7 +3,7 @@ const request = require('request');
 var timeArray = require('./public/timeslot.json');
 // const config = require('./config');
 const config = require('./config');
-
+const fbService = require('./facebook_service')
 
 const mongoose = require('mongoose');
 const mongodb_url =
@@ -163,6 +163,7 @@ module.exports = {
                             dbo.collection("users").updateOne(myquery, newvalues)
                                 .then(function (res) {
                                     console.log("updated users collection.");
+
                                     callback();
                                 }).catch(function (err) {
                                     console.log(err);

@@ -194,7 +194,28 @@ app.get('/timeslot', (req, res) => {
         console.log(req.query.text);
         const time = req.query.text;
         const ids = req.query.ids;
-        userService.update_timeslot( ids, time, function () {
+        var idss = ids.split("??")
+        userService.update_timeslot(ids, time, function () {
+            // fbService.sendQuickReply
+            let replies = [
+                {
+                    "content_type": "text",
+                    "title": "Start Over",
+                    "payload": "start_over"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Previous ",
+                    "payload": "inputaddress"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Cancel ",
+                    "payload": "cancel"
+                }
+            ];
+            var responseText = "sss";
+            fbService.sendQuickReply(idss[0], responseText, replies);
             httpsMsgs.sendJSON(req, res, {
                 from: "success"
             });
