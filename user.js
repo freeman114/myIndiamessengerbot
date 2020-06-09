@@ -86,20 +86,18 @@ module.exports = {
                     var arr = str.split("place_id=");
                     var findShop = { place_id: arr[1] };
                     console.log(arr[1]);
-                    dbo.collection("shopList_collection").find(findShop).toArray(function (err, result) {
-                        console.log(result);
-                        try {
-                            if (!result.length) {
-                                var insertShop = { place_id: arr[1], shopName: shopitem.title, timeSlot: timeArray.timeslot };
-                                dbo.collection("shopList_collection").insertOne(insertShop, function (err, res) {
-                                    if (err) throw err;
-                                    console.log("1 shop document inserted");
-                                });
-                            }
-                        } catch (err) {
-                            console.log(err);
-                        }
-                    });
+                    var result = await dbo.collection("shopList_collection").find(findShop).toArray();
+                    console.log(result);
+
+                    if (!result.length) {
+                        var insertShop = { place_id: arr[1], shopName: shopitem.title, timeSlot: timeArray.timeslot };
+                        var resultss = await dbo.collection("shopList_collection").insertOne(insertShop);
+                           
+                            console.log("1 shop document inserted");
+                       
+                    }
+
+
                 })
                 console.log("finished");
                 // db.close();
@@ -158,19 +156,19 @@ module.exports = {
                     var myquery = { timeSlot: timearray };
                     var newvalues = { $set: { timeSlot: array } };
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
-                    .then(function (res) { 
-                        console.log("success");
-                        var myquery = {fb_id: userId};
-                        var newvalues = { $set: { fb_id: userId, order: { place_id: place_id, time: slot} } };
-                        dbo.collection("users").updateOne(myquery, newvalues)
-                        .then (function(res) {
-                            console.log("updated users collection.");
-                        }).catch ( function(err) {
+                        .then(function (res) {
+                            console.log("success");
+                            var myquery = { fb_id: userId };
+                            var newvalues = { $set: { fb_id: userId, order: { place_id: place_id, time: slot } } };
+                            dbo.collection("users").updateOne(myquery, newvalues)
+                                .then(function (res) {
+                                    console.log("updated users collection.");
+                                }).catch(function (err) {
+                                    console.log(err);
+                                });
+                        }).catch(function (err) {
                             console.log(err);
                         });
-                    }).catch(function (err) {
-                        console.log(err);
-                    });
                 });
             }
         });
