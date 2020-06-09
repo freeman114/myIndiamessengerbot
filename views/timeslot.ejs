@@ -40,8 +40,7 @@
             <div class="col-sm-8 col-md-6 col-8">
                 <div class="list-group">
                     <% array.forEach(time =>{ %>
-                    <button type="button" class="btn btn-light" id="<%= time %> " onclick="set_timeslot("
-                        <%= time %>")">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-light" id="<%= time %> " onclick="set_timeslot()">&nbsp;&nbsp;&nbsp;&nbsp;
                         <%= time %>&nbsp;&nbsp;&nbsp;&nbsp; </button><br>
                     <% }); %>
 
@@ -52,10 +51,10 @@
         </div>
 
         <div class="panel-footer">
-            <br>
-            <button type="button" class="btn btn-light">aaa</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-light">aaa</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-light">aaa</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-success btn-block" onclick="save_timeslot()">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- <button type="button" class="btn btn-info">CANCEL</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+            <button type="button" class="btn btn-secondary" onclick="close_webview()">CLOSE</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
 
 
