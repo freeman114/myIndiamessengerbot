@@ -17,7 +17,7 @@ async function save_timeslot(ids) {
             method: 'GET',
             success: function (res) {
                 // alert('success');
-                window.close();
+                close_webview();
             },
             error: function (error) {
                 console.log('some error in fetching the intents');
@@ -43,5 +43,7 @@ async function save_timeslot(ids) {
 
 function close_webview() {
     console.log("close");
+    window.close();
+
 }
 
