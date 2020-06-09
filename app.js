@@ -205,7 +205,7 @@ app.get('/webview', (req, res) => {
 
     }
 });
-app.post('/webview', (req, res) => {
+app.post('/webview', function (req, res){
     
     console.log(req.body);
     console.log(req.body.text);
