@@ -177,10 +177,10 @@ app.get('/', (req, res) => {
 app.get('/webview', (req, res) => {
     try {
         console.log(req.query.place_id);
-        var place_id = req.query.place_id;
+        var ID = req.query.userID + '_' + req.query.place_id;
         userService.read_timeslot(place_id, (timeSlot) => {
             console.log(timeSlot);
-            res.render('timeslot', { array: timeSlot, place_id: place_id });
+            res.render('timeslot', { array: timeSlot, id: ID });
         });
     } catch (e) {
         console.log(e);
@@ -192,8 +192,8 @@ app.get('/timeslot', (req, res) => {
     try {
         console.log(req.query.text);
         const time = req.query.text;
-        const place_id = req.query.place_id;
-        userService.update_timeslot( place_id, time, function () {
+        const ids = req.query.ids;
+        userService.update_timeslot( ids, time, function () {
             httpsMsgs.sendJSON(req, res, {
                 from: "res.result.output.text[0]"
             });
