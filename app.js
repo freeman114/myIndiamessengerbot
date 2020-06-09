@@ -204,6 +204,13 @@ app.get('/webview', (req, res) => {
 
     }
 });
+app.post('/webview', (req, res) => {
+    console.log(req.body);
+    // httpsMsgs.sendJSON(req, res, {
+    //     from: res.result.output.text[0],
+    // });
+
+});
 
 // Message handler
 app.post('/webhook', (req, res) => {
