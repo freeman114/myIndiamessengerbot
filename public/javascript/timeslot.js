@@ -1,5 +1,6 @@
-function set_timeslot(){
+function set_timeslot(id){
     console.log('what is timeslot');
+    console.log(id);
 }
 
 function save_timeslot(){
