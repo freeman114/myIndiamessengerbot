@@ -143,7 +143,6 @@ module.exports = {
                 console.log(ids);
                 var idss = ids.split("_");
                 var dbo = db.db;
-                console.log(place_id);
                 console.log(slot);
                 var query = { place_id: idss[1] };
                 dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
