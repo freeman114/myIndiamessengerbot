@@ -145,7 +145,7 @@ module.exports = {
                 console.log(place_id);
                 console.log(time);
                 var query = { place_id: place_id };
-                dbo.collection("shopList_collection").find(query).toArray(function (err, result) {
+                dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
                     var timearray = result[0].timeSlot;
                     var array = [];
                     await asyncForEach(timearray, async (timeitem) => {
