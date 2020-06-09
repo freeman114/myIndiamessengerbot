@@ -140,6 +140,7 @@ module.exports = {
                 console.log(err);
             }
             else {
+                console.log(ids);
                 var idss = ids.split("_");
                 var dbo = db.db;
                 console.log(place_id);
