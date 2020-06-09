@@ -148,12 +148,18 @@ module.exports = {
                 dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
                     var timearray = result[0].timeSlot;
                     var array = [];
-                    await asyncForEach(timearray, async (timeitem) => {
-                        if (timeitem !== time){
-                            console.log(typeof(timeitem));
-                            array.push(timeitem);
-                        }
+                    // await asyncForEach(timearray, async (timeitem) => {
+                    //     if (timeitem !== time){
+                    //         console.log(typeof(timeitem));
+                    //         array.push(timeitem);
+                    //     }
 
+                    // });
+                    timearray.forEach(item =>{
+                        if (item !== time){
+                            array.push(item);
+                        }
+                    
                     });
                     console.log(array);
                 });
