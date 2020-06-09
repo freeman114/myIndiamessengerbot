@@ -18,7 +18,8 @@ function save_timeslot() {
             data: {
                 text: m_timeslot
             },
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
             success: function (res) {
                 alert('success');
             },
