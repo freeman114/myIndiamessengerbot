@@ -144,6 +144,20 @@ module.exports = {
                 var dbo = db.db;
                 console.log(place_id);
                 console.log(time);
+                var query = { place_id: place_id };
+                dbo.collection("shopList_collection").find(query).toArray(function (err, result) {
+                    var timearray = result[0].timeSlot;
+                    var array = [];
+                    await asyncForEach(timearray, async (timeitem) => {
+                        if (timeitem != time){
+                            array.push(timeitem);
+                        }
+
+                    });
+                    console.log(array);
+                });
+
+
                 /*Return only the documents with the address "Park Lane 38":*/
                 
             }
