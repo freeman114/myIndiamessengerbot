@@ -156,7 +156,7 @@ module.exports = {
 
                     // });
                     timearray.forEach(item =>{
-                        if (item !== slot){
+                        if (item == slot){
                             array.push(item);
                             console.log(array);
                         }
