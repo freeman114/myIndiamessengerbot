@@ -158,10 +158,10 @@ module.exports = {
                     timearray.forEach(item =>{
                         if (item !== time){
                             array.push(item);
+                            console.log(array);
                         }
                     
                     });
-                    console.log(array);
                 });
 
 
