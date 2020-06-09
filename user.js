@@ -143,14 +143,14 @@ module.exports = {
             else {
                 var dbo = db.db;
                 console.log(place_id);
-                console.log(time);
+                console.log(typeof(time));
                 var query = { place_id: place_id };
                 dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
                     var timearray = result[0].timeSlot;
                     var array = [];
                     await asyncForEach(timearray, async (timeitem) => {
                         if (timeitem != time){
-                            console.log(timeitem);
+                            console.log(typeof(timeitem));
                             array.push(timeitem);
                         }
 
