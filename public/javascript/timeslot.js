@@ -19,7 +19,7 @@ function save_timeslot() {
                 text: m_timeslot,
             },
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            success: function (res_db) {
+            success: function (res) {
                 
             },
             error: function (error) {
