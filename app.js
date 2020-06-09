@@ -205,10 +205,10 @@ app.get('/webview', (req, res) => {
 
     }
 });
-app.post('/qq', function (req, res){
+app.post('/webview', function (req, res){
     
-    console.log(req.query);
-    console.log(req.query.text);
+    console.log(JSON.parse(req));
+    console.log(req.body.text);
     httpsMsgs.sendJSON(req, res, {
         from: "res.result.output.text[0]"
     });

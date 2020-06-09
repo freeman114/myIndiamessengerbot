@@ -12,7 +12,7 @@ async function save_timeslot() {
     }
     else {
         $.ajax({
-            url: '/qq',
+            url: '/webview',
             method: 'POST',
             data: {
                 text: m_timeslot,
