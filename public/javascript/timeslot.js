@@ -13,7 +13,7 @@ async function save_timeslot(ids) {
     else {
 
         $.ajax({
-            url: '/timeslot?text=' + m_timeslot + '&place_id=' + ids,
+            url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
             method: 'GET',
             success: function (res) {
                 alert('success');
