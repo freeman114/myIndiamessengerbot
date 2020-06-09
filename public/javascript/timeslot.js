@@ -19,7 +19,6 @@ function save_timeslot() {
                 text: m_timeslot
             },
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            dataType: "json",
             success: function (res) {
                 alert('success');
             },
