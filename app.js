@@ -199,7 +199,7 @@ app.get('/webview', (req, res) => {
         var place_id = req.query.place_id;
         userService.read_timeslot(place_id, (timeSlot) => {
             console.log(timeSlot);
-            res.render('timeslot', { array: timeSlot });
+            res.render('timeslot', { array: timeSlot, place_id: place_id });
         });
     } catch (e) {
         console.log(e);
@@ -210,9 +210,14 @@ app.get('/webview', (req, res) => {
 app.get('/timeslot', (req, res) => {
     try {
         console.log(req.query.text);
-        httpsMsgs.sendJSON(req, res, {
-            from: "res.result.output.text[0]"
+        const time = req.query.text;
+        const place_id = req.query.place_id;
+        userService.update_timeslot( place_id, time, function () {
+            httpsMsgs.sendJSON(req, res, {
+                from: "res.result.output.text[0]"
+            });
         });
+
     } catch (e) {
         console.log(e);
 

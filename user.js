@@ -132,5 +132,21 @@ module.exports = {
                 });
             }
         });
+    },
+
+    update_timeslot: function (place_id, time, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
+            if (err) {
+                console.log(err);
+
+            }
+            else {
+                var dbo = db.db;
+                console.log(place_id);
+                console.log(time);
+                /*Return only the documents with the address "Park Lane 38":*/
+                
+            }
+        });
     }
 }

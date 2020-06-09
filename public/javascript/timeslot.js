@@ -6,14 +6,14 @@ function set_timeslot(id) {
     m_timeslot = id;
 }
 
-async function save_timeslot() {
+async function save_timeslot(place_id) {
     if (!m_timeslot) {
         alert('choose time in list.');
     }
     else {
 
         $.ajax({
-            url: '/timeslot?text=' + m_timeslot,
+            url: '/timeslot?text=' + m_timeslot + '&place_id=' + place_id,
             method: 'GET',
             success: function (res) {
                 alert('success');
