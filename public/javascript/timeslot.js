@@ -17,6 +17,7 @@ async function save_timeslot(ids) {
             method: 'GET',
             success: function (res) {
                 alert('success');
+                window.close();
             },
             error: function (error) {
                 console.log('some error in fetching the intents');

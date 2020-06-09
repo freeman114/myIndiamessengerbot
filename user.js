@@ -163,6 +163,7 @@ module.exports = {
                             dbo.collection("users").updateOne(myquery, newvalues)
                                 .then(function (res) {
                                     console.log("updated users collection.");
+                                    callback();
                                 }).catch(function (err) {
                                     console.log(err);
                                 });

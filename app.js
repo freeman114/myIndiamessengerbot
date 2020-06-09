@@ -196,7 +196,7 @@ app.get('/timeslot', (req, res) => {
         const ids = req.query.ids;
         userService.update_timeslot( ids, time, function () {
             httpsMsgs.sendJSON(req, res, {
-                from: "res.result.output.text[0]"
+                from: "success"
             });
         });
 
