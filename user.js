@@ -155,21 +155,25 @@ module.exports = {
                     //     }
 
                     // });
-                    timearray.forEach(item =>{
-                        if (item.toString() != slot.toString()){
+                    timearray.forEach(item => {
+                        if (item.toString() != slot.toString()) {
                             array.push(item);
-                            console.log("item");
-                            console.log("item"+item+"item");
-                            console.log("item"+slot+"item");
                         }
-                    
                     });
-                    console.log(array);
+                    var myquery = { timeSlot: timearray };
+                    var newvalues = { $set: { timeSlot: array } };
+                    dbo.collection("shopList_collection").updateOne(myquery, newvalues)
+                    .then(function (res) { 
+                        console.log(res);
+                        console.log("success");
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
                 });
 
 
                 /*Return only the documents with the address "Park Lane 38":*/
-                
+
             }
         });
     }
