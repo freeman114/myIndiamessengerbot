@@ -150,6 +150,7 @@ module.exports = {
                     var array = [];
                     await asyncForEach(timearray, async (timeitem) => {
                         if (timeitem != time){
+                            console.log(timeitem);
                             array.push(timeitem);
                         }
 
