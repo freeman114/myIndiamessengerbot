@@ -218,15 +218,13 @@ app.get('/timeslot', (req, res) => {
 
     }
 });
-app.post('/webview', function (req, res){
-    
-    console.log(typeof(req));
-    console.log(req.body.text);
-    httpsMsgs.sendJSON(req, res, {
-        from: "res.result.output.text[0]"
-    });
-
-});
+// app.post('/webview', function (req, res){
+//     console.log(typeof(req));
+//     console.log(req.body.text);
+//     httpsMsgs.sendJSON(req, res, {
+//         from: "res.result.output.text[0]"
+//     });
+// });
 
 // Message handler
 app.post('/webhook', (req, res) => {

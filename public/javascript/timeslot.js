@@ -11,13 +11,10 @@ async function save_timeslot() {
         alert('choose time in list.');
     }
     else {
+
         $.ajax({
-            url: '/webview',
-            method: 'POST',
-            data: {
-                text: m_timeslot
-            },
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: '/timeslot?text=' + m_timeslot,
+            method: 'GET',
             success: function (res) {
                 alert('success');
             },
@@ -25,6 +22,20 @@ async function save_timeslot() {
                 console.log('some error in fetching the intents');
             },
         });
+        // $.ajax({
+        //     url: '/webview',
+        //     method: 'POST',
+        //     data: {
+        //         text: m_timeslot
+        //     },
+        //     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        //     success: function (res) {
+        //         alert('success');
+        //     },
+        //     error: function (error) {
+        //         console.log('some error in fetching the intents');
+        //     },
+        // });
     }
     console.log("save");
 }
