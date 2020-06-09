@@ -177,6 +177,7 @@ app.get('/', (req, res) => {
 app.get('/webview', (req, res) => {
     try {
         console.log(req.query.place_id);
+        var place_id = req.query.place_id;
         var ID = req.query.userID + '_' + req.query.place_id;
         userService.read_timeslot(place_id, (timeSlot) => {
             console.log(timeSlot);
