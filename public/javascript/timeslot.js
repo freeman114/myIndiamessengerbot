@@ -16,7 +16,7 @@ async function save_timeslot(ids) {
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
             method: 'GET',
             success: function (res) {
-                alert('success');
+                // alert('success');
                 window.close();
             },
             error: function (error) {
