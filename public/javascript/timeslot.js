@@ -11,6 +11,7 @@ async function save_timeslot(ids) {
         alert('choose time in list.');
     }
     else {
+        $(m_timeslot).prop('background', 'black');
 
         $.ajax({
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
@@ -26,15 +27,8 @@ async function save_timeslot(ids) {
                 // append it to your page
                 $('#myqrcode').prop('src', res.from);
                 $('#download').prop('href', res.from);
-                // document.getElementById("myimg").appendChild(outputImg);
-
-                // console.log(res.from);
-                // // var img = JSON.stringify(res.from);
-                // var outputImg = document.createElement('img');
-                // outputImg.src = 'data:image/png;base64,' + res.from;
-
-                // // append it to your page
-                // document.body.appendChild(outputImg);
+                $(m_timeslot).prop('disabled', 'true');
+               
             },
             error: function (error) {
                 console.log('some error in fetching the intents');
