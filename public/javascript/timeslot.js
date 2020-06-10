@@ -16,7 +16,8 @@ async function save_timeslot(ids) {
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
             method: 'GET',
             success: function (res) {
-                alert(res.from);
+            var img = JSON.stringify(res.from);
+                alert(img);
             },
             error: function (error) {
                 console.log('some error in fetching the intents');
