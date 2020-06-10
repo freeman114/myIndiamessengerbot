@@ -220,7 +220,7 @@ app.get('/timeslot', (req, res) => {
             QRCode.toDataURL('I am a pony!', function (err, url) {
                 console.log(url);
                 let data = url.replace(/.*,/, '')
-                let img = new Buffer(data, 'base64');
+                let img = new Buffer.alloc(data, 'base64');
                 console.log(img);
                 res.writeHead(200,{
                     'Content-Type' : 'image/png',
