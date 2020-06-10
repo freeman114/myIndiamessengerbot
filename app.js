@@ -297,8 +297,8 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
     var messages = JSON.parse(payload);
 
-    switch (messages.message) {
-        case 'Get Started':
+    switch (payload) {
+        case 'start_over':
             sendWelcomeMessage(senderID);
             break;
 
