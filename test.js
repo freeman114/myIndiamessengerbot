@@ -51,25 +51,27 @@ const express = require('express')
 const app = express()
 const QRCode = require('qrcode');
 
-app.get('/', (req, res) => {
-    res.send("This is my facebookMessengerBot.");
-});
 
-app.get('/:qrcode',(req, res) =>{
 
-    let inputStr = req.params.qrcode;
+app.get('/',(req, res) =>{
+
+    let inputStr =" req.params.qrcode";
 
     QRCode.toDataURL(inputStr, function (err, url) {
 
 
         let data = url.replace(/.*,/,'')
         let img = new Buffer.from(data,'base64')
-        console.log(img)
-        res.writeHead(200,{
-            'Content-Type' : 'image/png',
-            'Content-Length' : img.length
-        })
-        res.end(img)
+        // let aa = JSON.stringify(img);
+        // let as = aa.toString("utf-8");
+        console.log(img);
+
+
+        // res.writeHead(200,{
+        //     'Content-Type' : 'image/png',
+        //     'Content-Length' : img.length
+        // })
+        res.send(img)
 
     })
 

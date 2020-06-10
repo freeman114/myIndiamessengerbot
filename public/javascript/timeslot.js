@@ -16,8 +16,12 @@ async function save_timeslot(ids) {
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
             method: 'GET',
             success: function (res) {
-            var img = JSON.stringify(res.from);
-                alert(img);
+                var img = JSON.stringify(res.from);
+                var outputImg = document.createElement('img');
+                outputImg.src = 'data:image/png;base64,' + res.from;
+
+                // append it to your page
+                document.body.appendChild(outputImg);
             },
             error: function (error) {
                 console.log('some error in fetching the intents');
@@ -45,7 +49,7 @@ function close_webview() {
     console.log("close");
     window.close();
 
-    
+
 
 }
 
