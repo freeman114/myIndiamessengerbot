@@ -214,7 +214,7 @@ app.get('/timeslot', (req, res) => {
                     "payload": "cancel"
                 }
             ];
-            var responseText = "sss";
+            var responseText = "You can use QR code in following to verify yourself in the shop";
             fbService.sendQuickReply(idss[0], responseText, replies);
             httpsMsgs.sendJSON(req, res, {
                 from: "success"

@@ -37,7 +37,7 @@ module.exports = {
                     "type": "web_url",
                     "url": "https://facebookmessengerapp-1.herokuapp.com/webview?address=" + value + "&name=" + name + "&place_id=" + place_id,
                     "title": "Booking schedule time",
-                    "webview_height_ratio": "compact",
+                    "webview_height_ratio": "tall",
                     "messenger_extensions": "true"
                 };
                 // buttons.push(button);
