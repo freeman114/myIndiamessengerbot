@@ -11,7 +11,6 @@ async function save_timeslot(ids) {
         alert('choose time in list.');
     }
     else {
-        $(m_timeslot).prop('background', 'black');
 
         $.ajax({
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
@@ -25,9 +24,10 @@ async function save_timeslot(ids) {
                 outputImg.src = res.from;
 
                 // append it to your page
+                var x = document.getElementById(m_timeslot);
+                x.style.disabled = "true";
                 $('#myqrcode').prop('src', res.from);
                 $('#download').prop('href', res.from);
-                $(m_timeslot).prop('disabled', 'true');
                
             },
             error: function (error) {
