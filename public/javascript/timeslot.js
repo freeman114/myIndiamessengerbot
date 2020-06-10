@@ -16,7 +16,15 @@ async function save_timeslot(ids) {
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
             method: 'GET',
             success: function (res) {
-                console.log(res);
+                var b64Response = btoa(res);
+                
+                console.log(b64Response);
+                // create an image
+                var outputImg = document.createElement('img');
+                outputImg.src = 'data:image/png;base64,' + b64Response;
+
+                // append it to your page
+                document.body.appendChild(outputImg);
 
                 // console.log(res.from);
                 // // var img = JSON.stringify(res.from);
