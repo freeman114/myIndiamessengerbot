@@ -5,7 +5,7 @@ function set_timeslot(id) {
     m_timeslot = id;
     console.log(id);
     var x = document.getElementById(m_timeslot);
-    x.style.background = "blue";
+    x.style.background = "lavender";
 }
 
 async function save_timeslot(ids) {
