@@ -24,7 +24,8 @@ async function save_timeslot(ids) {
                 outputImg.src = res.from;
 
                 // append it to your page
-                document.body.appendChild(outputImg);
+                $('#myqrcode').prop('src', res.from);
+                // document.getElementById("myimg").appendChild(outputImg);
 
                 // console.log(res.from);
                 // // var img = JSON.stringify(res.from);
