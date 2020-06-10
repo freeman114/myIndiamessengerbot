@@ -18,10 +18,9 @@
         }
     </style> -->
     <style>
-        div.col-sm-8 {
+        div.list-group {
             background-color: white;
-            width: 110px;
-            height: 300px;
+            width: 100px;
             overflow: auto;
         }
     </style>
@@ -31,12 +30,11 @@
 
     <div class="container">
         <div class="panel-header" style="margin: 10px;"><br>
-            <h5>Please choose timeslot.</h5>
-            <br>
+           
         </div>
 
         <div class="row">
-
+            <br>
             <div class="col-sm-2 col-md-3 col-2"></div>
             <div class="col-sm-8 col-md-6 col-8" id="myimg">
                 <div class="list-group">
@@ -46,16 +44,15 @@
                     <% }); %>
 
                 </div>
-                <img id="myqrcode" src="img_girl.jpg" >
+                <img id="myqrcode">
             </div>
             <div class="col-sm-2 col-md-3 col-2"></div>
         </div>
         <div class="panel-footer">
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success" id="<%= id %>" onclick="save_timeslot(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <!-- <button type="button" class="btn btn-info">CANCEL</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-            <a download="QRcode.png" href="">Download</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-secondary" onclick="close_webview()">CLOSE</button>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-success" id="<%= id %>" onclick="save_timeslot(this.id)">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a download="QRcode.png" href="">Download</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-secondary" onclick="close_webview()">CLOSE</button><br>
         </div>
 
 
