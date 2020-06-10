@@ -295,7 +295,6 @@ function receivedPostback(event) {
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
-    var messages = JSON.parse(payload);
 
     switch (payload) {
         case 'start_over':
