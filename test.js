@@ -50,18 +50,21 @@
 const express = require('express')
 const app = express()
 const QRCode = require('qrcode');
+const fs = require('fs');
 
 
 
-app.get('/',(req, res) =>{
+app.get('/', (req, res) => {
 
-    let inputStr =" req.params.qrcode";
+    let inputStr = " req.params.qrcode";
 
     QRCode.toDataURL(inputStr, function (err, url) {
 
 
-        let data = url.replace(/.*,/,'')
-        let img = new Buffer.from(data,'base64')
+        let data = url.replace(/.*,/, '')
+        let img = new Buffer.from(data, 'base64')
+        fs.writeFileSync('./qr.html', `<img src="${url}">`);
+        console.log('Wrote to ./qr.html');
         // let aa = JSON.stringify(img);
         // let as = aa.toString("utf-8");
         console.log(img);
@@ -78,6 +81,6 @@ app.get('/',(req, res) =>{
 
 })
 
-app.listen(3000, () =>{
+app.listen(3000, () => {
     console.log("success sever port 3000");
 });
