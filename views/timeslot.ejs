@@ -35,6 +35,16 @@
             margin-top: 10%;
             margin-bottom: 10%;
         }
+
+        .btn-light:hover {
+            background-color: lavender;
+        }
+
+        .btn-light.active,
+        .btn-light:active {
+            background-color: rgb(163, 163, 196);
+            border-color: red;
+        }
     </style>
 </head>
 
@@ -50,7 +60,6 @@
             <div class="col-sm-2 col-md-3 col-2"></div>
             <div class="col-sm-8 col-md-6 col-8" id="myimg">
                 <div class="list-group">
-                    <br>
                     <% array.forEach(time =>{ %>
                     <button type="button" class="btn btn-light btn-block" id="<%= time %>"
                         onclick="set_timeslot(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -60,7 +69,7 @@
                 </div>
             </div>
             <div class="col-sm-2 col-md-3 col-2"></div>
-        </div><br>
+        </div>
         <img id="myqrcode">
         <div class="panel-footer">
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

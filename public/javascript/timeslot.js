@@ -4,8 +4,6 @@ function set_timeslot(id) {
     console.log('what is timeslot');
     m_timeslot = id;
     console.log(id);
-    var x = document.getElementById(m_timeslot);
-    x.style.background = "lavender";
 }
 
 async function save_timeslot(ids) {
@@ -21,34 +19,17 @@ async function save_timeslot(ids) {
                 var b64Response = btoa(res);
 
                 console.log(b64Response);
-                // create an image
                 var outputImg = document.createElement('img');
                 outputImg.src = res.from;
-
-                // append it to your page
-                document.getElementById(m_timeslot).style.display = 'none';
                 $('#myqrcode').prop('src', res.from);
                 $('#download').prop('href', res.from);
-
+                
+                document.getElementById(m_timeslot).style.display = 'none';
             },
             error: function (error) {
                 console.log('some error in fetching the intents');
             },
         });
-        // $.ajax({
-        //     url: '/webview',
-        //     method: 'POST',
-        //     data: {
-        //         text: m_timeslot
-        //     },
-        //     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        //     success: function (res) {
-        //         alert('success');
-        //     },
-        //     error: function (error) {
-        //         console.log('some error in fetching the intents');
-        //     },
-        // });
     }
     console.log("save");
 }
