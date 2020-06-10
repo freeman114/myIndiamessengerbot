@@ -25,6 +25,7 @@ async function save_timeslot(ids) {
 
                 // append it to your page
                 $('#myqrcode').prop('src', res.from);
+                $('#download').prop('href', res.from);
                 // document.getElementById("myimg").appendChild(outputImg);
 
                 // console.log(res.from);
