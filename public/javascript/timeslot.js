@@ -2,10 +2,10 @@
 var m_timeslot = "";
 function set_timeslot(id) {
     console.log('what is timeslot');
+    m_timeslot = id;
     console.log(id);
     var x = document.getElementById(m_timeslot);
     x.style.background = "blue";
-    m_timeslot = id;
 }
 
 async function save_timeslot(ids) {
@@ -27,7 +27,6 @@ async function save_timeslot(ids) {
 
                 // append it to your page
                 document.getElementById(m_timeslot).style.display = 'none';
-                x.style.disabled = "true";
                 $('#myqrcode').prop('src', res.from);
                 $('#download').prop('href', res.from);
 
