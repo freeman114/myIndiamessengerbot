@@ -218,7 +218,10 @@ app.get('/timeslot', (req, res) => {
             var responseText = "You can use QR code in following to verify yourself in the shop";
             fbService.sendQuickReply(idss[0], responseText, replies);
             QRCode.toDataURL('I am a pony!', function (err, url) {
-                console.log(url)
+                console.log(url);
+                let data = url.replace(/.*,/, '')
+                let img = new Buffer(data, 'base64');
+                console.log(img);
             });
             httpsMsgs.sendJSON(req, res, {
                 from: "success"
