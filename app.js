@@ -24,6 +24,7 @@ const fetch = require('node-fetch');
 const uuid = require('uuid');
 var path = require('path');
 var httpsMsgs = require('http-msgs');
+var QRCode = require('qrcode')
 
 
 
@@ -216,6 +217,9 @@ app.get('/timeslot', (req, res) => {
             ];
             var responseText = "You can use QR code in following to verify yourself in the shop";
             fbService.sendQuickReply(idss[0], responseText, replies);
+            QRCode.toDataURL('I am a pony!', function (err, url) {
+                console.log(url)
+            });
             httpsMsgs.sendJSON(req, res, {
                 from: "success"
             });
