@@ -222,10 +222,15 @@ app.get('/timeslot', (req, res) => {
                 let data = url.replace(/.*,/, '')
                 let img = new Buffer(data, 'base64');
                 console.log(img);
+                res.writeHead(200,{
+                    'Content-Type' : 'image/png',
+                    'Content-Length' : img.length
+                })
+                res.end(img)
             });
-            httpsMsgs.sendJSON(req, res, {
-                from: "success"
-            });
+            // httpsMsgs.sendJSON(req, res, {
+            //     from: "success"
+            // });
         });
 
     } catch (e) {
