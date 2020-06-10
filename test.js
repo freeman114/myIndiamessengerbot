@@ -67,11 +67,11 @@ app.get('/',(req, res) =>{
         console.log(img);
 
 
-        // res.writeHead(200,{
-        //     'Content-Type' : 'image/png',
-        //     'Content-Length' : img.length
-        // })
-        res.send(img)
+        res.writeHead(200,{
+            'Content-Type' : 'image/png',
+            'Content-Length' : img.length
+        })
+        // res.send(img)
 
     })
 
