@@ -72,7 +72,7 @@ module.exports = {
                         "type": "web_url",
                         "url": item.buttons[0].url + '&userID=' + userID,
                         "title": "Booking schedule time",
-                        "webview_height_ratio": "full",
+                        "webview_height_ratio": "tall",
                         "messenger_extensions": "true"
                     }
                 ]
