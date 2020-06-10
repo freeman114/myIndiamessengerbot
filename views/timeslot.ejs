@@ -24,6 +24,12 @@
             height: 250px;
             overflow: auto;
         }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 
@@ -31,7 +37,7 @@
 
     <div class="container">
         <div class="panel-header" style="margin: 10px;"><br>
-           
+
         </div>
 
         <div class="row">
@@ -40,19 +46,21 @@
             <div class="col-sm-8 col-md-6 col-8" id="myimg">
                 <div class="list-group">
                     <% array.forEach(time =>{ %>
-                    <button type="button" class="btn btn-light btn-block" id="<%= time %>" onclick="set_timeslot(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-light btn-block" id="<%= time %>"
+                        onclick="set_timeslot(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;
                         <%= time %>&nbsp;&nbsp;&nbsp;&nbsp; </button><br>
                     <% }); %>
 
                 </div>
             </div>
             <div class="col-sm-2 col-md-3 col-2"></div>
-        </div>
+        </div><br>
         <img id="myqrcode">
         <div class="panel-footer">
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success" id="<%= id %>" onclick="save_timeslot(this.id)">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a download="QRcode.png" href="">Download</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-success" id="<%= id %>"
+                onclick="save_timeslot(this.id)">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a download="QRcode.png" href="" class="btn btn-info" role="button">Download</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-secondary" onclick="close_webview()">CLOSE</button><br>
         </div>
 
