@@ -222,9 +222,9 @@ app.get('/timeslot', (req, res) => {
                 let data = url.replace(/.*,/, '')
                 let img = new Buffer.from(data, 'base64');
                 console.log(img);
-                // httpsMsgs.sendJSON(req, res, {
-                //     from: img
-                // });
+                httpsMsgs.sendJSON(req, res, {
+                    from: url
+                });
                 res.end(img);
             });
 

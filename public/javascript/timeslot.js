@@ -21,7 +21,7 @@ async function save_timeslot(ids) {
                 console.log(b64Response);
                 // create an image
                 var outputImg = document.createElement('img');
-                outputImg.src = 'data:image/png;base64,' + b64Response;
+                outputImg.src = res.from;
 
                 // append it to your page
                 document.body.appendChild(outputImg);
