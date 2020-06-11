@@ -44,7 +44,7 @@ module.exports = {
                                     if (err) throw err;
                                     console.log(result.length);
                                     if (!result.length) {
-                                        var insertUser = { fb_id: userId, firstname: user.first_name, lastname: user.last_name, profile_picture: user.profile_pic, oderArray: order_array};
+                                        var insertUser = { fb_id: userId, firstname: user.first_name, lastname: user.last_name, profile_picture: user.profile_pic, oderArray: order_array };
                                         dbo.collection("users").insertOne(insertUser, function (err, res) {
                                             if (err) throw err;
                                             console.log("1 document inserted");
@@ -148,6 +148,7 @@ module.exports = {
                 var query = { place_id: place_id };
                 dbo.collection("shopList_collection").find(query).toArray(async function (err, result) {
                     var timearray = result[0].timeSlot;
+                    var shopname = result[0].shopName;
                     var array = [];
                     timearray.forEach(item => {
                         if (item.toString() != slot.toString()) {
@@ -161,10 +162,26 @@ module.exports = {
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
                         .then(async function (res) {
                             console.log("success");
+                            let newarray = [];
                             let userquery = { fb_id: userId };
                             let result = await dbo.collection("users").find(userquery).toArray();
                             console.log(result[0].oderArray);
+                            let order_array = result[0].oderArray;
+                            let name = result[0].firstname;
+
+                            let newvalue = { place_id: place_id, shopName: shopname, time: slot };
+                            newarray.push(newvalue);
+                            var myquery = { oderArray: order_array };
+                            var newquery = { $set: { oderArray: newarray } };
+                            dbo.collection("users").updateOne(myquery, newquery)
+                            .then ( function (result) {
+                                callback();
+                            }).catch (function(err) {
+                                console.log(err);
+                            });
+
                             callback();
+
 
                             // try {
                             //     console.log(result);
