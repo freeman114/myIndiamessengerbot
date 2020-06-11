@@ -166,7 +166,7 @@ module.exports = {
                             let userquery = { fb_id: userId };
                             let result = await dbo.collection("users").find(userquery).toArray();
 
-                            console.log(result[0].oderArray);
+                            // console.log(result[0].oderArray);
                             let order_array = result[0].oderArray;
                             let name = result[0].firstname;
                             newarray = order_array;
@@ -174,7 +174,7 @@ module.exports = {
                             let newvalue = { place_id: place_id, shopName: shopname, time: slot };
                             newarray.push(newvalue);
                             console.log(newarray);
-                            
+
                             var myquery = { oderArray: order_array };
                             var newquery = { $set: { oderArray: newarray } };
 
