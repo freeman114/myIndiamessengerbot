@@ -162,21 +162,17 @@ module.exports = {
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
                         .then(async function (res) {
                             console.log("success");
-                            let newarray = [];
                             let userquery = { fb_id: userId };
                             let result = await dbo.collection("users").find(userquery).toArray();
 
                             // console.log(result[0].oderArray);
                             let order_array = result[0].oderArray;
                             let name = result[0].firstname;
-                            newarray = order_array;
-                            console.log(newarray);
                             let newvalue = { place_id: place_id, shopName: shopname, time: slot };
-                            newarray.push(newvalue);
-                            console.log(newarray);
+                            
+                            order_array.push(newvalue);
 
-                            var myquery = { oderArray: order_array };
-                            var newquery = { $set: {fb_id: userId, oderArray: newarray } };
+                            var newquery = { $set: {fb_id: userId, oderArray: order_array } };
 
                             dbo.collection("users").updateOne(userquery, newquery)
                             .then ( function (result) {
