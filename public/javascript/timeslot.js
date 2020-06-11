@@ -21,8 +21,8 @@ async function save_timeslot(ids) {
                 // console.log(b64Response);
                 // var outputImg = document.createElement('img');
                 // outputImg.src = res.from;
-                $('#myqrcode').prop('src', res.from);
-                $('#download').prop('href', res.from);
+                $('#myqrcode').prop('src', res);
+                $('#download').prop('href', res);
                 
                 document.getElementById(m_timeslot).style.display = 'none';
             },
