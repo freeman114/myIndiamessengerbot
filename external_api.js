@@ -126,7 +126,7 @@ module.exports = {
         console.log(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds);
         // prints time in HH:MM format
         console.log(hours + ":" + minutes);
-        var ordertime = hours + ":" + minutes;
+        var ordertime = year + "-" + month + "-" + date + " " + hours + ":" + minutes;
         return ordertime;
     },
 
