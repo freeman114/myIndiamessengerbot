@@ -227,15 +227,15 @@ app.get('/timeslot', (req, res) => {
                 //     'Content-Type' : 'image/png',
                 //     'Content-Length' : img.length
                 // })
-                // httpsMsgs.sendJSON(req, res, {
-                //     from: url
-                // });
+                httpsMsgs.sendJSON(req, res, {
+                    from: url
+                });
                 // res.end(img);
-                res.setHeader('Content-Type', 'application/json');
-                res.status(200).json({
-                    status: 'succes',
-                    from: url,
-                })
+                // res.setHeader('Content-Type', 'application/json');
+                // res.status(200).json({
+                //     status: 'succes',
+                //     from: url,
+                // })
                 // res.end(url);
                 // res.write(url);
                 // res.json({ from: url });
