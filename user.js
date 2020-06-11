@@ -133,7 +133,7 @@ module.exports = {
         });
     },
 
-    update_timeslot: function (ids, slot) {
+    update_timeslot: function (ids, slot, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
                 console.log(err);
@@ -183,6 +183,7 @@ module.exports = {
                                 callback();
                             }).catch (function(err) {
                                 console.log(err);
+                                
                             });
 
 
