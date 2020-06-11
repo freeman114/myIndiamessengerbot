@@ -25,6 +25,7 @@ const uuid = require('uuid');
 var path = require('path');
 var httpsMsgs = require('http-msgs');
 var QRCode = require('qrcode')
+var md5 = require('md5');
 
 
 
@@ -196,7 +197,9 @@ app.get('/timeslot', (req, res) => {
         const time = req.query.text;
         const ids = req.query.ids;
         var idss = ids.split("??")
-        userService.update_timeslot(ids, time, function (order_infor, token) {
+        userService.update_timeslot(ids, time, function (order_infor) {
+            var tokenstr = JSON.stringify(order_infor);
+            var token = md5(tokenstr);
             let replies = [
                 {
                     "content_type": "text",
