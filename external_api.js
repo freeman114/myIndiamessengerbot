@@ -110,7 +110,7 @@ module.exports = {
         let date_ob = new Date();
 
         var n = d.getTimezoneOffset();
-        console.log(d);
+        console.log(n);
         // current date
         let date = ("0" + date_ob.getDate()).slice(-2);
         // current month
