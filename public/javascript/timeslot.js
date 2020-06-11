@@ -21,6 +21,7 @@ async function save_timeslot(ids) {
                 // console.log(b64Response);
                 // var outputImg = document.createElement('img');
                 // outputImg.src = res.from;
+                console.log(res);
                 $('#myqrcode').prop('src', res);
                 $('#download').prop('href', res);
                 
