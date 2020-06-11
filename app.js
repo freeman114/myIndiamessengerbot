@@ -227,11 +227,22 @@ app.get('/timeslot', (req, res) => {
                 //     'Content-Type' : 'image/png',
                 //     'Content-Length' : img.length
                 // })
+
+                if (!url) {
+                    return res.status(400).json({
+                      status: 'error',
+                      error: 'url cannot be empty',
+                    });
+                  }
+                
+                  res.status(200).json({
+                    status: 'succes',
+                    from: url,
+                  })
                 httpsMsgs.sendJSON(req, res, {
                     from: url
                 });
                 // res.end(img);
-                res.setHeader('Content-Type', 'application/json');
                 // res.status(200).json({
                 //     status: 'succes',
                 //     from: url,
