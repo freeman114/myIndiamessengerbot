@@ -66,6 +66,9 @@ let FB_VERIFY_TOKEN = null;
 crypto.randomBytes(8, (err, buff) => {
     if (err) throw err;
     FB_VERIFY_TOKEN = buff.toString('hex');
+    setInterval(function () {
+        console.log("Hello");
+    }, 3000);
     console.log(`/webhook will accept the Verify Token "${FB_VERIFY_TOKEN}"`);
 });
 
@@ -234,7 +237,7 @@ app.get('/timeslot', (req, res) => {
                         status: 'succes',
                         from: url,
                     })
-                    
+
                 } catch (err) {
                     console.log(err);
                 };
