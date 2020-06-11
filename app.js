@@ -219,6 +219,22 @@ app.get('/timeslot', (req, res) => {
             // fbService.sendQuickReply(idss[0], responseText, replies);
             var token = 'time:' + time + '   ids:' + ids;
             QRCode.toDataURL(token, function (err, url) {
+                try {
+                    if (!url) {
+                        return res.status(400).json({
+                            status: 'error',
+                            error: 'url cannot be empty',
+                        });
+                    }
+
+                    res.status(200).json({
+                        status: 'succes',
+                        from: url,
+                    })
+                    
+                } catch (err) {
+                    console.log(err);
+                };
                 // console.log(url);
                 // let data = url.replace(/.*,/, '')
                 // let img = new Buffer.from(data, 'base64');
@@ -228,20 +244,7 @@ app.get('/timeslot', (req, res) => {
                 //     'Content-Length' : img.length
                 // })
 
-                if (!url) {
-                    return res.status(400).json({
-                      status: 'error',
-                      error: 'url cannot be empty',
-                    });
-                  }
-                
-                  res.status(200).json({
-                    status: 'succes',
-                    from: url,
-                  })
-                httpsMsgs.sendJSON(req, res, {
-                    from: url
-                });
+
                 // res.end(img);
                 // res.status(200).json({
                 //     status: 'succes',
