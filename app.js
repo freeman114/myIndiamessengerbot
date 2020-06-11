@@ -226,7 +226,6 @@ app.get('/timeslot', (req, res) => {
                 httpsMsgs.sendJSON(req, res, {
                     from: url
                 });
-                res.end(img);
             });
 
         });
