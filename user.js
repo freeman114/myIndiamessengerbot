@@ -39,11 +39,12 @@ module.exports = {
                                 console.log("completed data successfully.");
                                 var dbo = db.db;
                                 var findUser = { fb_id: userId };
+                                var order_array = [];
                                 dbo.collection("users").find(findUser).toArray(function (err, result) {
                                     if (err) throw err;
                                     console.log(result.length);
                                     if (!result.length) {
-                                        var insertUser = { fb_id: userId, firstname: user.first_name, lastname: user.last_name, profile_picture: user.profile_pic };
+                                        var insertUser = { fb_id: userId, firstname: user.first_name, lastname: user.last_name, profile_picture: user.profile_pic, oderArray: order_array};
                                         dbo.collection("users").insertOne(insertUser, function (err, res) {
                                             if (err) throw err;
                                             console.log("1 document inserted");
@@ -92,9 +93,9 @@ module.exports = {
                     if (!result.length) {
                         var insertShop = { place_id: arr[1], shopName: shopitem.title, timeSlot: timeArray.timeslot };
                         var resultss = await dbo.collection("shopList_collection").insertOne(insertShop);
-                           
-                            console.log("1 shop document inserted");
-                       
+
+                        console.log("1 shop document inserted");
+
                     }
 
 
@@ -153,21 +154,40 @@ module.exports = {
                             array.push(item);
                         }
                     });
+
+
                     var myquery = { timeSlot: timearray };
                     var newvalues = { $set: { timeSlot: array } };
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
                         .then(function (res) {
                             console.log("success");
-                            var myquery = { fb_id: userId };
-                            var newvalues = { $set: { fb_id: userId, order: { place_id: place_id, time: slot } } };
-                            dbo.collection("users").updateOne(myquery, newvalues)
-                                .then(function (res) {
-                                    console.log("updated users collection.");
+                            let result = await dbo.collection("users").find(query).toArray();
+                            console.log(result.oderArray);
+                            callback();
 
-                                    callback();
-                                }).catch(function (err) {
-                                    console.log(err);
-                                });
+                            // try {
+                            //     console.log(result);
+
+
+                            //     db.close();
+                            // } catch (error) {
+                            //     console.log(error);
+                            // }
+
+
+                            // var myquery = { fb_id: userId };
+                            // let oder_array = [];
+                            // let item = { place_id: place_id, time: slot };
+                            // oder_array.push(item);
+                            // var newvalues = { $set: { fb_id: userId, "orderArray": oder_array } };
+                            // dbo.collection("users").updateOne(myquery, newvalues)
+                            //     .then(function (res) {
+                            //         console.log("updated users collection.");
+
+                            //         callback();
+                            //     }).catch(function (err) {
+                            //         console.log(err);
+                            //     });
                         }).catch(function (err) {
                             console.log(err);
                         });

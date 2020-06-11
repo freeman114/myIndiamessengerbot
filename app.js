@@ -217,12 +217,12 @@ app.get('/timeslot', (req, res) => {
             ];
             var responseText = "You can use QR code in following to verify yourself in the shop";
             fbService.sendQuickReply(idss[0], responseText, replies);
-            var token = 'time:'+time+'ids:'+ids;
+            var token = 'time:'+time+'   ids:'+ids;
             QRCode.toDataURL(token, function (err, url) {
                 console.log(url);
-                let data = url.replace(/.*,/, '')
-                let img = new Buffer.from(data, 'base64');
-                console.log(img);
+                // let data = url.replace(/.*,/, '')
+                // let img = new Buffer.from(data, 'base64');
+                // console.log(img);
                 httpsMsgs.sendJSON(req, res, {
                     from: url
                 });
