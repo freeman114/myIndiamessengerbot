@@ -196,27 +196,26 @@ app.get('/timeslot', (req, res) => {
         const time = req.query.text;
         const ids = req.query.ids;
         var idss = ids.split("??")
-        userService.update_timeslot(ids, time, function (order_infor) {
-            // fbService.sendQuickReply
-            // let replies = [
-            //     {
-            //         "content_type": "text",
-            //         "title": "Start Over",
-            //         "payload": "start_over"
-            //     },
-            //     {
-            //         "content_type": "text",
-            //         "title": "Previous ",
-            //         "payload": "inputaddress"
-            //     },
-            //     {
-            //         "content_type": "text",
-            //         "title": "Cancel ",
-            //         "payload": "cancel"
-            //     }
-            // ];
-            // var responseText = "You can use QR code in following to verify yourself in the shop";
-            // fbService.sendQuickReply(idss[0], responseText, replies);
+        userService.update_timeslot(ids, time, function (order_infor, token) {
+            let replies = [
+                {
+                    "content_type": "text",
+                    "title": "Start Over",
+                    "payload": "start_over"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Previous ",
+                    "payload": "inputaddress"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Cancel ",
+                    "payload": "cancel"
+                }
+            ];
+            var responseText = token;
+            fbService.sendQuickReply(idss[0], responseText, replies);
             console.log(JSON.stringify(order_infor));
             let qr_str = JSON.stringify(order_infor);
             QRCode.toDataURL(qr_str.toString(), function (err, url) {

@@ -1,6 +1,7 @@
 'use strict';
 const request = require('request');
 var timeArray = require('./public/timeslot.json');
+var md5 = require('md5');
 // const config = require('./config');
 const config = require('./config');
 const fbService = require('./facebook_service')
@@ -168,10 +169,11 @@ module.exports = {
 
                             //getting user name from user collection
                             let username = result[0].firstname;
+                            var token = md5("my token");
 
                             //updating user collection
                             let order_array = result[0].oderArray;
-                            let newvalue = { place_id: place_id, shopName: shopname, time: slot };
+                            let newvalue = { place_id: place_id, shopName: shopname, time: slot, token: token };
                             order_array.push(newvalue);
                             var newquery = { $set: { fb_id: userId, oderArray: order_array } };
                             dbo.collection("users").updateOne(userquery, newquery)
@@ -184,9 +186,11 @@ module.exports = {
                                         shopname: shopname,
                                         place_id: place_id,
                                         time: slot,
-                                        ordertime:dateTime
+                                        ordertime: dateTime
                                     };
-                                    callback(order_infor);
+
+                                    console.log(token); // 8ba6c19dc1def5702ff5acbf2aeea5aa
+                                    callback(order_infor, token);
                                 }).catch(function (err) {
                                     console.log(err);
                                 });
