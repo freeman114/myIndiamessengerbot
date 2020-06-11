@@ -109,7 +109,7 @@ module.exports = {
     date_time: function () {
         let date_ob = new Date();
 
-        var n = d.getTimezoneOffset();
+        var n = date_ob.getTimezoneOffset();
         console.log(n);
         // current date
         let date = ("0" + date_ob.getDate()).slice(-2);
