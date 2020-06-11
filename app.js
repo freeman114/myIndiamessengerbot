@@ -373,6 +373,7 @@ function receivedPostback(event) {
 function receivedMessage(event) {
     console.log('_____________We received message___________');
     console.log(JSON.stringify(event));
+    setSessionAndUser(senderID);
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
@@ -400,7 +401,7 @@ function receivedMessage(event) {
 function sendWelcomeMessage(userId) {
     console.log("______________We received welcomemessage._________________");
     let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
-
+    setSessionAndUser(senderID);
     let replies = [
         {
             "content_type": "text",
