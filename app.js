@@ -218,7 +218,8 @@ app.get('/timeslot', (req, res) => {
             // var responseText = "You can use QR code in following to verify yourself in the shop";
             // fbService.sendQuickReply(idss[0], responseText, replies);
             console.log(JSON.stringify(order_infor));
-            QRCode.toDataURL(order_infor.toString(), function (err, url) {
+            qr_str = JSON.stringify(order_infor);
+            QRCode.toDataURL(qr_str, function (err, url) {
                 try {
                     if (!url) {
                         return res.status(400).json({
