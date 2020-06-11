@@ -71,7 +71,7 @@ crypto.randomBytes(8, (err, buff) => {
         userService.formatdatabase(()=>{
             console.log("formated database");
         });
-    }, 1200000);
+    }, 1000*60*60*8);
     console.log(`/webhook will accept the Verify Token "${FB_VERIFY_TOKEN}"`);
 });
 
