@@ -16,11 +16,11 @@ async function save_timeslot(ids) {
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
             method: 'GET',
             success: function (res) {
-                var b64Response = btoa(res);
+                // var b64Response = btoa(res);
 
-                console.log(b64Response);
-                var outputImg = document.createElement('img');
-                outputImg.src = res.from;
+                // console.log(b64Response);
+                // var outputImg = document.createElement('img');
+                // outputImg.src = res.from;
                 $('#myqrcode').prop('src', res.from);
                 $('#download').prop('href', res.from);
                 
