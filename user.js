@@ -159,7 +159,7 @@ module.exports = {
                     var myquery = { timeSlot: timearray };
                     var newvalues = { $set: { timeSlot: array } };
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
-                        .then(function (res) {
+                        .then(async function (res) {
                             console.log("success");
                             let result = await dbo.collection("users").find(query).toArray();
                             console.log(result.oderArray);
