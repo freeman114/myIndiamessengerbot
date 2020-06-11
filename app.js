@@ -225,7 +225,7 @@ app.get('/timeslot', (req, res) => {
                 // console.log(img);
                 res.writeHead(200,{
                     'Content-Type' : 'image/png',
-                    'Content-Length' : res.length
+                    'Content-Length' : url.length
                 })
                 httpsMsgs.sendJSON(req, res, {
                     from: url
