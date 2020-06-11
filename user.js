@@ -165,48 +165,28 @@ module.exports = {
                             let userquery = { fb_id: userId };
                             let result = await dbo.collection("users").find(userquery).toArray();
 
-                            // console.log(result[0].oderArray);
+                            //getting user name from user collection
+                            let username = result[0].firstname;
+
+                            //updating user collection
                             let order_array = result[0].oderArray;
-                            let name = result[0].firstname;
                             let newvalue = { place_id: place_id, shopName: shopname, time: slot };
-                            
                             order_array.push(newvalue);
-
-                            var newquery = { $set: {fb_id: userId, oderArray: order_array } };
-
+                            var newquery = { $set: { fb_id: userId, oderArray: order_array } };
                             dbo.collection("users").updateOne(userquery, newquery)
-                            .then ( function (result) {
-                                callback();
-                            }).catch (function(err) {
-                                console.log(err);
-                                
-                            });
+                                .then(function (result) {
+                                    var order_infor = {
+                                        userId: userId,
+                                        username: username,
+                                        shopname: shopname,
+                                        place_id: place_id,
+                                        time: slot
+                                    };
+                                    callback(order_infor);
+                                }).catch(function (err) {
+                                    console.log(err);
+                                });
 
-
-
-                            // try {
-                            //     console.log(result);
-
-
-                            //     db.close();
-                            // } catch (error) {
-                            //     console.log(error);
-                            // }
-
-
-                            // var myquery = { fb_id: userId };
-                            // let oder_array = [];
-                            // let item = { place_id: place_id, time: slot };
-                            // oder_array.push(item);
-                            // var newvalues = { $set: { fb_id: userId, "orderArray": oder_array } };
-                            // dbo.collection("users").updateOne(myquery, newvalues)
-                            //     .then(function (res) {
-                            //         console.log("updated users collection.");
-
-                            //         callback();
-                            //     }).catch(function (err) {
-                            //         console.log(err);
-                            //     });
                         }).catch(function (err) {
                             console.log(err);
                         });

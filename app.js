@@ -196,7 +196,7 @@ app.get('/timeslot', (req, res) => {
         const time = req.query.text;
         const ids = req.query.ids;
         var idss = ids.split("??")
-        userService.update_timeslot(ids, time, function () {
+        userService.update_timeslot(ids, time, function (order_infor) {
             // fbService.sendQuickReply
             // let replies = [
             //     {
@@ -217,8 +217,7 @@ app.get('/timeslot', (req, res) => {
             // ];
             // var responseText = "You can use QR code in following to verify yourself in the shop";
             // fbService.sendQuickReply(idss[0], responseText, replies);
-            var token = 'time:' + time + '   ids:' + ids;
-            QRCode.toDataURL(token, function (err, url) {
+            QRCode.toDataURL(order_infor, function (err, url) {
                 try {
                     if (!url) {
                         return res.status(400).json({
