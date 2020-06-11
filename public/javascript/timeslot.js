@@ -16,15 +16,12 @@ async function save_timeslot(ids) {
             url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
             method: 'GET',
             success: function (res) {
-                // var b64Response = btoa(res);
-
-                // console.log(b64Response);
-                // var outputImg = document.createElement('img');
-                // outputImg.src = res.from;
-                $('#myqrcode').prop('src', res.from);
-                $('#download').prop('href', res.from);
+                console.log(res);
+              
+                // $('#myqrcode').prop('src', res.from);
+                // $('#download').prop('href', res.from);
                 
-                document.getElementById(m_timeslot).style.display = 'none';
+                // document.getElementById(m_timeslot).style.display = 'none';
             },
             error: function (error) {
                 console.log('some error in fetching the intents');

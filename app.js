@@ -231,10 +231,7 @@ app.get('/timeslot', (req, res) => {
                 //     from: url
                 // });
                 // res.end(img);
-                res.status(200).json({
-                    status: 'succes',
-                    from: url,
-                })
+                res.send('sucees');
                 // res.end(url);
                 // res.write(url);
                 // res.json({ from: url });
