@@ -223,14 +223,14 @@ app.get('/timeslot', (req, res) => {
                 // let data = url.replace(/.*,/, '')
                 // let img = new Buffer.from(data, 'base64');
                 // console.log(img);
-                res.writeHead(200,{
-                    'Content-Type' : 'image/png',
-                    'Content-Length' : url.length
-                })
+                // res.writeHead(200,{
+                //     'Content-Type' : 'image/png',
+                //     'Content-Length' : img.length
+                // })
                 httpsMsgs.sendJSON(req, res, {
                     from: url
                 });
-                res.end(url);
+                // res.end(img);
             });
 
         });
