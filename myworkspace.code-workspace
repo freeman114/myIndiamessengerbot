@@ -4,9 +4,6 @@
 			"path": "."
 		},
 		{
-			"path": "..\\facebookMessenger_bot-master"
-		},
-		{
 			"path": "..\\node-wit-master"
 		},
 		{
@@ -14,6 +11,9 @@
 		},
 		{
 			"path": "..\\original-coast-clothing"
+		},
+		{
+			"path": "..\\..\\..\\hidden-brushlands-73748"
 		}
 	],
 	"settings": {}

@@ -108,6 +108,9 @@ module.exports = {
 
     date_time: function () {
         let date_ob = new Date();
+
+        var n = d.getTimezoneOffset();
+        console.log(d);
         // current date
         let date = ("0" + date_ob.getDate()).slice(-2);
         // current month
@@ -126,6 +129,7 @@ module.exports = {
         console.log(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds);
         // prints time in HH:MM format
         console.log(hours + ":" + minutes);
+        
         var ordertime = year + "-" + month + "-" + date + " " + hours + ":" + minutes;
         return ordertime;
     },

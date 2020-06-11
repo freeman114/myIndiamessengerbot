@@ -56,31 +56,16 @@ const fs = require('fs');
 
 app.get('/', (req, res) => {
 
-    let inputStr = " req.params.qrcode";
-
-    QRCode.toDataURL(inputStr, function (err, url) {
-
-
-        let data = url.replace(/.*,/, '')
-        let img = new Buffer.from(data, 'base64')
-        fs.writeFileSync('./qr.html', `<img src="${url}">`);
-        console.log('Wrote to ./qr.html');
-        // let aa = JSON.stringify(img);
-        // let as = aa.toString("utf-8");
-        console.log(img);
-
-
-        res.writeHead(200,{
-            'Content-Type' : 'image/png',
-            'Content-Length' : img.length
-        })
-        res.end(img)
-
-    })
-
-
 })
+var toLocalTime = function(time) {
+        var d = new Date(time);
+        var offset = (new Date().getTimezoneOffset() / 60) * -1;
+        var n = new Date(d.getTime() + offset);
+        console.log(d.getDay());
+        return n;
+      };
 
+      toLocalTime();
 app.listen(3000, () => {
     console.log("success sever port 3000");
 });
