@@ -231,7 +231,10 @@ app.get('/timeslot', (req, res) => {
                 //     from: url
                 // });
                 // res.end(img);
-                res.writeHead(200)
+                res.writeHead(200, {
+                    'Content-Type' : "text/plain"
+                });
+                // res.end(url);
                 res.json({ from: url });
             });
 
