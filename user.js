@@ -169,12 +169,15 @@ module.exports = {
                             console.log(result[0].oderArray);
                             let order_array = result[0].oderArray;
                             let name = result[0].firstname;
-                            newarray = order_array
+                            newarray = order_array;
+                            console.log(newarray);
                             let newvalue = { place_id: place_id, shopName: shopname, time: slot };
                             newarray.push(newvalue);
+                            console.log(newarray);
+                            
                             var myquery = { oderArray: order_array };
                             var newquery = { $set: { oderArray: newarray } };
-                            
+
                             dbo.collection("users").updateOne(myquery, newquery)
                             .then ( function (result) {
                                 callback();

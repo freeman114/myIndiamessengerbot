@@ -198,28 +198,28 @@ app.get('/timeslot', (req, res) => {
         var idss = ids.split("??")
         userService.update_timeslot(ids, time, function () {
             // fbService.sendQuickReply
-            let replies = [
-                {
-                    "content_type": "text",
-                    "title": "Start Over",
-                    "payload": "start_over"
-                },
-                {
-                    "content_type": "text",
-                    "title": "Previous ",
-                    "payload": "inputaddress"
-                },
-                {
-                    "content_type": "text",
-                    "title": "Cancel ",
-                    "payload": "cancel"
-                }
-            ];
-            var responseText = "You can use QR code in following to verify yourself in the shop";
-            fbService.sendQuickReply(idss[0], responseText, replies);
+            // let replies = [
+            //     {
+            //         "content_type": "text",
+            //         "title": "Start Over",
+            //         "payload": "start_over"
+            //     },
+            //     {
+            //         "content_type": "text",
+            //         "title": "Previous ",
+            //         "payload": "inputaddress"
+            //     },
+            //     {
+            //         "content_type": "text",
+            //         "title": "Cancel ",
+            //         "payload": "cancel"
+            //     }
+            // ];
+            // var responseText = "You can use QR code in following to verify yourself in the shop";
+            // fbService.sendQuickReply(idss[0], responseText, replies);
             var token = 'time:' + time + '   ids:' + ids;
             QRCode.toDataURL(token, function (err, url) {
-                console.log(url);
+                // console.log(url);
                 // let data = url.replace(/.*,/, '')
                 // let img = new Buffer.from(data, 'base64');
                 // console.log(img);
@@ -227,10 +227,11 @@ app.get('/timeslot', (req, res) => {
                 //     'Content-Type' : 'image/png',
                 //     'Content-Length' : img.length
                 // })
-                httpsMsgs.sendJSON(req, res, {
-                    from: url
-                });
+                // httpsMsgs.sendJSON(req, res, {
+                //     from: url
+                // });
                 // res.end(img);
+                res.json({ from: url });
             });
 
         });
