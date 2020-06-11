@@ -183,7 +183,8 @@ module.exports = {
                                         username: username,
                                         shopname: shopname,
                                         place_id: place_id,
-                                        time: slot
+                                        time: slot,
+                                        ordertime:dateTime
                                     };
                                     callback(order_infor);
                                 }).catch(function (err) {

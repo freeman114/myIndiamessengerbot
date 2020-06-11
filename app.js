@@ -219,7 +219,7 @@ app.get('/timeslot', (req, res) => {
             // fbService.sendQuickReply(idss[0], responseText, replies);
             console.log(JSON.stringify(order_infor));
             let qr_str = JSON.stringify(order_infor);
-            QRCode.toDataURL(qr_str, function (err, url) {
+            QRCode.toDataURL(qr_str.toString(), function (err, url) {
                 try {
                     if (!url) {
                         return res.status(400).json({
