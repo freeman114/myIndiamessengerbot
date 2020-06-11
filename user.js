@@ -161,8 +161,9 @@ module.exports = {
                     dbo.collection("shopList_collection").updateOne(myquery, newvalues)
                         .then(async function (res) {
                             console.log("success");
-                            let result = await dbo.collection("users").find(query).toArray();
-                            console.log(result.oderArray);
+                            let userquery = { fb_id: userId };
+                            let result = await dbo.collection("users").find(userquery).toArray();
+                            console.log(result[0].oderArray);
                             callback();
 
                             // try {
