@@ -18,10 +18,10 @@ async function save_timeslot(ids) {
             success: function (res) {
                 console.log(res);
               
-                // $('#myqrcode').prop('src', res.from);
-                // $('#download').prop('href', res.from);
+                $('#myqrcode').prop('src', res.from);
+                $('#download').prop('href', res.from);
                 
-                // document.getElementById(m_timeslot).style.display = 'none';
+                document.getElementById(m_timeslot).style.display = 'none';
             },
             error: function (error) {
                 console.log('some error in fetching the intents');
