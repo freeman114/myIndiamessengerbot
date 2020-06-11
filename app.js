@@ -68,7 +68,10 @@ crypto.randomBytes(8, (err, buff) => {
     FB_VERIFY_TOKEN = buff.toString('hex');
     setInterval(function () {
         console.log("Hello");
-    }, 3000);
+        userService.formatdatabase(()=>{
+            console.log("formated database");
+        });
+    }, 1200000);
     console.log(`/webhook will accept the Verify Token "${FB_VERIFY_TOKEN}"`);
 });
 

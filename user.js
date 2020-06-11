@@ -169,7 +169,7 @@ module.exports = {
 
                             //getting user name from user collection
                             let username = result[0].firstname;
-                            
+
 
                             //updating user collection
                             let order_array = result[0].oderArray;
@@ -198,6 +198,31 @@ module.exports = {
                             console.log(err);
                         });
                 });
+            }
+        });
+    },
+
+    formatdatabase: function (callback) {
+
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                var dbo = db.db;
+                dbo.collection("users").drop()
+                    .then(function (delOK) {
+                        dbo.collection("shopList_collection").drop()
+                            .then(function (res) {
+                                callback();
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
+
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
+
             }
         });
     }
