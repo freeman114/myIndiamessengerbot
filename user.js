@@ -176,9 +176,9 @@ module.exports = {
                             console.log(newarray);
 
                             var myquery = { oderArray: order_array };
-                            var newquery = { $set: { oderArray: newarray } };
+                            var newquery = { $set: {fb_id: userId, oderArray: newarray } };
 
-                            dbo.collection("users").updateOne(myquery, newquery)
+                            dbo.collection("users").updateOne(userquery, newquery)
                             .then ( function (result) {
                                 callback();
                             }).catch (function(err) {
