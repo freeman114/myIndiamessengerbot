@@ -4,6 +4,7 @@ var timeArray = require('./public/timeslot.json');
 // const config = require('./config');
 const config = require('./config');
 const fbService = require('./facebook_service')
+const external_api = require('./external_api')
 
 const mongoose = require('mongoose');
 const mongodb_url =
@@ -175,6 +176,8 @@ module.exports = {
                             var newquery = { $set: { fb_id: userId, oderArray: order_array } };
                             dbo.collection("users").updateOne(userquery, newquery)
                                 .then(function (result) {
+                                    var dateTime = external_api.date_time();
+                                    console.log(dateTime);
                                     var order_infor = {
                                         userId: userId,
                                         username: username,
