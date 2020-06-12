@@ -251,7 +251,7 @@ module.exports = {
                 var dbo = db.db;
                 var findUser = { fb_id: userId };
                 // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
-                dbo.collection("customers").find(findUser).toArray()
+                dbo.collection("users").find(findUser).toArray()
                     .then(function (result) {
                         return result[0].userrole;
                     }).catch(function (err) {
