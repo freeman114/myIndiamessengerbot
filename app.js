@@ -7,23 +7,13 @@
 // Messenger API integration example
 // We assume you have:
 // * a Wit.ai bot setup (https://wit.ai/docs/quickstart)
-// * a Messenger Platform setup (https://developers.facebook.com/docs/messenger-platform/quickstart)
-// You need to `npm install` the following dependencies: body-parser, express, node-fetch.
-//
-// 1. npm install body-parser express node-fetch
-// 2. Download and install ngrok from https://ngrok.com/download
-// 3. ./ngrok http 5000
-// 4. WIT_TOKEN=your_access_token FB_APP_SECRET=your_app_secret FB_PAGE_TOKEN=your_page_token node examples/messenger.js
-// 5. Subscribe your page to the Webhooks using verify_token and `https://<your_ngrok_io>/webhook` as callback URL.
-// 6. Talk to your bot on Messenger!
+
 
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const express = require('express');
-const fetch = require('node-fetch');
 const uuid = require('uuid');
 var path = require('path');
-var httpsMsgs = require('http-msgs');
 var QRCode = require('qrcode')
 var md5 = require('md5');
 var schedule = require('node-schedule');
@@ -247,7 +237,7 @@ app.post('/webhook', (req, res) => {
                         if (attachments) {
                             // We received an attachment
                             // Let's reply with an automatic message
-                            
+
                         } else if (text) {
                             receivedMessage(event);
 
@@ -406,7 +396,6 @@ function setSessionAndUser(senderID) {
 function handleQuickreply(userId, quickReply, messageId) {
     console.log('_________Received quickreply response________');
     var quickReplyPayload = quickReply.payload;
-    var cash;
     switch (quickReplyPayload) {
         case 'self_service':
             console.log(quickReplyPayload);
@@ -418,8 +407,6 @@ function handleQuickreply(userId, quickReply, messageId) {
 
         case 'be_volunteer':
             be_v.self_certify(userId);
-
-
             break;
         case 'start_over':
             sendWelcomeMessage(userId);
@@ -430,9 +417,16 @@ function handleQuickreply(userId, quickReply, messageId) {
         case 'inputaddress':
             inputAddress(userId);
             break;
+        case 'be_v_yes':
+            break;
+        case 'n_v_yes':
+            break;
+        case 'be_v_no':
+            break;
+        case 'n_v_no':
+            break;
+
         case 'cancel':
-
-
             break;
 
         default:
