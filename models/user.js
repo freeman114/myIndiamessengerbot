@@ -1,11 +1,11 @@
 'use strict';
 const request = require('request');
-var timeArray = require('./public/timeslot.json');
+var timeArray = require('../public/timeslot.json');
 
 // const config = require('./config');
-const config = require('./config');
+const config = require('../config');
 // const fbService = require('./facebook_service')
-const external_api = require('./external_api')
+const external_api = require('../external_api')
 
 const mongoose = require('mongoose');
 const mongodb_url =
