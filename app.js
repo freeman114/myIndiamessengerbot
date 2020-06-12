@@ -67,7 +67,7 @@ let FB_VERIFY_TOKEN = null;
 crypto.randomBytes(8, (err, buff) => {
     if (err) throw err;
     FB_VERIFY_TOKEN = buff.toString('hex');
-    var j = schedule.scheduleJob('47 8 * * *', function () {
+    var j = schedule.scheduleJob('27 9 * * *', function () {
         console.log('database format!');
         console.log("Hello");
         // userService.formatdatabase(() => {
