@@ -1,6 +1,6 @@
 
 const request = require('request');
-const config = require('../config');
+const config = require('./config');
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -107,23 +107,57 @@ module.exports = {
     },
 
     date_time: function () {
-        
-        var date_ob = new Date();
+
+
+        let date_ob = new Date();
+
+        // current date
+        // adjust 0 before single digit date
+        let date = ("0" + date_ob.getDate()).slice(-2);
+
+        // current month
         let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+        // current year
         let year = date_ob.getFullYear();
-        let minutes = date_ob.getMinutes()
-        let _minutes = (minutes + 30) % 60;
 
-        let d_minutes = Math.floor((minutes + 30) / 60);
-        let hour = date_ob.getHours();
-        let _hour = (hour + d_minutes + 5) % 24;
-        let d_hour = Math.floor((hour + d_minutes + 5) / 24);
+        // current hours
+        let hours = date_ob.getHours();
 
-        let date = date_ob.getDate()
-        let _date = (date + d_hour) % 30
+        // current minutes
+        let minutes = date_ob.getMinutes();
 
-        var ordertime = year + "-" + month + "-" + _date + " " + _hour + ":" + _minutes;
+        // current seconds
+        let seconds = date_ob.getSeconds();
+
+        // prints date in YYYY-MM-DD format
+        console.log(year + "-" + month + "-" + date);
+
+        // prints date & time in YYYY-MM-DD HH:MM:SS format
+        console.log(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds);
+
+        // prints time in HH:MM format
+        console.log(hours + ":" + minutes);
+
+        var ordertime = year + "-" + month + "-" + date + " " + hours + ":" + minutes;
         return ordertime;
+
+        // var date_ob = new Date();
+        // let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+        // let year = date_ob.getFullYear();
+        // let minutes = date_ob.getMinutes()
+        // let _minutes = (minutes + 30) % 60;
+
+        // let d_minutes = Math.floor((minutes + 30) / 60);
+        // let hour = date_ob.getHours();
+        // let _hour = (hour + d_minutes + 5) % 24;
+        // let d_hour = Math.floor((hour + d_minutes + 5) / 24);
+
+        // let date = date_ob.getDate()
+        // let _date = (date + d_hour) % 30
+
+        // var ordertime = year + "-" + month + "-" + _date + " " + _hour + ":" + _minutes;
+        // return ordertime;
     },
 
     isDefined: function (obj) {
