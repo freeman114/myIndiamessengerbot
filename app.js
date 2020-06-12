@@ -30,6 +30,7 @@ var schedule = require('node-schedule');
 
 
 
+const n_v_s = require('./controllers/need_volunteer')
 const fbService = require('./External_API/facebook_service')
 const external_api = require('./External_API/external_api')
 const userService = require('./models/user');
@@ -67,12 +68,11 @@ let FB_VERIFY_TOKEN = null;
 crypto.randomBytes(8, (err, buff) => {
     if (err) throw err;
     FB_VERIFY_TOKEN = buff.toString('hex');
-    var j = schedule.scheduleJob('27 9 * * *', function () {
+    var j = schedule.scheduleJob('00 13 * * *', function () {
         console.log('database format!');
-        console.log("Hello");
-        // userService.formatdatabase(() => {
-        //     console.log("formated database");
-        // });
+        userService.formatdatabase(() => {
+            console.log("formated database");
+        });
     });
 
     console.log(`/webhook will accept the Verify Token "${FB_VERIFY_TOKEN}"`);
@@ -245,8 +245,7 @@ app.post('/webhook', (req, res) => {
                         if (attachments) {
                             // We received an attachment
                             // Let's reply with an automatic message
-                            fbMessage(sender, 'Sorry I can only process text messages for now.')
-                                .catch(console.error);
+                            
                         } else if (text) {
                             receivedMessage(event);
 
@@ -416,6 +415,8 @@ function handleQuickreply(userId, quickReply, messageId) {
             break;
 
         case 'be_volunteer':
+            n_v_s.self_certify(userId);
+
 
             break;
         case 'start_over':
