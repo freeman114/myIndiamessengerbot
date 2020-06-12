@@ -1,9 +1,9 @@
-const fbService = require('./External_API/facebook_service')
+const fbService = require('../External_API/facebook_service')
 module.exports = {
     self_certify: function (userId) {
         console.log('____________we sent message that input address.____________');
 
-        let responseText = "Please enter your address. ";
+        let responseText = "Do you self-certify that you will be wearing masks to the shops and have been corona negative or have not shown any symptoms for the past 14 days ? ";
         let replies = [
             {
                 "content_type": "text",
@@ -24,7 +24,7 @@ module.exports = {
 
 
 
-        // fbService.sendQuickReply(userId, responseText, replies);
+        fbService.sendQuickReply(userId, responseText, replies);
 
     }
 }
