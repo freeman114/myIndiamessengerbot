@@ -70,7 +70,7 @@ let FB_VERIFY_TOKEN = null;
 crypto.randomBytes(8, (err, buff) => {
     if (err) throw err;
     FB_VERIFY_TOKEN = buff.toString('hex');
-    var j = schedule.scheduleJob('30 18 * * *', function () {
+    var j = schedule.scheduleJob('20 22 * * *', function () {
         console.log('database format!');
         userService.formatdatabase(() => {
             console.log("formated database");
@@ -323,7 +323,7 @@ function receivedMessage(event) {
 }
 
 function sendWelcomeMessage(userId) {
-    console.log("______________We received welcomemessage._________________");
+    console.log("______________We received welcomemessage!_________________");
     let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
     setSessionAndUser(userId);
     let replies = [
