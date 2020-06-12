@@ -5,7 +5,7 @@ var timeArray = require('../public/timeslot.json');
 // const config = require('./config');
 const config = require('../config');
 // const fbService = require('./facebook_service')
-const external_api = require('../external_api')
+const external_api = require('../External_API/external_api')
 
 const mongoose = require('mongoose');
 const mongodb_url =
