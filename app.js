@@ -26,6 +26,7 @@ var path = require('path');
 var httpsMsgs = require('http-msgs');
 var QRCode = require('qrcode')
 var md5 = require('md5');
+var schedule = require('node-schedule');
 
 
 
@@ -66,12 +67,14 @@ let FB_VERIFY_TOKEN = null;
 crypto.randomBytes(8, (err, buff) => {
     if (err) throw err;
     FB_VERIFY_TOKEN = buff.toString('hex');
-    setInterval(function () {
+    var j = schedule.scheduleJob('47 8 * * *', function () {
+        console.log('database format!');
         console.log("Hello");
-        userService.formatdatabase(()=>{
-            console.log("formated database");
-        });
-    }, 1000*60*60*8);
+        // userService.formatdatabase(() => {
+        //     console.log("formated database");
+        // });
+    });
+
     console.log(`/webhook will accept the Verify Token "${FB_VERIFY_TOKEN}"`);
 });
 
@@ -285,7 +288,7 @@ function receivedPostback(event) {
             break;
 
         default:
-           
+
             break;
     }
 }
