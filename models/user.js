@@ -12,7 +12,7 @@ const mongodb_url =
     "mongodb+srv://admin:admin@facebookbotcluster0-cqfb6.mongodb.net/Messenger_Bot";
 // 
 
-const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
+
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
         await callback(array[index], index, array);

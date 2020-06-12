@@ -170,5 +170,6 @@ module.exports = {
         }
 
         return obj != null;
-    }
+    },
+
 }
