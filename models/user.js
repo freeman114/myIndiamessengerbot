@@ -33,12 +33,11 @@ module.exports = {
                     var user = JSON.parse(body);
 
                     if (user.first_name != "undefined") {
-                        console.log("success save user");
+                        console.log("Check user database");
                         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
                             if (err) {
                                 console.log(err);
                             } else {
-                                console.log("completed data successfully.");
                                 var dbo = db.db;
                                 var findUser = { fb_id: userId };
                                 var order_array = [];
@@ -49,11 +48,12 @@ module.exports = {
                                         var insertUser = { fb_id: userId, firstname: user.first_name, lastname: user.last_name, profile_picture: user.profile_pic, oderArray: order_array };
                                         dbo.collection("users").insertOne(insertUser, function (err, res) {
                                             if (err) throw err;
-                                            console.log("1 document inserted");
+                                            console.log("1 user inserted");
                                             callback();
                                             db.close();
                                         });
                                     }
+                                    console.log("completed db check successfully.");
                                 });
 
 

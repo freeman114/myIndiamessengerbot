@@ -31,6 +31,33 @@ module.exports = {
 
         fbService.sendQuickReply(userId, responseText, replies);
 
+    },
+
+    certify_yes: async function (userId) {
+        console.log('____________sent that input name in be_volunteer. ___________');
+        let responseText = "“Please seek such deliveries only when it is an emergency. The people who help you are volunteers. All deliveries will be contactless. Be polite to the volunteers. ";
+        fbService.sendTextMessage(userId, responseText);
+        console.log(res);
+        let replytext = "Please enter your name.";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "need_volunteers"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, replytext, replies);
     }
 }
 

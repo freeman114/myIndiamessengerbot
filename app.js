@@ -60,7 +60,7 @@ let FB_VERIFY_TOKEN = null;
 crypto.randomBytes(8, (err, buff) => {
     if (err) throw err;
     FB_VERIFY_TOKEN = buff.toString('hex');
-    var j = schedule.scheduleJob('20 22 * * *', function () {
+    var j = schedule.scheduleJob('30 18 * * *', function () {
         console.log('database format!');
         userService.formatdatabase(() => {
             console.log("formated database");
@@ -418,10 +418,13 @@ function handleQuickreply(userId, quickReply, messageId) {
             inputAddress(userId);
             break;
         case 'be_v_yes':
+            be_v.certify_yes(userId);
             break;
         case 'n_v_yes':
+            n_v_s.certify_yes(userId);
             break;
         case 'be_v_no':
+            be_v.certify_no(userId);
             break;
         case 'n_v_no':
             break;

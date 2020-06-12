@@ -31,5 +31,13 @@ module.exports = {
 
         fbService.sendQuickReply(userId, responseText, replies);
 
+    },
+
+    certify_yes: function (userId) {
+        
+    },
+
+    certify_no: function (userID) {
+
     }
 }
