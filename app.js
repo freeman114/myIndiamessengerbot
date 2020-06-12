@@ -411,11 +411,11 @@ function handleQuickreply(userId, quickReply, messageId) {
             inputName(userId);
             break;
         case 'need_volunteers':
-
+            n_v_s.self_certify(userId);
             break;
 
         case 'be_volunteer':
-            n_v_s.self_certify(userId);
+            
 
 
             break;
