@@ -31,10 +31,12 @@ var schedule = require('node-schedule');
 
 
 const n_v_s = require('./controllers/need_volunteer')
+const be_v = require('./controllers/be_volunteer')
 const fbService = require('./External_API/facebook_service')
 const external_api = require('./External_API/external_api')
 const userService = require('./models/user');
 const config = require('./config');
+const { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } = require('constants');
 
 
 let Wit = null;
@@ -415,7 +417,7 @@ function handleQuickreply(userId, quickReply, messageId) {
             break;
 
         case 'be_volunteer':
-            
+            be_v.self_certify(userId);
 
 
             break;
