@@ -31,7 +31,7 @@ var md5 = require('md5');
 
 const fbService = require('./facebook_service')
 const external_api = require('./external_api')
-const userService = require('.models/user');
+const userService = require('./models/user');
 const config = require('./config');
 
 
