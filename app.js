@@ -76,74 +76,13 @@ crypto.randomBytes(8, (err, buff) => {
 });
 
 
-// ----------------------------------------------------------------------------
-// Messenger API specific code
-// See the Send API reference
-// https://developers.facebook.com/docs/messenger-platform/send-api-reference
-
-
 const sessionIds = new Map();
 const usersMap = new Map();
 
-const fbMessage = (id, text) => {
-    const body = JSON.stringify({
-        recipient: {
-            id
-        },
-        message: {
-            text
-        },
-    });
-    const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
-    return fetch('https: //graph.facebook.com/me/messages?' + qs, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body,
-    })
-        .then(rsp => rsp.json())
-        .then(json => {
-            if (json.error && json.error.message) {
-                throw new Error(json.error.message);
-            }
-            return json;
-        });
-};
 
-// ----------------------------------------------------------------------------
-// Wit.ai bot specific code
-// This will contain all user sessions.
-// Each session has an entry:
-// sessionId -> {fbid: facebookUserId, context: sessionState}
 const sessions = {};
 
-const findOrCreateSession = (fbid) => {
-    let sessionId;
-    // Let's see if we already have a session for the user fbid
-    Object.keys(sessions).forEach(k => {
-        if (sessions[k
-        ].fbid === fbid) {
-            // Yep, got it!
-            sessionId = k;
-        }
-    });
-    if (!sessionId) {
-        // No session found for user fbid, let's create a new one
-        sessionId = new Date().toISOString();
-        sessions[sessionId
-        ] = {
-            fbid: fbid, context: {}
-        };
-    }
-    return sessionId;
-};
 
-// Setting up our bot
-const wit = new Wit({
-    accessToken: WIT_TOKEN,
-    logger: new log.Logger(log.INFO)
-});
 
 // Starting our webserver and putting it all together
 const app = express();
@@ -197,6 +136,8 @@ app.get('/webview', (req, res) => {
     }
 });
 
+
+// timeslot handler
 app.get('/timeslot', (req, res) => {
     try {
         console.log(req.query.text);
@@ -271,13 +212,6 @@ app.get('/timeslot', (req, res) => {
 
     }
 });
-// app.post('/webview', function (req, res){
-//     console.log(typeof(req));
-//     console.log(req.body.text);
-//     httpsMsgs.sendJSON(req, res, {
-//         from: "res.result.output.text[0]"
-//     });
-// });
 
 // Message handler
 app.post('/webhook', (req, res) => {
@@ -351,21 +285,7 @@ function receivedPostback(event) {
             break;
 
         default:
-            // if (JSON.parse(payload).address) {
-            //     var payload = JSON.parse(payload);
-            //     var shopName = payload.name;
-            //     console.log("____received timeslot_____");
-            //     console.log(shopName);
-            //     var place_id = payload.place_id;
-            //     userService.add_Timeslot(shopName, place_id, function (timearray) {
-            //         fbService.addTimeslot(senderID, timearray, function (updated) {
-            //             if (updated) {
-            //                 console.log("display");
-            //             }
-            //         });
-
-            //     });
-            // }
+           
             break;
     }
 }
