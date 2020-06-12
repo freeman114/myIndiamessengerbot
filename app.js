@@ -180,24 +180,7 @@ app.get('/timeslot', (req, res) => {
                 } catch (err) {
                     console.log(err);
                 };
-                // console.log(url);
-                // let data = url.replace(/.*,/, '')
-                // let img = new Buffer.from(data, 'base64');
-                // console.log(img);
-                // res.writeHead(200,{
-                //     'Content-Type' : 'image/png',
-                //     'Content-Length' : img.length
-                // })
 
-
-                // res.end(img);
-                // res.status(200).json({
-                //     status: 'succes',
-                //     from: url,
-                // })
-                // res.end(url);
-                // res.write(url);
-                // res.json({ from: url });
             });
 
         });
@@ -227,10 +210,6 @@ app.post('/webhook', (req, res) => {
                         // We retrieve the Facebook user ID of the sender
                         const sender = event.sender.id;
 
-                        // We could retrieve the user's current session, or create one if it doesn't exist
-                        // This is useful if we want our bot to figure out the conversation history
-                        // const sessionId = findOrCreateSession(sender);
-                        // We retrieve the message content
                         const { text, attachments
                         } = event.message;
 
@@ -284,10 +263,11 @@ function receivedPostback(event) {
     }
 }
 
-function receivedMessage(event) {
+async function receivedMessage(event) {
     console.log('_____________We received message___________');
     console.log(JSON.stringify(event));
     var senderID = event.sender.id;
+    var userrole = await userService.read_userrole(senderID);
     setSessionAndUser(senderID);
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
@@ -305,7 +285,23 @@ function receivedMessage(event) {
         handleQuickreply(senderID, quickReply, messageId);
         return;
     } else if (messageText) {
-        sendToWit(event);
+        switch (userrole) {
+            case 0:
+                sendToWit_0(event);
+
+                break;
+            case 1:
+                n_v_s.sendToWit_1(event);
+                break;
+
+            case 2:
+                sendToWit_2(event);
+                break;
+
+
+            default:
+                break;
+        }
         return;
     }
 
@@ -398,15 +394,24 @@ function handleQuickreply(userId, quickReply, messageId) {
     var quickReplyPayload = quickReply.payload;
     switch (quickReplyPayload) {
         case 'self_service':
-            console.log(quickReplyPayload);
-            inputName(userId);
+            userService.set_userrole(userId, "0", () => {
+                console.log(quickReplyPayload);
+                inputName(userId);
+            });
+
             break;
         case 'need_volunteers':
-            n_v_s.self_certify(userId);
+            userService.set_userrole(userId, "1", () => {
+                n_v_s.self_certify(userId);
+
+            });
             break;
 
         case 'be_volunteer':
-            be_v.self_certify(userId);
+            userService.set_userrole(userId, "2", () => {
+                be_v.self_certify(userId);
+
+            });
             break;
         case 'start_over':
             sendWelcomeMessage(userId);
@@ -466,7 +471,7 @@ function inputName(userId) {
     fbService.sendQuickReply(userId, responseText, replies);
 }
 
-function sendToWit(event) {
+function sendToWit_0(event) {
     try {
         console.log('__________received text message___________');
         var userId = event.sender.id;

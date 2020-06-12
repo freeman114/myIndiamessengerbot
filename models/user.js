@@ -225,5 +225,40 @@ module.exports = {
 
             }
         });
+    },
+
+    // customer's role setting 
+    set_userrole: function (userID, userrole, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+            .then((db) => {
+                var dbo = db.db;
+                var findUser = { fb_id: userId };
+                var newvalues = { $set: { fb_id: userID, userrole: userrole } };
+                dbo.collection("users").updateOne(findUser, newvalues)
+                    .then(function (result) {
+                        callback();
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
+            }).catch((err) => {
+                console.log(err);
+            });
+    },
+
+    read_userrole: function (userId) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+            .then((db) => {
+                var dbo = db.db;
+                var findUser = { fb_id: userId };
+                // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
+                dbo.collection("customers").find(findUser).toArray()
+                    .then(function (result) {
+                        return result[0].userrole;
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
+            }).catch((err) => {
+                console.log(err);
+            });
     }
 }
