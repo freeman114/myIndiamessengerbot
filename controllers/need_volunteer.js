@@ -1,12 +1,13 @@
 const fbService = require('../External_API/facebook_service')
 const external_api = require('../External_API/external_api')
+const userService = require('../models/user');
 
 
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 
 module.exports = {
     self_certify: async function (userId) {
-        console.log('____________When customer click "Need for volunteers" button. __________');
+        console.log('*************When customer click "Need for volunteers" button. **************');
         let responseText = "Do you self-certify that you will be wearing masks to the shops and have been corona negative or have not shown any symptoms for the past 14 days ? ";
         let replies = [
             {
@@ -39,7 +40,7 @@ module.exports = {
 
     //when customer click yes in Need for volunteers
     certify_yes: async function (userId) {
-        console.log('____________sent that input name in be_volunteer. ___________');
+        console.log('*************sent that input name in be_volunteer. *************');
         let responseText = "Please seek such deliveries only when it is an emergency. The people who help you are volunteers. All deliveries will be contactless. Be polite to the volunteers. ";
 
         fbService.sendTextMessage(userId, responseText);
@@ -70,7 +71,7 @@ module.exports = {
     sendToWit_1: function (event) {
         try {
             let self = module.exports;
-            console.log('__________received text message___________');
+            console.log('*********received text message**********');
             var userId = event.sender.id;
             console.log(JSON.stringify(event));
 
@@ -93,52 +94,13 @@ module.exports = {
 
                         break;
                     case 'greeting':
-                        sendWelcomeMessage(userId);
+                        self.sendWelcomeMessage(userId);
                         break;
 
                     case 'address':
                         var value = event.message.nlp.entities.location[0].value;
                         console.log(value);
-                        external_api.displayShop(value, function (array) {
-                            if (array) {
-                                userService.add_Shoplist(userId, array, function (updated) {
-                                    if (updated) {
-                                        fbService.showStore(userId, array, function (s_h) {
-                                            if (s_h) {
-                                                console.log("success");
-                                                let responseText = "Click Booking schedule time button to book shop. ";
-                                                let replies = [
-                                                    {
-                                                        "content_type": "text",
-                                                        "title": "Start Over",
-                                                        "payload": "start_over"
-                                                    },
-                                                    {
-                                                        "content_type": "text",
-                                                        "title": "Previous ",
-                                                        "payload": "inputaddress"
-                                                    },
-                                                    {
-                                                        "content_type": "text",
-                                                        "title": "Cancel ",
-                                                        "payload": "cancel"
-                                                    }
-                                                ];
-                                                fbService.sendQuickReply(userId, responseText, replies);
-                                            }
-
-                                        });
-                                    } else {
-                                        console.log('error');
-                                    }
-
-                                });
-
-
-
-                            }
-
-                        });
+                        
                         break;
 
                     default:
@@ -157,6 +119,63 @@ module.exports = {
         catch (error) {
             console.log(error);
         }
+    },
+
+    inputAddress: function (userId) {
+        console.log('***************we sent message that input location.**********');
+
+        let responseText = "Please enter your location. ";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "inputname"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+
+
+        fbService.sendQuickReply(userId, responseText, replies);
+    },
+
+    sendWelcomeMessage: function (userId) {
+        console.log("*************We received welcomemessage!******************");
+        let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
+        setSessionAndUser(userId);
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Self-service",
+                "payload": "self_service"
+            },
+            {
+                "content_type": "text",
+                "title": "Need for volunteers ",
+                "payload": "need_volunteers"
+            },
+            {
+                "content_type": "text",
+                "title": "Be a volunteer ",
+                "payload": "be_volunteer"
+            },
+            {
+                "content_type": "text",
+                "title": " Cancel",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, responseText, replies);
     }
 }
 

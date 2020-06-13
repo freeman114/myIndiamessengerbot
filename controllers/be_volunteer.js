@@ -1,7 +1,7 @@
 const fbService = require('../External_API/facebook_service')
 module.exports = {
     self_certify: function (userId) {
-        console.log('____________when customer click "Be a volunteer" button.____________');
+        console.log('#############when customer click "Be a volunteer" button.############');
 
         let responseText = "Do you self-certify that you will be wearing masks to the shops and have been corona negative or have not shown any symptoms for the past 14 days ? ";
         let replies = [
@@ -34,7 +34,31 @@ module.exports = {
     },
 
     certify_yes: function (userId) {
-        
+        console.log('%%%%%%%%%%%%% sent that input name in be_volunteer. %%%%%%%%%%%%%%%%');
+        let responseText = "Please seek such deliveries only when it is an emergency. The people who help you are volunteers. All deliveries will be contactless. Be polite to the volunteers. ";
+
+        fbService.sendTextMessage(userId, responseText);
+        await waitFor(1000);
+        let replytext = "Please enter your name.";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "need_volunteers"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, replytext, replies);
     },
 
     certify_no: function (userID) {
