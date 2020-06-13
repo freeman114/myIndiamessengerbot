@@ -9,7 +9,7 @@ const external_api = require('../External_API/external_api')
 
 const mongoose = require('mongoose');
 const mongodb_url =
-    "mongodb+srv://admin:admin@facebookbotcluster0-cqfb6.mongodb.net/";
+    "mongodb+srv://admin:admin@facebookbotcluster0-cqfb6.mongodb.net/Messenger_Bot";
 // 
 
 
@@ -254,9 +254,9 @@ module.exports = {
                 if (err) {
                     console.log(err);
                 }
-                var dbo = db.db("Messenger_Bot");
+                var dbo = db.db;
                 console.log(dbo);
-                // console.log(JSON.stringify(db));
+                console.log(JSON.stringify(dbo));
                 var findUser = { fb_id: userId };
                 // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
                 dbo.collection("users").find(findUser).toArray()
