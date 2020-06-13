@@ -262,15 +262,16 @@ module.exports = {
                     console.log(err);
                 }
                 var dbo = db.db;
-                console.log(dbo);
+                console.log(`dbo :${dbo} `);
                 // console.log(JSON.stringify(db));
                 var findUser = { fb_id: userId };
                 // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
                 dbo.collection("users").find(findUser).toArray()
                     .then(function (result) {
+                        console.log(`result : ${result}`);
                         resolve(result[0].userrole);
                     }).catch(function (err) {
-                        console.log(err);
+                        console.log(`err=  ${err}`);
                     });
             });
 
