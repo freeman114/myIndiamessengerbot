@@ -122,7 +122,7 @@ module.exports = {
     sendWelcomeMessage: async function (userId) {
         console.log("%%%%%%%%%%%%%%% We received welcomemessage! %%%%%%%%%%%%%%%%%%");
         let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
-        await setSessionAndUser(userId);
+        await appmodule.setSessionAndUser(userId);
         let replies = [
             {
                 "content_type": "text",
@@ -178,22 +178,3 @@ module.exports = {
 
 }
 
-function setSessionAndUser(senderID) {
-    return new Promise(function (resolve, reject) {
-        if (!sessionIds.has(senderID)) {
-            console.log(sessionIds.has(senderID));
-            sessionIds.set(senderID, uuid.v1());
-        }
-
-        if (!usersMap.has(senderID)) {
-            userService.addUser(function (user) {
-                console.log("set senderid");
-                usersMap.set(senderID, user);
-                resolve();
-            }, senderID);
-        } else {
-            resolve();
-        }
-    });
-
-}
