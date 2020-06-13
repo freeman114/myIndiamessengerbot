@@ -244,8 +244,7 @@ app.post('/webhook', (req, res) => {
 
 async function receivedPostback(event) {
     var senderID = event.sender.id;
-    await self.setSessionAndUser(userId);
-    // setSessionAndUser(senderID);
+    await self.setSessionAndUser(senderID);
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
@@ -269,8 +268,7 @@ async function receivedMessage(event) {
     console.log('_____________We received message___________');
     console.log(JSON.stringify(event));
     var senderID = event.sender.id;
-    // await setSessionAndUser(senderID);
-    await self.setSessionAndUser(userId);
+    await self.setSessionAndUser(senderID);
 
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
