@@ -268,8 +268,7 @@ async function receivedMessage(event) {
     console.log(JSON.stringify(event));
     var senderID = event.sender.id;
     await setSessionAndUser(senderID);
-    var userrole = await userService.read_userrole(senderID);
-    console.log(userrole);
+
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
     var message = event.message;
@@ -286,6 +285,8 @@ async function receivedMessage(event) {
         handleQuickreply(senderID, quickReply, messageId);
         return;
     } else if (messageText) {
+        var userrole = await userService.read_userrole(senderID);
+        console.log(userrole);
         switch (userrole) {
             case 0:
                 sendToWit_0(event);
