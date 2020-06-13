@@ -1,5 +1,9 @@
 const fbService = require('../External_API/facebook_service')
+
+const userService = require('../models/user');
+const appmodule = require('../app');
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
+
 module.exports = {
     self_certify: function (userId) {
         console.log('#############when customer click "Be a volunteer" button.############');
@@ -122,7 +126,7 @@ module.exports = {
     sendWelcomeMessage: async function (userId) {
         console.log("%%%%%%%%%%%%%%% We received welcomemessage! %%%%%%%%%%%%%%%%%%");
         let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
-        await appmodule.setSessionAndUser(userId);
+        // await appmodule.setSessionAndUser(userId);
         let replies = [
             {
                 "content_type": "text",

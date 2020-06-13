@@ -152,7 +152,7 @@ module.exports = {
     sendWelcomeMessage: async function (userId) {
         console.log("*************We received welcomemessage!******************");
         let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
-        await appmodule(userId);
+        // await appmodule.setSessionAndUser(userId);
         let replies = [
             {
                 "content_type": "text",
