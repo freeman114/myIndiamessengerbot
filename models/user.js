@@ -250,7 +250,7 @@ module.exports = {
             mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
                 .then((db) => {
                     var dbo = db.db;
-                    console.log(db0);
+                    console.log(dbo);
                     var findUser = { fb_id: userId };
                     // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
                     dbo.collection("users").find(findUser).toArray()
