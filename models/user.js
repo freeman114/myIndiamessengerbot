@@ -55,6 +55,7 @@ module.exports = {
                                     } else {
                                         console.log("completed db check successfully.");
                                         callback();
+                                        db.close();
                                     }
 
                                 });
@@ -256,7 +257,7 @@ module.exports = {
                 }
                 var dbo = db.db;
                 console.log(dbo);
-                console.log(JSON.stringify(dbo));
+                // console.log(JSON.stringify(db));
                 var findUser = { fb_id: userId };
                 // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
                 dbo.collection("users").find(findUser).toArray()
