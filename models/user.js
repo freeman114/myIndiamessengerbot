@@ -9,7 +9,7 @@ const external_api = require('../External_API/external_api')
 
 const mongoose = require('mongoose');
 const mongodb_url =
-    "mongodb+srv://admin:admin@facebookbotcluster0-cqfb6.mongodb.net/Messenger_Bot";
+    "mongodb+srv://admin:admin@facebookbotcluster0-cqfb6.mongodb.net/";
 // 
 
 
