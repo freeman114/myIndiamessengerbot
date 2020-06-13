@@ -237,7 +237,7 @@ module.exports = {
             .then((db) => {
                 var dbo = db.db;
                 console.log(`userid = ${userID}`);
-                var findUser = { fb_id: userId };
+                var findUser = {fb_id: userID};
                 var newvalues = { $set: { fb_id: userID, userrole: userrole } };
                 dbo.collection("users").updateOne(findUser, newvalues)
                     .then(function (result) {
