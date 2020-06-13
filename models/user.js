@@ -52,8 +52,11 @@ module.exports = {
                                             callback();
                                             db.close();
                                         });
+                                    } else {
+                                        console.log("completed db check successfully.");
+                                        callback();
                                     }
-                                    console.log("completed db check successfully.");
+                                    
                                 });
 
 

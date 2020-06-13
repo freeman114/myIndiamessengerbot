@@ -391,6 +391,8 @@ function setSessionAndUser(senderID) {
                 usersMap.set(senderID, user);
                 resolve();
             }, senderID);
+        } else {
+            resolve();
         }
     });
 
