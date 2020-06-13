@@ -251,7 +251,7 @@ module.exports = {
                 .then((db) => {
                     var dbo = db.db;
                     console.log(dbo);
-                    console.log(db);
+                    console.log(JSON.stringify(db));
                     var findUser = { fb_id: userId };
                     // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
                     dbo.collection("users").find(findUser).toArray()

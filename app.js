@@ -381,15 +381,17 @@ console.log('Listening on :' + PORT + '...');
 function setSessionAndUser(senderID) {
     return new Promise(function (resolve, reject) {
         if (!sessionIds.has(senderID)) {
+            console.log(sessionIds.has(senderID));
             sessionIds.set(senderID, uuid.v1());
         }
 
         if (!usersMap.has(senderID)) {
             userService.addUser(function (user) {
+                console.log("set senderid");
                 usersMap.set(senderID, user);
+                resolve();
             }, senderID);
         }
-        resolve();
     });
 
 }
