@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "..\\..\\hidden-brushlands-73748"
 		}
 	],
 	"settings": {}

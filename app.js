@@ -31,7 +31,6 @@ const { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } = require('constants');
 
 let Wit = null;
 let log = null;
-var self = module.exports;
 
 
 try {
@@ -242,9 +241,9 @@ app.post('/webhook', (req, res) => {
 });
 
 
-async function receivedPostback(event) {
+function receivedPostback(event) {
     var senderID = event.sender.id;
-    await self.setSessionAndUser(senderID);
+    setSessionAndUser(senderID);
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
@@ -268,7 +267,7 @@ async function receivedMessage(event) {
     console.log('_____________We received message___________');
     console.log(JSON.stringify(event));
     var senderID = event.sender.id;
-    await exports.setSessionAndUser(senderID);
+    await setSessionAndUser(senderID);
 
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
@@ -311,11 +310,10 @@ async function receivedMessage(event) {
 
 }
 
-async function sendWelcomeMessage(userId) {
+function sendWelcomeMessage(userId) {
     console.log("______________We received welcomemessage!_________________");
     let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
-    // setSessionAndUser(userId);
-    await self.setSessionAndUser(userId);
+    setSessionAndUser(userId);
     let replies = [
         {
             "content_type": "text",
@@ -381,45 +379,24 @@ function verifyRequestSignature(req, res, buf) {
 app.listen(PORT);
 console.log('Listening on :' + PORT + '...');
 
-// function setSessionAndUser(senderID) {
-//     return new Promise(function (resolve, reject) {
-//         if (!sessionIds.has(senderID)) {
-//             console.log(sessionIds.has(senderID));
-//             sessionIds.set(senderID, uuid.v1());
-//         }
+var setSessionAndUser = function (senderID) {
+    return new Promise(function (resolve, reject) {
+        if (!sessionIds.has(senderID)) {
+            console.log(sessionIds.has(senderID));
+            sessionIds.set(senderID, uuid.v1());
+        }
 
-//         if (!usersMap.has(senderID)) {
-//             userService.addUser(function (user) {
-//                 console.log("set senderid");
-//                 usersMap.set(senderID, user);
-//                 resolve();
-//             }, senderID);
-//         } else {
-//             resolve();
-//         }
-//     });
-
-// }
-
-module.exports = {
-    setSessionAndUser: (senderID) => {
-        return new Promise(function (resolve, reject) {
-            if (!sessionIds.has(senderID)) {
-                console.log(sessionIds.has(senderID));
-                sessionIds.set(senderID, uuid.v1());
-            }
-
-            if (!usersMap.has(senderID)) {
-                userService.addUser(function (user) {
-                    console.log("set senderid");
-                    usersMap.set(senderID, user);
-                    resolve();
-                }, senderID);
-            } else {
+        if (!usersMap.has(senderID)) {
+            userService.addUser(function (user) {
+                console.log("set senderid");
+                usersMap.set(senderID, user);
                 resolve();
-            }
-        });
-    }
+            }, senderID);
+        } else {
+            resolve();
+        }
+    });
+
 }
 
 function handleQuickreply(userId, quickReply, messageId) {
@@ -622,8 +599,7 @@ function inputAddress(userId) {
     fbService.sendQuickReply(userId, responseText, replies);
 }
 
-module.exports = {
+module.exports = setSessionAndUser;
 
-}
 
 
