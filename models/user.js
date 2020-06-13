@@ -246,19 +246,22 @@ module.exports = {
     },
 
     read_userrole: function (userId) {
-        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
-            .then((db) => {
-                var dbo = db.db;
-                var findUser = { fb_id: userId };
-                // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
-                dbo.collection("users").find(findUser).toArray()
-                    .then(function (result) {
-                        return result[0].userrole;
-                    }).catch(function (err) {
-                        console.log(err);
-                    });
-            }).catch((err) => {
-                console.log(err);
-            });
+        return new Promise(function (resolve, reject) {
+            mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+                .then((db) => {
+                    var dbo = db.db;
+                    var findUser = { fb_id: userId };
+                    // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
+                    dbo.collection("users").find(findUser).toArray()
+                        .then(function (result) {
+                            resolve(result[0].userrole);
+                        }).catch(function (err) {
+                            console.log(err);
+                        });
+                }).catch((err) => {
+                    console.log(err);
+                });
+        });
+
     }
 }

@@ -267,8 +267,9 @@ async function receivedMessage(event) {
     console.log('_____________We received message___________');
     console.log(JSON.stringify(event));
     var senderID = event.sender.id;
-    setSessionAndUser(senderID);
+    await setSessionAndUser(senderID);
     var userrole = await userService.read_userrole(senderID);
+    console.log(userrole);
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
     var message = event.message;
@@ -378,15 +379,19 @@ app.listen(PORT);
 console.log('Listening on :' + PORT + '...');
 
 function setSessionAndUser(senderID) {
-    if (!sessionIds.has(senderID)) {
-        sessionIds.set(senderID, uuid.v1());
-    }
+    return new Promise(function (resolve, reject) {
+        if (!sessionIds.has(senderID)) {
+            sessionIds.set(senderID, uuid.v1());
+        }
 
-    if (!usersMap.has(senderID)) {
-        userService.addUser(function (user) {
-            usersMap.set(senderID, user);
-        }, senderID);
-    }
+        if (!usersMap.has(senderID)) {
+            userService.addUser(function (user) {
+                usersMap.set(senderID, user);
+            }, senderID);
+        }
+        resolve();
+    });
+
 }
 
 function handleQuickreply(userId, quickReply, messageId) {
