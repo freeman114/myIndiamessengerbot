@@ -288,15 +288,15 @@ async function receivedMessage(event) {
         var userrole = await userService.read_userrole(senderID);
         console.log(userrole);
         switch (userrole) {
-            case 0:
+            case "0":
                 sendToWit_0(event);
 
                 break;
-            case 1:
+            case "1":
                 n_v_s.sendToWit_1(event);
                 break;
 
-            case 2:
+            case "2":
                 sendToWit_2(event);
                 break;
 
