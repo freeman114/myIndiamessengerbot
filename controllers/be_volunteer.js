@@ -67,7 +67,24 @@ module.exports = {
     },
 
     certify_no: function (userID) {
+        console.log('%%%%%%%%%%%%% when customer answer "no". %%%%%%%%%%%%%%%%');
 
+        
+        let replytext = "For health reasons, we can't allow you.";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userID, replytext, replies);
     },
 
     sendToWit_2: function (event) {
