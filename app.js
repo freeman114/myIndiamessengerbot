@@ -393,6 +393,7 @@ var setSessionAndUser = function (senderID) {
                 resolve();
             }, senderID);
         } else {
+            console.log("usermap value is true.")
             resolve();
         }
     });
