@@ -1,4 +1,5 @@
 const fbService = require('../External_API/facebook_service')
+const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 module.exports = {
     self_certify: function (userId) {
         console.log('#############when customer click "Be a volunteer" button.############');
@@ -33,7 +34,7 @@ module.exports = {
 
     },
 
-    certify_yes: function (userId) {
+    certify_yes: async function (userId) {
         console.log('%%%%%%%%%%%%% sent that input name in be_volunteer. %%%%%%%%%%%%%%%%');
         let responseText = "Please seek such deliveries only when it is an emergency. The people who help you are volunteers. All deliveries will be contactless. Be polite to the volunteers. ";
 
