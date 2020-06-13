@@ -254,7 +254,7 @@ module.exports = {
                 if (err) {
                     console.log(err);
                 }
-                var dbo = db.db;
+                var dbo = db.db("Messenger_Bot");
                 console.log(dbo);
                 // console.log(JSON.stringify(db));
                 var findUser = { fb_id: userId };
