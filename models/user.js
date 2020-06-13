@@ -233,11 +233,11 @@ module.exports = {
 
     // customer's role setting 
     set_userrole: function (userID, userrole, callback) {
-        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
-            .then((db) => {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            try {
                 var dbo = db.db;
                 console.log(`userid = ${userID}`);
-                var findUser = {fb_id: userID};
+                var findUser = { fb_id: userID };
                 var newvalues = { $set: { fb_id: userID, userrole: userrole } };
                 dbo.collection("users").updateOne(findUser, newvalues)
                     .then(function (result) {
@@ -245,9 +245,14 @@ module.exports = {
                     }).catch(function (err) {
                         console.log(err);
                     });
-            }).catch((err) => {
+            } catch (err) {
                 console.log(err);
-            });
+            }
+
+        });
+
+
+
     },
 
     read_userrole: function (userId) {
