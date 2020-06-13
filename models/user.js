@@ -56,7 +56,7 @@ module.exports = {
                                         console.log("completed db check successfully.");
                                         callback();
                                     }
-                                    
+
                                 });
 
 
@@ -250,22 +250,25 @@ module.exports = {
 
     read_userrole: function (userId) {
         return new Promise(function (resolve, reject) {
-            mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
-                .then((db) => {
-                    var dbo = db.db;
-                    console.log(dbo);
-                    console.log(JSON.stringify(db));
-                    var findUser = { fb_id: userId };
-                    // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
-                    dbo.collection("users").find(findUser).toArray()
-                        .then(function (result) {
-                            resolve(result[0].userrole);
-                        }).catch(function (err) {
-                            console.log(err);
-                        });
-                }).catch((err) => {
+            mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+                if (err) {
                     console.log(err);
-                });
+                }
+                var dbo = db.db;
+                console.log(dbo);
+                console.log(JSON.stringify(db));
+                var findUser = { fb_id: userId };
+                // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
+                dbo.collection("users").find(findUser).toArray()
+                    .then(function (result) {
+                        resolve(result[0].userrole);
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
+            });
+
+
+
         });
 
     }
