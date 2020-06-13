@@ -267,8 +267,8 @@ async function receivedMessage(event) {
     console.log('_____________We received message___________');
     console.log(JSON.stringify(event));
     var senderID = event.sender.id;
-    var userrole = await userService.read_userrole(senderID);
     setSessionAndUser(senderID);
+    var userrole = await userService.read_userrole(senderID);
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
     var message = event.message;
