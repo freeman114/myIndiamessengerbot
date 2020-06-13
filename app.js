@@ -297,7 +297,7 @@ async function receivedMessage(event) {
                 break;
 
             case "2":
-                sendToWit_2(event);
+                be_v.sendToWit_2(event);
                 break;
 
 

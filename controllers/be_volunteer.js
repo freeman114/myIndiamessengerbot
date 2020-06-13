@@ -64,5 +64,136 @@ module.exports = {
 
     certify_no: function (userID) {
 
-    }
+    },
+
+    sendToWit_2: function (event) {
+        try {
+            let self = module.exports;
+            console.log('%%%%%%%%%%%%%received text message%%%%%%%%%%%%%');
+            var userId = event.sender.id;
+            console.log(JSON.stringify(event));
+
+            if (event.message.nlp.entities.intent) {
+                var wit_confience = event.message.nlp.entities.intent.confidence;
+                var intent = event.message.nlp.entities.intent[0].value;
+
+                console.log(intent);
+                switch (intent) {
+                    case 'name':
+                        if (event.message.nlp.entities.intent[0].confidence > 0.95) {
+                            var value = event.message.nlp.entities.name[0].value;
+                            console.log(value);
+                            self.inputAddress(userId);
+                        } else {
+                            let responseText = 'Please enter correct data.';
+
+                            fbService.sendTextMessage(userId, responseText);
+                        }
+
+                        break;
+                    case 'greeting':
+                        self.sendWelcomeMessage(userId);
+                        break;
+
+                    case 'address':
+                        var value = event.message.nlp.entities.location[0].value;
+                        console.log(value);
+
+                        break;
+
+                    default:
+                        let responseText = 'Please enter correct data.';
+
+                        fbService.sendTextMessage(userId, responseText);
+                        break;
+                }
+            } else {
+                let responseText = 'sorry, more again.';
+
+                fbService.sendTextMessage(userId, responseText);
+                return;
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+
+    sendWelcomeMessage: async function (userId) {
+        console.log("%%%%%%%%%%%%%%% We received welcomemessage! %%%%%%%%%%%%%%%%%%");
+        let responseText = "Welcome to Localize. Here you can book your slots for shopping at your nearest shop, Requires delivery of goods or Become a volunteer. What would you like to choose? ";
+        await setSessionAndUser(userId);
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Self-service",
+                "payload": "self_service"
+            },
+            {
+                "content_type": "text",
+                "title": "Need for volunteers ",
+                "payload": "need_volunteers"
+            },
+            {
+                "content_type": "text",
+                "title": "Be a volunteer ",
+                "payload": "be_volunteer"
+            },
+            {
+                "content_type": "text",
+                "title": " Cancel",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, responseText, replies);
+    },
+
+    inputAddress: function (userId) {
+        console.log('%%%%%%%%%%%%%% we sent message that input location.%%%%%%%%%%%%%%%');
+
+        let responseText = "Please enter your location. ";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "inputname"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+
+
+        fbService.sendQuickReply(userId, responseText, replies);
+    },
+
+}
+
+function setSessionAndUser(senderID) {
+    return new Promise(function (resolve, reject) {
+        if (!sessionIds.has(senderID)) {
+            console.log(sessionIds.has(senderID));
+            sessionIds.set(senderID, uuid.v1());
+        }
+
+        if (!usersMap.has(senderID)) {
+            userService.addUser(function (user) {
+                console.log("set senderid");
+                usersMap.set(senderID, user);
+                resolve();
+            }, senderID);
+        } else {
+            resolve();
+        }
+    });
+
 }
