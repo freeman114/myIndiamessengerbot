@@ -45,7 +45,7 @@ module.exports = {
                                     if (err) throw err;
                                     console.log(result.length);
                                     if (!result.length) {
-                                        var insertUser = { fb_id: userId, firstname: user.first_name, lastname: user.last_name, profile_picture: user.profile_pic, oderArray: order_array, userrole: "" };
+                                        var insertUser = { fb_id: userId, firstname: user.first_name, lastname: user.last_name, profile_picture: user.profile_pic, oderArray: order_array, userrole: "0" };
                                         dbo.collection("users").insertOne(insertUser, function (err, res) {
                                             if (err) throw err;
                                             console.log("1 user inserted");
