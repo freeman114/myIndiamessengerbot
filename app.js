@@ -268,7 +268,7 @@ async function receivedMessage(event) {
     console.log('_____________We received message___________');
     console.log(JSON.stringify(event));
     var senderID = event.sender.id;
-    await self.setSessionAndUser(senderID);
+    await exports.setSessionAndUser(senderID);
 
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
