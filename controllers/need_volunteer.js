@@ -218,7 +218,7 @@ module.exports = {
 
 function item_require(userId){
     console.log("*************after enter address******************");
-        let responseText = "Please enter the items you need";
+        let responseText = "Please enter the items you need. For example you can enter like follow./n I need 'cake and pizza' ";
         let replies = [
             {
                 "content_type": "text",
