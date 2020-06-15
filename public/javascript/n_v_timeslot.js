@@ -2,10 +2,10 @@
 var m_timeslot = "";
 function set_timeslot(id) {
     // console.log('what is timeslot');
+    document.getElementById(id).disabled = false;
     m_timeslot = id;
     console.log(id);
     $("#needvol").text('timeslot: ' + id);
-    document.getElementById(id).disabled = false;
 }
 
 
