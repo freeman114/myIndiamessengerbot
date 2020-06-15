@@ -27,6 +27,7 @@ const external_api = require('./External_API/external_api')
 const userService = require('./models/user');
 const config = require('./config');
 const { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } = require('constants');
+var timeArray = require('../public/timeslot.json');
 
 
 let Wit = null;
@@ -190,6 +191,22 @@ app.get('/timeslot', (req, res) => {
 
     }
 });
+
+
+app.get('/n_v_timeslot', (req, res) => {
+    try {
+        console.log(req.query.place_id);
+        var ID = req.query.userID;
+        userService.read_n_v_timeslot( (n_v_timeSlot) => {
+            console.log(timeSlot);
+            res.render('n_v_timeslot', { array: n_v_timeSlot, id: ID });
+        });
+    } catch (e) {
+        console.log(e);
+
+    }
+});
+
 
 // Message handler
 app.post('/webhook', (req, res) => {

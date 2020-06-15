@@ -133,7 +133,14 @@ module.exports = {
                             "template_type": "generic",
                             "elements":
                                 [{
-                                    "title": "Please enter your timeslot.The time slots are 60 minutes slots from 9 AM to 6:30 PM (For example 9-10 AM, 10-11 AM and so on). ", "buttons": [{ "type": "web_url", "url": "https://www.facebook.com", "title": "All the timeslots", "messenger_extensions": "true" }]
+                                    "title": "Please enter your timeslot.The time slots are 60 minutes slots from 9 AM to 6:30 PM (For example 9-10 AM, 10-11 AM and so on). ",
+                                    "buttons":
+                                        [{
+                                            "type": "web_url",
+                                            "url": "https://facebookmessengerapp-1.herokuapp.com/n_v_timeslot?userID=" + userID,
+                                            "title": "All the timeslots",
+                                            "messenger_extensions": "true"
+                                        }]
                                 }]
                         }
                     }

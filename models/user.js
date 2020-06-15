@@ -1,6 +1,7 @@
 'use strict';
 const request = require('request');
 var timeArray = require('../public/timeslot.json');
+var n_v_timeArray = require('../public/n_v_timeslot.json');
 
 // const config = require('./config');
 const config = require('../config');
@@ -137,6 +138,10 @@ module.exports = {
                 });
             }
         });
+    },
+
+    read_n_v_timeslot: function (callback){
+        callback(n_v_timeArray.n_v_timeslot);
     },
 
     update_timeslot: function (ids, slot, callback) {
