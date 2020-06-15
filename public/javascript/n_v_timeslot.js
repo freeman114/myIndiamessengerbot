@@ -2,34 +2,34 @@
 var m_timeslot = "";
 function set_timeslot(id) {
     // console.log('what is timeslot');
-    // m_timeslot = id;
-    // console.log(id);
-    $("#needvol").text(id);
+    m_timeslot = id;
+    console.log(id);
+    $("#needvol").text(m_timeslot);
 }
 
 async function save_timeslot(ids) {
-    if (!m_timeslot) {
-        alert('choose time in list.');
-    }
-    else {
+    // if (!m_timeslot) {
+    //     alert('choose time in list.');
+    // }
+    // else {
 
-        $.ajax({
-            url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
-            method: 'GET',
-            success: function (res) {
-                console.log(res);
+    //     $.ajax({
+    //         url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
+    //         method: 'GET',
+    //         success: function (res) {
+    //             console.log(res);
               
-                $('#myqrcode').prop('src', res.from);
-                $('#download').prop('href', res.from);
+    //             $('#myqrcode').prop('src', res.from);
+    //             $('#download').prop('href', res.from);
                 
-                document.getElementById(m_timeslot).style.display = 'none';
-            },
-            error: function (error) {
-                console.log('some error in fetching the intents');
-            },
-        });
-    }
-    console.log("save");
+    //             document.getElementById(m_timeslot).style.display = 'none';
+    //         },
+    //         error: function (error) {
+    //             console.log('some error in fetching the intents');
+    //         },
+    //     });
+    // }
+    // console.log("save");
 }
 
 function close_webview() {
