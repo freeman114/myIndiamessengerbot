@@ -22,7 +22,6 @@ async function display_needvol(ids) {
             text: ids,
             time: m_timeslot
         },
-        contentType: 'application/json',
         success: function (res) {
             console.log(res);
         },
