@@ -211,6 +211,10 @@ app.get('/n_v_timeslot', (req, res) => {
     }
 });
 
+app.post('/n_v_timeslot', (req, res) =>{
+    console.log(req.body);
+});
+
 
 // Message handler
 app.post('/webhook', (req, res) => {

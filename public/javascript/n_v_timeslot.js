@@ -13,36 +13,27 @@ function set_timeslot(id) {
 
 
 async function display_needvol(ids) {
-    MessengerExtensions.requestCloseBrowser(function success() {
-        // webview closed
-    }, function error(err) {
-        // an error occurred
+    $.ajax({
+        url: '/n_v_timeslot',
+        method: 'POST',
+        data: {
+            text: ids,
+            time: m_timeslot
+        },
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        success: function (res) {
+            
+        },
+        error: function (error) {
+            console.log('some error in fetching the intents');
+        },
     });
-    // if (!m_timeslot) {
-    //     alert('choose time in list.');
-    // }
-    // else {
 
-    //     $.ajax({
-    //         url: '/timeslot?text=' + m_timeslot + '&ids=' + ids,
-    //         method: 'GET',
-    //         success: function (res) {
-    //             console.log(res);
-
-    //             $('#myqrcode').prop('src', res.from);
-    //             $('#download').prop('href', res.from);
-
-    //             document.getElementById(m_timeslot).style.display = 'none';
-    //         },
-    //         error: function (error) {
-    //             console.log('some error in fetching the intents');
-    //         },
-    //     });
-    // }
-    // console.log("save");
 }
 
 function closewebview() {
+
+
     MessengerExtensions.requestCloseBrowser(function success() {
         // webview closed
     }, function error(err) {
