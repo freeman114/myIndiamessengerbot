@@ -4,8 +4,9 @@ function set_timeslot(id) {
     // console.log('what is timeslot');
     m_timeslot = id;
     console.log(id);
-    $("#needvol").text(m_timeslot);
+    $("#needvol").text('address: ' + id);
 }
+
 
 async function save_timeslot(ids) {
     // if (!m_timeslot) {
