@@ -15,13 +15,15 @@ function set_timeslot(id) {
 async function display_needvol(ids) {
     console.log(m_timeslot);
     console.log(ids);
+    var data = {
+        text: ids,
+        time: m_timeslot
+    };
     $.ajax({
         url: '/n_v_timeslot',
         method: 'POST',
-        data: {
-            text: ids,
-            time: m_timeslot
-        },
+        data: JSON.stringify(data),
+        contentType: 'application/json',
         success: function (res) {
             console.log(res);
         },
