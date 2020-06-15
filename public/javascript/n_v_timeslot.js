@@ -2,7 +2,7 @@
 var m_timeslot = "";
 function set_timeslot(id) {
     // console.log('what is timeslot');
-    document.getElementsByClassName("okbutton").disabled = false;
+    document.getElementsByClassName[0]("okbutton").disabled = false;
     m_timeslot = id;
     console.log(id);
     $("#needvol").text('timeslot: ' + id);
