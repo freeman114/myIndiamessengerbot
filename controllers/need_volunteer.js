@@ -128,6 +128,7 @@ module.exports = {
 
                     case 'address':
                         var value = event.message.nlp.entities.location[0].value;
+                        console.log(userId);
                         userService.n_v_address(userId, value, function (updated) {
                             if (updated){
 
