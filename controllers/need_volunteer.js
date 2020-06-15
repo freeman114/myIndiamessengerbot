@@ -68,7 +68,7 @@ module.exports = {
         fbService.sendQuickReply(userId, replytext, replies);
     },
 
-    certify_no: function (userId) {
+    certify_no: async function (userId) {
         console.log('*************sent that input name in be_volunteer. *************');
         let responseText = "Please seek such deliveries only when it is an emergency. The people who help you are volunteers. All deliveries will be contactless. Be polite to the volunteers. ";
 
