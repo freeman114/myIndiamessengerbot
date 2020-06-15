@@ -130,14 +130,18 @@ module.exports = {
                         var value = event.message.nlp.entities.location[0].value;
                         console.log(userId);
                         userService.n_v_address(userId, value, function (updated) {
-                            if (updated){
+                            if (updated) {
 
                                 item_require(userId);
                             }
                             console.log(value);
                         });
-                        
 
+
+                        break;
+                    case 'need_item':
+                        console.log("need_item");
+                        timeslot_require(userId);
                         break;
 
                     default:
@@ -191,9 +195,10 @@ module.exports = {
         // await appmodule.setSessionAndUser(userId);
         let replies = [
             {
-                "content_type": "text",
-                "title": "Self-service",
-                "payload": "self_service"
+                "type": "web_url",
+                "url": "https://www.messenger.com/",
+                "title": "URL Button",
+                "webview_height_ratio": "tall"
             },
             {
                 "content_type": "text",
@@ -214,30 +219,66 @@ module.exports = {
 
         fbService.sendQuickReply(userId, responseText, replies);
     }
+
+    // all_timeslot: async function (userId){
+
+    // }
 }
 
-function item_require(userId){
+function item_require(userId) {
     console.log("*************after enter address******************");
-        let responseText = "Please enter the items you need. For example you can enter like follow./n I need 'cake and pizza' ";
-        let replies = [
-            {
-                "content_type": "text",
-                "title": "Start Over",
-                "payload": "start_over"
-            },
-            {
-                "content_type": "text",
-                "title": "Previous ",
-                "payload": "need_volunteers"
-            },
-            {
-                "content_type": "text",
-                "title": "Cancel ",
-                "payload": "cancel"
-            }
-        ];
+    let responseText = "Please enter the items you need. For example you can enter like follow.       I need 'cake and pizza' ";
+    let replies = [
+        {
+            "content_type": "text",
+            "title": "Start Over",
+            "payload": "start_over"
+        },
+        {
+            "content_type": "text",
+            "title": "Previous ",
+            "payload": "need_volunteers"
+        },
+        {
+            "content_type": "text",
+            "title": "Cancel ",
+            "payload": "cancel"
+        }
+    ];
 
-        fbService.sendQuickReply(userId, responseText, replies);
+    fbService.sendQuickReply(userId, responseText, replies);
+}
+
+function timeslot_require(userId) {
+    console.log('***************we sent message that input timeslots.**********');
+
+    let responseText = "Please enter your timeslot.The time slots are 60 minutes slots from 9 AM to 6:30 PM (For example 9-10 AM, 10-11 AM and so on). ";
+    let replies = [
+        {
+            "content_type": "text",
+            "title": "All the timeslots ",
+            "payload": "all_timeslot"
+        },
+        {
+            "content_type": "text",
+            "title": "Start Over",
+            "payload": "start_over"
+        },
+        {
+            "content_type": "text",
+            "title": "Previous ",
+            "payload": "inputname"
+        },
+        {
+            "content_type": "text",
+            "title": "Cancel ",
+            "payload": "cancel"
+        }
+    ];
+
+
+
+    fbService.sendQuickReply(userId, responseText, replies);
 }
 
 

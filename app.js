@@ -439,6 +439,9 @@ function handleQuickreply(userId, quickReply, messageId) {
         case 'n_v_yes':
             n_v_s.certify_yes(userId);
             break;
+        // case 'all_timeslot':
+        //     n_v_s.all_timeslot(userId);
+        //     break;
         case 'be_v_no':
             be_v.certify_no(userId);
             break;
