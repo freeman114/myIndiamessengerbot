@@ -13,6 +13,8 @@ function set_timeslot(id) {
 
 
 async function display_needvol(ids) {
+    console.log(m_timeslot);
+    console.log(ids);
     $.ajax({
         url: '/n_v_timeslot',
         method: 'POST',
@@ -22,7 +24,7 @@ async function display_needvol(ids) {
         },
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         success: function (res) {
-            
+            console.log(res);
         },
         error: function (error) {
             console.log('some error in fetching the intents');
