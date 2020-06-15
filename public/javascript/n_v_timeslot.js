@@ -18,7 +18,6 @@ async function display_needvol(ids) {
     $.ajax({
         url: '/n_v_timeslot',
         method: 'POST',
-        dataType: "json",
         data: {
             text: ids,
             time: m_timeslot
