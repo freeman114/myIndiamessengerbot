@@ -290,11 +290,11 @@ module.exports = {
             var dbo = db.db;
             console.log(`dbo :${dbo} `);
             // console.log(JSON.stringify(db));
-            var findUser = { fb_id: userId };
+            var findUser = { fb_id: userID };
             var newvalues = { $set: { fb_id: userID, n_v_address: address } };
             dbo.collection("users").find(findUser).toArray()
                 .then(function (result) {
-                    dbo.collection("users").updateOne(userquery, newvalues)
+                    dbo.collection("users").updateOne(findUser, newvalues)
                         .then(function () {
                             callback(true);
                         }).catch(function (err) {
