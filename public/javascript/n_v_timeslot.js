@@ -15,9 +15,9 @@ function set_timeslot(id) {
 async function display_needvol(ids) {
     MessengerExtensions.requestCloseBrowser(function success() {
         // webview closed
-      }, function error(err) {
+    }, function error(err) {
         // an error occurred
-      });
+    });
     // if (!m_timeslot) {
     //     alert('choose time in list.');
     // }
@@ -28,10 +28,10 @@ async function display_needvol(ids) {
     //         method: 'GET',
     //         success: function (res) {
     //             console.log(res);
-              
+
     //             $('#myqrcode').prop('src', res.from);
     //             $('#download').prop('href', res.from);
-                
+
     //             document.getElementById(m_timeslot).style.display = 'none';
     //         },
     //         error: function (error) {
@@ -42,10 +42,12 @@ async function display_needvol(ids) {
     // console.log("save");
 }
 
-function close_webview() {
-    console.log("close");
-    window.close();
-
+function closewebview() {
+    MessengerExtensions.requestCloseBrowser(function success() {
+        // webview closed
+    }, function error(err) {
+        // an error occurred
+    });
 
 
 }

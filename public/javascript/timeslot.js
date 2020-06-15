@@ -17,10 +17,10 @@ async function save_timeslot(ids) {
             method: 'GET',
             success: function (res) {
                 console.log(res);
-              
+
                 $('#myqrcode').prop('src', res.from);
                 $('#download').prop('href', res.from);
-                
+
                 document.getElementById(m_timeslot).style.display = 'none';
             },
             error: function (error) {
@@ -32,9 +32,11 @@ async function save_timeslot(ids) {
 }
 
 function close_webview() {
-    console.log("close");
-    window.close();
-
+    MessengerExtensions.requestCloseBrowser(function success() {
+        // webview closed
+    }, function error(err) {
+        // an error occurred
+    });
 
 
 }
