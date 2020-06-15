@@ -68,6 +68,34 @@ module.exports = {
         fbService.sendQuickReply(userId, replytext, replies);
     },
 
+    certify_no: function (userId) {
+        console.log('*************sent that input name in be_volunteer. *************');
+        let responseText = "Please seek such deliveries only when it is an emergency. The people who help you are volunteers. All deliveries will be contactless. Be polite to the volunteers. ";
+
+        fbService.sendTextMessage(userId, responseText);
+        await waitFor(1000);
+        let replytext = "Please enter your name.";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "need_volunteers"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, replytext, replies);
+    },
+
     // when user enter name
     sendToWit_1: function (event) {
         try {
@@ -100,8 +128,15 @@ module.exports = {
 
                     case 'address':
                         var value = event.message.nlp.entities.location[0].value;
-                        console.log(value);
+                        userService.n_v_address(userId, value, function (updated) {
+                            if (updated){
+
+                                item_require(userId);
+                            }
+                            console.log(value);
+                        });
                         
+
                         break;
 
                     default:
@@ -178,6 +213,30 @@ module.exports = {
 
         fbService.sendQuickReply(userId, responseText, replies);
     }
+}
+
+function item_require(userId){
+    console.log("*************after enter address******************");
+        let responseText = "Please enter the items you need";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "need_volunteers"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, responseText, replies);
 }
 
 

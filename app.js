@@ -443,6 +443,7 @@ function handleQuickreply(userId, quickReply, messageId) {
             be_v.certify_no(userId);
             break;
         case 'n_v_no':
+            n_v_s.certify_no(userId);
             break;
 
         case 'cancel':
