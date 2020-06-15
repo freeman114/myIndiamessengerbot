@@ -26,12 +26,8 @@ async function display_needvol(ids) {
         contentType: 'application/json',
         success: function (res) {
             console.log(res);
-            MessengerExtensions.requestCloseBrowser(function success() {
-                // webview closed
-            }, function error(err) {
-                // an error occurred
-                alert("server can't process request");
-            });
+            document.getElementById(m_timeslot).style.display = 'none';
+            $("#needvol").text('You successfully requested order you want.');
 
         },
         error: function (error) {

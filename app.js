@@ -199,11 +199,7 @@ app.get('/n_v_timeslot', (req, res) => {
         userService.read_n_v_timeslot(ID, (n_v_timeSlot, address) => {
             console.log(n_v_timeSlot);
             res.render('n_v_timeslot', { array: n_v_timeSlot, id: ID, address: address });
-            // MessengerExtensions.requestCloseBrowser(function success() {
-            //     // webview closed
-            //   }, function error(err) {
-            //     // an error occurred
-            //   });
+          
         });
     } catch (e) {
         console.log(e);
