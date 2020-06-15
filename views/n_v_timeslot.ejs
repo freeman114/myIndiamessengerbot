@@ -70,12 +70,13 @@
             </div>
             <div class="col-sm-2 col-md-3 col-2"></div>
         </div>
-        <img id="myqrcode">
+
+        <div id="address">address: <%= time %></div>
+        <div id="needvol">
         <div class="panel-footer">
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-success" id="<%= id %>"
-                onclick="save_timeslot(this.id)">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a download="QRcode.png" href="" class="btn btn-info" id="download">Download</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                onclick="display_needvol(this.id)">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
 
 

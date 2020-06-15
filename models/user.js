@@ -140,8 +140,29 @@ module.exports = {
         });
     },
 
-    read_n_v_timeslot: function (callback){
-        callback(n_v_timeArray.n_v_timeslot);
+    read_n_v_timeslot: function (userID, callback){
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
+            if (err) {
+                console.log(err);
+
+            }
+            else {
+                var dbo = db.db;
+                /*Return only the documents with the address "Park Lane 38":*/
+                var query = { fb_id: userID };
+                dbo.collection("users").find(query).toArray(function (err, result) {
+                    try {
+                        console.log(result);
+
+                        callback(n_v_timeArray.n_v_timeslot, result[0].n_v_address);
+                        db.close();
+                    } catch (error) {
+                        console.log(error);
+                    }
+
+                });
+            }
+        });
     },
 
     update_timeslot: function (ids, slot, callback) {

@@ -196,9 +196,9 @@ app.get('/n_v_timeslot', (req, res) => {
     try {
         console.log(req.query.place_id);
         var ID = req.query.userID;
-        userService.read_n_v_timeslot( (n_v_timeSlot) => {
+        userService.read_n_v_timeslot(ID, (n_v_timeSlot, address) => {
             console.log(n_v_timeSlot);
-            res.render('n_v_timeslot', { array: n_v_timeSlot, id: ID });
+            res.render('n_v_timeslot', { array: n_v_timeSlot, id: ID, address: address });
         });
     } catch (e) {
         console.log(e);
