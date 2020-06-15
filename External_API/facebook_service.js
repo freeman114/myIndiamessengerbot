@@ -163,7 +163,7 @@ module.exports = {
             'headers': {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ "recipient": { "id": userID }, "message": { "attachment": { "type": "template", "payload": { "template_type": "one_time_notif_req", "title": "Needed volunteer", "payload": "need_volunteer" } } } })
+            body: JSON.stringify({ "recipient": { "id": userID }, "message": { "attachment": { "type": "template", "payload": { "template_type": "one_time_notif_req", "title": "Needed volunteer", "payload": "need_notification" } } } })
 
         };
         request(options, function (error, response) {
