@@ -12,7 +12,7 @@ function set_timeslot(id) {
 
 
 
-async function save_timeslot(ids) {
+async function display_needvol(ids) {
     MessengerExtensions.requestCloseBrowser(function success() {
         // webview closed
       }, function error(err) {
