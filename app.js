@@ -214,10 +214,16 @@ app.get('/n_v_timeslot', (req, res) => {
 app.post('/n_v_timeslot', (req, res) => {
     console.log(req);
     console.log(req.body);
-    res.status(200).json({
-        status: 'succes'
-        
+    var userId = req.body.text;
+    var timeslot = req.body.time;
+    userService.n_v_timeSlot(userId, timeslot, function (updated) {
+        if (updated) {
+            res.status(200).json({
+                status: 'succes'
+            });
+        }
     });
+
 });
 
 

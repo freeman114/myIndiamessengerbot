@@ -26,6 +26,13 @@ async function display_needvol(ids) {
         contentType: 'application/json',
         success: function (res) {
             console.log(res);
+            MessengerExtensions.requestCloseBrowser(function success() {
+                // webview closed
+            }, function error(err) {
+                // an error occurred
+                alert("server can't process request");
+            });
+
         },
         error: function (error) {
             console.log('some error in fetching the intents');

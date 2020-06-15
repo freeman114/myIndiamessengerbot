@@ -140,7 +140,7 @@ module.exports = {
         });
     },
 
-    read_n_v_timeslot: function (userID, callback){
+    read_n_v_timeslot: function (userID, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, db) => {
             if (err) {
                 console.log(err);
@@ -323,9 +323,39 @@ module.exports = {
                     dbo.collection("users").updateOne(findUser, newvalues)
                         .then(function () {
                             callback(true);
+                            db.close();
                         }).catch(function (err) {
                             console.log(err);
                             callback(false);
+                            db.close();
+                        });
+                }).catch(function (err) {
+                    console.log(`err=  ${err}`);
+                });
+        });
+    },
+
+    n_v_timeSlot: function (userID, timeslot, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            if (err) {
+                console.log(err);
+            }
+            var dbo = db.db;
+            console.log(`dbo :${dbo} `);
+            // console.log(JSON.stringify(db));
+            var findUser = { fb_id: userID };
+            var newvalues = { $set: { fb_id: userID, n_v_timeslot: timeslot } };
+            dbo.collection("users").find(findUser).toArray()
+                .then(function (result) {
+                    console.log(result[0]);
+                    dbo.collection("users").updateOne(findUser, newvalues)
+                        .then(function () {
+                            callback(true);
+                            db.close();
+                        }).catch(function (err) {
+                            console.log(err);
+                            callback(false);
+                            db.close();
                         });
                 }).catch(function (err) {
                     console.log(`err=  ${err}`);
