@@ -1,6 +1,7 @@
 
 const request = require('request');
 const config = require('../config');
+const { FB_PAGE_TOKEN } = require('../config');
 
 module.exports = {
 
@@ -146,6 +147,23 @@ module.exports = {
                     }
                 }
             })
+
+        };
+        request(options, function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.body);
+            callback();
+        });
+    },
+
+    notify_template: function (userID, callback) {
+        var options = {
+            'method': 'POST',
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + FB_PAGE_TOKEN,
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "recipient": { "id": userID }, "message": { "attachment": { "type": "template", "payload": { "template_type": "one_time_notif_req", "title": "Needed volunteer", "payload": "need_volunteer" } } } })
 
         };
         request(options, function (error, response) {

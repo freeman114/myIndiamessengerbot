@@ -199,7 +199,7 @@ app.get('/n_v_timeslot', (req, res) => {
         userService.read_n_v_timeslot(ID, (n_v_timeSlot, address) => {
             console.log(n_v_timeSlot);
             res.render('n_v_timeslot', { array: n_v_timeSlot, id: ID, address: address });
-          
+
         });
     } catch (e) {
         console.log(e);
@@ -214,9 +214,12 @@ app.post('/n_v_timeslot', (req, res) => {
     var timeslot = req.body.time;
     userService.n_v_timeSlot(userId, timeslot, function (updated) {
         if (updated) {
-            res.status(200).json({
-                status: 'succes'
+            fbService.notify_template(userID, () => {
+                res.status(200).json({
+                    status: 'succes'
+                });
             });
+
         }
     });
 
