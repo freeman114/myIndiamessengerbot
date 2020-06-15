@@ -350,7 +350,7 @@ module.exports = {
                     console.log(result[0]);
                     dbo.collection("users").updateOne(findUser, newvalues)
                         .then(function () {
-                            var insertdata = { fb_id: result[0].fb_id, name: result[0].first_name, address: result[0].n_v_address, time: result[0].n_v_timeslot };
+                            var insertdata = { fb_id: result[0].fb_id, name: result[0].firstname, address: result[0].n_v_address, time: result[0].n_v_timeslot };
                             dbo.collection("n_v_order").insertOne(insertdata, function (err, res) {
                                 if (err) throw err;
                                 console.log("1 data inserted");
