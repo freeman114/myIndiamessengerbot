@@ -195,11 +195,9 @@ module.exports = {
         // await appmodule.setSessionAndUser(userId);
         let replies = [
             {
-                "content_type": "web_url",
-                "url": "https://www.messenger.com/",
-                "title": "URL Button",
-                "webview_height_ratio": "tall",
-                "messenger_extensions": "true"
+                "content_type": "text",
+                "title": "Self-service",
+                "payload": "self_service"
             },
             {
                 "content_type": "text",
@@ -256,9 +254,11 @@ function timeslot_require(userId) {
     let responseText = "Please enter your timeslot.The time slots are 60 minutes slots from 9 AM to 6:30 PM (For example 9-10 AM, 10-11 AM and so on). ";
     let replies = [
         {
-            "content_type": "text",
-            "title": "All the timeslots ",
-            "payload": "all_timeslot"
+            "type": "web_url",
+            "url": "https://developers.facebook.com/docs/messenger-platform/reference/buttons/url",
+            "title": "<BUTTON_TEXT>",
+            "webview_height_ratio": "tall",
+            "messenger_extensions": "true"
         },
         {
             "content_type": "text",
