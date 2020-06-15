@@ -250,36 +250,32 @@ function item_require(userId) {
 
 function timeslot_require(userId) {
     console.log('***************we sent message that input timeslots.**********');
-
-    let responseText = "Please enter your timeslot.The time slots are 60 minutes slots from 9 AM to 6:30 PM (For example 9-10 AM, 10-11 AM and so on). ";
-    let replies = [
-        {
-            "type": "web_url",
-            "url": "https://developers.facebook.com/docs/messenger-platform/reference/buttons/url",
-            "title": "<BUTTON_TEXT>",
-            "webview_height_ratio": "tall",
-            "messenger_extensions": "true"
-        },
-        {
-            "content_type": "text",
-            "title": "Start Over",
-            "payload": "start_over"
-        },
-        {
-            "content_type": "text",
-            "title": "Previous ",
-            "payload": "inputname"
-        },
-        {
-            "content_type": "text",
-            "title": "Cancel ",
-            "payload": "cancel"
-        }
-    ];
+    fbService.timeslot_template(userId, () => {
+        let responseText = " Click 'All the timeslots' button to check all timeslots ";
+        let replies = [
+           
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "inputname"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
 
 
 
-    fbService.sendQuickReply(userId, responseText, replies);
+        fbService.sendQuickReply(userId, responseText, replies);
+    });
+
 }
 
 

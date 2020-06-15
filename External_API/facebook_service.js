@@ -112,6 +112,42 @@ module.exports = {
         });
     },
 
+    timeslot_template: function (userID, callback) {
+        var request = require('request');
+        var options = {
+            'method': 'POST',
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "recipient":
+                    { "id": userID },
+                "message":
+                {
+                    "attachment":
+                    {
+                        "type": "template",
+                        "payload":
+                        {
+                            "template_type": "generic",
+                            "elements":
+                                [{
+                                    "title": "Please enter your timeslot.The time slots are 60 minutes slots from 9 AM to 6:30 PM (For example 9-10 AM, 10-11 AM and so on). ", "buttons": [{ "type": "web_url", "url": "https://www.facebook.com", "title": "All the timeslots", "messenger_extensions": "true" }]
+                                }]
+                        }
+                    }
+                }
+            })
+
+        };
+        request(options, function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.body);
+            callback();
+        });
+    },
+
     isDefined: function (obj) {
         if (typeof obj == 'undefined') {
             return false;
