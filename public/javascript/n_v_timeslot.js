@@ -4,7 +4,7 @@ function set_timeslot(id) {
     // console.log('what is timeslot');
     // m_timeslot = id;
     // console.log(id);
-    $('#needvol').prop('val', id);
+    $("#needvol").html(id);
 }
 
 async function save_timeslot(ids) {
