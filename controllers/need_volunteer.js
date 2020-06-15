@@ -198,7 +198,8 @@ module.exports = {
                 "type": "web_url",
                 "url": "https://www.messenger.com/",
                 "title": "URL Button",
-                "webview_height_ratio": "tall"
+                "webview_height_ratio": "tall",
+                "messenger_extensions": "true"
             },
             {
                 "content_type": "text",
