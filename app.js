@@ -27,7 +27,6 @@ const external_api = require('./External_API/external_api')
 const userService = require('./models/user');
 const config = require('./config');
 const { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } = require('constants');
-var timeArray = require('../public/timeslot.json');
 
 
 let Wit = null;
