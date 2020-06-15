@@ -195,7 +195,7 @@ module.exports = {
         // await appmodule.setSessionAndUser(userId);
         let replies = [
             {
-                "type": "web_url",
+                "content_type": "web_url",
                 "url": "https://www.messenger.com/",
                 "title": "URL Button",
                 "webview_height_ratio": "tall",
