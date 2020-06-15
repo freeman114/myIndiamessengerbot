@@ -214,7 +214,7 @@ app.post('/n_v_timeslot', (req, res) => {
     var timeslot = req.body.time;
     userService.n_v_timeSlot(userId, timeslot, function (updated) {
         if (updated) {
-            fbService.notify_template(userID, () => {
+            fbService.notify_template(userId, () => {
                 res.status(200).json({
                     status: 'succes'
                 });
