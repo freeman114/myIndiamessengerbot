@@ -120,7 +120,7 @@
                 <% var pos = 0 %>
                 <% array.forEach((item) =>{ %>
                 <% pos++ %>
-                <ul id="<%= item.userID %>" class = "delivery_<%= pos %>" onclick="myFunction(this)" >
+                <ul id="<%= item.userID %>" class = "delivery_<%= pos %>" onclick="myFunction(this.id)" >
                     <li><span class="caret">delivery_<%= pos %></span>
                         <ul class="nested">
                             <li><b>ID: </b><%= item.userID %></li>
@@ -159,9 +159,9 @@
         }
 
         function myFunction(this){
-            alert(this);
-            console.log(this);
-            document.getElementById("option_list").innerHTML = "Hello World";
+            alert(id);
+            console.log(id);
+            document.getElementById("option_list").innerHTML = id;
         }
     </script>
 
