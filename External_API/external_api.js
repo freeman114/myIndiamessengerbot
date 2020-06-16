@@ -172,6 +172,7 @@ module.exports = {
             var body = JSON.parse(JSON.stringify(response.body));
             var arr = body.split("\n");
             var text = arr[8].split(":");
+            console.log(text[1]);
             var int = text[1].split(" ");
             console.log(int[1]);
             var res = int[1].slice(1);
