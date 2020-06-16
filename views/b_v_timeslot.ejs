@@ -70,7 +70,7 @@
             <div class="col-sm-8 col-md-6 col-8" id="myimg">
                 <div class="list-group">
                     <%= int i; %>
-                    <% array.forEach(item =>{ %>
+                    <% array.forEach((item) =>{ %>
                     <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>"
                         onclick="set_timeslot(this.id)">
                         delivery <%= i %></button>
