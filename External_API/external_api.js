@@ -169,10 +169,10 @@ module.exports = {
         };
         request(options, function (error, response) {
             if (error) throw new Error(error);
-            console.log(JSON.stringify(response.body));
-            console.log(JSON.parse(JSON.stringify(response.body)));
-            var body = JSON.parse(JSON.stringify(response.body));
-            console.log(JSON.stringify(body).json());
+            console.log(JSON.stringify(response.body["rows"]));
+            // console.log(JSON.parse(JSON.stringify(response.body)));
+            // var body = JSON.parse(JSON.stringify(response.body));
+            // console.log(JSON.stringify(body).json());
 
             // console.log(JSON.parse(body).rows[0]);
             // var distance = response.body.rows[0].elements[0].distance.text;
