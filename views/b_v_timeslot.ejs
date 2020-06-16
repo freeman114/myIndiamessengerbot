@@ -154,7 +154,7 @@
             toggler[i].addEventListener("click", function () {
                 this.parentElement.querySelector(".nested").classList.toggle("active");
                 this.classList.toggle("caret-down");
-                $(".fullbutton").text('timeslot: ');
+                $(".fullbutton").text(this.id);
             });
         }
     </script>
