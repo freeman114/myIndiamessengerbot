@@ -172,8 +172,11 @@ module.exports = {
             console.log(JSON.stringify(response.body));
             // console.log(JSON.parse(JSON.stringify(response.body)));
             var body = JSON.parse(JSON.stringify(response.body));
-            var arr = body.split("\n");
-            console.log(arr[8]);
+            var someText = body.replace(/(\r\n|\n|\r)/gm, "");
+            console.log(JSON.stringify(someText));
+
+            // var arr = body.split("\n");
+            // console.log(arr[8]);
             // console.log(JSON.stringify(body).json());
 
             // console.log(JSON.parse(body).rows[0]);
