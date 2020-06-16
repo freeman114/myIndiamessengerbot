@@ -121,11 +121,19 @@ module.exports = {
                         var origin_add = event.message.nlp.entities.location[0].value;
                         console.log(origin_add);
                         userService.read_nvorder(userId, function (result) {
+                            var arr = [];
                             result.forEach(element => {
                                 var target_add = element.address;
                                 external_api.get_add(origin_add, target_add, function(distance){
                                     console.log(distance);
+                                    var obj = {userID: element.fb_id, address: element.address, Time: element.time, distance: distance };
+                                    arr.push(obj);
                                 });
+
+                                if (arr.length == result.length){
+                                    arr.sort(compare);
+                                    console.log(JSON.stringify(arr));
+                                }
 
 
                             });
@@ -209,4 +217,12 @@ module.exports = {
     },
 
 }
+
+function compare(a,b) {
+    if (a.distance < b.distance)
+       return -1;
+    if (a.distance > b.distance)
+      return 1;
+    return 0;
+  }
 
