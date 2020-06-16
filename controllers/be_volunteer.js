@@ -70,7 +70,7 @@ module.exports = {
     certify_no: function (userID) {
         console.log('%%%%%%%%%%%%% when customer answer "no". %%%%%%%%%%%%%%%%');
 
-        
+
         let replytext = "For health reasons, we can't allow you.";
         let replies = [
             {
@@ -124,16 +124,17 @@ module.exports = {
                             var arr = [];
                             result.forEach(element => {
                                 var target_add = element.address;
-                                external_api.get_add(origin_add, target_add, function(distance){
+                                external_api.get_add(origin_add, target_add, function (distance) {
                                     console.log(distance);
-                                    var obj = {userID: element.fb_id, address: element.address, Time: element.time, distance: distance };
+                                    var obj = { userID: element.fb_id, address: element.address, Time: element.time, distance: distance };
                                     arr.push(obj);
+                                    if (arr.length == result.length) {
+                                        arr.sort(compare);
+                                        console.log(JSON.stringify(arr));
+                                    }
+
                                 });
 
-                                if (arr.length == result.length){
-                                    arr.sort(compare);
-                                    console.log(JSON.stringify(arr));
-                                }
 
 
                             });
@@ -218,11 +219,11 @@ module.exports = {
 
 }
 
-function compare(a,b) {
+function compare(a, b) {
     if (a.distance < b.distance)
-       return -1;
+        return -1;
     if (a.distance > b.distance)
-      return 1;
+        return 1;
     return 0;
-  }
+}
 
