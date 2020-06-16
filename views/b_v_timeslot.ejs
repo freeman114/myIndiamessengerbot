@@ -120,7 +120,7 @@
                 <% var pos = 0 %>
                 <% array.forEach((item) =>{ %>
                 <% pos++ %>
-                <ul id="<%= item.userID %>" class = "delivery <%= pos %>" onclick="myFunction(this.id, this.class)" >
+                <ul id="<%= item.userID %>" class = "delivery <%= pos %>" onclick="myFunction(this)" >
                     <li><span class="caret">delivery <%= pos %></span>
                         <ul class="nested">
                             <li><b>ID: </b><%= item.userID %></li>
@@ -154,12 +154,13 @@
             toggler[i].addEventListener("click", function () {
                 this.parentElement.querySelector(".nested").classList.toggle("active");
                 this.classList.toggle("caret-down");
-                $(".fullbutton").text(this.id);
             });
         }
-
-        function myFunction(id, pos){
-            alert(id);
+        
+        function myFunction(list){
+            $(".fullbutton").text(list.id);
+            console.log(list);
+            alert(list.id);
         }
     </script>
 
