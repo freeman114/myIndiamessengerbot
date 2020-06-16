@@ -406,12 +406,10 @@ module.exports = {
             var dbo = db.db;
             console.log(`dbo :${dbo} `);
             // console.log(JSON.stringify(db));
-            var findUser = { fb_id: userID };
-            var newvalues = { $set: { fb_id: userID, otn_token: otn_token } };
             dbo.collection("users").find().toArray()
                 .then(function (result) {
-                    console.log(result[0]);
-                    console.log(result[1]);
+                    console.log(JSON.stringify(result[0]));
+                    console.log(JSON.stringify(result[1]));
                     
                 }).catch(function (err) {
                     console.log(`err=  ${err}`);
