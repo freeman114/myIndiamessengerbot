@@ -170,8 +170,9 @@ module.exports = {
         request(options, function (error, response) {
             if (error) throw new Error(error);
             console.log(JSON.stringify(response.body));
+            console.log(JSON.parse(JSON.stringify(response.body)));
             var body = JSON.stringify(response.body)
-            console.log(JSON.parse(body).rows[0]);
+            // console.log(JSON.parse(body).rows[0]);
             // var distance = response.body.rows[0].elements[0].distance.text;
             // callback(distance);
         });
