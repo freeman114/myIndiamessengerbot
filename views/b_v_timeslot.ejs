@@ -71,10 +71,10 @@
                 <div class="list-group">
                     <% var pos = 0 %>
                     <% array.forEach((item) =>{ %>
-                    <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>"
-                        onclick="set_timeslot(this.id)">
                         <% pos++ %>
-                        delivery <% pos %></button>
+                    <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>" onclick="set_timeslot(this.id)">
+                        delivery <% pos %>
+                    </button>
                     <li><%= item.name %></li>
                     <li><%= item.address %></li>
                     <% }); %>
