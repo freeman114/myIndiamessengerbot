@@ -69,11 +69,16 @@
             <div class="col-sm-2 col-md-3 col-2"></div>
             <div class="col-sm-8 col-md-6 col-8" id="myimg">
                 <div class="list-group">
-                    <% array.forEach(time =>{ %>
-                    <button type="button" class="btn btn-light btn-block" id="<%= time %>"
+                    <% var i %>
+                    <% array.forEach(item =>{ %>
+                    <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>"
                         onclick="set_timeslot(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;
-                        <%= time %>&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                        delivery <%= i %>&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                    <%= i++ %>
+                    <li>Water</li>
+                    <li>Coffee</li>
                     <% }); %>
+
 
                 </div>
             </div>
@@ -86,8 +91,7 @@
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-success okbutton" id="<%= id %>" onclick="display_needvol(this.id)"
                 disabled>OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success " id="close"
-                onclick="closewebview()">Close</button>
+            <button type="button" class="btn btn-success " id="close" onclick="closewebview()">Close</button>
         </div>
 
 

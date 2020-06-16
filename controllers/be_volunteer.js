@@ -123,29 +123,7 @@ module.exports = {
                         fbService.orderlist_template(userId, origin_add, () => {
                             self.quickreply_list(userId);
                         });
-                        // userService.read_nvorder(userId, function (result) {
-                        //     var arr = [];
-                        //     result.forEach(element => {
-                        //         var target_add = element.address;
-                        //         external_api.get_add(origin_add, target_add, function (distance) {
-                        //             console.log(distance);
-                        //             var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance };
-                        //             arr.push(obj);
-                        //             if (arr.length == result.length) {
-                        //                 arr.sort(compare);
-                        //                 console.log(JSON.stringify(arr));
-                        //                 fbService.orderlist_template(userId, arr, () => {
-                        //                     self.quickreply_list(userId);
-                        //                 });
-                        //             }
-
-                        //         });
-
-
-
-                        //     });
-                        // });
-
+           
                         break;
 
                     default:

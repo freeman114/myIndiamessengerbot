@@ -1,0 +1,182 @@
+<html>
+
+<head>
+    <title>test</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="javascript/n_v_timeslot.js"></script> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- <style>
+        body {
+            background-color:lavender;
+        }
+    </style> -->
+    <style>
+        div.col-sm-8 {
+            background-color: white;
+            width: 100px;
+            height: 250px;
+            overflow: auto;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        div {
+            margin-top: 10%;
+            margin-bottom: 10%;
+        }
+
+        .btn-light:hover {
+            background-color: lavender;
+        }
+
+        .btn-light.active,
+        .btn-light:active {
+            background-color: #111111;
+            border-color: red;
+        }
+    </style>
+    <style>
+        ul, #myUL {
+          list-style-type: none;
+        }
+        
+        #myUL {
+          margin: 0;
+          padding: 0;
+        }
+        
+        .caret {
+          cursor: pointer;
+          -webkit-user-select: none; /* Safari 3.1+ */
+          -moz-user-select: none; /* Firefox 2+ */
+          -ms-user-select: none; /* IE 10+ */
+          user-select: none;
+        }
+        
+        .caret::before {
+          content: "\25B6";
+          color: black;
+          display: inline-block;
+          margin-right: 6px;
+        }
+        
+        .caret-down::before {
+          -ms-transform: rotate(90deg); /* IE 9 */
+          -webkit-transform: rotate(90deg); /* Safari */'
+          transform: rotate(90deg);  
+        }
+        
+        .nested {
+          display: none;
+        }
+        
+        .active {
+          display: block;
+        }
+        </style>
+</head>
+
+<body style="background-color:lavender;">
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+
+    <div class="container">
+        <div class="panel-header" style="margin: 10px;">
+
+        </div>
+
+        <div class="row">
+            <br>
+            <div class="col-sm-2 col-md-3 col-2"></div>
+            <div class="col-sm-8 col-md-6 col-8" id="myimg">
+                <ul id="myUL">
+                    <li><span class="caret">Beverages</span>
+                      <ul class="nested">
+                        <li>Water</li>
+                        <li>Coffee</li>
+                        <li><span class="caret">Tea</span>
+                          <ul class="nested">
+                            <li>Black Tea</li>
+                            <li>White Tea</li>
+                            <li><span class="caret">Green Tea</span>
+                              <ul class="nested">
+                                <li>Sencha</li>
+                                <li>Gyokuro</li>
+                                <li>Matcha</li>
+                                <li>Pi Lo Chun</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>  
+                      </ul>
+                    </li>
+                    <li><span class="caret">Beverages</span>
+                      <ul class="nested">
+                        <li>Water</li>
+                        <li>Coffee</li>
+                        <li><span class="caret">Tea</span>
+                          <ul class="nested">
+                            <li>Black Tea</li>
+                            <li>White Tea</li>
+                            <li><span class="caret">Green Tea</span>
+                              <ul class="nested">
+                                <li>Sencha</li>
+                                <li>Gyokuro</li>
+                                <li>Matcha</li>
+                                <li>Pi Lo Chun</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>  
+                      </ul>
+                    </li>
+                  </ul>
+
+            </div>
+            <div class="col-sm-2 col-md-3 col-2"></div>
+        </div>
+
+        <div id="address">address:</div>
+        <div id="needvol">Choose timeslot.</div>
+        <div class="panel-footer">
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-success okbutton" id="fsgs" onclick="display_needvol(this.id)"
+                disabled>OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-success " id="close" onclick="closewebview()">Close</button>
+        </div>
+
+
+
+    </div>
+    <script>
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+        
+        for (i = 0; i < toggler.length; i++) {
+          toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+          });
+        }
+        </script>
+</body>
+
+</html>
