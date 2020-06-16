@@ -173,7 +173,7 @@ module.exports = {
             // console.log(JSON.parse(JSON.stringify(response.body)));
             var body = JSON.parse(JSON.stringify(response.body));
             var arr = body.split("\n");
-            console.log(arr);
+            console.log(arr[12]);
             // console.log(JSON.stringify(body).json());
 
             // console.log(JSON.parse(body).rows[0]);
