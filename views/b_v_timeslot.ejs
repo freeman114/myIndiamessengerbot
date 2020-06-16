@@ -120,7 +120,7 @@
                 <% var pos = 0 %>
                 <% array.forEach((item) =>{ %>
                 <% pos++ %>
-                <ul id="<%= item.userID %>" class = "delivery <%= pos %>" onclick="myFunction(this.id, this.class)" >
+                <ul id="<%= item.userID %>" class = "delivery <%= pos %>" onclick="myFunction(this.id, this.Text)" >
                     <li><span class="caret">delivery <%= pos %></span>
                         <ul class="nested">
                             <li><b>ID: </b><%= item.userID %></li>
