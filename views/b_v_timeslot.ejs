@@ -20,6 +20,7 @@
             height: 250px;
             overflow: auto;
         }
+
         .fullclosebutton,
         .fullacceptbutton {
             display: block;
@@ -32,6 +33,7 @@
             cursor: pointer;
             text-align: center;
         }
+
         .fullclosebutton:hover,
         .fullacceptbutton:hover {
             background-color: #ddd;
@@ -120,7 +122,7 @@
                 <% var pos = 0 %>
                 <% array.forEach((item) =>{ %>
                 <% pos++ %>
-                <ul id="<%= item.userID %>" class = "delivery <%= pos %>" onclick="myFunction(this)" >
+                <ul id="<%= item.userID %>" class="delivery <%= pos %>" onclick="myFunction(this)">
                     <li><span class="caret">delivery <%= pos %></span>
                         <ul class="nested">
                             <li><b>ID: </b><%= item.userID %></li>
@@ -137,13 +139,13 @@
             <div class="col-sm-1 col-md-2 col-1"></div>
         </div>
 
-        <button class="fullacceptbutton" disabled>Select delivery item.</button>
-        <button class="fullclosebutton" >Select delivery item.</button>
+        <button class="fullacceptbutton" disabled>Select delivery item.</button><br>
+        <button class="fullclosebutton" onclick="closewebview()">CLOSE</button>
         <div class="panel-footer">
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-success okbutton" id="<%= id %>" onclick="display_needvol(this.id)"
                 disabled>OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success " id="close" onclick="closewebview()">Close</button>
+            <button type="button" class="btn btn-success " id="close" onclick="closewebview()">Close</button> -->
         </div>
     </div>
 
@@ -157,11 +159,19 @@
                 this.classList.toggle("caret-down");
             });
         }
-        
-        function myFunction(list){
+
+        function myFunction(list) {
             document.getElementsByClassName("fullacceptbutton")[0].disabled = false;
-            $(".fullbutton").text('accept '+ list.className );
+            $(".fullacceptbutton").text('accept ' + list.className);
             console.log(list);
+        }
+
+        function closewebview() {
+            MessengerExtensions.requestCloseBrowser(function success() {
+                // webview closed
+            }, function error(err) {
+                // an error occurred
+            });
         }
     </script>
 
