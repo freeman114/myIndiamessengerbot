@@ -69,10 +69,12 @@
             <div class="col-sm-2 col-md-3 col-2"></div>
             <div class="col-sm-8 col-md-6 col-8" id="myimg">
                 <div class="list-group">
+                    <% var pos = 0 %>
                     <% array.forEach((item) =>{ %>
                     <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>"
                         onclick="set_timeslot(this.id)">
-                        delivery</button>
+                        <% pos++ %>
+                        delivery <% pos %></button>
                     <li><%= item.name %></li>
                     <li><%= item.address %></li>
                     <% }); %>
