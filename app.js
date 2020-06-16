@@ -261,6 +261,8 @@ app.post('/webhook', (req, res) => {
                     } else if (event.postback) {
                         receivedPostback(event);
                         // const sender = event.sender.id;
+                    } else if(event.optin){
+                        received_otn(event);
                     }
                     else {
                         console.log('received event', JSON.stringify(event));
@@ -344,6 +346,12 @@ async function receivedMessage(event) {
     }
 
 
+}
+
+function received_otn(event){
+    var senderid = event.sender.id;
+    var otn_token = event.optin.one_time_notif_token;
+    console.log(`otn_token: ${otn_token}`);
 }
 
 function sendWelcomeMessage(userId) {
