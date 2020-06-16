@@ -179,6 +179,9 @@ module.exports = {
 
             var arr = body.split("\n");
             console.log(arr[8]);
+            var text = arr[8].split(" : ");
+            console.log(text);
+            
             // console.log(JSON.stringify(body).json());
 
             // console.log(JSON.parse(body).rows[0]);
