@@ -37,6 +37,51 @@
             background-color: #111111;
             border-color: red;
         }
+
+        ul,
+        #myUL {
+            list-style-type: none;
+        }
+
+        #myUL {
+            margin: 0;
+            padding: 0;
+        }
+
+        .caret {
+            cursor: pointer;
+            -webkit-user-select: none;
+            /* Safari 3.1+ */
+            -moz-user-select: none;
+            /* Firefox 2+ */
+            -ms-user-select: none;
+            /* IE 10+ */
+            user-select: none;
+        }
+
+        .caret::before {
+            content: "\25B6";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .caret-down::before {
+            -ms-transform: rotate(90deg);
+            /* IE 9 */
+            -webkit-transform: rotate(90deg);
+            /* Safari */
+            '
+transform: rotate(90deg);
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -60,20 +105,21 @@
             <br>
             <div class="col-sm-2 col-md-3 col-2"></div>
             <div class="col-sm-8 col-md-6 col-8" id="myimg">
-                <div class="list-group">
-                    <% var pos = 0 %>
-                    <% array.forEach((item) =>{ %>
-                    <% pos++ %>
-                    <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>"
-                        onclick="set_timeslot(this.id)">
-                        delivery <%= pos %>
-                    </button>
-                    <li><%= item.name %></li>
-                    <li><%= item.address %></li>
-                    <% }); %>
+                <% var pos = 0 %>
+                <% array.forEach((item) =>{ %>
+                <% pos++ %>
+                <ul id="<%= item.userID %>">
+                    <li><span class="caret">delivery <%= pos %></span>
+                        <ul class="nested">
+                            <li><%= item.userID %></li>
+                            <li><%= item.name %></li>
+                            <li><%= item.address %></li>
+                            <li><%= item.Time %></li>
+                            <li><%= item.distance %></li>
+                        </ul>
+                    </li>
+                </ul>
 
-
-                </div>
             </div>
             <div class="col-sm-2 col-md-3 col-2"></div>
         </div>
@@ -86,6 +132,19 @@
             <button type="button" class="btn btn-success " id="close" onclick="closewebview()">Close</button>
         </div>
     </div>
+
+    <script>
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+            toggler[i].addEventListener("click", function () {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+            });
+        }
+    </script>
+
 </body>
 
 </html>
