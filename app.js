@@ -261,7 +261,7 @@ app.post('/webhook', (req, res) => {
                     } else if (event.postback) {
                         receivedPostback(event);
                         // const sender = event.sender.id;
-                    } else if(event.optin){
+                    } else if (event.optin) {
                         received_otn(event);
                     }
                     else {
@@ -348,10 +348,34 @@ async function receivedMessage(event) {
 
 }
 
-function received_otn(event){
+function received_otn(event) {
     var senderid = event.sender.id;
     var otn_token = event.optin.one_time_notif_token;
     console.log(`otn_token: ${otn_token}`);
+    userService.save_otn_token(senderid, otn_token, () => {
+        console.log('____________saved token for one time notification.___________');
+        let responseText = "You will be soon reecived message from volunteers. ";
+
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, responseText, replies);
+    });
 }
 
 function sendWelcomeMessage(userId) {
