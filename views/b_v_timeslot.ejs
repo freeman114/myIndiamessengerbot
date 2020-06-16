@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Timeslot</title>
+    <title>Order List</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,11 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- <style>
-        body {
-            background-color:lavender;
-        }
-    </style> -->
+
     <style>
         div.col-sm-8 {
             background-color: white;
@@ -25,11 +21,7 @@
             overflow: auto;
         }
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+
 
         div {
             margin-top: 10%;
@@ -71,12 +63,13 @@
                 <div class="list-group">
                     <% var pos = 0 %>
                     <% array.forEach((item) =>{ %>
-                        <% pos++ %>
-                    <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>" onclick="set_timeslot(this.id)">
+                    <% pos++ %>
+                    <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>"
+                        onclick="set_timeslot(this.id)">
                         delivery <%= pos %>
                     </button>
-                    <li><%= item.name %></li>
-                    <li><%= item.address %></li>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<li><%= item.name %></li>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<li><%= item.address %></li>
                     <% }); %>
 
 
@@ -85,19 +78,14 @@
             <div class="col-sm-2 col-md-3 col-2"></div>
         </div>
 
-        <div id="address">address: <%= address %></div>
-        <div id="needvol">Choose timeslot.</div>
+
         <div class="panel-footer">
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-success okbutton" id="<%= id %>" onclick="display_needvol(this.id)"
                 disabled>OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-success " id="close" onclick="closewebview()">Close</button>
         </div>
-
-
-
     </div>
-
 </body>
 
 </html>
