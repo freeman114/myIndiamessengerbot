@@ -120,8 +120,8 @@
                 <% var pos = 0 %>
                 <% array.forEach((item) =>{ %>
                 <% pos++ %>
-                <ul id="<%= item.userID %>" class = "delivery_<%= pos %>" onclick="myFunction(this.id)" >
-                    <li><span class="caret">delivery_<%= pos %></span>
+                <ul id="<%= item.userID %>" class = "delivery <%= pos %>" onclick="myFunction(this.id, this.class)" >
+                    <li><span class="caret">delivery <%= pos %></span>
                         <ul class="nested">
                             <li><b>ID: </b><%= item.userID %></li>
                             <li><b>name: </b><%= item.name %></li>
@@ -137,7 +137,7 @@
             <div class="col-sm-1 col-md-2 col-1"></div>
         </div>
 
-        <button class="fullbutton" id="option_list">Select item.</button>
+        <button class="fullbutton"></button>
         <div class="panel-footer">
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-success okbutton" id="<%= id %>" onclick="display_needvol(this.id)"
@@ -154,14 +154,12 @@
             toggler[i].addEventListener("click", function () {
                 this.parentElement.querySelector(".nested").classList.toggle("active");
                 this.classList.toggle("caret-down");
-               
+                $(".fullbutton").text(this.id);
             });
         }
 
-        function myFunction(this){
+        function myFunction(id, pos){
             alert(id);
-            console.log(id);
-            document.getElementById("option_list").innerHTML = id;
         }
     </script>
 
