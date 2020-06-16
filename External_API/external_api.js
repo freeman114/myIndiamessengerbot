@@ -169,7 +169,7 @@ module.exports = {
         };
         request(options, function (error, response) {
             if (error) throw new Error(error);
-            console.log(response)
+            console.log(response.body.rows[0].elements[0].distance.text);
             // var distance = response.rows[0].elements[0].distance.text;
             // callback(distance);
         });
