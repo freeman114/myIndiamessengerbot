@@ -182,7 +182,8 @@ module.exports = {
             var text = arr[8].split(":");
             console.log(text[1]);
             var int = text[1].split(" ");
-            console.log(int[1]);
+            console.log(int[1]*1000);
+
 
             // console.log(JSON.stringify(body).json());
 
