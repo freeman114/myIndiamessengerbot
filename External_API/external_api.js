@@ -169,8 +169,9 @@ module.exports = {
         };
         request(options, function (error, response) {
             if (error) throw new Error(error);
-            var distance = response.rows[0].elements[0].distance.text;
-            callback(distance);
+            console.log(response)
+            // var distance = response.rows[0].elements[0].distance.text;
+            // callback(distance);
         });
     },
 
