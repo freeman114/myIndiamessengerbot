@@ -1,6 +1,7 @@
 const fbService = require('../External_API/facebook_service')
 
 const userService = require('../models/user');
+const external_api = require('../External_API/external_api')
 const appmodule = require('../app');
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -117,10 +118,17 @@ module.exports = {
                         break;
 
                     case 'address':
-                        var value = event.message.nlp.entities.location[0].value;
-                        console.log(value);
+                        var origin_add = event.message.nlp.entities.location[0].value;
+                        console.log(origin_add);
                         userService.read_nvorder(userId, function (result) {
-                            
+                            result.array.forEach(element => {
+                                var target_add = element.address;
+                                external_api.get_add(origin_add, target_add, function(distance){
+                                    console.log(distance);
+                                });
+
+
+                            });
                         });
 
                         break;

@@ -1,0 +1,48 @@
+{
+    "_id": "5ee529877cc21b0017b3208a",
+    "fb_id": "2924993747618824",
+    "firstname": "Sayak",
+    "lastname": "K",
+    "profile_picture": "https://platform-lookaside.fbsbx.com/platform/profilepic/?psid=2924993747618824&width=1024&ext=1594668679&hash=AeSEsPkHKLHjegg7",
+    "oderArray": [
+        {
+            "place_id": "ChIJd8A87VXIDzkRFT92CL8bxtQ",
+            "shopName": "Theninestore",
+            "time": "9:30 ~ 9:45 AM"
+        },
+        {
+            "place_id": "ChIJd8A87VXIDzkRFT92CL8bxtQ",
+            "shopName": "Theninestore",
+            "time": "9:45 ~ 10:00 AM"
+        },
+        {
+            "place_id": "ChIJd8A87VXIDzkRFT92CL8bxtQ",
+            "shopName": "Theninestore",
+            "time": "9:45 ~ 10:00 AM"
+        },
+        {
+            "place_id": "ChIJ1-ca8lXIDzkRgJloOGUI6lA",
+            "shopName": "Satguru Medical Store",
+            "time": "9:15 ~ 9:30 AM"
+        },
+        {
+            "place_id": "ChIJLyA65trJDzkRgw9IcnDZ94o",
+            "shopName": "RO Care India",
+            "time": "9:30 ~ 9:45 AM"
+        },
+        {
+            "place_id": "ChIJLyA65trJDzkRgw9IcnDZ94o",
+            "shopName": "RO Care India",
+            "time": "1:15 ~ 1:30 PM"
+        },
+        {
+            "place_id": "ChIJLyA65trJDzkRgw9IcnDZ94o",
+            "shopName": "RO Care India",
+            "time": "10:30 ~ 10:45 AM"
+        }
+    ],
+    "userrole": "2",
+    "n_v_address": "Sector-9, Ambala City, Ambala, Haryana",
+    "n_v_timeslot": "1:00 ~ 2:00 PM",
+    "otn_token": "9171371116676443766"
+}

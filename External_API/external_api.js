@@ -2,10 +2,10 @@
 const request = require('request');
 const config = require('../config');
 const fetch = require("node-fetch");
+var apikey = config.GOOGLE_API_KEY;
 
 module.exports = {
     displayShop: async function (value, callback) {
-        apikey = config.GOOGLE_API_KEY;
         const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value + '&key=' + apikey;
 
         try {
@@ -158,6 +158,20 @@ module.exports = {
 
         // var ordertime = year + "-" + month + "-" + _date + " " + _hour + ":" + _minutes;
         // return ordertime;
+    },
+
+    get_add: function (origin, target, callback) {
+        var options = {
+            'method': 'GET',
+            'url': 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' +origin+ '&destinations=' +target+ '&departure_time=now&key=' + apikey,
+            'headers': {
+            }
+        };
+        request(options, function (error, response) {
+            if (error) throw new Error(error);
+            var distance = response.rows[0].elements[0].distance.text;
+            callback(distance);
+        });
     },
 
     isDefined: function (obj) {
