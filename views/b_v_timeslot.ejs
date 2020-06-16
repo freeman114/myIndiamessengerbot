@@ -73,7 +73,7 @@
                     <% array.forEach(item =>{ %>
                     <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>"
                         onclick="set_timeslot(this.id)">
-                        delivery <% i %></button>
+                        delivery <%= i %></button>
                     <%= i++ %>
                     <li><%= item.name %></li>
                     <li><%= item.address %></li>
