@@ -365,7 +365,7 @@ function received_otn(event) {
             {
                 "content_type": "text",
                 "title": "Previous ",
-                "payload": "start_over"
+                "payload": "input_item"
             },
             {
                 "content_type": "text",
@@ -477,7 +477,6 @@ function handleQuickreply(userId, quickReply, messageId) {
                 console.log(quickReplyPayload);
                 inputName(userId);
             });
-
             break;
         case 'need_volunteers':
             userService.set_userrole(userId, "1", () => {
@@ -497,6 +496,10 @@ function handleQuickreply(userId, quickReply, messageId) {
             break;
         case 'inputname':
             inputName(userId);
+            break;
+        case 'input_item':
+            n_v_s.item_require(userId);
+
             break;
         case 'inputaddress':
             inputAddress(userId);

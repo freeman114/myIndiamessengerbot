@@ -119,6 +119,9 @@ module.exports = {
                     case 'address':
                         var value = event.message.nlp.entities.location[0].value;
                         console.log(value);
+                        userService.read_nvorder(userId, function (result) {
+                            
+                        });
 
                         break;
 

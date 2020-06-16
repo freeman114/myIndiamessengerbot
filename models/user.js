@@ -384,14 +384,35 @@ module.exports = {
                     console.log(result[0]);
                     dbo.collection("users").updateOne(findUser, newvalues)
                         .then(function () {
-                           callback(true);
-                           db.close();
+                            callback(true);
+                            db.close();
 
                         }).catch(function (err) {
                             console.log(err);
                             callback(false);
                             db.close();
                         });
+                }).catch(function (err) {
+                    console.log(`err=  ${err}`);
+                });
+        });
+    },
+
+    read_nvorder: function (userid, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            if (err) {
+                console.log(err);
+            }
+            var dbo = db.db;
+            console.log(`dbo :${dbo} `);
+            // console.log(JSON.stringify(db));
+            var findUser = { fb_id: userID };
+            var newvalues = { $set: { fb_id: userID, otn_token: otn_token } };
+            dbo.collection("users").find().toArray()
+                .then(function (result) {
+                    console.log(result[0]);
+                    console.log(result[1]);
+                    
                 }).catch(function (err) {
                     console.log(`err=  ${err}`);
                 });

@@ -132,7 +132,7 @@ module.exports = {
                         userService.n_v_address(userId, value, function (updated) {
                             if (updated) {
 
-                                item_require(userId);
+                                self.item_require(userId);
                             }
                             console.log(value);
                         });
@@ -217,6 +217,30 @@ module.exports = {
         ];
 
         fbService.sendQuickReply(userId, responseText, replies);
+    },
+
+    item_require: function (userId) {
+        console.log("*************after enter address******************");
+        let responseText = "Please enter the items you need. For example you can enter like follow.       I need 'cake and pizza' ";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "need_volunteers"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, responseText, replies);
     }
 
     // all_timeslot: async function (userId){
@@ -224,36 +248,14 @@ module.exports = {
     // }
 }
 
-function item_require(userId) {
-    console.log("*************after enter address******************");
-    let responseText = "Please enter the items you need. For example you can enter like follow.       I need 'cake and pizza' ";
-    let replies = [
-        {
-            "content_type": "text",
-            "title": "Start Over",
-            "payload": "start_over"
-        },
-        {
-            "content_type": "text",
-            "title": "Previous ",
-            "payload": "need_volunteers"
-        },
-        {
-            "content_type": "text",
-            "title": "Cancel ",
-            "payload": "cancel"
-        }
-    ];
 
-    fbService.sendQuickReply(userId, responseText, replies);
-}
 
 function timeslot_require(userId) {
     console.log('***************we sent message that input timeslots.**********');
     fbService.timeslot_template(userId, () => {
         let responseText = " Click 'All the timeslots' button to check all timeslots ";
         let replies = [
-           
+
             {
                 "content_type": "text",
                 "title": "Start Over",
