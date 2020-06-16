@@ -175,7 +175,7 @@ module.exports = {
     },
 
     quickreply_list: function (userId) {
-        let responseText = "Please enter your location. ";
+        let responseText = "Please click 'All list' button to check order list. ";
         let replies = [
             {
                 "content_type": "text",

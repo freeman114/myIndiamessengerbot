@@ -199,7 +199,7 @@ module.exports = {
                                         [{
                                             "type": "web_url",
                                             "url": "https://facebookmessengerapp-1.herokuapp.com/b_v_list?userID=" + userID+ '&address=' +origin_add,
-                                            "title": "All list for needed volunteers",
+                                            "title": "All list",
                                             "messenger_extensions": "true"
                                         }]
                                 }]
