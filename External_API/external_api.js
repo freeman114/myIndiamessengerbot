@@ -169,15 +169,46 @@ module.exports = {
         };
         request(options, function (error, response) {
             if (error) throw new Error(error);
+            console.log(JSON.stringify(response.body));
+            // console.log(JSON.parse(JSON.stringify(response.body)));
             var body = JSON.parse(JSON.stringify(response.body));
+            // var someText = body.replace(/(\r\n|\n|\r)/gm, "");
+            // console.log(JSON.stringify(someText));
+            // var mytrim = someText.replace(/^\s+|\s+$/gm,'');
+            // console.log(JSON.stringify(mytrim));
+
             var arr = body.split("\n");
+            console.log(typeof(body));
+            console.log(arr[8]);
             var text = arr[8].split(":");
             console.log(text[1]);
             var int = text[1].split(" ");
             console.log(int[1]);
             var res = int[1].slice(1);
-            var distance = res*1000;
-            callback(distance);
+            var distannc = res*1000;
+            console.log(res);
+            console.log(res*1000);
+            
+
+
+            // console.log(JSON.stringify(body).json());
+
+            // console.log(JSON.parse(body).rows[0]);
+            // var distance = response.body.rows[0].elements[0].distance.text;
+            // callback(distance);
+
+
+
+            // if (error) throw new Error(error);
+            // var body = JSON.parse(JSON.stringify(response.body));
+            // var arr = body.split("\n");
+            // var text = arr[8].split(":");
+            // console.log(text[1]);
+            // var int = text[1].split(" ");
+            // console.log(int[1]);
+            // var res = int[1].slice(1);
+            // var distance = res*1000;
+            // callback(distance);
         });
     },
 
