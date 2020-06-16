@@ -71,9 +71,9 @@
                 <div class="list-group">
                     <% var pos = 0 %>
                     <% array.forEach((item) =>{ %>
-                        <% pos++ %>
+                        <%= pos++ %>
                     <button type="button" class="btn btn-light btn-block" id="<%= item.userID %>" onclick="set_timeslot(this.id)">
-                        delivery <% pos %>
+                        delivery <%= pos %>
                     </button>
                     <li><%= item.name %></li>
                     <li><%= item.address %></li>
