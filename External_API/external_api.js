@@ -209,10 +209,15 @@ module.exports = {
             console.log(text[1]);
             var int = text[1].split(" ");
             console.log(int[2]);
-            var unit = int[2].slice(1,3);
+            var unit = int[2].slice(0,2);
             console.log(unit);
-            var res = int[1].slice(1);
-            var distance = res*1000;
+            if (unit.toString() == 'km'){
+                var res = int[1].slice(1);
+                var distance = res*1000;
+            } else {
+                var distance = int[1].slice(1)*1;
+            }
+            
             callback(distance);
         });
     },
