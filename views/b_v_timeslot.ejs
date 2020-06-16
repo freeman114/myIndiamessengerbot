@@ -21,6 +21,22 @@
             overflow: auto;
         }
 
+        .fullbutton {
+            display: block;
+            width: 100%;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .fullbutton:hover {
+            background-color: #ddd;
+            color: black;
+        }
 
 
         div {
@@ -121,7 +137,7 @@
             <div class="col-sm-1 col-md-2 col-1"></div>
         </div>
 
-
+        <button class="fullbutton"></button>
         <div class="panel-footer">
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-success okbutton" id="<%= id %>" onclick="display_needvol(this.id)"
@@ -138,6 +154,7 @@
             toggler[i].addEventListener("click", function () {
                 this.parentElement.querySelector(".nested").classList.toggle("active");
                 this.classList.toggle("caret-down");
+                $(".fullbutton").text('timeslot: ');
             });
         }
     </script>
