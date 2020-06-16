@@ -374,7 +374,7 @@ function received_otn(event) {
             }
         ];
 
-        fbService.sendQuickReply(userId, responseText, replies);
+        fbService.sendQuickReply(senderid, responseText, replies);
     });
 }
 
