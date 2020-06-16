@@ -208,7 +208,9 @@ module.exports = {
             var text = arr[8].split(":");
             console.log(text[1]);
             var int = text[1].split(" ");
-            console.log(int);
+            console.log(int[2]);
+            var unit = int[2].slice(1,3);
+            console.log(unit);
             var res = int[1].slice(1);
             var distance = res*1000;
             callback(distance);

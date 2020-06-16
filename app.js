@@ -248,7 +248,7 @@ app.get('/b_v_list', (req, res) => {
                     if (arr.length == result.length) {
                         arr.sort(compare);
                         console.log(JSON.stringify(arr));
-                        res.render('b_v_timeslot', { array: arr, id: userId });
+                        res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add });
                         
                     }
 
