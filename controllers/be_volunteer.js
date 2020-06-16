@@ -120,25 +120,31 @@ module.exports = {
                     case 'address':
                         var origin_add = event.message.nlp.entities.location[0].value;
                         console.log(origin_add);
-                        userService.read_nvorder(userId, function (result) {
-                            var arr = [];
-                            result.forEach(element => {
-                                var target_add = element.address;
-                                external_api.get_add(origin_add, target_add, function (distance) {
-                                    console.log(distance);
-                                    var obj = { userID: element.fb_id, address: element.address, Time: element.time, distance: distance };
-                                    arr.push(obj);
-                                    if (arr.length == result.length) {
-                                        arr.sort(compare);
-                                        console.log(JSON.stringify(arr));
-                                    }
-
-                                });
-
-
-
-                            });
+                        fbService.orderlist_template(userId, origin_add, () => {
+                            self.quickreply_list(userId);
                         });
+                        // userService.read_nvorder(userId, function (result) {
+                        //     var arr = [];
+                        //     result.forEach(element => {
+                        //         var target_add = element.address;
+                        //         external_api.get_add(origin_add, target_add, function (distance) {
+                        //             console.log(distance);
+                        //             var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance };
+                        //             arr.push(obj);
+                        //             if (arr.length == result.length) {
+                        //                 arr.sort(compare);
+                        //                 console.log(JSON.stringify(arr));
+                        //                 fbService.orderlist_template(userId, arr, () => {
+                        //                     self.quickreply_list(userId);
+                        //                 });
+                        //             }
+
+                        //         });
+
+
+
+                        //     });
+                        // });
 
                         break;
 
@@ -190,6 +196,30 @@ module.exports = {
         fbService.sendQuickReply(userId, responseText, replies);
     },
 
+    quickreply_list: function (userId) {
+        let responseText = "Please enter your location. ";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "inputname"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+        fbService.sendQuickReply(userId, responseText, replies);
+
+    },
+
     inputAddress: function (userId) {
         console.log('%%%%%%%%%%%%%% we sent message that input location.%%%%%%%%%%%%%%%');
 
@@ -219,11 +249,5 @@ module.exports = {
 
 }
 
-function compare(a, b) {
-    if (a.distance < b.distance)
-        return -1;
-    if (a.distance > b.distance)
-        return 1;
-    return 0;
-}
+
 

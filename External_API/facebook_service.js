@@ -173,6 +173,49 @@ module.exports = {
         });
     },
 
+    orderlist_template: function (userID, origin_add, callback) {
+        var request = require('request');
+        var options = {
+            'method': 'POST',
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "recipient":
+                    { "id": userID },
+                "message":
+                {
+                    "attachment":
+                    {
+                        "type": "template",
+                        "payload":
+                        {
+                            "template_type": "generic",
+                            "elements":
+                                [{
+                                    "title": " Order List",
+                                    "buttons":
+                                        [{
+                                            "type": "web_url",
+                                            "url": "https://facebookmessengerapp-1.herokuapp.com/b_v_list?userID=" + userID+ '&address=' +origin_add,
+                                            "title": "All list for needed volunteers",
+                                            "messenger_extensions": "true"
+                                        }]
+                                }]
+                        }
+                    }
+                }
+            })
+
+        };
+        request(options, function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.body);
+            callback();
+        });
+    },
+
     isDefined: function (obj) {
         if (typeof obj == 'undefined') {
             return false;

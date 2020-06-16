@@ -1,2 +1,38 @@
-"{\n   \"destination_addresses\" : [ \"Sector 9, Ambala, Haryana 134003, India\" ],\n   \"origin_addresses\" : [ \"Ram Bagh, Ambala, Haryana 134003, India\" ],\n   \"rows\" : [\n      {\n         \"elements\" : [\n            {\n               \"distance\" : {\n                  \"text\" : \"3.3 km\",\n                  \"value\" : 3276\n               },\n               \"duration\" : {\n
-    \"text\" : \"9 mins\",\n                  \"value\" : 533\n               },\n               \"duration_in_traffic\" : {\n                  \"text\" : \"8 mins\",\n                  \"value\" : 508\n               },\n               \"status\" : \"OK\"\n            }\n         ]\n      }\n   ],\n   \"status\" : \"OK\"\n}\n"
+[
+    {
+        "userID": "2924993747618824",
+        "address": "Mayur Vihar, New Delhi, Delhi 110091, India",
+        "Time": "9:00 ~ 10:00 AM",
+        "distance": 34400
+    },
+    {
+        "userID": "2924993747618824",
+        "address": "Sector 15, Vasundhara, Ghaziabad, Uttar Pradesh, India",
+        "Time": "1:00 ~ 2:00 PM",
+        "distance": 42500
+    },
+    {
+        "userID": "2924993747618824",
+        "address": "Chotpur, Uttar Pradesh, India",
+        "Time": "1:00 ~ 2:00 PM",
+        "distance": 45900
+    },
+    {
+        "userID": "2924993747618824",
+        "address": "Sector-9, Ambala City, Ambala, Haryana",
+        "Time": "6:00 ~ 6:30 PM",
+        "distance": 199000
+    },
+    {
+        "userID": "2924993747618824",
+        "address": "Sector-9, Ambala City, Ambala, Haryana",
+        "Time": "10:00 ~ 11:00 AM",
+        "distance": 199000
+    },
+    {
+        "userID": "2924993747618824",
+        "address": "Sector-9, Ambala City, Ambala, Haryana",
+        "Time": "11:00 ~ 12:00 PM",
+        "distance": 199000
+    }
+]

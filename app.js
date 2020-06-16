@@ -225,6 +225,51 @@ app.post('/n_v_timeslot', (req, res) => {
 
 });
 
+function compare(a, b) {
+    if (a.distance < b.distance)
+        return -1;
+    if (a.distance > b.distance)
+        return 1;
+    return 0;
+}
+
+app.get('/b_v_list', (req, res) => {
+    try {
+        var userId = req.query.userID
+        var origin_add = req.query.origin_add;
+        userService.read_nvorder(userId, function (result) {
+            var arr = [];
+            result.forEach(element => {
+                var target_add = element.address;
+                external_api.get_add(origin_add, target_add, function (distance) {
+                    console.log(distance);
+                    var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance };
+                    arr.push(obj);
+                    if (arr.length == result.length) {
+                        arr.sort(compare);
+                        console.log(JSON.stringify(arr));
+                        res.render('b_v_timeslot', { array: arr, id: userId });
+                        
+                    }
+
+                });
+
+
+
+            });
+        });
+
+        // userService.read_n_v_timeslot(ID, (n_v_timeSlot, address) => {
+        //     console.log(n_v_timeSlot);
+        //     res.render('b_v_timeslot', { array: n_v_timeSlot, id: ID, address: address });
+
+        // });
+    } catch (e) {
+        console.log(e);
+
+    }
+});
+
 
 // Message handler
 app.post('/webhook', (req, res) => {
