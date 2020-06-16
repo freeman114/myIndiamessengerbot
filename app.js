@@ -236,7 +236,7 @@ function compare(a, b) {
 app.get('/b_v_list', (req, res) => {
     try {
         var userId = req.query.userID
-        var origin_add = req.query.origin_add;
+        var origin_add = req.query.address;
         userService.read_nvorder(userId, function (result) {
             var arr = [];
             result.forEach(element => {
