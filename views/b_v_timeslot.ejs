@@ -67,12 +67,8 @@
         }
 
         .caret-down::before {
-            -ms-transform: rotate(90deg);
-            /* IE 9 */
-            -webkit-transform: rotate(90deg);
-            /* Safari */
-            '
-transform: rotate(90deg);
+
+            transform: rotate(90deg);
         }
 
         .nested {
@@ -104,7 +100,7 @@ transform: rotate(90deg);
         <div class="row">
             <br>
             <div class="col-sm-2 col-md-3 col-2"></div>
-            <div class="col-sm-8 col-md-6 col-8" id="myimg">
+            <div class="col-sm-8 col-md-6 col-8">
                 <% var pos = 0 %>
                 <% array.forEach((item) =>{ %>
                 <% pos++ %>
