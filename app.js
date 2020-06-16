@@ -234,10 +234,11 @@ app.post('/webhook', (req, res) => {
 
     const data = req.body;
     console.log("****************We received webhook event.***************");
-    console.log(JSON.stringify(data));
+    console.log(`JSON.stringify(data): ${JSON.stringify(data)}`);
 
     if (data.object === 'page' && data.entry[0].messaging) {
         try {
+            console.log("webhook message:");
             data.entry.forEach(entry => {
                 entry.messaging.forEach(event => {
                     if (event.message && !event.message.is_echo) {
