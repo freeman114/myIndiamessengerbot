@@ -161,6 +161,9 @@ module.exports = {
     },
 
     get_add: function (origin, target, callback) {
+        console.log(origin);
+        console.log(target);
+
         var options = {
             'method': 'GET',
             'url': 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' +origin+ '&destinations=' +target+ '&departure_time=now&key=' + apikey,
