@@ -165,11 +165,10 @@
         }
 
         function myFunction(list) {
-            console.log(list);
             console.log(list.id);
             console.log(list.className);
             $("#fullacceptbutton").text('accept ' + list.className);
-            $("#fullacceptbutton").className = list.id;
+            document.getElementById("#fullacceptbutton").className = list.id;
             // $(".fullacceptbutton").className(list.id);
             // if (document.getElementById(list.id).classList[1] != 'undefined') {
             //     var classname = document.getElementById(list.id).classList[1];
@@ -209,6 +208,7 @@
                     success: function (res) {
                         console.log(res);
                         document.getElementById(token).style.display = 'none';
+                        // $("p").remove();
                         // $("#needvol").text('You successfully requested order you want.');
 
                     },
