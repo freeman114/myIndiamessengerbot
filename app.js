@@ -270,7 +270,7 @@ app.get('/b_v_list', (req, res) => {
     }
 });
 
-app.get('/b_v_list', (req, res) => {
+app.post('/b_v_list', (req, res) => {
     var userId = req.body.userid
     var senderid = req.body.senderid;
     console.log(`userId: ${userId}`);
