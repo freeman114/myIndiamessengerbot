@@ -247,12 +247,12 @@ app.get('/b_v_list', (req, res) => {
                     var target_add = element.address;
                     external_api.get_add(origin_add, target_add, function (distance) {
                         console.log(distance);
-                        var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance };
+                        var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance, token: element.token };
                         arr.push(obj);
                         if (arr.length == result.length && arr.length < 16) {
                             arr.sort(compare);
                             console.log(JSON.stringify(arr));
-                            res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add });
+                            res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add, token:  });
 
                         }
 
@@ -262,14 +262,13 @@ app.get('/b_v_list', (req, res) => {
 
                 });
             } else {
+                res.send("No exist order data.");
                 fbService.sendTextMessage(userId, "No exist order data. Please wait until someone request order.");
             }
 
         });
 
-        // userService.read_n_v_timeslot(ID, (n_v_timeSlot, address) => {
-        //     console.log(n_v_timeSlot);
-        //     res.render('b_v_timeslot', { array: n_v_timeSlot, id: ID, address: address });
+    
 
         // });
     } catch (e) {
