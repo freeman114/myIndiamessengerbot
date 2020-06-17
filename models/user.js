@@ -414,7 +414,7 @@ module.exports = {
                     var items = result[0].items;
                     var token = otn_token;
 
-                    var insertvalue = { fb_id: userid, name: name, address: address, time: time,items: items, token: token };
+                    var insertvalue = { fb_id: userid, name: name, address: address, time: time, items: items, token: token };
                     dbo.collection("n_v_order").insertOne(insertvalue, function (err, res) {
                         if (err) throw err;
                         console.log("1 order inserted");
@@ -431,6 +431,32 @@ module.exports = {
                     //         callback(false);
                     //         db.close();
                     //     });
+                }).catch(function (err) {
+                    console.log(`err=  ${err}`);
+                });
+        });
+    },
+
+    delete_order: function (token, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            if (err) {
+                console.log(err);
+            }
+            var dbo = db.db;
+            console.log(`dbo :${dbo} `);
+            // console.log(JSON.stringify(db));
+            var findorder = { token: token };
+            dbo.collection("n_v_order").find(findorder).toArray()
+                .then(function (result) {
+                    console.log(result[0]);
+                    dbo.collection("n_v_order").deleteOne(result[0], function (err, obj) {
+                        if (err) throw err;
+                        console.log("1 order deleted");
+                        callback();
+                        db.close();
+                    });
+
+
                 }).catch(function (err) {
                     console.log(`err=  ${err}`);
                 });

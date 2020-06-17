@@ -281,7 +281,10 @@ app.post('/b_v_list', (req, res) => {
     var userId = req.body.userid
     var token = req.body.token;
     console.log(`userId: ${userId}`);
-    fbService.otn_message(userId, token);
+    userService.delete_order(token, () => {
+
+        fbService.otn_message(userId, token);
+    });
 });
 
 
