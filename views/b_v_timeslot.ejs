@@ -169,9 +169,10 @@
             document.getElementsByClassName("fullacceptbutton")[0].disabled = false;
             $(".fullacceptbutton").text('accept ' + list.className);
             // $(".fullacceptbutton").className(list.id);
-            if (document.getElementById(list.id).classList[1]){
+            if (document.getElementById(list.id).classList[1] != 'undefined'){
                 var classname =document.getElementById(list.id).classList[1];
-                console.log(`classname: ${classname}`)
+                console.log(`classname: `);
+                console.log(classname);
             }
             $(".fullacceptbutton").addClass(list.id);
             console.log(list);
