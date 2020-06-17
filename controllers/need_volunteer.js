@@ -141,7 +141,16 @@ module.exports = {
                         break;
                     case 'need_item':
                         console.log("need_item");
-                        timeslot_require(userId);
+                        let items = [];
+                        var n_item = event.message.nlp.entities.item;
+                        n_item.forEach(element => {
+                            items.push(element.value);
+                        });
+                        userService.n_v_item(userId, items, (updated) => {
+                            if (updated) {
+                                timeslot_require(userId);
+                            }
+                        });
                         break;
 
                     default:

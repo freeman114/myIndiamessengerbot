@@ -323,6 +323,7 @@ module.exports = {
                 .then(function (result) {
                     dbo.collection("users").updateOne(findUser, newvalues)
                         .then(function () {
+                            console.log("1 address inserted");
                             callback(true);
                             db.close();
                         }).catch(function (err) {
@@ -348,11 +349,38 @@ module.exports = {
             var newvalues = { $set: { fb_id: userID, n_v_timeslot: timeslot } };
             dbo.collection("users").find(findUser).toArray()
                 .then(function (result) {
-                    console.log(result[0]);
                     dbo.collection("users").updateOne(findUser, newvalues)
                         .then(function () {
-                            var insertdata = { fb_id: result[0].fb_id, name: result[0].firstname, address: result[0].n_v_address, time: result[0].n_v_timeslot, order_token: result[0].otn_token };
-                            console.log("1 data inserted");
+                            console.log("1 timeslot inserted");
+                            callback(true);
+                            db.close();
+
+                        }).catch(function (err) {
+                            console.log(err);
+                            callback(false);
+                            db.close();
+                        });
+                }).catch(function (err) {
+                    console.log(`err=  ${err}`);
+                });
+        });
+    },
+
+    n_v_item: function (userID, items, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            if (err) {
+                console.log(err);
+            }
+            var dbo = db.db;
+            console.log(`dbo :${dbo} `);
+            // console.log(JSON.stringify(db));
+            var findUser = { fb_id: userID };
+            var newvalues = { $set: { fb_id: userID, items: items } };
+            dbo.collection("users").find(findUser).toArray()
+                .then(function (result) {
+                    dbo.collection("users").updateOne(findUser, newvalues)
+                        .then(function () {
+                            console.log("1 items inserted");
                             callback(true);
                             db.close();
 
@@ -379,7 +407,7 @@ module.exports = {
             dbo.collection("users").find(findUser).toArray()
                 .then(function (result) {
                     console.log(result[0]);
-                    var userid= userID;
+                    var userid = userID;
                     var name = result[0].firstname;
                     var address = result[0].n_v_address;
                     var time = result[0].n_v_timeslot;
@@ -418,7 +446,7 @@ module.exports = {
             // console.log(JSON.stringify(db));
             dbo.collection("n_v_order").find().toArray()
                 .then(function (result) {
-                   
+
                     callback(result);
                 }).catch(function (err) {
                     console.log(`err=  ${err}`);
