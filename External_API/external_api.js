@@ -166,29 +166,33 @@ module.exports = {
 
         var options = {
             'method': 'GET',
-            'url': 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' +origin+ '&destinations=' +target+ '&departure_time=now&key=' + apikey,
+            'url': 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + target + '&departure_time=now&key=' + apikey,
             'headers': {
             }
         };
         request(options, function (error, response) {
+            try {
+                if (error) throw new Error(error);
+                var body = JSON.parse(JSON.stringify(response.body));
+                var arr = body.split("\n");
+                var text = arr[8].split(":");
+                console.log(text[1]);
+                var int = text[1].split(" ");
+                console.log(int[2]);
+                var unit = int[2].slice(0, 2);
+                console.log(unit);
+                if (unit.toString() == 'km') {
+                    var res = int[1].slice(1);
+                    var distance = res * 1000;
+                } else {
+                    var distance = int[1].slice(1) * 1;
+                }
 
-            if (error) throw new Error(error);
-            var body = JSON.parse(JSON.stringify(response.body));
-            var arr = body.split("\n");
-            var text = arr[8].split(":");
-            console.log(text[1]);
-            var int = text[1].split(" ");
-            console.log(int[2]);
-            var unit = int[2].slice(0,2);
-            console.log(unit);
-            if (unit.toString() == 'km'){
-                var res = int[1].slice(1);
-                var distance = res*1000;
-            } else {
-                var distance = int[1].slice(1)*1;
+                callback(distance);
+            } catch (err) {
+                console.log(err);
             }
-            
-            callback(distance);
+           
         });
     },
 
