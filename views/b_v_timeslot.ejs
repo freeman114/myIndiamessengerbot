@@ -172,8 +172,15 @@
             //     console.log(`classname: ${id}`)
             // }
             // $(".fullacceptbutton").addClass(list.id);
-            $(".fullacceptbutton").className = $(".fullacceptbutton").className + ' ' + list.id;
-            console.log($(".fullacceptbutton").className);
+            let items = Array.from(document.getElementsByClassName('fullacceptbutton'));
+            items.forEach(item => {
+                console.log(item.className);
+                item.className = 'fullacceptbutton' + ' ' + list.id;
+            });
+            
+            // console.log($(".fullacceptbutton").classList);
+            // $(".fullacceptbutton").classList = $(".fullacceptbutton").classList + ' ' + list.id;
+            // console.log($(".fullacceptbutton").className);
         }
 
         function closewebview() {
