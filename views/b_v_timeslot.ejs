@@ -22,7 +22,7 @@
         }
 
         .fullclosebutton,
-        .fullacceptbutton {
+        #acceptbutton {
             display: block;
             width: 100%;
             border: none;
@@ -35,7 +35,7 @@
         }
 
         .fullclosebutton:hover,
-        .fullacceptbutton:hover {
+        #acceptbutton:hover {
             background-color: #ddd;
             color: black;
         }
@@ -130,7 +130,7 @@
                             <li><b>address: </b><%= item.address %></li>
                             <li><span class="caret">items</span>
                                 <ul class="nested">
-                                    <% item.items.forEach((element) => { %> 
+                                    <% item.items.forEach((element) => { %>
                                     <li><%= element %></li>
                                     <% }); %>
                                 </ul>
@@ -146,7 +146,7 @@
             <div class="col-sm-1 col-md-2 col-1"></div>
         </div>
 
-        <button class="fullacceptbutton" id="<%= id %>" onclick="accept(this)" >Select delivery
+        <button class="fullacceptbutton" id="acceptbutton" onclick="accept(this)">Select delivery
             item.</button><br>
         <button class="fullclosebutton" onclick="closewebview()">CLOSE</button>
         <div class="panel-footer">
@@ -167,20 +167,20 @@
 
         function myFunction(list) {
             console.log(list);
-            $(".fullacceptbutton").text('accept ' + list.className);
-            $(".fullacceptbutton").addClass(list.id);
             console.log(list.id);
             console.log(list.className);
+            $(".fullacceptbutton").text('accept ' + list.className);
+            $(".fullacceptbutton").className = list.id;
             console.log(list.classList);
             // $(".fullacceptbutton").className(list.id);
-            if (document.getElementById(list.id).classList[1] != 'undefined'){
-                var classname =document.getElementById(list.id).classList[1];
-            //     console.log(`classname: `);
-                console.log(classname);
-                $(list.id).removeClass(classname);
+            // if (document.getElementById(list.id).classList[1] != 'undefined') {
+            //     var classname = document.getElementById(list.id).classList[1];
+            //     //     console.log(`classname: `);
+            //     console.log(classname);
+            //     $(list.id).removeClass(classname);
 
-                // document.getElementById(list.id).classList.remove(classname);
-            }
+            //     // document.getElementById(list.id).classList.remove(classname);
+            // }
         }
 
         function closewebview() {
@@ -195,12 +195,12 @@
             console.log(array);
             console.log(array.className);
             console.log(array.id);
-            if (typeof (array.classList[1])) {
+            if (typeof (array.className)) {
                 console.log(array);
-                var userid = array.id;
-                var token = array.classList[1];
+                // var userid = array.id;
+                var token = array.className;
                 var data = {
-                    userid: userid,
+                    userid: "userid",
                     token: token
                 };
                 $.ajax({
