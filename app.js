@@ -333,9 +333,9 @@ app.post('/webhook', (req, res) => {
 });
 
 
-function receivedPostback(event) {
+async function receivedPostback(event) {
     var senderID = event.sender.id;
-    setSessionAndUser(senderID);
+    await setSessionAndUser(senderID);
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
     var payload = event.postback.payload;
