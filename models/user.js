@@ -418,8 +418,7 @@ module.exports = {
             // console.log(JSON.stringify(db));
             dbo.collection("n_v_order").find().toArray()
                 .then(function (result) {
-                    console.log(JSON.stringify(result[0]));
-                    console.log(JSON.stringify(result[1]));
+                   
                     callback(result);
                 }).catch(function (err) {
                     console.log(`err=  ${err}`);

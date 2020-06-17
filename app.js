@@ -241,25 +241,30 @@ app.get('/b_v_list', (req, res) => {
         var userId = req.query.userID
         var origin_add = req.query.address;
         userService.read_nvorder(userId, function (result) {
-            var arr = [];
-            result.forEach(element => {
-                var target_add = element.address;
-                external_api.get_add(origin_add, target_add, function (distance) {
-                    console.log(distance);
-                    var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance };
-                    arr.push(obj);
-                    if (arr.length == result.length && arr.length < 16) {
-                        arr.sort(compare);
-                        console.log(JSON.stringify(arr));
-                        res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add });
+            if (result.length) {
+                var arr = [];
+                result.forEach(element => {
+                    var target_add = element.address;
+                    external_api.get_add(origin_add, target_add, function (distance) {
+                        console.log(distance);
+                        var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance };
+                        arr.push(obj);
+                        if (arr.length == result.length && arr.length < 16) {
+                            arr.sort(compare);
+                            console.log(JSON.stringify(arr));
+                            res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add });
 
-                    }
+                        }
+
+                    });
+
+
 
                 });
+            } else {
+                fbService.sendTextMessage(userId, "No exist order data. Please wait until someone request order.");
+            }
 
-
-
-            });
         });
 
         // userService.read_n_v_timeslot(ID, (n_v_timeSlot, address) => {
