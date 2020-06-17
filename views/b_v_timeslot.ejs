@@ -139,10 +139,11 @@
             <div class="col-sm-1 col-md-2 col-1"></div>
         </div>
 
-        <button class="fullacceptbutton" id="<%= id %>" onclick="accept(this)" disabled>Select delivery item.</button><br>
+        <button class="fullacceptbutton" id="<%= id %>" onclick="accept(this)" disabled>Select delivery
+            item.</button><br>
         <button class="fullclosebutton" onclick="closewebview()">CLOSE</button>
         <div class="panel-footer">
-            
+
         </div>
     </div>
 
@@ -173,11 +174,16 @@
             });
         }
 
-        function accept(array){
-            console.log(array);
-            var userid = array.id;
-            console.log(array.classList[1]);
-            var senderid = array.classList[1];
+        function accept(array) {
+            if (array.classList[1]) {
+                console.log(array);
+                var userid = array.id;
+                console.log(array.classList[1]);
+                var senderid = array.classList[1];
+            } else {
+                alert ("select item for order.");
+            }
+
 
         }
     </script>
