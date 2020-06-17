@@ -252,7 +252,7 @@ app.get('/b_v_list', (req, res) => {
                         if (arr.length == result.length && arr.length < 16) {
                             arr.sort(compare);
                             console.log(JSON.stringify(arr));
-                            res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add, token:  });
+                            res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add });
 
                         }
 
