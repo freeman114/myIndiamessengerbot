@@ -178,10 +178,28 @@
             if (array.classList[1]) {
                 console.log(array);
                 var userid = array.id;
-                console.log(array.classList[1]);
                 var senderid = array.classList[1];
+                var data = {
+                    userid: userid,
+                    senderid: senderid
+                };
+                $.ajax({
+                    url: '/b_v_timeslot',
+                    method: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (res) {
+                        console.log(res);
+                        // document.getElementById(m_timeslot).style.display = 'none';
+                        // $("#needvol").text('You successfully requested order you want.');
+
+                    },
+                    error: function (error) {
+                        console.log('some error in fetching the intents');
+                    },
+                });
             } else {
-                alert ("select item for order.");
+                alert("select item for order.");
             }
 
 

@@ -245,11 +245,11 @@ app.get('/b_v_list', (req, res) => {
                     console.log(distance);
                     var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance };
                     arr.push(obj);
-                    if (arr.length == result.length && arr.length < 16 ) {
+                    if (arr.length == result.length && arr.length < 16) {
                         arr.sort(compare);
                         console.log(JSON.stringify(arr));
                         res.render('b_v_timeslot', { array: arr, id: userId, address: origin_add });
-                        
+
                     }
 
                 });
@@ -268,6 +268,12 @@ app.get('/b_v_list', (req, res) => {
         console.log(e);
 
     }
+});
+
+app.get('/b_v_list', (req, res) => {
+    var userId = req.body.userid
+    var senderid = req.body.senderid;
+    console.log(`userId: ${userId}`);
 });
 
 
