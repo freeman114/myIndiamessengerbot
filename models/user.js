@@ -395,7 +395,7 @@ module.exports = {
         });
     },
 
-    save_order: function (userID, otn_token, callback) {
+    insert_order: function (userID, otn_token, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
             if (err) {
                 console.log(err);
@@ -411,9 +411,10 @@ module.exports = {
                     var name = result[0].firstname;
                     var address = result[0].n_v_address;
                     var time = result[0].n_v_timeslot;
+                    var items = result[0].items;
                     var token = otn_token;
 
-                    var insertvalue = { fb_id: userid, name: name, address: address, time: time, token: token };
+                    var insertvalue = { fb_id: userid, name: name, address: address, time: time,items: items, token: token };
                     dbo.collection("n_v_order").insertOne(insertvalue, function (err, res) {
                         if (err) throw err;
                         console.log("1 order inserted");

@@ -128,6 +128,13 @@
                             <li><b>ID: </b><%= item.userID %></li>
                             <li><b>name: </b><%= item.name %></li>
                             <li><b>address: </b><%= item.address %></li>
+                            <li><span class="caret">items</span>
+                                <ul class="nested">
+                                    <% item.items.forEach((element) => { %> 
+                                    <li><%= element %></li>
+                                    <% }); %>
+                                </ul>
+                            </li>
                             <li><b>TIME: </b><%= item.Time %></li>
                             <li><b>Distance: </b><%= item.distance %> m</li>
                         </ul>
@@ -175,7 +182,7 @@
         }
 
         function accept(array) {
-            if (typeof(array.classList[1])) {
+            if (typeof (array.classList[1])) {
                 console.log(array);
                 var userid = array.id;
                 var token = array.classList[1];

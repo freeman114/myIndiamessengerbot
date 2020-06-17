@@ -247,7 +247,7 @@ app.get('/b_v_list', (req, res) => {
                     var target_add = element.address;
                     external_api.get_add(origin_add, target_add, function (distance) {
                         console.log(distance);
-                        var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance, token: element.token };
+                        var obj = { userID: element.fb_id, name: element.name, address: element.address, Time: element.time, distance: distance, items:element.items, token: element.token };
                         arr.push(obj);
                         if (arr.length == result.length && arr.length < 16) {
                             arr.sort(compare);
@@ -411,7 +411,7 @@ function received_otn(event) {
     var senderid = event.sender.id;
     var otn_token = event.optin.one_time_notif_token;
     console.log(`otn_token: ${otn_token}`);
-    userService.save_order(senderid, otn_token, () => {
+    userService.insert_order(senderid, otn_token, () => {
         console.log('____________saved token for one time notification.___________');
         let responseText = "You will be soon reecived message from volunteers. ";
 
