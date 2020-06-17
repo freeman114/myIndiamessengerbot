@@ -32,6 +32,7 @@ module.exports = {
             function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var user = JSON.parse(body);
+                    console.log(`user: ${user.first_name}`);
 
                     if (user.first_name != "undefined") {
                         console.log("Check user database");

@@ -63,6 +63,9 @@ crypto.randomBytes(8, (err, buff) => {
     var j = schedule.scheduleJob('30 18 * * *', function () {
         console.log('database format!');
         userService.formatdatabase(() => {
+            sessionIds = new Map();
+            usersMap = new Map();
+
             console.log("formated database");
         });
     });
