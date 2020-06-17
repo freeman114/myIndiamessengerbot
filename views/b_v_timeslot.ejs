@@ -178,10 +178,10 @@
             if (typeof(array.classList[1])) {
                 console.log(array);
                 var userid = array.id;
-                var senderid = array.classList[1];
+                var token = array.classList[1];
                 var data = {
                     userid: userid,
-                    senderid: senderid
+                    token: token
                 };
                 $.ajax({
                     url: '/b_v_list',

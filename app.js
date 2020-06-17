@@ -262,7 +262,7 @@ app.get('/b_v_list', (req, res) => {
 
                 });
             } else {
-                res.send("No exist order data.");
+                res.send("No exist order data. Please wait until someone request order.");
                 fbService.sendTextMessage(userId, "No exist order data. Please wait until someone request order.");
             }
 
@@ -279,8 +279,9 @@ app.get('/b_v_list', (req, res) => {
 
 app.post('/b_v_list', (req, res) => {
     var userId = req.body.userid
-    var senderid = req.body.senderid;
+    var token = req.body.token;
     console.log(`userId: ${userId}`);
+    fbService.otn_message(userId, token);
 });
 
 

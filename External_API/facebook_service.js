@@ -198,7 +198,7 @@ module.exports = {
                                     "buttons":
                                         [{
                                             "type": "web_url",
-                                            "url": "https://facebookmessengerapp-1.herokuapp.com/b_v_list?userID=" + userID+ '&address=' +origin_add,
+                                            "url": "https://facebookmessengerapp-1.herokuapp.com/b_v_list?userID=" + userID + '&address=' + origin_add,
                                             "title": "All list",
                                             "messenger_extensions": "true"
                                         }]
@@ -213,6 +213,28 @@ module.exports = {
             if (error) throw new Error(error);
             console.log(response.body);
             callback();
+        });
+    },
+
+    otn_message: function (userID, token) {
+        var options = {
+            'method': 'POST',
+            'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "recipient": { "one_time_notif_token": token },
+                "message":
+                {
+                    "text": " Hello, syak. Your order have accepted. Do you want to talk agent?"
+                }
+            })
+
+        };
+        request(options, function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.body);
         });
     },
 
