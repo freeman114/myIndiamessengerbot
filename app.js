@@ -403,7 +403,7 @@ function received_otn(event) {
     var senderid = event.sender.id;
     var otn_token = event.optin.one_time_notif_token;
     console.log(`otn_token: ${otn_token}`);
-    userService.save_otn_token(senderid, otn_token, () => {
+    userService.save_order(senderid, otn_token, () => {
         console.log('____________saved token for one time notification.___________');
         let responseText = "You will be soon reecived message from volunteers. ";
 

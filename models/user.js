@@ -350,7 +350,7 @@ module.exports = {
                     console.log(result[0]);
                     dbo.collection("users").updateOne(findUser, newvalues)
                         .then(function () {
-                            var insertdata = { fb_id: result[0].fb_id, name: result[0].firstname, address: result[0].n_v_address, time: result[0].n_v_timeslot };
+                            var insertdata = { fb_id: result[0].fb_id, name: result[0].firstname, address: result[0].n_v_address, time: result[0].n_v_timeslot, order_token: result[0].otn_token };
                             dbo.collection("n_v_order").insertOne(insertdata, function (err, res) {
                                 if (err) throw err;
                                 console.log("1 data inserted");
@@ -369,7 +369,7 @@ module.exports = {
         });
     },
 
-    save_otn_token: function (userID, otn_token, callback) {
+    save_order: function (userID, otn_token, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
             if (err) {
                 console.log(err);
@@ -378,20 +378,32 @@ module.exports = {
             console.log(`dbo :${dbo} `);
             // console.log(JSON.stringify(db));
             var findUser = { fb_id: userID };
-            var newvalues = { $set: { fb_id: userID, otn_token: otn_token } };
             dbo.collection("users").find(findUser).toArray()
                 .then(function (result) {
                     console.log(result[0]);
-                    dbo.collection("users").updateOne(findUser, newvalues)
-                        .then(function () {
-                            callback(true);
-                            db.close();
+                    var userid= userID;
+                    var name = result[0].firstname;
+                    var address = result[0].address;
+                    var time = result[0].n_v_timeslot;
+                    var token = otn_token;
 
-                        }).catch(function (err) {
-                            console.log(err);
-                            callback(false);
-                            db.close();
-                        });
+                    var insertvalue = { fb_id: userid, name: name, address: address, time: time, token: token };
+                    dbo.collection("n_v_order").insertOne(insertvalue, function (err, res) {
+                        if (err) throw err;
+                        console.log("1 order inserted");
+                        callback();
+                        db.close();
+                    });
+                    // dbo.collection("users").updateOne(findUser, newvalues)
+                    //     .then(function () {
+                    //         callback(true);
+                    //         db.close();
+
+                    //     }).catch(function (err) {
+                    //         console.log(err);
+                    //         callback(false);
+                    //         db.close();
+                    //     });
                 }).catch(function (err) {
                     console.log(`err=  ${err}`);
                 });
