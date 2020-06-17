@@ -216,7 +216,7 @@ module.exports = {
         });
     },
 
-    otn_message: function (userID, token) {
+    otn_message: function (userID, token, callback) {
         var options = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
@@ -235,6 +235,7 @@ module.exports = {
         request(options, function (error, response) {
             if (error) throw new Error(error);
             console.log(response.body);
+            callback();
         });
     },
 

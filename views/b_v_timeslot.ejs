@@ -206,7 +206,8 @@
                     data: JSON.stringify(data),
                     contentType: 'application/json',
                     success: function (res) {
-                        console.log(res);
+                        console.log('token: ' + token);
+                        console.log('res: ' + res);
                         document.getElementById(token).style.display = 'none';
                         // $("#needvol").text('You successfully requested order you want.');
 
