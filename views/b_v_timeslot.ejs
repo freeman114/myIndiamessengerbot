@@ -122,7 +122,7 @@
                 <% var pos = 0 %>
                 <% array.forEach((item) =>{ %>
                 <% pos++ %>
-                <ul id="<%= item.token %>" class="delivery <%= pos %>" onclick="myFunction(this)">
+                <ul id="<%= item.token %>" class="delivery_<%= pos %>" onclick="myFunction(this)">
                     <li><span class="caret">delivery <%= pos %></span>
                         <ul class="nested">
                             <li><b>ID: </b><%= item.userID %></li>
@@ -173,8 +173,9 @@
                 var classname =document.getElementById(list.id).classList[1];
                 console.log(`classname: `);
                 console.log(classname);
+                document.getElementById("MyElement").classList.remove(classname);
+                $(".fullacceptbutton").addClass(list.id);
             }
-            $(".fullacceptbutton").addClass(list.id);
             console.log(list);
         }
 
