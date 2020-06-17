@@ -171,8 +171,9 @@
             //     var classname =document.getElementById(list.id).classList[1];
             //     console.log(`classname: ${id}`)
             // }
-            $(".fullacceptbutton").addClass(list.id);
-            console.log(list);
+            // $(".fullacceptbutton").addClass(list.id);
+            $(".fullacceptbutton").className = $(".fullacceptbutton").className + ' ' + list.id;
+            console.log($(".fullacceptbutton").className);
         }
 
         function closewebview() {
