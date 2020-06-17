@@ -381,7 +381,7 @@ module.exports = {
                     console.log(result[0]);
                     var userid= userID;
                     var name = result[0].firstname;
-                    var address = result[0].address;
+                    var address = result[0].n_v_address;
                     var time = result[0].n_v_timeslot;
                     var token = otn_token;
 
