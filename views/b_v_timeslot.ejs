@@ -139,13 +139,10 @@
             <div class="col-sm-1 col-md-2 col-1"></div>
         </div>
 
-        <button class="fullacceptbutton" disabled>Select delivery item.</button><br>
+        <button class="fullacceptbutton" id="<%= id %>" onclick="accept(this)">Select delivery item.</button><br>
         <button class="fullclosebutton" onclick="closewebview()">CLOSE</button>
         <div class="panel-footer">
-            <!-- <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success okbutton" id="<%= id %>" onclick="display_needvol(this.id)"
-                disabled>OK</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success " id="close" onclick="closewebview()">Close</button> -->
+            
         </div>
     </div>
 
@@ -163,6 +160,7 @@
         function myFunction(list) {
             document.getElementsByClassName("fullacceptbutton")[0].disabled = false;
             $(".fullacceptbutton").text('accept ' + list.className);
+            // $(".fullacceptbutton").className(list.id);
             console.log(list);
         }
 
@@ -172,6 +170,10 @@
             }, function error(err) {
                 // an error occurred
             });
+        }
+
+        function accept(array){
+            console.log(array);
         }
     </script>
 
