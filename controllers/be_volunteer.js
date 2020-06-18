@@ -117,11 +117,11 @@ module.exports = {
                         self.sendWelcomeMessage(userId);
                         break;
                     case 'phone_number':
-                        var phone_number = event.message.nlp.entities.location[0].value;
+                        var phone_number = event.message.nlp.entities.number[0].value;
                         userService.b_v_phonenumber(userId, phone_number, (updated) => {
                             if (updated){
                                 self.inputAddress(userId);
-                                
+
                             }
 
 
