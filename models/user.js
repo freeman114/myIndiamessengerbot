@@ -460,7 +460,7 @@ module.exports = {
         });
     },
 
-    delete_order: function (token, callback) {
+    delete_order: function (token, userID, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
             if (err) {
                 console.log(err);
@@ -475,8 +475,20 @@ module.exports = {
                     dbo.collection("n_v_order").deleteOne(result[0], function (err, obj) {
                         if (err) throw err;
                         console.log("1 order deleted");
-                        callback();
-                        db.close();
+                        var query = { fb_id: userID };
+                        dbo.collection("users").find(query).toArray(function (err, result) {
+                            try {
+                                // console.log(result);
+                                console.log("read phonenumber of volunteers");
+                                callback(result[0].phone_number, result[0].firstname);
+                                db.close();
+                            } catch (error) {
+                                console.log(error);
+                            }
+
+                        });
+                        // callback();
+                        // db.close();
                     });
 
 
