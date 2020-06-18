@@ -289,7 +289,6 @@ module.exports = {
                     console.log(err);
                 }
                 var dbo = db.db;
-                console.log(`dbo :${dbo} `);
                 // console.log(JSON.stringify(db));
                 var findUser = { fb_id: userId };
                 // var newvalues = { $set: { fb_id: userID, userrole: userrole } };
@@ -315,8 +314,6 @@ module.exports = {
                 console.log(err);
             }
             var dbo = db.db;
-            console.log(`dbo :${dbo} `);
-            // console.log(JSON.stringify(db));
             var findUser = { fb_id: userID };
             var newvalues = { $set: { fb_id: userID, n_v_address: address } };
             dbo.collection("users").find(findUser).toArray()
