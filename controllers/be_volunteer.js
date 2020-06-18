@@ -105,7 +105,7 @@ module.exports = {
                         if (event.message.nlp.entities.intent[0].confidence > 0.95) {
                             var value = event.message.nlp.entities.name[0].value;
                             console.log(value);
-                            self.inputAddress(userId);
+                            self.input_phonenumber(userId);
                         } else {
                             let responseText = 'Please enter correct data.';
 
@@ -116,14 +116,27 @@ module.exports = {
                     case 'greeting':
                         self.sendWelcomeMessage(userId);
                         break;
+                    case 'phone_number':
+                        var phone_number = event.message.nlp.entities.location[0].value;
+                        userService.b_v_phonenumber(userId, phone_number, (updated) => {
+                            if (updated){
+                                self.inputAddress(userId);
+                                
+                            }
+
+
+                        });
+
+                        break;
 
                     case 'address':
                         var origin_add = event.message.nlp.entities.location[0].value;
                         console.log(origin_add);
+
                         fbService.orderlist_template(userId, origin_add, () => {
                             self.quickreply_list(userId);
                         });
-           
+
                         break;
 
                     default:
@@ -224,6 +237,33 @@ module.exports = {
 
         fbService.sendQuickReply(userId, responseText, replies);
     },
+
+    input_phonenumber: function (userID) {
+        console.log('%%%%%%%%%%%%%% we sent message that input phonenumber.%%%%%%%%%%%%%%%');
+
+        let responseText = "Please enter your phonenumber. ";
+        let replies = [
+            {
+                "content_type": "text",
+                "title": "Start Over",
+                "payload": "start_over"
+            },
+            {
+                "content_type": "text",
+                "title": "Previous ",
+                "payload": "inputname"
+            },
+            {
+                "content_type": "text",
+                "title": "Cancel ",
+                "payload": "cancel"
+            }
+        ];
+
+
+
+        fbService.sendQuickReply(userID, responseText, replies);
+    }
 
 }
 

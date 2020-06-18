@@ -392,6 +392,32 @@ module.exports = {
         });
     },
 
+    b_v_phonenumber: function (userID, phone_number, callback) {
+        mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+            if (err) {
+                console.log(err);
+            }
+            var dbo = db.db;
+            var findUser = { fb_id: userID };
+            var newvalues = { $set: { fb_id: userID, phone_number: phone_number } };
+            dbo.collection("users").find(findUser).toArray()
+                .then(function (result) {
+                    dbo.collection("users").updateOne(findUser, newvalues)
+                        .then(function () {
+                            console.log("1 phonenumber inserted");
+                            callback(true);
+                            db.close();
+                        }).catch(function (err) {
+                            console.log(err);
+                            callback(false);
+                            db.close();
+                        });
+                }).catch(function (err) {
+                    console.log(`err=  ${err}`);
+                });
+        });
+    },
+
     insert_order: function (userID, otn_token, callback) {
         mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
             if (err) {
