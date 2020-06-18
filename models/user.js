@@ -472,6 +472,7 @@ module.exports = {
             dbo.collection("n_v_order").find(findorder).toArray()
                 .then(function (result) {
                     console.log(result[0]);
+                    var n_v_name = result[0].name;
                     dbo.collection("n_v_order").deleteOne(result[0], function (err, obj) {
                         if (err) throw err;
                         console.log("1 order deleted");
@@ -480,15 +481,14 @@ module.exports = {
                             try {
                                 // console.log(result);
                                 console.log("read phonenumber of volunteers");
-                                callback(result[0].phone_number, result[0].firstname);
+                                callback(result[0].phone_number, n_v_name);
                                 db.close();
                             } catch (error) {
                                 console.log(error);
                             }
 
                         });
-                        // callback();
-                        // db.close();
+                 
                     });
 
 

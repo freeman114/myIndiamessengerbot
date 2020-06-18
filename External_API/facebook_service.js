@@ -216,7 +216,7 @@ module.exports = {
         });
     },
 
-    otn_message: function (userID, name, phone_number,  token, callback) {
+    otn_message: function (name, phone_number,  token, callback) {
         var options = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
@@ -227,7 +227,7 @@ module.exports = {
                 "recipient": { "one_time_notif_token": token },
                 "message":
                 {
-                    "text": " Hello," + name + "Your order have accepted. Please contact with him using phonenumber" + phone_number
+                    "text": " Hello," + name + "! Your order have accepted. Please contact with him using phone number: " + phone_number
                 }
             })
 

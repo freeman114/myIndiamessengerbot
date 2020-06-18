@@ -283,7 +283,7 @@ app.post('/b_v_list', (req, res) => {
     console.log(`userId: ${userId}`);
     userService.delete_order(token, userId, (phone_number, name) => {
 
-        fbService.otn_message(userId, name, phone_number,  token, function (){
+        fbService.otn_message(name, phone_number,  token, function (){
             res.status(200).json({
                 status: 'succes'
             });
