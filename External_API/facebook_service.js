@@ -227,7 +227,7 @@ module.exports = {
                 "recipient": { "one_time_notif_token": token },
                 "message":
                 {
-                    "text": " Hello," + name + "! Your order have accepted. Please contact with him using phone number: " + phone_number
+                    "text": " Hello," + name + "! Your order has been accepted. Please contact with him using phone number: " + phone_number
                 }
             })
 
