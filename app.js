@@ -601,6 +601,7 @@ function sendToWit_0(event) {
         if (event.message.nlp.entities.intent) {
             var wit_confience = event.message.nlp.entities.intent.confidence;
             var intent = event.message.nlp.entities.intent[0].value;
+            console.log(intent);
 
             console.log(intent);
             switch (intent) {
