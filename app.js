@@ -623,7 +623,7 @@ function sendToWit_0(event) {
                     break;
 
                 case 'address':
-                    var value = event.message.nlp.entities.location[0].value;
+                    var value = event.message.text;
                     console.log(value);
                     external_api.displayShop(value, function (array) {
                         if (array) {
