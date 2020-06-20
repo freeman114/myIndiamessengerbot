@@ -141,8 +141,8 @@ module.exports = {
                     case 'need_item':
                         console.log("need_item");
                         let items = [];
-                        var n_item = event.message.nlp.entities.item:item;
-                        console.log(n_item)
+                        var n_item = event.message.nlp.entities["item:item"];
+                        console.log(`n_item: ${n_item}`);
                         n_item.forEach(element => {
                             items.push(element.value);
                         });
