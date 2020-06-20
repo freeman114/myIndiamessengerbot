@@ -187,11 +187,11 @@ module.exports = {
                         if (item.toString() != slot.toString()) {
                             console.log(item);
                             console.log(`slot: ${slot}`);
-                            
+
                             array.push(item);
                         }
                     });
-                    
+
                     var newquery = { $set: { place_id: place_id, timeSlot: array } };
 
                     // var myquery = { timeSlot: timearray };
@@ -249,7 +249,13 @@ module.exports = {
                     .then(function (delOK) {
                         dbo.collection("shopList_collection").drop()
                             .then(function (res) {
-                                callback();
+                                dbo.collection("n_v_order").drop()
+                                    .then(function (res) {
+                                        callback();
+                                        db.close();
+                                    }).catch(function (error) {
+                                        console.log(error);
+                                    });
                             }).catch(function (error) {
                                 console.log(error);
                             });
@@ -492,7 +498,7 @@ module.exports = {
                             }
 
                         });
-                 
+
                     });
 
 
