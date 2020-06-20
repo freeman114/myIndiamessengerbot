@@ -187,15 +187,16 @@ module.exports = {
                         if (item.toString() != slot.toString()) {
                             console.log(item);
                             console.log(`slot: ${slot}`);
-
+                            
                             array.push(item);
                         }
                     });
+                    
+                    var newquery = { $set: { place_id: place_id, timeSlot: array } };
 
-
-                    var myquery = { timeSlot: timearray };
-                    var newvalues = { $set: { timeSlot: array } };
-                    dbo.collection("shopList_collection").updateOne(myquery, newvalues)
+                    // var myquery = { timeSlot: timearray };
+                    // var newvalues = { $set: { timeSlot: array } };
+                    dbo.collection("shopList_collection").updateOne(query, newquery)
                         .then(async function (res) {
                             console.log("success");
                             let userquery = { fb_id: userId };
