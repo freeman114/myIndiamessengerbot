@@ -144,7 +144,7 @@ module.exports = {
                         var n_item = event.message.nlp.entities["item:item"];
                         console.log(`n_item: ${n_item}`);
                         n_item.forEach(element => {
-                            items.push(element.value);
+                            items.push(element.body);
                         });
                         userService.n_v_item(userId, items, (updated) => {
                             if (updated) {
