@@ -185,6 +185,9 @@ module.exports = {
                     var array = [];
                     timearray.forEach(item => {
                         if (item.toString() != slot.toString()) {
+                            console.log(item);
+                            console.log(`slot: ${slot}`);
+
                             array.push(item);
                         }
                     });
