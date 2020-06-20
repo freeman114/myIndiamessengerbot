@@ -1,35 +1,48 @@
 {
     "sender": {
-        "id": "4202118876472530"
+        "id": "3034816866637253"
     },
     "recipient": {
         "id": "100218351750028"
     },
-    "timestamp": 1592669584456,
+    "timestamp": 1592674492797,
     "message": {
-        "mid": "m_Ah5pR2lPV0rjWDpJGPpPhAcoxHhEU1c_yGzhl0hYimjqP5LqkdrZH3o_9PxwRpxUV0plOMFX9lYmuLXggwGfgg",
-        "text": "fghshs",
+        "mid": "m_cDhXBHCS3YH-I4bqgg_LsNJqFL-SI-bBYTLZCwGst9DK8OHBHfdtCH1ce45NsS5UU3Y7a3WN0N0F6nhyEAAQ0Q",
+        "text": "i need apple and pizza",
         "nlp": {
             "intents": [
                 {
-                    "id": "626415858220854",
-                    "name": "name",
-                    "confidence": 1
+                    "id": "862596110901319",
+                    "name": "need_item",
+                    "confidence": 0.9555
                 }
             ],
             "entities": {
-                "name:name": [
+                "item:item": [
                     {
-                        "id": "2567091006886017",
-                        "name": "name",
-                        "role": "name",
-                        "start": 0,
-                        "end": 6,
-                        "body": "fghshs",
-                        "confidence": 0.964,
+                        "id": "e0839293-b878-4640-ba6f-b757c38bf475",
+                        "name": "item",
+                        "role": "item",
+                        "start": 7,
+                        "end": 12,
+                        "body": "apple",
+                        "confidence": 0.6638,
                         "entities": [],
                         "suggested": true,
-                        "value": "fghshs",
+                        "value": "apple",
+                        "type": "value"
+                    },
+                    {
+                        "id": "e0839293-b878-4640-ba6f-b757c38bf475",
+                        "name": "item",
+                        "role": "item",
+                        "start": 17,
+                        "end": 22,
+                        "body": "pizza",
+                        "confidence": 0.4355,
+                        "entities": [],
+                        "suggested": true,
+                        "value": "pizza",
                         "type": "value"
                     }
                 ]
@@ -38,7 +51,7 @@
             "detected_locales": [
                 {
                     "locale": "en_XX",
-                    "confidence": 0.5855
+                    "confidence": 1
                 }
             ]
         }
