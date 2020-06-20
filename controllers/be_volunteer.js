@@ -94,32 +94,29 @@ module.exports = {
             console.log('%%%%%%%%%%%%%received text message%%%%%%%%%%%%%');
             var userId = event.sender.id;
             console.log(JSON.stringify(event));
-
-            if (event.message.nlp.entities.intent) {
-                var wit_confience = event.message.nlp.entities.intent.confidence;
-                var intent = event.message.nlp.entities.intent[0].value;
-
+            var wit_confience = event.message.nlp.intents[0].confidence;
+            console.log(wit_confience);
+            if (wit_confience > 0.95) {
+                var intent = event.message.nlp.intents[0].name;
                 console.log(intent);
                 switch (intent) {
                     case 'name':
-                        if (event.message.nlp.entities.intent[0].confidence > 0.95) {
-                            var value = event.message.nlp.entities.name[0].value;
-                            console.log(value);
+                        // if (event.message.nlp.entities.intent[0].confidence > 0.95) {
                             self.input_phonenumber(userId);
-                        } else {
-                            let responseText = 'Please enter correct data.';
+                        // } else {
+                        //     let responseText = 'Please enter correct data.';
 
-                            fbService.sendTextMessage(userId, responseText);
-                        }
+                        //     fbService.sendTextMessage(userId, responseText);
+                        // }
 
                         break;
                     case 'greeting':
                         self.sendWelcomeMessage(userId);
                         break;
                     case 'phone_number':
-                        var phone_number = event.message.nlp.entities.number[0].value;
+                        var phone_number = event.message.text;
                         userService.b_v_phonenumber(userId, phone_number, (updated) => {
-                            if (updated){
+                            if (updated) {
                                 self.inputAddress(userId);
 
                             }
@@ -130,7 +127,7 @@ module.exports = {
                         break;
 
                     case 'address':
-                        var origin_add = event.message.nlp.entities.location[0].value;
+                        var origin_add = event.message.text;
                         console.log(origin_add);
 
                         fbService.orderlist_template(userId, origin_add, () => {

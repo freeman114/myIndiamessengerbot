@@ -65,6 +65,7 @@ module.exports = {
 
         var _array = [];
         array.forEach(item => {
+            console.log(`url: ${item.buttons[0].url}`);
             const obj = {
                 "title": item.title,
                 "image_url": item.image_url,

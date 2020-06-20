@@ -103,23 +103,22 @@ module.exports = {
             console.log('*********received text message**********');
             var userId = event.sender.id;
             console.log(JSON.stringify(event));
+            var wit_confience = event.message.nlp.intents[0].confidence;
 
-            if (event.message.nlp.entities.intent) {
-                var wit_confience = event.message.nlp.entities.intent.confidence;
-                var intent = event.message.nlp.entities.intent[0].value;
-
+            if (wit_confience > 0.95) {
+                var intent = event.message.nlp.intents[0].name;
                 console.log(intent);
                 switch (intent) {
                     case 'name':
-                        if (event.message.nlp.entities.intent[0].confidence > 0.95) {
-                            var value = event.message.nlp.entities.name[0].value;
+                        // if (event.message.nlp.entities.intent[0].confidence > 0.95) {
+                            var value = event.message.text;
                             console.log(value);
                             self.inputAddress(userId);
-                        } else {
-                            let responseText = 'Please enter correct data.';
+                        // } else {
+                        //     let responseText = 'Please enter correct data.';
 
-                            fbService.sendTextMessage(userId, responseText);
-                        }
+                        //     fbService.sendTextMessage(userId, responseText);
+                        // }
 
                         break;
                     case 'greeting':
@@ -127,7 +126,7 @@ module.exports = {
                         break;
 
                     case 'address':
-                        var value = event.message.nlp.entities.location[0].value;
+                        var value = event.message.text;
                         console.log(userId);
                         userService.n_v_address(userId, value, function (updated) {
                             if (updated) {
