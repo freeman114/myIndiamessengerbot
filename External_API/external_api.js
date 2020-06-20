@@ -161,8 +161,8 @@ module.exports = {
     },
 
     get_add: function (origin, target, callback) {
-        console.log(origin);
-        console.log(target);
+        console.log(`origin: ${origin}`);
+        console.log(`target: ${target}`);
 
         var options = {
             'method': 'GET',
