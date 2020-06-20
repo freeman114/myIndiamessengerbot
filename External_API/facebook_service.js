@@ -108,9 +108,13 @@ module.exports = {
 
         };
         request(options, function (error, response) {
-            if (error) throw new Error(error);
-            console.log(response.body);
-            callback(true);
+            if (error) {
+                console.log(`showstore: ${error}`);
+            } else {
+                console.log(response.body);
+                callback(true);
+            }
+
         });
     },
 
@@ -217,7 +221,7 @@ module.exports = {
         });
     },
 
-    otn_message: function (name, phone_number,  token, callback) {
+    otn_message: function (name, phone_number, token, callback) {
         var options = {
             'method': 'POST',
             'url': 'https://graph.facebook.com/v7.0/me/messages?access_token=' + config.FB_PAGE_TOKEN,
