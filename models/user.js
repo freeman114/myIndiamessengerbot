@@ -11,6 +11,8 @@ const external_api = require('../External_API/external_api')
 const mongoose = require('mongoose');
 const mongodb_url =config.MONGODB_URI; 
 
+  
+
 
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
