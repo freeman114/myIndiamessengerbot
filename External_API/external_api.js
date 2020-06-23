@@ -83,7 +83,7 @@ module.exports = {
         request({
             uri: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {
-                access_token: 'EAADhs54CZBV4BABhvflRJh3J03zD8zkZBRUtgAFEjm6gruGRyoyX8JZB2bRk8PvzTRTSZBKTZC232llCZBhipVIPPbZCoHgbSZCUgcwqxc1tdvbtOO930vEmCMEHM5JdGnoK7vGBkZBwRijZAAXd43jhG1MFJ4Sko2Sv7Elt9ZAN30SeMHcKsCvXY8M'
+                access_token: config.FB_PAGE_TOKEN
             },
             method: 'POST',
             json: messageData
