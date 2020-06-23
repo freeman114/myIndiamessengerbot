@@ -34,7 +34,6 @@ let log = null;
 
 
 try {
-    // if running from repo
     Wit = require('../').Wit;
     log = require('../').log;
 } catch (e) {
